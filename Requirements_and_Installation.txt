@@ -1,0 +1,83 @@
+Requirements
+------------
+
+JSON Version: All stuff marked with [NONO] is obsolete. ;)
+
+This is the old installation documentation and will be rewritten when the JSON version works.
+
+Server:
+[NONO] > A MySQL Database (>= v4.1.3)
+> PHP (>= v5.0)
+
+[NONO] I used phpmyadmin for the initial setup of the DB.
+
+Client: JavaScript must be enabled.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Installation
+------------
+
+[NONO] ATTENTION: The root index file is in the page directory. Your redirection must go to page/index.php, NOT /index.html !!
+
+> Copy the page-folder and the uploads-folder to your web directory.
+	If there is no upload folder, create it in the root dir (same dir where the page dir is.)
+
+[NONO]	
+> Create a user and a DB on your MySQL-DB.
+	+ Phpmyadmin: 
+		> Log in as root.
+		> Click users.
+		> Click "Create New User"
+		> Input your stuff, (local-)host username and password.
+		> Check the checkbox which says "Create DB with the same name for this user."
+		> Click OK
+[ENDOF NONO]
+
+> Open page/config.php in your editor.
+[NONO]	> Change the DB credentials.
+	> Change the admin password.
+
+[NONO] [Create DB Tables]
+[NONO] > In your Browser, go to page/_admin/install.php -> DB Entries and stuff will be created.
+
+
+[NONO]
+[WORKAROUND - Create DB Tables]
+> Download "MySQL Workbench" and install it. It's a free software which you find on the internet.
+> Open the .mwb-file provided with this application with MySql-Workbench.
+> Click the menu "Database->Synchronize Model.."
+> Input your DB credentials and host.
+> Click "Next" (3 times)
+> Maybe you need to select the DB and override the target at the bottom of the screen.
+> Click "Next" 3 times. Click "Execute". Click "Close". ;)
+> Done.
+[ENDOF NONO]
+
+It does not work?
+> Check if the upload folder and its contents have read-write permission.
+> Check if all stuff in config.php is set up the right way.
+[NONO]	> Check for the right DB credentials and host.
+	> Check if the upload path is set up the right way in config.php
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Customization
+-------------
+
+Background: Just change the background image. (images/background.jpg)
+Page title: Change the title image. (images/pagetitle.png)
+You can customize much stuff in the css/comiccms.css file.
+(To change the properties of dialogs, open css/bootstrap-dialog.min.css 
+	-> dialogs are only used for admin stuff.)
+
+Language and more customization:
+
+This page is made for ONE language because the comic mostly appears just in one language itself.
+If you want to change the language, just copy the php/lang.german.php file, rename it to 
+e.g. lang.english.php and change the words and sentences in that file.
+
+Then you add an include at the end of the config.php file. DO NOT DELETE the default include. 
+Just include your file below that include, so all the old words/sentences will be overwritten.
+
+You can also use HTML (e.g. include an <img> for the links.) in that files, so here you can
+do another big part of customization. ;)

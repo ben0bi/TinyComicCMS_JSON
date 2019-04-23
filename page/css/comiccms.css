@@ -1,0 +1,250 @@
+/* Font for the page links. */
+@font-face
+{
+	font-family: 'mainLinkFont'; 				/* This is the name of the new font. */
+	src: 	url('../fonts/mississippi.woff');		  	/* This is the main source. */
+	/* The rest of the sources are fallback alternatives. */
+	src: 	url('../fonts/mississippi.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Font for the blog post title. */
+@font-face
+{
+	font-family: 'blogPostTitleFont'; 			/* This is the name of the new font. */
+	src: 	url('../fonts/mississippi.woff');		  	/* This is the main source. */
+	/* The rest of the sources are fallback alternatives. */
+	src: 	url('../fonts/mississippi.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body
+{
+	color: #FFA;
+	background-color: #001;
+	background-image: url("../images/background.jpg");
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+table
+{
+	font-size: inherit;
+}
+
+.black, input, textarea
+{
+	color: #000000;
+}
+
+a 
+{
+	color:#FB0;
+	text-decoration: none;
+}
+a:visited 
+{
+	color:#FB0;
+	text-decoration: none;
+}
+a:hover	
+{
+	color: #FF0;
+	text-decoration: none;
+}
+
+#wrapper
+{
+	position: relative;
+	margin: 0 auto;
+}
+
+#pagetitle
+{
+	position: absolute;
+	top: 0px;
+	margin: 0 auto;
+	/* border: 1px solid #0f0; */
+}
+
+#pagecontent
+{
+	position: absolute;
+	top: 130px;
+	text-align:center;
+	/* border: 1px solid #00f; */
+}
+
+#pageimage 
+{
+	position: relative;
+	border-radius: 3px;
+	/*border: 2px solid #AAAA33;
+	border-right: 2px solid #777722;
+	border-bottom: 2px solid #777722;
+	padding: 3px;*/
+}
+
+#pagecontent .title {font-family: 'mainLinkFont', sans-serif; font-size: 20pt;}
+
+#pageimagediv 
+{
+	position: relative;
+	left: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+/* Position changes when swiping on a tablet. */
+#pageimageMoveContainer 
+{
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#admindiv {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;z-index: 90;}
+#adminlink
+{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+
+/* the bottom navigating links will be shown after the image has loaded. */
+#bottomnavigatinglinks {display: none;}
+
+.bglinkcolor {color: #33A;}
+.bglinkcolor:visited {color: #33A;}
+.bglinkcolor:hover {color: #33C;}
+
+.invisiblefooter
+{
+	height: 50px;
+}
+
+.pagelinks
+{
+	text-align: center;
+	font-family:'mainLinkFont', sans-serif;
+	font-size: 18pt;
+	font-weight: normal;
+	color: #33A;
+}
+
+/* the bottom navigating links will be shown after the image has loaded. */
+.bottomnavigatinglinks {display: none;}
+
+.popup 
+{
+	background-color: #111;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: none;
+	position: absolute;
+	z-index: 10;
+	text-align: left;
+}
+
+.blogpost
+{
+	display: none;
+	position: relative;
+	border: 2px solid #003;
+	border-bottom: 2px solid #001;
+	padding: 0.5cm;
+	text-align: left;
+	margin-top: 1cm;
+
+	border-radius: 10px;
+    	background: #001; /* For browsers that do not support gradients */
+    	background: -webkit-linear-gradient(#001, #003); /* For Safari 5.1 to 6.0 */
+    	background: -o-linear-gradient(#001, #003); /* For Opera 11.1 to 12.0 */
+    	background: -moz-linear-gradient(#001, #003); /* For Firefox 3.6 to 15 */
+    	background: linear-gradient(#001, #003); /* Standard syntax */
+}
+
+.blogpost .title
+{
+	font-family:'blogPostTitleFont', sans-serif;
+	font-size: 20pt;
+	padding-bottom: 0.5cm;
+}
+
+.blogpost .date
+{
+	position: absolute;
+	top: 0.5cm;
+	right: 0.5cm;
+	font-size: 10pt;
+}
+
+.noborder {border: 0;}
+.horizontalborder
+{
+	border-left: 0;
+	border-right:0;
+	border-top: 1px solid #33A;
+	border-bottom: 1px solid #33A;
+}
+
+.error {color: #F33;}
+
+.image_preview
+{
+	max-height: 200px;
+	/*border: 2px solid #F00;*/
+}
+
+input, button
+{
+	color: #000;
+}
+
+/* Different media = different sizes. */
+@media (min-width:800px) 
+{
+	#wrapper {width: 800px;}
+	.blogpost {width: 800px;}
+	#sourcelink {display: block;}
+}
+
+/* mobile phones 1 */
+@media (max-width:799px)
+{
+	#wrapper {width: 100%;}
+	.blogpost {width: 100%;}
+	.pagelinks {font-size: 12pt;}
+	/* hide the source link on the main page. */
+	#sourcelink {display: none;}
+	#pageimageMoveContainer  {border: 0; padding: 0;}
+	#pageimage  {border: 0; padding: 0;}
+}
+
+/* Bigger screens. */
+@media (min-width:800px)
+{
+	.pagelinks {font-size: 30pt;}
+}
+
+/* mobile phones 2 */
+@media (min-width:800px) and (orientation:portrait)
+{
+	#wrapper {width: 100%;}
+	.blogpost {width: 100%;}
+	.pagelinks {font-size: 30pt;}
+	/* hide the source link on the main page. */
+	#sourcelink {display: none;}
+	#pageimageMoveContainer  {border: 0; padding: 0;}
+	#pageimage {border: 0; padding: 0;}
+	body {font-size: 20pt;}
+}
+
