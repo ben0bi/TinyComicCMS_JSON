@@ -50,7 +50,8 @@ function phpupload($fileID)
 class ComicCMS
 {
 	// include the css files.
-	public static function includeCSS($dirToRoot)
+	// now in index.html
+/*	public static function includeCSS($dirToRoot)
 	{
 		echo '<meta charset="utf-8">'.chr(13);
 		echo '<link rel="stylesheet" href="'.$dirToRoot.'css/bootstrap.min.css">'.chr(13);
@@ -60,15 +61,17 @@ class ComicCMS
 
 		self::includeJSLanguageTranslation();
 	}
-
+*/
 	// include the javascript files.
-	public static function includeJSScripts($dirToRoot)
+	// now in index.html
+/*	public static function includeJSScripts($dirToRoot)
 	{
 		echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>'.chr(13);
 		echo '<script src="'.$dirToRoot.'js/bootstrap.min.js"></script>'.chr(13);
 		echo '<script src="'.$dirToRoot.'js/bootstrap-dialog.min.js"></script>'.chr(13);
 		echo '<script src="'.$dirToRoot.'js/comiccms.js"></script>'.chr(13);
 	}
+*/
 
 	// translate some words from php to js.
 	private static function includeJSLanguageTranslation()
