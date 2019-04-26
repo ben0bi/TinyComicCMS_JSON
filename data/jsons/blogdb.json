@@ -1,0 +1,724 @@
+{
+"BLOGPOSTS":[{
+"ID": 1,
+"TITLE": "About StarForce",
+"TEXT": "Schon lÃ¤nger hatte ich die Idee, einen Webcomic zu machen. Ich wusste nur nicht wie und was und warum. Nun weiss ich zumindest wie: Ich mache LEGO-Fotostrecken.\r\n\r\nEin inzwischen verstorbener Freund hat mir einen Lego AT-AT geschenkt, welchen wir gemeinsam aufgebaut haben. Dadurch entstanden die ersten sechs Seiten dieses Comic schon lange bevor ich die Idee zum Comic selbst hatte.\r\n\r\nMan sieht hier, dass ich schon von Anfang an die MÃ¤nnchen positioniert habe: Die Sturmtruppler bewachen schon zu Beginn die Beine des AT-AT.\r\n\r\nViel Spass beim Lesen.",
+"IMAGEID": 2,
+"DATETIME": "2016-01-06 22:06:51"
+},
+{
+"ID": 2,
+"TITLE": "Schwarzer Fleck",
+"TEXT": "Der schwarze Fleck auf einigen Fotos wurde von der Kamera verursacht. Leider hatte ich keine Andere zur VerfÃ¼gung.\r\n\r\nZum GlÃ¼ck war der Fleck spÃ¤ter wieder weg...",
+"IMAGEID": 2,
+"DATETIME": "2016-01-11 15:09:27"
+},
+{
+"ID": 3,
+"TITLE": "Der Typ...",
+"TEXT": "..hat seinen Hut verloren. Ist der angepisst...dafÃ¼r gibts ein Bier auf dem Dach der Kiste.",
+"IMAGEID": 3,
+"DATETIME": "2016-01-12 01:42:07"
+},
+{
+"ID": 4,
+"TITLE": "Rechts oder Links",
+"TEXT": "Egal ob Nazi oder Hippie, mit Rechts und Links kannst du wie auf <a href=\"http://pr0gramm.com\">pr0gramm.com</a> durch die Posts durch scrollen.\r\n\r\nIch mein die Pfeiltasten, meineGÃ¼te..",
+"IMAGEID": 3,
+"DATETIME": "2016-01-12 01:54:38"
+},
+{
+"ID": 5,
+"TITLE": "Vorbereitungen...",
+"TEXT": "Alles wird vorbereitet, damit man den Rumpf auf die Beine montieren kann. Dann wird der Rumpf mit dem \ langsam hochgehoben und eingebaut.\r\n\r\nWÃ¤hrenddessen kÃ¶nnen die Sturmtruppler Pause machen, und das geniessen sie auch.",
+"IMAGEID": 4,
+"DATETIME": "2016-01-24 03:12:04"
+},
+{
+"ID": 6,
+"TITLE": "Gottes Hand",
+"TEXT": "...legt die Seitenplatten bereit, welche der arme IngeniÃ¶r dann ganz alleine anbringen darf - in luftiger HÃ¶he und ohne Sicherung.",
+"IMAGEID": 5,
+"DATETIME": "2016-01-29 11:25:38"
+},
+{
+"ID": 7,
+"TITLE": "Hinten",
+"TEXT": "Erstmal werden die hinteren Seitenplatten angebracht.",
+"IMAGEID": 6,
+"DATETIME": "2016-02-03 22:02:22"
+},
+{
+"ID": 8,
+"TITLE": "Das wars..",
+"TEXT": "..mit dem Prequel.\r\n\r\nVielleicht mache ich auch was wie <a href=\"http://xkcd.com\">xkcd</a> daraus... ;)",
+"IMAGEID": 8,
+"DATETIME": "2016-03-18 21:27:14"
+},
+{
+"ID": 9,
+"TITLE": "In Solothurn...",
+"TEXT": "...schreiben die Leute immer mal wieder so lustig-coole SprÃ¼che an irgendwelche Tafeln. Das find ich geil.",
+"IMAGEID": 10,
+"DATETIME": "2017-03-29 06:21:49"
+},
+{
+"ID": 10,
+"TITLE": "FrÃ¼hmorgens",
+"TEXT": "Es war eigentlich viel dunkler, doch die Kamera hat sich das so hereingeregelt, dass der Himmel schÃ¶n hell ist, wÃ¤hrend sie unten das Licht von den Strassenlaternen eingefangen hat.",
+"IMAGEID": 11,
+"DATETIME": "2017-04-05 23:54:30"
+},
+{
+"ID": 13,
+"TITLE": "Dieses Wandbild..",
+"TEXT": "..ist in Grenchen.\r\n\r\nIch wohne da schon eine Weile, doch ich habe das Bild erst kÃ¼rzlich entdeckt.",
+"IMAGEID": 15,
+"DATETIME": "2017-04-15 05:43:50"
+},
+{
+"ID": 15,
+"TITLE": "Tag und Nacht",
+"TEXT": "Das vorige Bild gehÃ¶rt auch zu dieser Kleinserie. Ein Nachtbild und ein Tagbild. Ich wollte sie nicht durch zusammensetzen verschandeln.",
+"IMAGEID": 18,
+"DATETIME": "2017-04-20 04:31:39"
+},
+{
+"ID": 16,
+"TITLE": "Die meisten Bilder..",
+"TEXT": "..werden aus meinem Fenster heraus gemacht.\r\nMeine Fenster sind nach Osten und Westen ausgerichtet und aus dem Ã¶stlichen Fenster kann ich auch nach SÃ¼den gucken wie man hier sieht...einfach Ã¼berwÃ¤ltigend.",
+"IMAGEID": 20,
+"DATETIME": "2017-04-25 15:40:25"
+},
+{
+"ID": 17,
+"TITLE": "Solar",
+"TEXT": "Im Vordergrund hat es Solarpanels auf dem Dach. Das hab ich erst jetzt entdeckt. In Grenchen ist Ã¼berall Solar, da sind wir sehr fortschrittlich. ;)\r\n\r\nAuf dem Dach vom Lidl gegenÃ¼ber (Osten) haben sie nÃ¤mlich auch erst gerade [noch mehr] Solarpanels auf dem Dach installiert...siehe dazu einen spÃ¤teren Eintrag.\r\n\r\nNun bin ich also von vier Seiten von Autos (3 Strassen + 1 Parkplatz) umschlossen und von zwei Seiten mit Solarpanels umzingelt. Das Erstere finde ich weniger gut, das Zweite jedoch umso besser.",
+"IMAGEID": 20,
+"DATETIME": "2017-04-25 15:46:32"
+},
+{
+"ID": 18,
+"TITLE": "Solar-LIDL",
+"TEXT": "Eigentlich mache ich ja keine Werbung doch auf dem LIDL wurden (noch mehr) Solar-Panels installiert. Dieser ist direkt gegenÃ¼ber meiner Wohnung, darum finde ich das richtig geil.\r\n\r\nDoch nicht nur das. Sie haben auch eine Strom-Tankstelle installiert, bei welcher man GRATIS sein Elektro-Auto laden kann. Dies zwar nur wÃ¤hrend der Ã–ffnungszeiten und nur fÃ¼r Kunden, aber immerhin. (Wie wollen die denn auch rausfinden, ob die Karre einem Kunden gehÃ¶rt?)\r\n\r\nDas grosse Bild ist eine Montage aus zwei Bildern. Ich wollte noch die schÃ¶nen BÃ¤ume zeigen, von welchen man jetzt trotzdem nur einen sieht. (Rosarot im Vordergrund.) Diese sind um den ganzen Platz herum aufgereiht.",
+"IMAGEID": 21,
+"DATETIME": "2017-05-01 05:31:11"
+},
+{
+"ID": 19,
+"TITLE": "SchÃ¶ner",
+"TEXT": "Dies ist ein schÃ¶neres Bild aus der Perspektive wie beim vorletzten Post. Ich lasse diesen jedoch drin wegen dem Solar-Zeug.\r\n\r\nWer meine Bilder als Wallpaper oder so in OriginalgrÃ¶sse haben will, kann mir auf twitter eine Anfrage schreiben (@ben0bi) und mir dann all sein Geld geben...oder zumindest einen Teil davon. Ja...jetzt will ich auch mal Kohle haben. Und ab und zu mach ich schon schÃ¶ne Bilder. Die Kamera hat auch was gekostet....also her damit.\r\n",
+"IMAGEID": 22,
+"DATETIME": "2017-05-02 19:06:37"
+},
+{
+"ID": 20,
+"TITLE": "Bearbeitung...",
+"TEXT": "..von schon gemachten Fotos ist fÃ¼r Pussies, die nicht fÃ¶telen kÃ¶nnen.\r\n\r\nMit Garantie gebe ich die Garantie, dass garantiert kein Foto nachbearbeitet wurde, ausser der GrÃ¶ssenÃ¤nderung oder der Aufnahme in eine Collage. Doch nachdunkeln / -hellen, Flecken rausnehmen und anderer Kram macht das Original kaputt und von mir aus gesehen kann man dann auch gleich mit Paint etwas malen, das kommt auf dasselbe raus. Nur weil alles digital ist, muss das nicht heissen, dass man auch alles digital verÃ¤ndern soll. Du malst ja auch nicht auf einem Originalfilm herum (von Kodak oder so, physisch greifbar), bzw. den AbzÃ¼gen davon...",
+"IMAGEID": 22,
+"DATETIME": "2017-05-02 19:21:00"
+},
+{
+"ID": 21,
+"TITLE": "Nur noch 40%",
+"TEXT": "Ab dem vorigen Post gibt es die Bilder hier nur noch zu 60% verkleinert anstatt zu 75%. Das ergibt eine BildgrÃ¶sse von 2400x1600px und kann somit auf den meisten Bildschirmen als Hintergrund verwendet werden.\r\n\r\nViel Spass damit!",
+"IMAGEID": 23,
+"DATETIME": "2017-05-09 20:45:27"
+},
+{
+"ID": 22,
+"TITLE": "...",
+"TEXT": "Die Kirche steht natÃ¼rlich hinter dem GebÃ¤ude.",
+"IMAGEID": 24,
+"DATETIME": "2017-05-11 13:45:26"
+},
+{
+"ID": 24,
+"TITLE": "Lazer Mazer",
+"TEXT": "LASER heisst %%1Light Amplification by Stimulated Emission of Radiation%%1, also %%1Licht-VerstÃ¤rkung durch stimulierte Emmision von Strahlung.%%1\r\n\r\nDann gibt es noch MASER, das ist dasselbe mit Mikrowellen. MASER wird zum Beispiel zur Kommunikation im Weltall benutzt. (Richtfunk)",
+"IMAGEID": 25,
+"DATETIME": "2017-05-16 05:07:33"
+},
+{
+"ID": 25,
+"TITLE": "Grossstadt?",
+"TEXT": "Ja. Denn Grenchen hat alles, was eine Grossstadt auch hat. Und dieses Bild ist immer noch in der Stadt gemacht worden, also kann man es ruhig als Grossstadtbild bezeichnen. Wenn ich in Berlin im Zentrum so weit gegangen wÃ¤re, wie hier vom Zentrum aus, da wÃ¤re ich dann immer noch in der Mitte von Berlin gewesen.\r\n",
+"IMAGEID": 26,
+"DATETIME": "2017-05-18 21:15:14"
+},
+{
+"ID": 26,
+"TITLE": "Swipedi Swipe",
+"TEXT": "Diese Webseite ist nun an Tablets und Smartphones angepasst.\r\n\r\nGeniesse neu die folgenden Funktionen:\r\n<ul><li>Swipe nach links oder rechts auf dem Bild um die nÃ¤chste oder vorherige Seite zu laden.</li><li>Optisches Feedback beim Swipen: Das Bild bewegt sich nach links/rechts.</li><li>Anpassung der GrÃ¶sse ans GerÃ¤t</li><li>Anzeige des Titels oben links im Bild wenn man darauf toucht.</li></ul> Und natÃ¼rlich kann man auf dem PC immer noch mit den Pfeiltasten navigieren.\r\n\r\nViel Spass dabei. Hat mich zwei NÃ¤chte gekostet. :)",
+"IMAGEID": 27,
+"DATETIME": "2017-05-20 00:59:45"
+},
+{
+"ID": 27,
+"TITLE": "Bellach",
+"TEXT": "Dieses Bild wurde in Bellach aufgenommen. Ich bin extra aus dem Zug gestiegen dafÃ¼r und habe dann einen anderen genommen.\r\n\r\nIn einem der nÃ¤chsten Posts wird es eine Bilderserie zum herunterladen geben. Dort drinnen wird dann auch ein helleres (langweiligeres) Bild davon ^ sein. Und dieses natÃ¼rlich auch. Wenn wir schon mal dabei sind.",
+"IMAGEID": 29,
+"DATETIME": "2017-05-29 23:14:55"
+},
+{
+"ID": 28,
+"TITLE": "Starforce Collection 01",
+"TEXT": "Dies ist ein Bild aus der Kollektion Starforce_Collection_01.zip auf meiner Homepage ben0bi.dlinkddns.com!",
+"IMAGEID": 30,
+"DATETIME": "2017-05-30 21:39:50"
+},
+{
+"ID": 29,
+"TITLE": "Andere Serie",
+"TEXT": "Das ist eine andere Serie von einem anderen Morgen. Hier habe ich mich mal auf die VÃ¶gel konzentriert. Bei der vorigen Serie (siehe den Download im vorigen Post) ging es um die Sonnen-Wolken-Kombination.",
+"IMAGEID": 31,
+"DATETIME": "2017-06-05 12:45:15"
+},
+{
+"ID": 30,
+"TITLE": "Der Vogel",
+"TEXT": "Der WdS hockt auf dem Kamin. Daran vorbei gehts weiter ins Morgenland (II). ;)",
+"IMAGEID": 32,
+"DATETIME": "2017-06-10 00:38:49"
+},
+{
+"ID": 31,
+"TITLE": "Predator",
+"TEXT": "Nach der Schnabelform ist der obere Vogel eher ein Raubvogel und der untere weniger. Aber vielleicht sind das auch nur verschiedene Blickwinkel.",
+"IMAGEID": 33,
+"DATETIME": "2017-06-12 12:19:18"
+},
+{
+"ID": 32,
+"TITLE": "Mond",
+"TEXT": "Damit schliesst die Serie mit den Flugsauriern. Es geht weiter mit Langzeitbelichtungs-Nachtaufnahmen.\r\n\r\nHier mag ich insbesondere auch den Schatten, welchen die Kamera in die Ecken gemacht hat. Sehr stylisch, Ali nix schuld.",
+"IMAGEID": 34,
+"DATETIME": "2017-06-16 00:31:13"
+},
+{
+"ID": 33,
+"TITLE": "Langzeitbelichtung",
+"TEXT": "Ich habe mich mal mit Langzeitbelichtung versucht.\r\nBeim Nachthimmel sollte man maximal 15 Sekunden belichten, da die Sterne bei lÃ¤ngerer Belichtungszeit Linien ziehen.\r\n\r\nDas hier ist das beste Foto von der ersten Nacht. Die folgenden Fotos sind von der zweiten Nacht an einem anderen Standort.",
+"IMAGEID": 35,
+"DATETIME": "2017-06-22 05:45:52"
+},
+{
+"ID": 34,
+"TITLE": "Milchstrasse",
+"TEXT": "Dies ist die Strasse der Milch von der Schweiz nach Spanien. Denke ich. Direkt darÃ¼ber sieht man die gleichnamige Galaxie. (Es ist heller)\r\nDas sind keine Wolken. Ich habe da wirklich die Milchstrasse fotographiert, obwohl eigentlich das Umgebungslicht wissenschaftlich gesehen viel zu stark war. Fuck Science. XD.",
+"IMAGEID": 36,
+"DATETIME": "2017-06-24 17:54:31"
+},
+{
+"ID": 35,
+"TITLE": "Siehe 1x vorher..",
+"TEXT": "Also von der anderen Seite her siehts auch nicht schlecht aus...",
+"IMAGEID": 37,
+"DATETIME": "2017-06-28 12:43:11"
+},
+{
+"ID": 36,
+"TITLE": "Merke",
+"TEXT": "Merkel merkt sich: Sehr lange Belichtungszeit (30sec), tiefer ISO-Wert (100). Dann tuts auch nicht Ãœberbelichten.",
+"IMAGEID": 38,
+"DATETIME": "2017-07-01 10:26:38"
+},
+{
+"ID": 37,
+"TITLE": "HÃ¤ngebrÃ¼cke",
+"TEXT": "Ich habe das Bild von der SÃ¼dseite aus nach Grenchen hin gerichtet aufgenommen. Grenchen ist fÃ¼r mich die fortschrittlichste (bzw. hinschrittlichste) Stadt der Welt, ich habe nirgendwo so viele Elektrovelos auf einem Haufen gesehen. Hier ist jedes dritte Velo OHNE Motor, also zweidrittel elektrisch...und dann noch Ã¼berall diese Solarzellen und im Kaff nebenan haben sie gedimmte LED-Strassenbeleuchtung, welche heller wird, wenn man unten durch fÃ¤hrt...doch doch, das hier ist *ganz sicher* die BrÃ¼cke in die Zukunft.\r\n\r\nPS: Siehst du den leuchtenden Fleck Ã¼ber der BrÃ¼cke - in/vor den Wolken? Keine Ahnung was das ist. Wird wohl ein UFO sein. :)",
+"IMAGEID": 39,
+"DATETIME": "2017-07-09 04:05:08"
+},
+{
+"ID": 38,
+"TITLE": "Der erste Weltraumflughafen..",
+"TEXT": "..der vÃ¶llig frei und Ã¶ffentlich benutzt werden darf. Schliesslich will ich ja Gravis bauen und gravitationsunabhÃ¤ngige Flugzeuge sind nun mal potentiell raumflugfÃ¤hig...woraus folgt, siehe Titel.",
+"IMAGEID": 40,
+"DATETIME": "2017-07-13 00:39:43"
+},
+{
+"ID": 39,
+"TITLE": "Permit/Erlaubnis",
+"TEXT": "Ich erlaube hiermit als in Grenchen geborener Mensch, positiven Wesen aus anderen Welten und Dimensionen, Spaceport Alpha und die umliegenden Felder fÃ¼r Erstkontakt-Missionen in friedlicher Weise als Landeplatz zu nutzen.\r\n\r\nIch berufe mich hiermit auf mein Geburtsrecht und hoffe, dass dieses universal hÃ¶her gewertet wird als die hiesige Rechtsprechung. Ich kann in keinster Weise garantieren, dass die sogenannten BehÃ¶rden auch in angemessener friedlicher und positiver Weise reagieren werden.\r\n\r\nDeshalb empfehle ich Schutzmassnahmen zu treffen, wie magnetische Ablenkungsschilde gegen Metallprojektile oder was ihr halt sonst so zur VerfÃ¼gung habt.\r\n\r\nFaktenzeichen: SPA-Permit-01\r\n\r\n<b>English:</b>\r\nHereby I, a human beeing born here in Grenchen, give the permit to use the Airport Grenchen and its surroundings for first contact landing missions in a peaceful manner for positive beeings from other worlds and/or dimensions.\r\n\r\nI hereby call on my birthright and hope that it will be counted higher in universal terms than the local laws. Although, I can not guarantee that the local authorities will react in a peacefull manner, too, and so I urge you to be preparated with your magnetic projectile-shields and what you else might have there.\r\n\r\nMoF*-Reference: SPA-Permit-01 \r\n<small>*Matter of Fact</small>",
+"IMAGEID": 40,
+"DATETIME": "2017-07-13 00:56:53"
+},
+{
+"ID": 40,
+"TITLE": "Weder Candy..",
+"TEXT": "..noch Box.\r\n\r\nAber trotzdem hÃ¼bsch. Und nÃ¼tzlich.\r\n\r\nDas hab ich geschenkt bekommen, das macht der Nachbar, wenns ihm langweilig ist. Danke sehr. Ich hab schon gaanz viele Nachrichten geschrieben und mit Brieftauben verschickt. :)\r\n\r\n440 StÃ¼ck waren da drinne.",
+"IMAGEID": 41,
+"DATETIME": "2017-07-22 01:09:03"
+},
+{
+"ID": 41,
+"TITLE": "Nicht gegen, einfach nach.",
+"TEXT": "Diese Kanone beschÃ¼tzt den Krummen Turm von Solothurn, welcher gar nicht krumm ist, sondern einfach nur fÃ¼nf Seiten hat. Der Architekt hat damals im Mittelalter das Dach nicht richtig gerade hin bekommen.",
+"IMAGEID": 42,
+"DATETIME": "2017-07-23 02:30:46"
+},
+{
+"ID": 42,
+"TITLE": "500mm",
+"TEXT": "Hier habe ich mein neues altes 500mm-(Spiegel-)Objektiv ausprobiert. Es ist fast so kurz wie ein %%1normales%%1. Das zieht den ganzen Krempel schon recht heran, leider bekomme ich es nie richtig schÃ¶n scharf hin. Auch dieses Bild wurde aus meinem Fenster heraus gemacht...siehe die anderen Mordor-Bilder.",
+"IMAGEID": 43,
+"DATETIME": "2017-07-28 23:50:52"
+},
+{
+"ID": 43,
+"TITLE": "Der Mond",
+"TEXT": "Ich habe den Mond gefÃ¼hlt tausend Mal abgelichtet. Die Fotos sehen alle etwa gleich aus: SchÃ¶ner Mond mit schwarzem Nichts darum herum. Darum hier ein eher sonniger Mond mit viel Etwas darum herum. Das ist viel interessanter.",
+"IMAGEID": 44,
+"DATETIME": "2017-07-31 00:09:08"
+},
+{
+"ID": 44,
+"TITLE": "Luterbach",
+"TEXT": "Dieses Bild wurde bei der westlichen Einfahrt nach Luterbach gemacht, also im Osten von Grenchen. Wie man sieht, ist die mordorische Bergkette immer noch im Blickfeld.",
+"IMAGEID": 45,
+"DATETIME": "2017-07-31 16:13:43"
+},
+{
+"ID": 45,
+"TITLE": "Recherswil",
+"TEXT": "Dieser Baum steht irgendwo in der NÃ¤he von Recherswil, hinter einer BÃ¤ckerei mit angehÃ¤ngtem Restaurant. Wer dort wohnt wirds schon kennen...",
+"IMAGEID": 46,
+"DATETIME": "2017-08-01 13:44:01"
+},
+{
+"ID": 46,
+"TITLE": "VIP-Position",
+"TEXT": "Dieses Bild wurde vom Balkon meiner Cousine aus aufgenommen. Ich habe die Mauer erst gesehen als ich auf diesen Balkon getreten bin, denn vorher waren immer irgendwelche HÃ¤user dazwischen.",
+"IMAGEID": 47,
+"DATETIME": "2017-08-04 20:55:10"
+},
+{
+"ID": 47,
+"TITLE": "Schillers List",
+"TEXT": "Dass die Kamera gleich das Geburtsjahr der Schweiz als Namen wÃ¤hlt, ist mir dann schon ein bisschen schrÃ¤g eingefahren. Passt wie die Faust aufs Auge. Mit lieben GrÃ¼ssen vom Willi.",
+"IMAGEID": 48,
+"DATETIME": "2017-08-05 10:50:00"
+},
+{
+"ID": 48,
+"TITLE": "NÃ¶rdlich gelegen",
+"TEXT": "Das ist nun der Blick aus meinem Fenster, wenn ich die Kamera nach Norden ausrichte. Der mittlere Felsen sieht ein bisschen aus wie das Gesicht von so einer Osterinsel-Figur.",
+"IMAGEID": 50,
+"DATETIME": "2017-08-29 20:31:14"
+},
+{
+"ID": 49,
+"TITLE": "...unter Anderem.",
+"TEXT": "Das ist am VierwaldstÃ¤ttersee, vom Schiff aus fotographiert.\r\n\r\nDamit endet mein Ausflug nach Luzern (von vor zwei Monaten oder so).\r\n\r\nDie Stadt war wirklich vollgestopft mit Touristen und meine Cousine meinte nur: %%1Ein ganz normaler Tag hier in Luzern.%%1 Das wÃ¤re mir dann doch ein bisschen zu viel, wenn ich dort leben wÃ¼rde.\r\n\r\nPS: Ja die Fotos kommen halt meist ein, zwei Monate spÃ¤ter. Aber immerhin kommen sie, also seits ruhig.",
+"IMAGEID": 51,
+"DATETIME": "2017-08-30 21:39:30"
+},
+{
+"ID": 50,
+"TITLE": "DC-3",
+"TEXT": "Die rot leuchtende Nase ist ein Licht vom Hangar im Hintergrund.",
+"IMAGEID": 54,
+"DATETIME": "2017-09-23 01:40:38"
+},
+{
+"ID": 51,
+"TITLE": "GAL-1001",
+"TEXT": "Goanistic Artificial Lighting, weisste..",
+"IMAGEID": 55,
+"DATETIME": "2017-10-03 20:59:47"
+},
+{
+"ID": 52,
+"TITLE": "Wandbild B",
+"TEXT": "Dieses Wandbild haben Freunde von mir gemacht.",
+"IMAGEID": 56,
+"DATETIME": "2017-10-05 05:32:45"
+},
+{
+"ID": 53,
+"TITLE": "TÃ¼cher",
+"TEXT": "Nachdem ich das Bild hochgeladen hatte, war ein Freund zufÃ¤llig - und ohne Wissen dieses Bildes - auf der folgenden Seite, welche ich hiermit empfehlen mÃ¶chte:\r\n<a href=%%1http://www.tropechopf.ch%%1>Tropechopf.ch</a>\r\n\r\nBeim SchmÃ¶kern habe ich <a href=%%1http://www.tropechopf.ch/Textil___Tucher/Tucher/tucher.html%%1>hier</a> ein paar TÃ¼cher bestellt. Einfach bisschen runterscrollen, dann kommen die geilen Sachen.",
+"IMAGEID": 58,
+"DATETIME": "2017-10-21 19:41:00"
+},
+{
+"ID": 54,
+"TITLE": "Das ist mein Fahrrad",
+"TEXT": "Endlich habe ich auch ein Fahrzeug, mit welchem man auch mal was schleppen kann. Hier habe ich nur die Kiste hinten drauf gemacht.\r\n\r\nSpÃ¤ter habe ich noch ein Tablet als Bordcomputer eingebaut und eine Halterung fÃ¼r eine Boombox. Schliesslich noch ein Kabel vorne raus zum Schnell-Einstecken. Dieses ist jedoch noch nicht funktional. Und den Bordcomputer habe ich wieder abgenommen weil es kalt wird.\r\n\r\nVielleicht finde ich dann noch ein Foto, wo man all die Anbauten sehen kann. :)\r\n\r\nAchja, die erste Wartung ist schon vorbei. Ich hab das Ding so ziemlich Ã¼berall gefahren, wo man ein Rad drauf stellen kann. (Also: Nicht auf Wasser, sonst Ã¼berall) -> Es ist der Hammer. Autos = Vergangenheit. So.",
+"IMAGEID": 59,
+"DATETIME": "2017-10-25 01:00:05"
+},
+{
+"ID": 55,
+"TITLE": "Von der ben0biLand Seite aus.",
+"TEXT": "Das ist an der westlichen Grenze von Ben0biland. Der vorlÃ¤ufigen Grenze. Weil eigentlich ist das ben0biLand unbegrenzt Ã¼berall wo es ben0bis gibt.",
+"IMAGEID": 61,
+"DATETIME": "2017-10-30 00:26:30"
+},
+{
+"ID": 56,
+"TITLE": "Ein Welpe",
+"TEXT": "Wenn der mal ausgewachsen ist...\r\n\r\nDas ist ein PET-2001 Personal Computer von 1977.\r\n<a href=%%1https://de.wikipedia.org/wiki/PET_2001%%1>Hier</a> gibt es mehr Informationen dazu. Der steht bei meinen Freunden. Die Tastatur musste gereinigt werden, dann lief er wieder.\r\n\r\nCiviliNorth & Southion ist eine Referenz auf Civilization (1, 2) und North & South...stell dir ein Civ vor mit dem Kampfsystem von N&S - online.",
+"IMAGEID": 62,
+"DATETIME": "2017-11-09 13:47:49"
+},
+{
+"ID": 57,
+"TITLE": "Mordor",
+"TEXT": "Der mordorische Berg steht unter Wolken, da wird wohl was geschmiedet...",
+"IMAGEID": 64,
+"DATETIME": "2017-11-30 07:37:45"
+},
+{
+"ID": 58,
+"TITLE": "Schloss Pilatus",
+"TEXT": "Diese Aussicht kann man (nur?) vom Balkon meiner Cousine aus geniessen.\r\n\r\nAufgenommen in Luzern.",
+"IMAGEID": 66,
+"DATETIME": "2017-12-27 02:31:53"
+},
+{
+"ID": 59,
+"TITLE": "Baumpflanze",
+"TEXT": "Das ist eine Pflanze, welche es sich im Loch dieses Baumes gemÃ¼tlich gemacht hat.",
+"IMAGEID": 68,
+"DATETIME": "2018-01-19 14:02:45"
+},
+{
+"ID": 60,
+"TITLE": "Der Weg",
+"TEXT": "Dieser Weg zieht sich sozusagen direkt von Bellach bis nach Grenchen, %%1schnurgerade%%1, 8km lang. Daneben ist das Gleis von der Eisenbahn. Auf der anderen Seite hat es Felder und dann die Aare. Auf diesen Feldern hab ich schon die verschiedensten VÃ¶gel gesehen, Kraniche, StÃ¶rche, MÃ¶wen, Tauben, KrÃ¤hen..und ein paar RaubvÃ¶gel, welche fÃ¼r mich einfach immer %%1MÃ¤usebussard%%1 heissen. Auch einen Hasen und einen Fuchs hab ich da schon gesehen. Kurz: Tiere > Menschen > Selfie-Menschen!",
+"IMAGEID": 71,
+"DATETIME": "2018-02-04 15:12:07"
+},
+{
+"ID": 61,
+"TITLE": "Sol_x = Solothurn",
+"TEXT": "Dieses Bild ist schon seit meiner Jugend an dem GebÃ¤ude. Es ist direkt gegenÃ¼ber dem Hauptbahnhof Solothurn. Also eigentlich hat sich das Bild ein, zwei Mal geÃ¤ndert glaub ich. Aber es war immer etwas auf dieses GebÃ¤ude dran gemalt.",
+"IMAGEID": 72,
+"DATETIME": "2018-02-09 17:48:54"
+},
+{
+"ID": 62,
+"TITLE": "Der Wald",
+"TEXT": "Der Wald befindet sich oberhalb meiner Behausung, da muss man ziemlich steil hoch aber es lohnt sich - mit dem Elektrovelo. Ansonsten ist es schon recht mÃ¼hsam.",
+"IMAGEID": 76,
+"DATETIME": "2018-02-21 00:37:54"
+},
+{
+"ID": 63,
+"TITLE": "Das..",
+"TEXT": "Das ist eines meiner Lieblingsbilder. Links oben sieht man sogar noch die Venus oder so....ich liebe es.",
+"IMAGEID": 77,
+"DATETIME": "2018-02-21 00:40:01"
+},
+{
+"ID": 64,
+"TITLE": "Die letzte Schlacht",
+"TEXT": "Mordor wird von der Allianz bestrahlt.\r\nAlles Dunkle flieht oder ist im Licht. \r\nDa es nun beleuchtet wird, ist es nicht mehr dunkel. \r\nEs erschrickt beim ersten Blick und denkt, *Dieser der uns immer lenkt sieht anders aus als ich halt denk. Ich helfe lieber anderswo, damit es etwas nÃ¼tzt und so.*\r\nUnd somit hat sich die Story wohl erledigt.\r\n\r\nNÃ¤chste Story: .... ??? .... :)\r\n\r\nlest auch Momo und Die Unendliche Geschichte von\r\nMichael (sagt) Ende",
+"IMAGEID": 78,
+"DATETIME": "2018-02-27 05:42:48"
+},
+{
+"ID": 65,
+"TITLE": "Schnee",
+"TEXT": "Gestern hats noch nicht geschneit und jetzt schneit es wie verrÃ¼ckt. Zum Monatsanfang der alten Welt. Dagegen muss man doch was tun und deshalb hier ein bisschen Wald mit Sonne.\r\n",
+"IMAGEID": 79,
+"DATETIME": "2018-03-01 06:35:23"
+},
+{
+"ID": 67,
+"TITLE": "Es gibt viel zu entdecken.",
+"TEXT": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nViel Spass dabei.",
+"IMAGEID": 81,
+"DATETIME": "2018-03-02 10:29:21"
+},
+{
+"ID": 68,
+"TITLE": "Der BifrÃ¶st",
+"TEXT": "Der BifrÃ¶st ist laut den nordischen Sagen eine BrÃ¼cke in den Himmel von regenbogenfarbener Beschaffenheit. Da FrÃ¶st mit KÃ¤lte gleichgesetzt werden kÃ¶nnte, dachte ich, das passt zu den letzten Tagen. :)",
+"IMAGEID": 82,
+"DATETIME": "2018-03-04 13:55:48"
+},
+{
+"ID": 69,
+"TITLE": "Vom Zentrum aus..",
+"TEXT": "Dieses Bild wurde aus dem Fenster vom Centro-Block in Grenchen (im Treppenhaus) aufgenommen.",
+"IMAGEID": 83,
+"DATETIME": "2018-03-07 20:25:16"
+},
+{
+"ID": 70,
+"TITLE": "Manchmal..",
+"TEXT": "..sieht man mehr, wenn man einen Schritt zurÃ¼ck geht.",
+"IMAGEID": 84,
+"DATETIME": "2018-03-10 01:54:44"
+},
+{
+"ID": 71,
+"TITLE": "Zauber Zauber...",
+"TEXT": "Dieses Bild habe ich vor einiger Zeit aus dem leerstehenden Zimmer der 4ZimmerWohnung eines Freundes aufgenommen, in welchem ich Ferien mache.",
+"IMAGEID": 85,
+"DATETIME": "2018-03-11 20:21:05"
+},
+{
+"ID": 73,
+"TITLE": "Die Klingonen",
+"TEXT": "Ein klingonischer Bird of Prey schwebt Ã¼ber dem Ben0biLand. Ist er freundlich oder feindlich gesinnt?",
+"IMAGEID": 87,
+"DATETIME": "2018-03-16 12:58:51"
+},
+{
+"ID": 75,
+"TITLE": "Geisterstunde",
+"TEXT": "Die Stunde zwischen 00:00 und 1:00 ist die Geisterstunde, weil da zwei verschiedene Zeiten Ã¼bereinander liegen: Die letzte Stunde des Tages von 24:00 bis 24:59 und die erste Stunde des neuen Tages von 00:00 bis 00:59. Komischerweise kann ich nicht fÃ¼nf-neun schreiben, das macht irgendwie immer vier-neun draus. Schreg. :)",
+"IMAGEID": 89,
+"DATETIME": "2018-03-21 00:56:26"
+},
+{
+"ID": 76,
+"TITLE": "Von Mordor",
+"TEXT": "..hab ich jetzt genug Photos hochgeladen. Da ist wohl jede schÃ¶ne Ansicht dabei, die man aus meinem Fenster machen kÃ¶nnte. Also, vielleicht kommt mal wieder was von dort aber zur Zeit ist es gerade genug.",
+"IMAGEID": 90,
+"DATETIME": "2018-03-30 17:30:22"
+},
+{
+"ID": 77,
+"TITLE": "Nicht so dunkel..",
+"TEXT": "..wie der dunkle Turm vom Stefan KÃ¶nig. Aber auch nicht so hell wie der Elfenbeinturm von der unendlichen Geschichte. Dieser Turm blockiert einfach die Sicht, mehr macht der nicht.",
+"IMAGEID": 91,
+"DATETIME": "2018-04-20 05:25:59"
+},
+{
+"ID": 78,
+"TITLE": "Pharmalicht",
+"TEXT": "Das Licht kommt vom neuen Pharma-GebÃ¤ude nebendran. Leider ist die Lichtverschmutzung ziemlich stark. Aber der Effekt ist geil.",
+"IMAGEID": 92,
+"DATETIME": "2018-04-29 19:17:20"
+},
+{
+"ID": 79,
+"TITLE": "Was denn?",
+"TEXT": "Wir haben bei uns in der schÃ¶Ã¶Ã¶Ã¶nen Schweiz auch so romantische, verlassene, herumstehende und sich selbst Ã¼berlassene Fahrzeuge. Dieser Wagen steht seit Jahren beim alten Sulzer-GelÃ¤nde. Auch die Umgebung ist sehr schÃ¶n. Es ist offen, Du darfst jederzeit etwas...verbessern. :)",
+"IMAGEID": 93,
+"DATETIME": "2018-05-01 13:15:11"
+},
+{
+"ID": 80,
+"TITLE": "Schlafplatz",
+"TEXT": "Wenn du mal irgendwo in der Schweiz bist und nichts zum Schlafen hast, versuchs am Bahnhof. Bei grÃ¶sseren BHs werden zum Teil PersonenzÃ¼ge Ã¼ber Nacht abgestellt. Als ich das letzte Mal versucht habe, war offen und ich konnte darin schlafen. Das ist aber auch schon einige Jahre her. Am Morgen hat uns Penner dann einfach ein BÃ¤hnler rausgeworfen, mehr ist nicht passiert. Sehr bequem im Gegensatz zu %%1der BrÃ¼cke%%1. ;)",
+"IMAGEID": 93,
+"DATETIME": "2018-05-01 13:18:53"
+},
+{
+"ID": 81,
+"TITLE": "Such, Fido, such...",
+"TEXT": "<a href=%%1https://duckduckgo.com%%1 target=%%1_new%%1>DuckDuckGo</a> ist meine prÃ¤ferierte Suchseite. Die Seite sucht nÃ¤mlich Ã¼ber Google und bezahlt denen aber irgendwie direkt Geld fÃ¼r die Dienstleistung, so dass ich keine Werbung sehen muss. Das finde ich als Enduser super.",
+"IMAGEID": 95,
+"DATETIME": "2018-05-10 14:51:11"
+},
+{
+"ID": 83,
+"TITLE": "LandschwÃ¤ne",
+"TEXT": "...wohnen in hohlen BÃ¤umen, ist doch klar. :)",
+"IMAGEID": 97,
+"DATETIME": "2018-06-03 22:49:15"
+},
+{
+"ID": 84,
+"TITLE": "Schlafplatz",
+"TEXT": "Als ich draussen gelebt habe, hat es hier noch nicht so ausgesehen. Es hatte jedoch ein Ã¼berdachtes Schwungseil mit einer grossen Matte darunter. Darauf hab ich ab und an geschlafen.",
+"IMAGEID": 99,
+"DATETIME": "2018-06-10 22:15:48"
+},
+{
+"ID": 85,
+"TITLE": "In Solothurn",
+"TEXT": "Aufgenommen von der westlichen FussgÃ¤ngerbrÃ¼cke.",
+"IMAGEID": 100,
+"DATETIME": "2018-06-12 13:53:06"
+},
+{
+"ID": 86,
+"TITLE": "Der Zug ist abgefahren,",
+"TEXT": "die Schafe werden im Schatten der Unwissenheit belassen, mÃ¼ssen unter der BrÃ¼cke leben, oder sich als Arbeitssklaven verdingen, um sich eine Zelle in einem der Ã¶ffentlichen WohngefÃ¤ngnisse zu sichern. Dazu muss das Schaf noch selbst sein Essen beschaffen, was ein echter Sklave nie musste, da er auf Lebenszeit Kost und Logis bekam, dafÃ¼r kein Geld. Wenn nun das Schaf (klein-)kriminell geworden ist, wird es in eine nicht-Ã¶ffentliche Wohnzelle (GefÃ¤ngnis) geworfen, dessen einziger Unterschied zum %%1normalen%%1 Leben der abendliche Einschluss ist. DafÃ¼r hat das Schaf nun fÃ¼r einige Zeit gratis Kost und Logis, bekommt sogar noch ein bisschen Geld, und muss auch hier - wie draussen - arbeiten. Man ist also als Schaf in dieser Welt nie frei von Sklaverei. Doch das weiss das Schaf ja nicht, denn der Zug ist obendrÃ¼ber abgefahren.",
+"IMAGEID": 105,
+"DATETIME": "2018-06-23 01:08:49"
+},
+{
+"ID": 87,
+"TITLE": "Der Fluss des Geldes...",
+"TEXT": "Wenn das Geld aus Wasser wÃ¤re, wÃ¤re dieses Boot obenauf. Das wÃ¤re dann ein MilliardÃ¤r. Und der, der im Wasser schwimmt, nennt sich MillionÃ¤r. Er hat nicht genug um sich ein Boot zu leisten, aber doch zu viel um sich mit dem PÃ¶bel am Ufer abzugeben. Denn am Ufer grillt der Mittelstand. Dieser muss sich alle Grillutensilien selbst zusammen tragen und wird dafÃ¼r noch <strike>von der Polizei</strike> belÃ¤stigt. (Steuern auf Arbeitsleistung, was soll das?)%%5\n%%5\nNaja...mir gefÃ¤llt dieses Boot.",
+"IMAGEID": 109,
+"DATETIME": "2018-07-03 20:07:06"
+},
+{
+"ID": 88,
+"TITLE": "Im Gegensatz zu LandschwÃ¤nen..",
+"TEXT": "..leben WasserschwÃ¤ne NICHT in hohlen BÃ¤umen. :)",
+"IMAGEID": 110,
+"DATETIME": "2018-07-09 21:06:20"
+},
+{
+"ID": 89,
+"TITLE": "Der Weg ist fast frei..",
+"TEXT": "..es steht nur noch nÃ¼tzliches Zeug rum. :)%%5\n%%5\nIm Hintergrund sieht man die Piste des Flughafens <a href=%%1index.php?id=34%%1>Spaceport Alpha</a>.%%5\n(offiziell: Grenchner Flughafen, viertgrÃ¶sster der Schweiz. Also davor hats nur noch ZÃ¼rich, Genf und noch einen unbekannten anderen Flughafen.)",
+"IMAGEID": 111,
+"DATETIME": "2018-07-10 10:04:22"
+},
+{
+"ID": 90,
+"TITLE": "Der grosse BÃ¤r",
+"TEXT": "oder der Grosse Wagen ist das Sternbild, welches man hier sieht. Es besteht aus den sieben weissen Punkten, also dem Viereck und dem dreisternigen Schwanz darunter.%%5\n%%5\nDas Bild habe ich in Grenchen aufgenommen, indem ich einfach direkt nach oben %%1gezielt%%1 habe. Da ich nichts im Sucher sehen konnte, ist mir das Sternbild doch recht gut in die Kamera geflogen..%%5\n%%5\nDieses Sternbild ist nun immer direkt (90 Grad) Ã¼ber mir in Grenchen (Sommer) und auch im Tessin, wo ich kÃ¼rzlich war. Der BÃ¤r heisst auf lateinisch %%1Ursus%%1. Da mein Vater Urs und meine Mutter Ursula heissen, denke ich mal, dass dies %%1mein%%1 Sternbild ist. Interessant, dass es auch wirklich direkt Ã¼ber mir steht, hier wo ich geboren wurde. Astrologen staunen.",
+"IMAGEID": 112,
+"DATETIME": "2018-07-10 23:50:10"
+},
+{
+"ID": 91,
+"TITLE": "Das ist eine andere BrÃ¼cke,",
+"TEXT": "doch auch diese fÃ¼hrt in die Zukunft. Auf diesem Foto wird sie von der Seite her betrachtet, nicht nur geographisch sondern auch temporal. Diese BrÃ¼cke wird also zeitlich in einem 90-Grad Winkel von der normalen Richtung Vergangenheit->Zukunft in der Richtung Gegenwart&lt;+=-&gt;Gegenwart betrachtet. Das ist wissenschaftlich leider noch nicht so richtig erforscht worden.",
+"IMAGEID": 113,
+"DATETIME": "2018-07-13 13:00:03"
+},
+{
+"ID": 92,
+"TITLE": "Na guck mal an,",
+"TEXT": "auch hier hat es ein UFO. NÃ¤mlich der sich bewegende %%1Stern%%1 neben der mittleren Lampe. Ist wahrscheinlich nur ein normales Flugzeug, aber hier von der Ersichtlichkeit her ganz klar ein UFO.",
+"IMAGEID": 113,
+"DATETIME": "2018-07-13 13:03:06"
+},
+{
+"ID": 93,
+"TITLE": "Mein Vorbild,",
+"TEXT": "was die Gartentechnik betrifft, mit vielen FruchtbÃ¤umen und anderem paradiesischen Krempel. Genau so wie sich Vater das vorgestellt hat. Glaub ich. Also der im Himmel. [Hier bitte beliebiges religiÃ¶ses GedÃ¶ns einfÃ¼gen.]",
+"IMAGEID": 114,
+"DATETIME": "2018-07-14 21:45:50"
+},
+{
+"ID": 94,
+"TITLE": "Das ist der Wald,",
+"TEXT": "in dem ich als Kind gespielt habe. Darum bin ich mir natÃ¼rlich sehr hohe Standarts gewohnt. NatÃ¼rlich. :)",
+"IMAGEID": 115,
+"DATETIME": "2018-07-16 07:33:08"
+},
+{
+"ID": 95,
+"TITLE": "Das sagt dir die Natur.",
+"TEXT": "(*komm nur rein, die TÃ¼r ist offen)",
+"IMAGEID": 116,
+"DATETIME": "2018-07-17 20:52:57"
+},
+{
+"ID": 96,
+"TITLE": "Das ist der Ã¶stliche Teil",
+"TEXT": "vom Ben0biLand. Das ist da nebendran wo ich aufgewachsen bin. Hier ist vorlÃ¤ufig mal die Ã¶stliche Grenze, inklusive Schutzburg. (Rechts hinter dem Foto ;) ). Doch wie schon frÃ¼her bemerkt, ist das ben0biLand eigentlich Ã¼berall wo es ben0bis gibt und deshalb unbegrenzt.",
+"IMAGEID": 117,
+"DATETIME": "2018-07-18 13:18:04"
+},
+{
+"ID": 97,
+"TITLE": "*Geh ein bisschen raus, spielen!*",
+"TEXT": "Das ist das Tor aus dem vorher erwÃ¤hnten ben0biSchloss heraus. Das ben0biSchloss bzw. die ben0biBurg ist nÃ¤mlich weitestgehend frei zugÃ¤nglich.",
+"IMAGEID": 118,
+"DATETIME": "2018-07-20 13:24:24"
+},
+{
+"ID": 98,
+"TITLE": "Diese Allee",
+"TEXT": "befindet sich hinter dem vorigen Tor.",
+"IMAGEID": 119,
+"DATETIME": "2018-07-25 10:52:02"
+},
+{
+"ID": 99,
+"TITLE": "Bahnhof",
+"TEXT": "Am Bahnhof gibts den besten Joint, nimmst einen Zug und bist weg. :)",
+"IMAGEID": 120,
+"DATETIME": "2018-07-29 15:15:45"
+},
+{
+"ID": 100,
+"TITLE": "Mit diesem Storch",
+"TEXT": "beginnt nun die Abhandlung Ã¼ber die lokale Tierwelt. Ich habe nÃ¤mlich so ziemlich alles abgelichtet, was hier frei herumlÃ¤uft, ab der GrÃ¶sse einer Katze. Leider sind die meisten Bilder in der DÃ¤mmerung mit dem falschen Objektiv entstanden was bedeutet: Weit weg und unscharf/verschmiert. Aber trotzdem...hier kommen die Tiere.",
+"IMAGEID": 121,
+"DATETIME": "2018-08-05 21:16:09"
+},
+{
+"ID": 101,
+"TITLE": "Servertechnik",
+"TEXT": "Der Server fiel im September aus wegen zügeln. In Wahrheit ist der über eine virtuelle Maschine betriebene Server so geschrottet worden, dass ich das Backup nun auf ein Raspi gezügelt habe. Diesen habe ich dann mit der Stereoanlage verbunden.%%5\n%%5\nAuf der Musikseite hier (privat) kann man ja schonmal Musik hochladen und %%1zuhause%%1, also auf dem Client, hören.%%5\n%%5\nMit dem Musikserver Mopidy auf dem Raspi kann ich nun auf jedem beliebigen Gerät die Musik über meine Stereoanlage abspielen. Als Frontend habe ich RompR installiert. Das läuft perfekt...sehr empfehlenswert.",
+"IMAGEID": 126,
+"DATETIME": "2018-09-06 16:38:12"
+},
+{
+"ID": 102,
+"TITLE": "Es wird..",
+"TEXT": "langsam wieder kalt.",
+"IMAGEID": 128,
+"DATETIME": "2018-10-14 22:13:21"
+},
+{
+"ID": 103,
+"TITLE": "Tessin",
+"TEXT": "Zum Geburtstag meines Vaters waren wir im Tessin.%%5\n%%5\nAuf diesem Bild sieht man den Badeplatz, welcher frei zugänglich ist - also gratis - und trotzdem mehr zu bieten hat als eine Badi - also eine Strandbar. Mit öffentlichem Bücherschrank.%%5\n%%5\nDer Badeplatz ist dort, wo die zwei Bäume stehen.%%5\n%%5\nUnser Haus war etwa 400m weiter oben, wobei man auf der Strasse mindestens 3km weit laufen/fahren musste. Aber es gibt dort einen Waldweg, der etwa 100m neben dem Haus beginnt und direkt oben beim Badeplatz aufhört. Nur zu Füss begehbar aber da gehts viel schöner. Und schneller. :)",
+"IMAGEID": 130,
+"DATETIME": "2018-10-26 20:52:51"
+},
+{
+"ID": 104,
+"TITLE": "Tessin",
+"TEXT": "Dieses Bild wurde natürlicherweise auch im Tessin aufgenommen...",
+"IMAGEID": 131,
+"DATETIME": "2018-10-30 22:36:56"
+},
+{
+"ID": 105,
+"TITLE": "Die Tücke ist...",
+"TEXT": "Für diesen schönen Ausblick muss man dann doch recht hochkraxeln. Um zum Haus zu kommen, auch. Überhaupt ist da alles total steil, sogar am See unten. Aber der Blick entschädigt alles. :)",
+"IMAGEID": 132,
+"DATETIME": "2018-11-05 06:08:05"
+},
+{
+"ID": 106,
+"TITLE": "Aufgenommen",
+"TEXT": "im Tessin. (Ich hab ja gemeldet, dass ich alle nicht-Grenchischen Bilder anschreibe.)",
+"IMAGEID": 133,
+"DATETIME": "2018-11-13 12:46:48"
+},
+{
+"ID": 107,
+"TITLE": "Romantisch weil..",
+"TEXT": "..es schön versteckt ist und vor allem weil im Fenster oben sicher so ein Spanier hockt, zur rechten Zeit, und auf einer Gitarre rumklimpert während unten das...Romantische...passiert.",
+"IMAGEID": 134,
+"DATETIME": "2018-11-27 23:11:22"
+},
+{
+"ID": 108,
+"TITLE": "Der FUSSweg",
+"TEXT": "zum Haus im Tessin.",
+"IMAGEID": 135,
+"DATETIME": "2018-12-04 02:06:19"
+},
+{
+"ID": 109,
+"TITLE": "Im Schiff",
+"TEXT": "Jedermann sollte überall wo es geht mit dem Schiff mitfahren. Denn wenn man sonst %%1im Schiff%%1 herumfährt, dann ist das, wenn es regnet.%%5\n%%5\nUnd das Schiff ist genau so, wie ein Transportmittel sein sollte: Gemütlich. Das könnte man im Zug auch wieder einführen...in einem Zug oder auch Zug um Zug. Einfach den Fahrplan ent-takten und eine Geschwindigkeitsbegrenzung einbauen. Dies könnte man erreichen, indem man wieder Dampfloks benutzt. Die können nämlich nicht so schnell und sehen auch hübscher aus. ehm.... :)",
+"IMAGEID": 136,
+"DATETIME": "2018-12-04 22:06:00"
+},
+{
+"ID": 110,
+"TITLE": "und trotzdem..",
+"TEXT": "langsamer als ein Töffli. :)%%5\n%%5\nUnd den Weihnachten entsprechend:%%5\nSüsser die Glocken nie klingen,%%5\nals wenn sie nicht klingen.%%5\n%%5\nWeil wenn man das Gebimmel jeden Tag und jede Viertelstunde sozusagen landesweit hören muss, dann wünscht man sich noch schnell so einen Islamistischen Schreihals-vom-Moscheeturm her - der heult nämlich nur zwei mal am Tag rum. No offense.",
+"IMAGEID": 137,
+"DATETIME": "2018-12-10 06:17:53"
+},
+{
+"ID": 111,
+"TITLE": "Das neue Jahr",
+"TEXT": "hat super begonnen. Superiduper. Und es kommt noch besser.%%5\n%%5\nFrohes neues Jahr 2019, dem Beginn der Roaring Twenties. :)",
+"IMAGEID": 138,
+"DATETIME": "2019-01-09 18:23:34"
+}
+]
+}
