@@ -122,10 +122,7 @@ class ComicCMS
 		echo '</script>';
 	}
 
-	private static function JSvar($name, $text)
-	{
-		echo 'var '.$name.'="'.$text.'";'.chr(13);
-	}
+	private static function JSvar($name, $text) {echo 'var '.$name.'="'.$text.'";'.chr(13);}
 
 	// returns 291 on success.
 	public static function getAdminPass()

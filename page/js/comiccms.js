@@ -18,15 +18,137 @@ function confirmBox(title, text, successlabel, successfunc)
 }
 
 // closes ALL bootstrap dialogs
-function closeAllDialogs()
-{
-	$.each(BootstrapDialog.dialogs, function(id, dialog){ dialog.close();});
-}
+function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog){ dialog.close();});}
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
-// create a class
-function ComicCMS() {}
+// the log function
+function log(txt) {console.log(txt);}
+
+// load a json file and call a loader function after the file has loaded.
+function loadJSON(filename, loadFunction)
+{
+	log("TODO: Trying to load "+filename+"..");
+}
+
+// get the value of a get parameter.
+function $_GET(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+// ComicCMS is singleton.
+function ComicCMS() 
+{
+	var me = this; // prevent inner blocks from being this-ed.
+	var m_actualPageID = 0;
+	var m_imageJSONFile = "";
+	var m_blogJSONFile = "";
+	var m_doneLoading = -2; // done if >= 0
+
+// from php
+	var m_page = "latest";
+
+	var m_imageDB = [];
+	var m_blogDB = [];
+
+	this.initialize = function(imagedbname="", blogdbname = "")
+	{
+		m_imageJSONFile = imagedbname;
+		m_blogJSONFile = blogdbname;
+		document.onkeydown=ComicCMS.checkKeys;
+
+// from php
+		m_page = "latest";
+
+		// maybe get the page commmand.
+		var p = $_GET("page");
+		var pp = $_GET("p");
+		if(p!=null)
+			m_page = p;
+		if(pp!=null)
+			m_page = pp;
+
+		// maybe get the page id.
+		m_actualPageID = -1;
+		var id = $_GET("id");
+		if(id!=null)
+		{
+			m_actualPageID = id;
+			if(m_page=="latest") m_page="next"; // set page command to next if it is latest.
+		}
+		m_actualPageID = getRealPageID(m_page, m_actualPageID);
+
+		// load the jsons.
+		m_doneLoading = -2;	// done if >= 0
+		if(imagedbname!="")
+		{
+			loadJSON(m_imageJSONFile, function(data) 
+			{
+				m_imageDB = data;
+				m_doneLoading++;
+			});
+		}else{
+			m_doneLoading++;
+		}
+		if(blogdbname!="")
+		{
+			loadJSON(m_blogJSONFile, function(data)
+			{
+				m_blogDB = data;
+				m_doneLoading++;
+			});
+		}else{
+			m_doneLoading++;
+		}
+		InitFunction();
+	}
+
+	// returns the next or previous or actual page id depending on the command.
+	var getRealPageID=function(cmd, pageid)
+	{
+		log("TODO: return real page id");
+		return pageid;
+	}
+	
+	// the real load function.
+	var InitFunction=function()
+	{
+		// wait until the loading is done.
+		if(m_doneLoading<0)
+		{
+			console.log("NOT DONE LOADING; waiting..");
+			setTimeout(InitFunction, 30);
+			return;
+		}
+		
+		// loading is done, do the other stuff.
+		console.log("DONE LOADING");
+
+		ComicCMS.initializeTouch();
+		ComicCMS.adjustPageHeight();
+		ComicCMS.showTitle();
+	}
+
+	// show a specific page
+	this.showPage = function(pageID)
+	{
+		console.log("TODO: show page");
+	}
+}
+
+ComicCMS.instance =new ComicCMS;
+
+ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
+ComicCMS.initialize = function(imagedbname = "", blogdbname = "") {ComicCMS.instance.initialize(imagedbname, blogdbname);}
 
 // some vars. not used yet, it's all hardcoded.
 /*

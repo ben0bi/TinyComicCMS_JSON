@@ -7,28 +7,6 @@
 		<link rel="stylesheet" href="css/bootstrap-dialog.min.css">
 		<link rel="stylesheet" href="css/comiccms.css">
 		<!-- php ==>	self::includeJSLanguageTranslation(); -->
-		
-	<?php
-/*		require(__DIR__."/php/comiccms.php");
-
-		// get page command and/or id
-		$page="latest";
-		if(isset($_GET['page']))
-			$page=$_GET['page'];
-
-		// get id from "adress bar"
-		$pageid=-1;
-		if(isset($_GET['id']))
-		{
-			$pageid=$_GET['id'];
-			// reset page to show that one and not the latest one.
-			if($page=="latest") $page="next";
-		}
-
-		// get real page id
-		$pageid=ComicCMS::getRealPageID($page, $pageid);
-		*/
-	?>
 </head>
 <body>
 <div id="wrapper">
@@ -42,11 +20,10 @@
 </div>
 
 <!-- maybe this link is not used in your design, so its not in the above function. -->
-<!-- <script src="js/AdminLinkOriginalPos.js"></script> -->
 <div class="adminlinkdiv">
-<span id="adminlink">
-	<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor" id="sourcelink">Source</a>
-</span>
+	<span id="adminlink">
+		<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor" id="sourcelink">Source</a>
+	</span>
 </div>
 
 <!-- Scripts -->
@@ -61,12 +38,7 @@
 
 $( document ).ready(function()
 {
-	document.onkeydown=ComicCMS.checkKeys;
-	ComicCMS.initializeTouch();
-
-	ComicCMS.adjustPageHeight();
-
-	ComicCMS.showTitle();
+	ComicCMS.initialize("data/jsons/imagedb.json", "data/jsons/blogdb.json");
 
 	// show the stuff after the image has loaded.
 	$("#pageimage").one("load", function()
