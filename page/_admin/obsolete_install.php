@@ -1,4 +1,7 @@
 <?php
+// OBSOLETE: No DB used anymore.
+
+/*
 require(__DIR__."/../php/sql.php");
 echo "Installing DB '$db_name':<br>";
 
@@ -38,6 +41,8 @@ echo "Blog post table created.<br>";
 SQL::closeConnection();
 
 echo ("Done.<br>SQL Feedback (nothing = good): ".SQL::Feedback());
+
+*/
 ?>
 
 
