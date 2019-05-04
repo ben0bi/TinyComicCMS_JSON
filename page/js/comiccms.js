@@ -45,6 +45,14 @@ function $_GET(parameterName) {
     return result;
 }
 
+// check if a variable is defined.
+function __defined(variable)
+{
+	if(typeof(variable)==="undefined")
+		return false;
+	return true;
+}
+
 // ComicCMS is singleton.
 function ComicCMS() 
 {
@@ -52,18 +60,28 @@ function ComicCMS()
 	var m_actualPageID = 0;
 	var m_imageJSONFile = "";
 	var m_blogJSONFile = "";
-	var m_doneLoading = -2; // done if >= 0
-
+	var m_langJSONFile = "";
+	var m_doneLoading = -3; // done if >= 0
+	var isDoneLoading() 
+	{
+		if(m_doneLoading>=0)
+			return true;
+		return false;
+	}
+	
 // from php
 	var m_page = "latest";
 
 	var m_imageDB = [];
 	var m_blogDB = [];
+	var m_langDB = [];
 
-	this.initialize = function(imagedbname="", blogdbname = "")
+	this.initialize = function(imagedbname="", blogdbname = "", langdbname="")
 	{
 		m_imageJSONFile = imagedbname;
 		m_blogJSONFile = blogdbname;
+		m_langJSONFile=langdbname;
+		
 		document.onkeydown=ComicCMS.checkKeys;
 
 // from php
@@ -88,7 +106,22 @@ function ComicCMS()
 		m_actualPageID = getRealPageID(m_page, m_actualPageID);
 
 		// load the jsons.
-		m_doneLoading = -2;	// done if >= 0
+		m_doneLoading = -3;	// done if >= 0
+		
+
+		// load the language db.
+		if(langdbname!="")
+		{
+			loadJSON(m_imageJSONFile, function(data) 
+			{
+				m_langDB = data;
+				m_doneLoading++;
+			});
+		}else{
+			m_doneLoading++;
+		}
+		
+		// load the image db.
 		if(imagedbname!="")
 		{
 			loadJSON(m_imageJSONFile, function(data) 
@@ -99,6 +132,8 @@ function ComicCMS()
 		}else{
 			m_doneLoading++;
 		}
+		
+		// load the blog db.
 		if(blogdbname!="")
 		{
 			loadJSON(m_blogJSONFile, function(data)
@@ -109,14 +144,9 @@ function ComicCMS()
 		}else{
 			m_doneLoading++;
 		}
+		
+		// fire the init function after all jsons are loaded. It waits for itself for the loading.
 		InitFunction();
-	}
-
-	// returns the next or previous or actual page id depending on the command.
-	var getRealPageID=function(cmd, pageid)
-	{
-		log("TODO: return real page id");
-		return pageid;
 	}
 	
 	// the real load function.
@@ -143,6 +173,14 @@ function ComicCMS()
 	{
 		console.log("TODO: show page");
 	}
+	
+	// returns the next or previous or actual page id depending on the command.
+	var getRealPageID=function(cmd, pageid)
+	{
+		log("TODO: return real page id");
+		return pageid;
+	}
+
 }
 
 ComicCMS.instance =new ComicCMS;
