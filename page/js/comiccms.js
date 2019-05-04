@@ -22,60 +22,6 @@ function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog)
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
-// the log function
-function log(txt) {console.log(txt);}
-
-// load a json file and call a loader function after the file has loaded.
-	// Check if a file exists.
-	
-var LOG_ERROR=2;
-var LOG_DEBUG=3;
-function loadJSON(urlToFile, successFunction)
-{
-	// Make an ajax call without jquery so we can load jquery with this loader.
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function()
-   	{
-       	if (xhr.readyState === XMLHttpRequest.DONE)
-		{
-       		if (xhr.status === 200) 
-			{
-				var json=xhr.response;
-				log("JSON from "+urlToFile+" loaded.", LOG_DEBUG);
-				if(typeof(successFunction)==="function")
-					successFunction(json);
-       		} else {
-				log("Could not load file "+urlToFile+" / XHR: "+xhr.status, LOG_ERROR);
-			}
-       	}
-   	};
-   	xhr.open("GET", urlToFile, true);
-	xhr.responseType = "json";
-   	xhr.send();
-}
-
-// get the value of a get parameter.
-function $_GET(parameterName) {
-    var result = null,
-        tmp = [];
-    location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-        });
-    return result;
-}
-
-// check if a variable is defined.
-function __defined(variable)
-{
-	if(typeof(variable)==="undefined")
-		return false;
-	return true;
-}
-
 // ComicCMS is singleton.
 function ComicCMS() 
 {
@@ -84,7 +30,7 @@ function ComicCMS()
 	var m_imageJSONFile = "";
 	var m_blogJSONFile = "";
 	var m_langJSONFile = "";
-	var m_doneLoading = -3; // done if >= 0
+//	var m_doneLoading = -3; // done if >= 0
 	var isDoneLoading=function() 
 	{
 		if(m_doneLoading>=0)
@@ -131,42 +77,41 @@ function ComicCMS()
 		// load the jsons.
 		m_doneLoading = -3;	// done if >= 0
 		
-
 		// load the language db.
 		if(langdbname!="")
 		{
-			loadJSON(m_imageJSONFile, function(data) 
+			__loadJSON(m_langJSONFile, function(data) 
 			{
 				m_langDB = data;
-				m_doneLoading++;
+				//m_doneLoading++;
 			});
 		}else{
 			log("No language loaded.", LOG_DEBUG);
-			m_doneLoading++;
+			//m_doneLoading++;
 		}
 		
 		// load the image db.
 		if(imagedbname!="")
 		{
-			loadJSON(m_imageJSONFile, function(data) 
+			__loadJSON(m_imageJSONFile, function(data) 
 			{
 				m_imageDB = data;
-				m_doneLoading++;
+				//m_doneLoading++;
 			});
 		}else{
-			m_doneLoading++;
+			//m_doneLoading++;
 		}
 		
 		// load the blog db.
 		if(blogdbname!="")
 		{
-			loadJSON(m_blogJSONFile, function(data)
+			__loadJSON(m_blogJSONFile, function(data)
 			{
 				m_blogDB = data;
-				m_doneLoading++;
+				//m_doneLoading++;
 			});
 		}else{
-			m_doneLoading++;
+			//m_doneLoading++;
 		}
 		
 		// fire the init function after all jsons are loaded. It waits for itself for the loading.
@@ -177,9 +122,9 @@ function ComicCMS()
 	var InitFunction=function()
 	{
 		// wait until the loading is done.
-		if(m_doneLoading<0)
+		if(__loadJSON.loadCounter<0)
 		{
-			console.log("NOT DONE LOADING; waiting..");
+			console.log("NOT DONE LOADING; Waiting..");
 			setTimeout(InitFunction, 30);
 			return;
 		}
