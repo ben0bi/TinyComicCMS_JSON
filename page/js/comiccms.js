@@ -26,9 +26,32 @@ function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog)
 function log(txt) {console.log(txt);}
 
 // load a json file and call a loader function after the file has loaded.
-function loadJSON(filename, loadFunction)
+	// Check if a file exists.
+	
+var LOG_ERROR=2;
+var LOG_DEBUG=3;
+function loadJSON(urlToFile, successFunction)
 {
-	log("TODO: Trying to load "+filename+"..");
+	// Make an ajax call without jquery so we can load jquery with this loader.
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function()
+   	{
+       	if (xhr.readyState === XMLHttpRequest.DONE)
+		{
+       		if (xhr.status === 200) 
+			{
+				var json=xhr.response;
+				log("JSON from "+urlToFile+" loaded.", LOG_DEBUG);
+				if(typeof(successFunction)==="function")
+					successFunction(json);
+       		} else {
+				log("Could not load file "+urlToFile+" / XHR: "+xhr.status, LOG_ERROR);
+			}
+       	}
+   	};
+   	xhr.open("GET", urlToFile, true);
+	xhr.responseType = "json";
+   	xhr.send();
 }
 
 // get the value of a get parameter.
@@ -62,7 +85,7 @@ function ComicCMS()
 	var m_blogJSONFile = "";
 	var m_langJSONFile = "";
 	var m_doneLoading = -3; // done if >= 0
-	var isDoneLoading() 
+	var isDoneLoading=function() 
 	{
 		if(m_doneLoading>=0)
 			return true;
@@ -80,7 +103,7 @@ function ComicCMS()
 	{
 		m_imageJSONFile = imagedbname;
 		m_blogJSONFile = blogdbname;
-		m_langJSONFile=langdbname;
+		m_langJSONFile = langdbname;
 		
 		document.onkeydown=ComicCMS.checkKeys;
 
@@ -118,6 +141,7 @@ function ComicCMS()
 				m_doneLoading++;
 			});
 		}else{
+			log("No language loaded.", LOG_DEBUG);
 			m_doneLoading++;
 		}
 		
@@ -186,7 +210,7 @@ function ComicCMS()
 ComicCMS.instance =new ComicCMS;
 
 ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
-ComicCMS.initialize = function(imagedbname = "", blogdbname = "") {ComicCMS.instance.initialize(imagedbname, blogdbname);}
+ComicCMS.initialize = function(imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(imagedbname, blogdbname,langdbname);}
 
 // some vars. not used yet, it's all hardcoded.
 /*
