@@ -44,9 +44,12 @@ function ComicCMS()
 	var m_imageDB = [];
 	var m_blogDB = [];
 	var m_langDB = [];
+	
+	var m_contentDivId; // the id of the div where the content should go in. 
 
-	this.initialize = function(imagedbname="", blogdbname = "", langdbname="")
+	this.initialize = function(contentDivId, imagedbname="", blogdbname = "", langdbname="")
 	{
+		m_contentDivId = contentDivId;
 		m_imageJSONFile = imagedbname;
 		m_blogJSONFile = blogdbname;
 		m_langJSONFile = langdbname;
@@ -75,19 +78,17 @@ function ComicCMS()
 		m_actualPageID = getRealPageID(m_page, m_actualPageID);
 
 		// load the jsons.
-		m_doneLoading = -3;	// done if >= 0
 		
 		// load the language db.
 		if(langdbname!="")
 		{
 			__loadJSON(m_langJSONFile, function(data) 
 			{
+				log("Language Data: "+data);
 				m_langDB = data;
-				//m_doneLoading++;
 			});
 		}else{
 			log("No language loaded.", LOG_DEBUG);
-			//m_doneLoading++;
 		}
 		
 		// load the image db.
@@ -95,11 +96,11 @@ function ComicCMS()
 		{
 			__loadJSON(m_imageJSONFile, function(data) 
 			{
+				log("Image Data:"+data);
 				m_imageDB = data;
-				//m_doneLoading++;
 			});
 		}else{
-			//m_doneLoading++;
+			log("No Image DB loaded.", LOG_ERROR);
 		}
 		
 		// load the blog db.
@@ -107,11 +108,11 @@ function ComicCMS()
 		{
 			__loadJSON(m_blogJSONFile, function(data)
 			{
+				log("Blog Data ("+m_blogJSONFile+"):"+data);
 				m_blogDB = data;
-				//m_doneLoading++;
 			});
 		}else{
-			//m_doneLoading++;
+			log("No Blog DB loaded.", LOG_WARN);
 		}
 		
 		// fire the init function after all jsons are loaded. It waits for itself for the loading.
@@ -132,9 +133,43 @@ function ComicCMS()
 		// loading is done, do the other stuff.
 		console.log("DONE LOADING");
 
+		// NEW
+		buildPageContents();
+		// ENDOF NEW
+
 		ComicCMS.initializeTouch();
 		ComicCMS.adjustPageHeight();
 		ComicCMS.showTitle();
+	}
+
+	// create the page html.
+	var buildPageContents = function()
+	{
+		//global $word_link_previous, $word_link_next, $word_link_first, $word_link_last, $word_link_archives;
+		
+		// TODO: no reload after click.
+		var htm ='<div class="pagelinks" id="topnavigatinglinks">';
+		htm+='<center><table border="0" class="pagelinks"><tr>';
+		// Previous
+		htm+='<td><nobr><a href="index.html?page=prev&id='+(m_actualPageID-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
+		htm+='<td>|</td>';
+		// First
+		htm+='<td><nobr><a href="index.html?page=first">&nbsp;'+m_langDB['word_link_first']+'&nbsp;</a></nobr></td>';
+		htm+='<td>|</td>';
+		// Archives
+		htm+='<td><nobr><a href="archives.html">&nbsp;'+m_langDB['word_link_archives']+'&nbsp;</a></nobr></td>';
+		htm+='<td>|</td>';
+		// Latest
+		htm+='<td><nobr><a href="index.html?page=latest">&nbsp;'+m_langDB['word_link_last']+'&nbsp;</a></nobr></td>';
+		htm+='<td>|</td>';
+		// Next
+		htm+='<td><nobr><a href="index.html?page=next&id='+(m_actualPageID+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
+		htm+='</tr></table></center></div>';
+		
+		$('#'+m_contentDivId).html(htm);
+
+//		// make pageid available for later use
+//		echo '<script>pageid='.$pageid.'</script>';
 	}
 
 	// show a specific page
@@ -149,20 +184,12 @@ function ComicCMS()
 		log("TODO: return real page id");
 		return pageid;
 	}
-
 }
 
 ComicCMS.instance =new ComicCMS;
 
 ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
-ComicCMS.initialize = function(imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(imagedbname, blogdbname,langdbname);}
-
-// some vars. not used yet, it's all hardcoded.
-/*
-ComicCMS.image_outerdiv = $("#pageimagediv");
-ComicCMS.image_innerdiv = $("#pageimageMoveContainer");
-ComicCMS.image_image = $("#pageimage");
-*/
+ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 // show a window with the blog posts and update stuff for a given post.
 var actualAdminBlogTitleShowID=-1;

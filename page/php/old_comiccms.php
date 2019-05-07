@@ -10,7 +10,7 @@ function phpupload($fileID)
 
 	$errcode="";
 	$filename=$_FILES[$fileID]['name'];
-	switch ($_FILES[$fileID]['error'])
+	switch($_FILES[$fileID]['error'])
 	{
        		case UPLOAD_ERR_OK:
         	   	break;
@@ -74,7 +74,7 @@ class ComicCMS
 */
 
 	// translate some words from php to js.
-	private static function includeJSLanguageTranslation()
+/*	private static function includeJSLanguageTranslation()
 	{
 		global $word_cancel;
 		global $word_delete;
@@ -123,6 +123,7 @@ class ComicCMS
 	}
 
 	private static function JSvar($name, $text) {echo 'var '.$name.'="'.$text.'";'.chr(13);}
+*/
 
 	// returns 291 on success.
 	public static function getAdminPass()

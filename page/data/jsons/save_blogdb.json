@@ -3,7 +3,7 @@
 	"//": "Copy, rename and it and load it with the initialize function.",
 
 	"//": "Words for the links on the user page.",
-	"//": "I use german words here because it's a german comic.",
+	"//": "I use german words here because it"s a german comic.",
 
 	"word_link_previous": "&lt;&lt;&nbsp;Zurück",	"//": "previous page link",
 	"word_link_next": "Weiter&nbsp;&gt;&gt;",		"//": "next page link",
@@ -62,7 +62,7 @@
 	"sentence_blogpost_updated": "Der Blog Eintrag wurde erneuert.",				"//": "blog post was updated (success)",
 	"sentence_please_wait": "Bitte warten..",										"//": "Please wait..",
 	"sentence_please_wait_for_upload": "Bitte warten bis der Upload fertig ist.",	"//": "Please wait until upload finishes.",
-	"sentence_admin_no_blogpost": "<font color='FAA'>[Kein Blog Eintrag vorhanden.]</font>",	"//": "No blogpost available.",
+	"sentence_admin_no_blogpost": "<font color='#FAA'>[Kein Blog Eintrag vorhanden.]</font>",	"//": "No blogpost available.",
 	
 	"//": "clear the comment string >", "//": 0
 }
