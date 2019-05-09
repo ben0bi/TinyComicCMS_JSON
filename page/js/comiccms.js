@@ -220,8 +220,11 @@ function ComicCMS()
 			*/
 		}).each(function() {
 			// also do it from cache.
-			log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
-				if(this.complete) $(this).load();
+				if(this.complete) 
+				{
+					log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
+					$(this).load();
+				}
 		});
 
 		$("#pagecontent").focus();
@@ -327,11 +330,18 @@ function ComicCMS()
 
 		return ret;
 	}
+	
+	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageID+1);}
+	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageID-1);}
 }
 
 // OLD STUFF, REVIEW!
 
 ComicCMS.instance =new ComicCMS;
+ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
+ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
+
+
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
@@ -350,7 +360,6 @@ ComicCMS.showAdminBlogTitles= function(id)
 		actualAdminBlogTitleShowID=-1;
 	}
 }
-
 
 // show a box to update a page title.
 ComicCMS.updatePageTitleForm = function(dirToRoot, pageID)
@@ -482,9 +491,6 @@ ComicCMS.updatePageTitle = function(dirToRoot, pageID)
 
 	xhr.send(formData);
 }
-
-ComicCMS.nextPage = function() {window.document.location.href = 'index.php?page=next&id='+(pageid+1);}
-ComicCMS.prevPage = function() {window.document.location.href = 'index.php?page=prev&id='+(pageid-1);}
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
