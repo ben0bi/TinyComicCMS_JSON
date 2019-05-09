@@ -140,12 +140,14 @@ function ComicCMS()
 		ComicCMS.initializeTouch();
 		ComicCMS.adjustPageHeight();
 		ComicCMS.showTitle();
+		
+		showPage(m_actualPageID);
 	}
 	
 	// create the navigating links.
 	var buildNavigatingLinks = function(navlinkid)
 	{
-		log("Building navigation links ("+navlinkid+")");
+		log("Building navigation links2 ("+navlinkid+")", LOG_DEBUG);
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
@@ -192,7 +194,7 @@ function ComicCMS()
 				htm+='<div id="pageimageMoveContainer"><img id="pageimage" src="data/uploads/'+comicimage+'" />';
 				htm+='</div><div class="popup">'+comictitle+'</div>';
 				htm+='</div>';
-				buildNavigatingLinks('bottomnavigatinglinks');
+				htm+=buildNavigatingLinks('bottomnavigatinglinks');
 			}else{
 				htm+="<br /><br />"+comictitle+"<br /><br />"+m_langDB['sentence_error_no_image'];
 			}
@@ -204,6 +206,9 @@ function ComicCMS()
 //		// make pageid available for later use
 //		echo '<script>pageid='.$pageid.'</script>';
 	}
+
+	var showPage=function(pageid)
+	{};
 	
 	// get a comic row from the comic array.
 	var db_getComicRowByOrder = function(pageid)
