@@ -4,6 +4,14 @@
 
 Hopefully the most tiny webcomic CMS and Frontend. 
 
+NOW it's gonna be tiny.
+
+All the php files will vanish except for the ajax ones.
+No SQL needed anymore.
+
+Partial rewrite: Updating all the stuff with JS instead of PHP.
+After that, there will be a complete rewrite which is even smaller.
+
 Not yet running.
 
 JSON Version. No Database is used here. PHP is only used to upload files and

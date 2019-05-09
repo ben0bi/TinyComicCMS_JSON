@@ -153,7 +153,7 @@ class ComicCMS
 	}
 
 	/* Shows the navigating links on the main page. */
-	public static function showNavigatingLinks($pageid, $divid)
+/*	public static function showNavigatingLinks($pageid, $divid)
 	{
 		global $word_link_previous, $word_link_next, $word_link_first, $word_link_last, $word_link_archives;
 		echo '<div class="pagelinks" id="'.$divid.'">'.chr(13);
@@ -177,7 +177,7 @@ class ComicCMS
 		// make pageid available for later use
 		echo '<script>pageid='.$pageid.'</script>';
 	}
-
+*/
 	/* Shows a specific comic page. */
 	public static function showPage($pageid)
 	{
@@ -186,7 +186,7 @@ class ComicCMS
 		global $sentence_error_page_not_found;
 		global $sentence_error_no_image;
 
-		echo '<center>'.chr(13); // center all the stuff (again)
+	/*	echo '<center>'.chr(13); // center all the stuff (again)
 		// show upper navigating links
 		ComicCMS::showNavigatingLinks($pageid, 'topnavigatinglinks');
 
@@ -195,8 +195,8 @@ class ComicCMS
 			echo ("$sentence_error_no_pages<br />".chr(13));
 			return;
 		}
-
-		SQL::openConnection();
+*/
+/*		SQL::openConnection();
 		// get comic page
 		$comicrow=-1;
 		$comicresult=SQL::query(SQL::select_from_table(SQL::$table_comicpage,'pageorder', $pageid));
@@ -209,8 +209,13 @@ class ComicCMS
 
 			$realpageid=$comicrow->id;
 			$comicimage=$comicrow->image;
-			$comictitle=SQL::sqlToText($comicrow->title);
-			if($comicimage!="")
+*/
+			
+// TODO: CONVERTER
+			$comictitle=SQL::sqlToText($comicrow->title);			// TODO: CONVERTER
+// TODO: CONVERTER
+
+/*			if($comicimage!="")
 			{
 				// output comic page
 				echo '<div id="pageimagediv"><div id="loadertext">'.$sentence_wait_for_load.'</div>';
@@ -221,6 +226,7 @@ class ComicCMS
 			}else{
 				echo("<br /><br />$comictitle<br /><br />$sentence_error_no_image".chr(13));
 			}
+*/
 
 			// get blog posts and show them
 			$blogresult=SQL::query(SQL::select_from_table_idASC(SQL::$table_blogpost,'comicpage_id',$realpageid));
@@ -271,7 +277,7 @@ class ComicCMS
 	// cmd=first	-> return first page id
 	// cmd=next	-> return given pageid or the next one beneath it (or last one) if not in DB.
 	// cmd=
-	public static function getRealPageID($cmd, $pageid)
+	/*public static function getRealPageID($cmd, $pageid)
 	{
 		SQL::openConnection();
 		$ret=$pageid;
@@ -294,7 +300,7 @@ class ComicCMS
 			$ret=$firstid;
 		if(strtolower($cmd)=="latest" || strtolower($cmd)=="last")
 			$ret=$lastid;
-
+*/
 		// get next or latest
 		if(strtolower($cmd)=="next")
 		{
