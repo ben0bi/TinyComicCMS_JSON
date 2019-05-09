@@ -141,7 +141,7 @@ function ComicCMS()
 		ComicCMS.adjustPageHeight();
 		ComicCMS.showTitle();
 		
-		showPage(m_actualPageID);
+		//showPage(m_actualPageID);
 	}
 	
 	// create the navigating links.
@@ -202,9 +202,29 @@ function ComicCMS()
 		
 		htm+='</center>';
 		$('#'+m_contentDivId).html(htm);
+		
+		
+		// show the stuff after the image has loaded.
+		$("#pageimage").one("load", function()
+		{
+			log("IMAGE LOADED", LOG_DEBUG);
+			// do stuff
+			$('#loadertext').hide();
+			$('#pageimageMoveContainer').css('display', 'block');
+			$('#bottomnavigatinglinks').css('display', 'block');
+			$('.blogpost').css('display', 'block');
 
-//		// make pageid available for later use
-//		echo '<script>pageid='.$pageid.'</script>';
+			// border problems: removed the border :(
+			/*	var w=parseInt($('#pageimageMoveContainer').width()-20);
+			$('#pageimage').width(w+'px');
+			*/
+		}).each(function() {
+			// also do it from cache.
+			log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
+				if(this.complete) $(this).load();
+		});
+
+		$("#pagecontent").focus();
 	}
 
 	var showPage=function(pageid)
@@ -313,7 +333,7 @@ function ComicCMS()
 
 ComicCMS.instance =new ComicCMS;
 
-ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
+//ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 // show a window with the blog posts and update stuff for a given post.

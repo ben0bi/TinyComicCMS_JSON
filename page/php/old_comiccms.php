@@ -181,12 +181,12 @@ class ComicCMS
 	/* Shows a specific comic page. */
 	public static function showPage($pageid)
 	{
-		global $relative_upload_path;
+	/*	global $relative_upload_path;
 		global $sentence_error_no_pages;
 		global $sentence_error_page_not_found;
 		global $sentence_error_no_image;
 
-	/*	echo '<center>'.chr(13); // center all the stuff (again)
+		echo '<center>'.chr(13); // center all the stuff (again)
 		// show upper navigating links
 		ComicCMS::showNavigatingLinks($pageid, 'topnavigatinglinks');
 
@@ -300,7 +300,7 @@ class ComicCMS
 			$ret=$firstid;
 		if(strtolower($cmd)=="latest" || strtolower($cmd)=="last")
 			$ret=$lastid;
-*/
+
 		// get next or latest
 		if(strtolower($cmd)=="next")
 		{
@@ -336,7 +336,7 @@ class ComicCMS
 
 		return $ret;
 	}
-
+*/
 	// show the archives
 	// if $admin == 291 -> show admin links
 	public static function showArchives($dirToRoot, $admin)
