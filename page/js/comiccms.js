@@ -145,6 +145,7 @@ function ComicCMS()
 	// create the navigating links.
 	var buildNavigatingLinks = function(navlinkid)
 	{
+		log("Building navigation links ("+navlinkid+")");
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
@@ -178,7 +179,7 @@ function ComicCMS()
 			htm+=m_langDB['sentence_error_no_pages']+'<br />';
 		
 		// get the searched comic entry.
-		var comicrow = getComicRowByOrder(m_actualPageID);
+		var comicrow = db_getComicRowByOrder(m_actualPageID);
 		if(comicrow!=null)
 		{
 			var realpageid=comicrow['ID'];
@@ -205,7 +206,7 @@ function ComicCMS()
 	}
 	
 	// get a comic row from the comic array.
-	var getComicRowByOrder = function(pageid)
+	var db_getComicRowByOrder = function(pageid)
 	{
 		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
 		{
