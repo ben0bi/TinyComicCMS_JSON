@@ -2,3 +2,4 @@
 *.bak
 *uploads/*
 ./config.php
+page/data/uploads/*
