@@ -213,6 +213,9 @@ function ComicCMS()
 				// create line breaks on blog text.
 				// TODO:
 				//echo ComicCMS::parseEnterChars($blogtext);
+				var t = bp['TEXT'];
+				t.replace('\n', '<br />');
+				htm+=t;
 				htm+='</div>';
 				htm+='</article>';
 			}
