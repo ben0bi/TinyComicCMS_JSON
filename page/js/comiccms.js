@@ -187,7 +187,9 @@ function ComicCMS()
 			var realpageid=comicrow['ID'];
 			var comicimage = comicrow['IMAGE'];
 			var comictitle = comicrow['TITLE'];
+			var comicid = comicrow['ID'];
 			
+			// build html for that image.
 			if(comicimage!="")
 			{
 				htm+='<div id="pageimagediv"><div id="loadertext">'+m_langDB['sentence_wait_for_load']+'</div>';
@@ -197,6 +199,22 @@ function ComicCMS()
 				htm+=buildNavigatingLinks('bottomnavigatinglinks');
 			}else{
 				htm+="<br /><br />"+comictitle+"<br /><br />"+m_langDB['sentence_error_no_image'];
+			}
+			
+			// get blog posts for that entry.
+			var blogposts = db_getBlogPostsByComicID(comicid);
+			for(var i=0;i<blogposts.length;i++)
+			{
+				var bp = blogposts[i];
+				htm+='<center><article class="blogpost">';
+				htm+='<div class="title">'+bp['TITLE']+'</div>';
+				htm+='<div class="date">'+bp['DATETIME']+'</div>';
+				htm+='<div class="text">';
+				// create line breaks on blog text.
+				// TODO:
+				//echo ComicCMS::parseEnterChars($blogtext);
+				htm+='</div>';
+				htm+='</article>';
 			}
 		}
 		
@@ -230,23 +248,34 @@ function ComicCMS()
 		$("#pagecontent").focus();
 	}
 
-	var showPage=function(pageid)
-	{};
-	
 	// get a comic row from the comic array.
-	var db_getComicRowByOrder = function(pageid)
+	var db_getComicRowByOrder = function(pageorder)
 	{
 		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
 		{
 			var idb = m_imageDB['IMAGES'][i];
-			if(parseInt(idb['ORDER'])==pageid)
+			if(parseInt(idb['ORDER'])==pageorder)
 			{
 				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG);
 				return idb;
 			}
 		}
-		log("Image "+pageid+" not found!", LOG_ERROR);
+		log("Image at position "+pageorder+" not found!", LOG_ERROR);
 		return null;
+	}
+	
+	// get all blog posts referring to the given comic page id.
+	var db_getBlogPostsByComicID=function(pageid)
+	{
+		var blogarr=[];
+		for(var i=0; i<m_blogDB['BLOGPOSTS'].length; i++)
+		{
+			var bp = m_blogDB['BLOGPOSTS'][i];
+			var targetid = bp['IMAGEID'];
+			if(parseInt(targetid)==pageid)
+				blogarr.push(bp);
+		}
+		return blogarr;
 	}
 
 	// returns the next or previous or actual page id depending on the command.
@@ -274,6 +303,7 @@ function ComicCMS()
 			case 'latest':
 			case 'last': ret = lastid; break;
 			case 'next':
+			// TODO: REVIEW, does not work right.
 				if(pageid<lastid)
 				{
 					var nearest =-1;

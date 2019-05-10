@@ -226,7 +226,6 @@ class ComicCMS
 			}else{
 				echo("<br /><br />$comictitle<br /><br />$sentence_error_no_image".chr(13));
 			}
-*/
 
 			// get blog posts and show them
 			$blogresult=SQL::query(SQL::select_from_table_idASC(SQL::$table_blogpost,'comicpage_id',$realpageid));
@@ -255,6 +254,7 @@ class ComicCMS
 
 		SQL::closeConnection();
 	}
+*/
 
 	// make html line breaks into a text.
 	public static function parseEnterChars($text)
