@@ -45,7 +45,7 @@ function ComicCMS()
 	var m_blogDB = [];
 	var m_langDB = [];
 	
-	var m_contentDivId; // the id of the div where the content should go in. 
+	var m_contentDivId; // the id of the div where the content should go in.
 
 	this.initialize = function(contentDivId, imagedbname="", blogdbname = "", langdbname="")
 	{
@@ -67,7 +67,7 @@ function ComicCMS()
 				m_langDB = data;
 			});
 		}else{
-			log("No language loaded.", LOG_DEBUG);
+			log("No language loaded.", LOG_WARN);
 		}
 		
 		// load the image db.
@@ -157,7 +157,7 @@ function ComicCMS()
 		htm+='<td><nobr><a href="index.html?page=first">&nbsp;'+m_langDB['word_link_first']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// Archives
-		htm+='<td><nobr><a href="archives.html">&nbsp;'+m_langDB['word_link_archives']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="javascript:" onclick="ComicCMS.buildAndShowArchives();">&nbsp;'+m_langDB['word_link_archives']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// Latest
 		htm+='<td><nobr><a href="index.html?page=latest">&nbsp;'+m_langDB['word_link_last']+'&nbsp;</a></nobr></td>';
@@ -222,8 +222,7 @@ function ComicCMS()
 		}
 		
 		htm+='</center>';
-		$('#'+m_contentDivId).html(htm);
-		
+		$('#'+m_contentDivId).html(htm);	
 		
 		// show the stuff after the image has loaded.
 		$("#pageimage").one("load", function()
@@ -248,6 +247,14 @@ function ComicCMS()
 				}
 		});
 
+		$("#pagecontent").focus();
+	}
+	
+	// build and show the archive content.
+	this.buildAndShowArchives=function()
+	{
+		$("#pagecontent").html("archie");
+		// TODO: show archives.
 		$("#pagecontent").focus();
 	}
 
@@ -371,6 +378,7 @@ function ComicCMS()
 // OLD STUFF, REVIEW!
 
 ComicCMS.instance =new ComicCMS;
+ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 

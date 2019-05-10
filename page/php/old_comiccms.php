@@ -179,8 +179,8 @@ class ComicCMS
 	}
 */
 	/* Shows a specific comic page. */
-	public static function showPage($pageid)
-	{
+//	public static function showPage($pageid)
+//	{
 	/*	global $relative_upload_path;
 		global $sentence_error_no_pages;
 		global $sentence_error_page_not_found;
@@ -257,7 +257,7 @@ class ComicCMS
 */
 
 	// make html line breaks into a text.
-	public static function parseEnterChars($text)
+/*	public static function parseEnterChars($text)
 	{
 		$strlen = strlen($text);
 		$output="";
@@ -271,7 +271,7 @@ class ComicCMS
 		}
 		return $output;
 	}
-
+*/
 	// returns the real page id according to the command and the given pageid
 	// cmd=latest	-> return latest page id
 	// cmd=first	-> return first page id

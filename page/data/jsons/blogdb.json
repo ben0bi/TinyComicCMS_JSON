@@ -562,7 +562,7 @@
 {
 "ID": 89,
 "TITLE": "Der Weg ist fast frei..",
-"TEXT": "..es steht nur noch nützliches Zeug rum. :)%%5\n%%5\nIm Hintergrund sieht man die Piste des Flughafens <a href=%%1index.php?id=34%%1>Spaceport Alpha</a>.%%5\n(offiziell: Grenchner Flughafen, viertgrösster der Schweiz. Also davor hats nur noch Zürich, Genf und noch einen unbekannten anderen Flughafen.)",
+"TEXT": "..es steht nur noch nützliches Zeug rum. :)%%5\n%%5\nIm Hintergrund sieht man die Piste des Flughafens <a href=%%1index.html?id=34%%1>Spaceport Alpha</a>.%%5\n(offiziell: Grenchner Flughafen, viertgrösster der Schweiz. Also davor hats nur noch Zürich, Genf und noch einen unbekannten anderen Flughafen.)",
 "IMAGEID": 111,
 "DATETIME": "2018-07-10 10:04:22"
 },
