@@ -100,7 +100,7 @@
 	},
 	{
 		"ID": 20,
-		"TITLE": "Mordor liegt im SÃ¼den.",
+		"TITLE": "Mordor liegt im Süden.",
 		"IMAGE": "1493127624_mordorimsueden.JPG",
 		"DATETIME": "2017-04-25 15:40:24",
 		"ORDER": 14
@@ -114,7 +114,7 @@
 	},
 	{
 		"ID": 22,
-		"TITLE": "Mordor liegt immer noch im SÃ¼den.",
+		"TITLE": "Mordor liegt immer noch im Süden.",
 		"IMAGE": "1493744797_mordorliegtimmernochimsueden.JPG",
 		"DATETIME": "2017-05-02 19:06:37",
 		"ORDER": 16
@@ -177,7 +177,7 @@
 	},
 	{
 		"ID": 32,
-		"TITLE": "WÃ¤chter der Stadt",
+		"TITLE": "Wächter der Stadt",
 		"IMAGE": "1497047929_waechter_der_stadt.JPG",
 		"DATETIME": "2017-06-10 00:38:49",
 		"ORDER": 26
@@ -191,7 +191,7 @@
 	},
 	{
 		"ID": 34,
-		"TITLE": "Wir fliegen bis zur DÃ¤mmerung.",
+		"TITLE": "Wir fliegen bis zur Dämmerung.",
 		"IMAGE": "1497565870_wirfliegenbiszurdaemmerung.JPG",
 		"DATETIME": "2017-06-16 00:31:10",
 		"ORDER": 28
@@ -226,7 +226,7 @@
 	},
 	{
 		"ID": 39,
-		"TITLE": "BrÃ¼cke in die Zukunft",
+		"TITLE": "Brücke in die Zukunft",
 		"IMAGE": "1499565908_bruecke_in_die_zukunft.jpg",
 		"DATETIME": "2017-07-09 04:05:08",
 		"ORDER": 33
@@ -254,7 +254,7 @@
 	},
 	{
 		"ID": 43,
-		"TITLE": "Mordor aus der NÃ¤he",
+		"TITLE": "Mordor aus der Nähe",
 		"IMAGE": "1501278652_aufklaerungstrupp_nach_mordor.jpg",
 		"DATETIME": "2017-07-28 23:50:52",
 		"ORDER": 37
@@ -310,7 +310,7 @@
 	},
 	{
 		"ID": 51,
-		"TITLE": "An diesen Titten nÃ¤hrt sich die Schweiz.",
+		"TITLE": "An diesen Titten nährt sich die Schweiz.",
 		"IMAGE": "1504129170_an_diesen_titten_naehrt_sich_die_schweiz.jpg",
 		"DATETIME": "2017-08-30 21:39:30",
 		"ORDER": 44
@@ -422,7 +422,7 @@
 	},
 	{
 		"ID": 67,
-		"TITLE": "Aus der NÃ¤he",
+		"TITLE": "Aus der Nähe",
 		"IMAGE": "1515109512_aus_der_naehe.jpg",
 		"DATETIME": "2018-01-05 00:45:12",
 		"ORDER": 61
@@ -618,14 +618,14 @@
 	},
 	{
 		"ID": 99,
-		"TITLE": "Ein RÃ¤ubernest",
+		"TITLE": "Ein Räubernest",
 		"IMAGE": "1528661748_raeubernest.JPG",
 		"DATETIME": "2018-06-10 22:15:48",
 		"ORDER": 89
 	},
 	{
 		"ID": 100,
-		"TITLE": "ZugbrÃ¼cke",
+		"TITLE": "Zugbrücke",
 		"IMAGE": "1528804386_zugbruecke.JPG",
 		"DATETIME": "2018-06-12 13:53:06",
 		"ORDER": 90
@@ -646,21 +646,21 @@
 	},
 	{
 		"ID": 103,
-		"TITLE": "BrÃ¼ckenblock",
+		"TITLE": "Brückenblock",
 		"IMAGE": "1529539735_brueckenblock.jpg",
 		"DATETIME": "2018-06-21 02:08:55",
 		"ORDER": 93
 	},
 	{
 		"ID": 104,
-		"TITLE": "ZugbrÃ¼cke II",
+		"TITLE": "Zugbrücke II",
 		"IMAGE": "1529606348_Zugbruecke_2k.jpg",
 		"DATETIME": "2018-06-21 20:39:08",
 		"ORDER": 94
 	},
 	{
 		"ID": 105,
-		"TITLE": "Unter der ZugbrÃ¼cke (II)",
+		"TITLE": "Unter der Zugbrücke (II)",
 		"IMAGE": "1529708929_unter_der_zugbruecke.JPG",
 		"DATETIME": "2018-06-23 01:08:49",
 		"ORDER": 95
@@ -674,7 +674,7 @@
 	},
 	{
 		"ID": 107,
-		"TITLE": "Aaromantik mit <strike>finanzieller</strike> UnterstÃ¼tzung von der Bank.",
+		"TITLE": "Aaromantik mit <strike>finanzieller</strike> Unterstützung von der Bank.",
 		"IMAGE": "1530090580_aaromantik_mfu.JPG",
 		"DATETIME": "2018-06-27 11:09:40",
 		"ORDER": 97
@@ -702,21 +702,21 @@
 	},
 	{
 		"ID": 111,
-		"TITLE": "101 der NÃ¼tzlichkeit",
+		"TITLE": "101 der Nützlichkeit",
 		"IMAGE": "1531209862_der_weg_ist_fast_frei.jpg",
 		"DATETIME": "2018-07-10 10:04:22",
 		"ORDER": 101
 	},
 	{
 		"ID": 112,
-		"TITLE": "Der Grosse BÃ¤r",
+		"TITLE": "Der Grosse Bär",
 		"IMAGE": "1531259410_der_grosse_baer.jpg",
 		"DATETIME": "2018-07-10 23:50:10",
 		"ORDER": 102
 	},
 	{
 		"ID": 113,
-		"TITLE": "Zweite BrÃ¼cke in die Zukunft",
+		"TITLE": "Zweite Brücke in die Zukunft",
 		"IMAGE": "1531479603_zweite_bruecke_in_die_zukunft_k.jpg",
 		"DATETIME": "2018-07-13 13:00:03",
 		"ORDER": 103
@@ -737,7 +737,7 @@
 	},
 	{
 		"ID": 116,
-		"TITLE": "Chum nume ine, d TÃ¼re isch offe*.",
+		"TITLE": "Chum nume ine, d Türe isch offe*.",
 		"IMAGE": "1531853576_chumnumeinedtuereischoffe.jpg",
 		"DATETIME": "2018-07-17 20:52:56",
 		"ORDER": 106

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+Look at the console.
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/bhelpers.js"></script>
+<script>
+
+var mDB = [];
+var newDB = [];
+
+__loadJSON("data/jsons/imagedb.json", function(data) 
+{
+	log("DB DATA: "+data);
+	mDB = data;
+	convertImageDB();
+	console.log(mDB);
+});
+
+// convert the image db.
+function convertImageDB()
+{
+	var db = mDB['IMAGES'];
+	for(var i=0;i<db.length;i++)
+	{
+		var entry = db[i];
+		for(var e=0;e<entry.length;e++)
+		{
+			var value = entry[e];
+			mDB['IMAGES'][i][e] = sqltexttojson(value);
+		}
+	}
+}
+
+// convert a text from the original db to a json string.
+function sqltexttojson(txt)
+{
+	var strl=txt.length;
+	for(var i=0;i<strl;i++)
+	{
+		var output="";
+		var trigger = 0;
+		for(var i = 0; i < strl; i++ )
+		{
+			var ch = txt[i];
+			switch(ch)
+			{
+				case '%': trigger=trigger+1;break;
+				case "1": 
+					t="1"; 
+					if(trigger==2) {t='"';} 
+						output=output+t; 
+					trigger=0;
+					break;
+				case "2":
+					t="2"; 
+					if(trigger==2) {t="'";} 
+						output=output+t; 
+					trigger=0;
+				break;
+				case "3":
+					t="3"; 
+					if(trigger==2) {t="`";} 
+						output=output+t;
+					trigger=0;
+					break;
+				case "4":
+					t="4"; 
+					if(trigger==2) {t="´";} 
+						output=output+t;
+					trigger=0;
+					break;
+				default:
+					if(trigger==1)
+						output=output+'%';
+					if(trigger==2)
+						output=output+'%%';
+					output=output+ch;
+					trigger=0;
+			}
+		}	
+		return JSON.stringify(output);
+	}
+}
+</script>
+</body>
