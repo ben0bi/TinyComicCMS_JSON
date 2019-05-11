@@ -20,10 +20,7 @@ var mDB = [];
 __loadJSON("data/jsons/imagedb.json", function(data) 
 {
 	mDB = data;
-	convertImageDB();
-	//convertBlogDB();
 	var txt=JSON.stringify(mDB, null, 4);
-	console.log(txt);
 	var old="-1-1@nop#nop@+1+1";
 	var count = -1; // first one is for free. ;)	
 	while(old != txt)
@@ -32,92 +29,15 @@ __loadJSON("data/jsons/imagedb.json", function(data)
 		count+=1;
 		txt = txt.replace('<', "&lt;");
 		txt = txt.replace('>', "&gt;");
+		txt = txt.replace("%%1", '\\"');
+		txt = txt.replace("%%2", "'");
+		txt = txt.replace("%%3", '`');
+		txt = txt.replace("%%4", '´');
+		txt = txt.replace("%%5", '\\n');
 	}
 	log(count+" replacements done.");
 	$('#content').html('<pre>'+txt+'</pre>');
 });
 
-// convert the image db.
-function convertImageDB()
-{
-	var db = mDB['IMAGES'];
-	for(var i=0;i<db.length;i++)
-	{
-		var entry = db[i];
-		for(var e=0;e<entry.length;e++)
-		{
-			var value = entry[e];
-			var v2 = sqltexttojson(value);
-			mDB['IMAGES'][i][e] = sqltexttojson(v2);
-		}
-	}
-}
-
-// convert the blog db.
-function convertBlogDB()
-{
-	var db = mDB['BLOGPOSTS'];
-	for(var i=0;i<db.length;i++)
-	{
-		var entry = db[i];
-		for(var e=0;e<entry.length;e++)
-		{
-			var value = entry[e];
-			var v2 = sqltexttojson(value);
-			mDB['BLOGPOSTS'][i][e] = sqltexttojson(v2);
-		}
-	}
-}
-
-// convert a text from the original db to a json string.
-function sqltexttojson(txt)
-{
-	var strl=txt.length;
-	for(var i=0;i<strl;i++)
-	{
-		var output="";
-		var trigger = 0;
-		for(var i = 0; i < strl; i++ )
-		{
-			var ch = txt[i];
-			switch(ch)
-			{
-				case '%': trigger=trigger+1;break;
-				case "1": 
-					t="1"; 
-					if(trigger==2) {t='"';} 
-						output=output+t; 
-					trigger=0;
-					break;
-				case "2":
-					t="2"; 
-					if(trigger==2) {t="'";} 
-						output=output+t; 
-					trigger=0;
-				break;
-				case "3":
-					t="3"; 
-					if(trigger==2) {t="`";} 
-						output=output+t;
-					trigger=0;
-					break;
-				case "4":
-					t="4"; 
-					if(trigger==2) {t="´";} 
-						output=output+t;
-					trigger=0;
-					break;
-				default:
-					if(trigger==1)
-						output=output+'%';
-					if(trigger==2)
-						output=output+'%%';
-					output=output+ch;
-					trigger=0;
-			}
-		}	
-		return JSON.stringify(output, null, 4);
-	}
-}
 </script>
 </body>

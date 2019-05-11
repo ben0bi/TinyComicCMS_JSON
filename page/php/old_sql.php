@@ -4,7 +4,7 @@ require __DIR__.'/../config.php';
 class SQL
 {
 /* Translate text for SQL */
-	public static function textToSQL($txt)
+/*	public static function textToSQL($txt)
 	{
 		$strlen = strlen($txt);
 		$output="";
@@ -23,8 +23,9 @@ class SQL
 		}
 		return $output;
 	}
+*/
 /* Translate text from SQL */
-	public static function sqlToText($txt)
+/*	public static function sqlToText($txt)
 	{
 		$strlen = strlen($txt);
 		$output="";
@@ -70,6 +71,7 @@ class SQL
 		}
 		return $output;
 	}
+*/
 
 /* Table Names */
 	public static $table_comicpage="comicpage";

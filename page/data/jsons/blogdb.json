@@ -136,7 +136,7 @@
         {
             "ID": 24,
             "TITLE": "Lazer Mazer",
-            "TEXT": "LASER heisst %%1Light Amplification by Stimulated Emission of Radiation%%1, also %%1Licht-Verstärkung durch stimulierte Emmision von Strahlung.%%1\r\n\r\nDann gibt es noch MASER, das ist dasselbe mit Mikrowellen. MASER wird zum Beispiel zur Kommunikation im Weltall benutzt. (Richtfunk)",
+            "TEXT": "LASER heisst \"Light Amplification by Stimulated Emission of Radiation\", also \"Licht-Verstärkung durch stimulierte Emmision von Strahlung.\"\r\n\r\nDann gibt es noch MASER, das ist dasselbe mit Mikrowellen. MASER wird zum Beispiel zur Kommunikation im Weltall benutzt. (Richtfunk)",
             "IMAGEID": 25,
             "DATETIME": "2017-05-16 05:07:33"
         },
@@ -262,7 +262,7 @@
         {
             "ID": 42,
             "TITLE": "500mm",
-            "TEXT": "Hier habe ich mein neues altes 500mm-(Spiegel-)Objektiv ausprobiert. Es ist fast so kurz wie ein %%1normales%%1. Das zieht den ganzen Krempel schon recht heran, leider bekomme ich es nie richtig schön scharf hin. Auch dieses Bild wurde aus meinem Fenster heraus gemacht...siehe die anderen Mordor-Bilder.",
+            "TEXT": "Hier habe ich mein neues altes 500mm-(Spiegel-)Objektiv ausprobiert. Es ist fast so kurz wie ein \"normales\". Das zieht den ganzen Krempel schon recht heran, leider bekomme ich es nie richtig schön scharf hin. Auch dieses Bild wurde aus meinem Fenster heraus gemacht...siehe die anderen Mordor-Bilder.",
             "IMAGEID": 43,
             "DATETIME": "2017-07-28 23:50:52"
         },
@@ -311,7 +311,7 @@
         {
             "ID": 49,
             "TITLE": "...unter Anderem.",
-            "TEXT": "Das ist am Vierwaldstättersee, vom Schiff aus fotographiert.\r\n\r\nDamit endet mein Ausflug nach Luzern (von vor zwei Monaten oder so).\r\n\r\nDie Stadt war wirklich vollgestopft mit Touristen und meine Cousine meinte nur: %%1Ein ganz normaler Tag hier in Luzern.%%1 Das wäre mir dann doch ein bisschen zu viel, wenn ich dort leben würde.\r\n\r\nPS: Ja die Fotos kommen halt meist ein, zwei Monate später. Aber immerhin kommen sie, also seits ruhig.",
+            "TEXT": "Das ist am Vierwaldstättersee, vom Schiff aus fotographiert.\r\n\r\nDamit endet mein Ausflug nach Luzern (von vor zwei Monaten oder so).\r\n\r\nDie Stadt war wirklich vollgestopft mit Touristen und meine Cousine meinte nur: \"Ein ganz normaler Tag hier in Luzern.\" Das wäre mir dann doch ein bisschen zu viel, wenn ich dort leben würde.\r\n\r\nPS: Ja die Fotos kommen halt meist ein, zwei Monate später. Aber immerhin kommen sie, also seits ruhig.",
             "IMAGEID": 51,
             "DATETIME": "2017-08-30 21:39:30"
         },
@@ -339,7 +339,7 @@
         {
             "ID": 53,
             "TITLE": "Tücher",
-            "TEXT": "Nachdem ich das Bild hochgeladen hatte, war ein Freund zufällig - und ohne Wissen dieses Bildes - auf der folgenden Seite, welche ich hiermit empfehlen möchte:\r\n<a href=%%1http://www.tropechopf.ch%%1>Tropechopf.ch</a>\r\n\r\nBeim Schmökern habe ich <a href=%%1http://www.tropechopf.ch/Textil___Tucher/Tucher/tucher.html%%1>hier</a> ein paar Tücher bestellt. Einfach bisschen runterscrollen, dann kommen die geilen Sachen.",
+            "TEXT": "Nachdem ich das Bild hochgeladen hatte, war ein Freund zufällig - und ohne Wissen dieses Bildes - auf der folgenden Seite, welche ich hiermit empfehlen möchte:\r\n<a href=\"http://www.tropechopf.ch\">Tropechopf.ch</a>\r\n\r\nBeim Schmökern habe ich <a href=\"http://www.tropechopf.ch/Textil___Tucher/Tucher/tucher.html\">hier</a> ein paar Tücher bestellt. Einfach bisschen runterscrollen, dann kommen die geilen Sachen.",
             "IMAGEID": 58,
             "DATETIME": "2017-10-21 19:41:00"
         },
@@ -360,7 +360,7 @@
         {
             "ID": 56,
             "TITLE": "Ein Welpe",
-            "TEXT": "Wenn der mal ausgewachsen ist...\r\n\r\nDas ist ein PET-2001 Personal Computer von 1977.\r\n<a href=%%1https://de.wikipedia.org/wiki/PET_2001%%1>Hier</a> gibt es mehr Informationen dazu. Der steht bei meinen Freunden. Die Tastatur musste gereinigt werden, dann lief er wieder.\r\n\r\nCiviliNorth & Southion ist eine Referenz auf Civilization (1, 2) und North & South...stell dir ein Civ vor mit dem Kampfsystem von N&S - online.",
+            "TEXT": "Wenn der mal ausgewachsen ist...\r\n\r\nDas ist ein PET-2001 Personal Computer von 1977.\r\n<a href=\"https://de.wikipedia.org/wiki/PET_2001\">Hier</a> gibt es mehr Informationen dazu. Der steht bei meinen Freunden. Die Tastatur musste gereinigt werden, dann lief er wieder.\r\n\r\nCiviliNorth & Southion ist eine Referenz auf Civilization (1, 2) und North & South...stell dir ein Civ vor mit dem Kampfsystem von N&S - online.",
             "IMAGEID": 62,
             "DATETIME": "2017-11-09 13:47:49"
         },
@@ -388,7 +388,7 @@
         {
             "ID": 60,
             "TITLE": "Der Weg",
-            "TEXT": "Dieser Weg zieht sich sozusagen direkt von Bellach bis nach Grenchen, %%1schnurgerade%%1, 8km lang. Daneben ist das Gleis von der Eisenbahn. Auf der anderen Seite hat es Felder und dann die Aare. Auf diesen Feldern hab ich schon die verschiedensten Vögel gesehen, Kraniche, Störche, Möwen, Tauben, Krähen..und ein paar Raubvögel, welche für mich einfach immer %%1Mäusebussard%%1 heissen. Auch einen Hasen und einen Fuchs hab ich da schon gesehen. Kurz: Tiere > Menschen > Selfie-Menschen!",
+            "TEXT": "Dieser Weg zieht sich sozusagen direkt von Bellach bis nach Grenchen, \"schnurgerade\", 8km lang. Daneben ist das Gleis von der Eisenbahn. Auf der anderen Seite hat es Felder und dann die Aare. Auf diesen Feldern hab ich schon die verschiedensten Vögel gesehen, Kraniche, Störche, Möwen, Tauben, Krähen..und ein paar Raubvögel, welche für mich einfach immer \"Mäusebussard\" heissen. Auch einen Hasen und einen Fuchs hab ich da schon gesehen. Kurz: Tiere > Menschen > Selfie-Menschen!",
             "IMAGEID": 71,
             "DATETIME": "2018-02-04 15:12:07"
         },
@@ -507,14 +507,14 @@
         {
             "ID": 80,
             "TITLE": "Schlafplatz",
-            "TEXT": "Wenn du mal irgendwo in der Schweiz bist und nichts zum Schlafen hast, versuchs am Bahnhof. Bei grösseren BHs werden zum Teil Personenzüge über Nacht abgestellt. Als ich das letzte Mal versucht habe, war offen und ich konnte darin schlafen. Das ist aber auch schon einige Jahre her. Am Morgen hat uns Penner dann einfach ein Bähnler rausgeworfen, mehr ist nicht passiert. Sehr bequem im Gegensatz zu %%1der Brücke%%1. ;)",
+            "TEXT": "Wenn du mal irgendwo in der Schweiz bist und nichts zum Schlafen hast, versuchs am Bahnhof. Bei grösseren BHs werden zum Teil Personenzüge über Nacht abgestellt. Als ich das letzte Mal versucht habe, war offen und ich konnte darin schlafen. Das ist aber auch schon einige Jahre her. Am Morgen hat uns Penner dann einfach ein Bähnler rausgeworfen, mehr ist nicht passiert. Sehr bequem im Gegensatz zu \"der Brücke\". ;)",
             "IMAGEID": 93,
             "DATETIME": "2018-05-01 13:18:53"
         },
         {
             "ID": 81,
             "TITLE": "Such, Fido, such...",
-            "TEXT": "<a href=%%1https://duckduckgo.com%%1 target=%%1_new%%1>DuckDuckGo</a> ist meine präferierte Suchseite. Die Seite sucht nämlich über Google und bezahlt denen aber irgendwie direkt Geld für die Dienstleistung, so dass ich keine Werbung sehen muss. Das finde ich als Enduser super.",
+            "TEXT": "<a href=\"https://duckduckgo.com\" target=\"_new\">DuckDuckGo</a> ist meine präferierte Suchseite. Die Seite sucht nämlich über Google und bezahlt denen aber irgendwie direkt Geld für die Dienstleistung, so dass ich keine Werbung sehen muss. Das finde ich als Enduser super.",
             "IMAGEID": 95,
             "DATETIME": "2018-05-10 14:51:11"
         },
@@ -542,14 +542,14 @@
         {
             "ID": 86,
             "TITLE": "Der Zug ist abgefahren,",
-            "TEXT": "die Schafe werden im Schatten der Unwissenheit belassen, müssen unter der Brücke leben, oder sich als Arbeitssklaven verdingen, um sich eine Zelle in einem der öffentlichen Wohngefängnisse zu sichern. Dazu muss das Schaf noch selbst sein Essen beschaffen, was ein echter Sklave nie musste, da er auf Lebenszeit Kost und Logis bekam, dafür kein Geld. Wenn nun das Schaf (klein-)kriminell geworden ist, wird es in eine nicht-öffentliche Wohnzelle (Gefängnis) geworfen, dessen einziger Unterschied zum %%1normalen%%1 Leben der abendliche Einschluss ist. Dafür hat das Schaf nun für einige Zeit gratis Kost und Logis, bekommt sogar noch ein bisschen Geld, und muss auch hier - wie draussen - arbeiten. Man ist also als Schaf in dieser Welt nie frei von Sklaverei. Doch das weiss das Schaf ja nicht, denn der Zug ist obendrüber abgefahren.",
+            "TEXT": "die Schafe werden im Schatten der Unwissenheit belassen, müssen unter der Brücke leben, oder sich als Arbeitssklaven verdingen, um sich eine Zelle in einem der öffentlichen Wohngefängnisse zu sichern. Dazu muss das Schaf noch selbst sein Essen beschaffen, was ein echter Sklave nie musste, da er auf Lebenszeit Kost und Logis bekam, dafür kein Geld. Wenn nun das Schaf (klein-)kriminell geworden ist, wird es in eine nicht-öffentliche Wohnzelle (Gefängnis) geworfen, dessen einziger Unterschied zum \"normalen\" Leben der abendliche Einschluss ist. Dafür hat das Schaf nun für einige Zeit gratis Kost und Logis, bekommt sogar noch ein bisschen Geld, und muss auch hier - wie draussen - arbeiten. Man ist also als Schaf in dieser Welt nie frei von Sklaverei. Doch das weiss das Schaf ja nicht, denn der Zug ist obendrüber abgefahren.",
             "IMAGEID": 105,
             "DATETIME": "2018-06-23 01:08:49"
         },
         {
             "ID": 87,
             "TITLE": "Der Fluss des Geldes...",
-            "TEXT": "Wenn das Geld aus Wasser wäre, wäre dieses Boot obenauf. Das wäre dann ein Milliardär. Und der, der im Wasser schwimmt, nennt sich Millionär. Er hat nicht genug um sich ein Boot zu leisten, aber doch zu viel um sich mit dem Pöbel am Ufer abzugeben. Denn am Ufer grillt der Mittelstand. Dieser muss sich alle Grillutensilien selbst zusammen tragen und wird dafür noch <strike>von der Polizei</strike> belästigt. (Steuern auf Arbeitsleistung, was soll das?)%%5\n%%5\nNaja...mir gefällt dieses Boot.",
+            "TEXT": "Wenn das Geld aus Wasser wäre, wäre dieses Boot obenauf. Das wäre dann ein Milliardär. Und der, der im Wasser schwimmt, nennt sich Millionär. Er hat nicht genug um sich ein Boot zu leisten, aber doch zu viel um sich mit dem Pöbel am Ufer abzugeben. Denn am Ufer grillt der Mittelstand. Dieser muss sich alle Grillutensilien selbst zusammen tragen und wird dafür noch <strike>von der Polizei</strike> belästigt. (Steuern auf Arbeitsleistung, was soll das?)\n\n\n\nNaja...mir gefällt dieses Boot.",
             "IMAGEID": 109,
             "DATETIME": "2018-07-03 20:07:06"
         },
@@ -563,14 +563,14 @@
         {
             "ID": 89,
             "TITLE": "Der Weg ist fast frei..",
-            "TEXT": "..es steht nur noch nützliches Zeug rum. :)%%5\n%%5\nIm Hintergrund sieht man die Piste des Flughafens <a href=%%1index.html?id=34%%1>Spaceport Alpha</a>.%%5\n(offiziell: Grenchner Flughafen, viertgrösster der Schweiz. Also davor hats nur noch Zürich, Genf und noch einen unbekannten anderen Flughafen.)",
+            "TEXT": "..es steht nur noch nützliches Zeug rum. :)\n\n\n\nIm Hintergrund sieht man die Piste des Flughafens <a href=\"index.html?id=34\">Spaceport Alpha</a>.\n\n(offiziell: Grenchner Flughafen, viertgrösster der Schweiz. Also davor hats nur noch Zürich, Genf und noch einen unbekannten anderen Flughafen.)",
             "IMAGEID": 111,
             "DATETIME": "2018-07-10 10:04:22"
         },
         {
             "ID": 90,
             "TITLE": "Der grosse Bär",
-            "TEXT": "oder der Grosse Wagen ist das Sternbild, welches man hier sieht. Es besteht aus den sieben weissen Punkten, also dem Viereck und dem dreisternigen Schwanz darunter.%%5\n%%5\nDas Bild habe ich in Grenchen aufgenommen, indem ich einfach direkt nach oben %%1gezielt%%1 habe. Da ich nichts im Sucher sehen konnte, ist mir das Sternbild doch recht gut in die Kamera geflogen..%%5\n%%5\nDieses Sternbild ist nun immer direkt (90 Grad) über mir in Grenchen (Sommer) und auch im Tessin, wo ich kürzlich war. Der Bär heisst auf lateinisch %%1Ursus%%1. Da mein Vater Urs und meine Mutter Ursula heissen, denke ich mal, dass dies %%1mein%%1 Sternbild ist. Interessant, dass es auch wirklich direkt über mir steht, hier wo ich geboren wurde. Astrologen staunen.",
+            "TEXT": "oder der Grosse Wagen ist das Sternbild, welches man hier sieht. Es besteht aus den sieben weissen Punkten, also dem Viereck und dem dreisternigen Schwanz darunter.\n\n\n\nDas Bild habe ich in Grenchen aufgenommen, indem ich einfach direkt nach oben \"gezielt\" habe. Da ich nichts im Sucher sehen konnte, ist mir das Sternbild doch recht gut in die Kamera geflogen..\n\n\n\nDieses Sternbild ist nun immer direkt (90 Grad) über mir in Grenchen (Sommer) und auch im Tessin, wo ich kürzlich war. Der Bär heisst auf lateinisch \"Ursus\". Da mein Vater Urs und meine Mutter Ursula heissen, denke ich mal, dass dies \"mein\" Sternbild ist. Interessant, dass es auch wirklich direkt über mir steht, hier wo ich geboren wurde. Astrologen staunen.",
             "IMAGEID": 112,
             "DATETIME": "2018-07-10 23:50:10"
         },
@@ -584,7 +584,7 @@
         {
             "ID": 92,
             "TITLE": "Na guck mal an,",
-            "TEXT": "auch hier hat es ein UFO. Nämlich der sich bewegende %%1Stern%%1 neben der mittleren Lampe. Ist wahrscheinlich nur ein normales Flugzeug, aber hier von der Ersichtlichkeit her ganz klar ein UFO.",
+            "TEXT": "auch hier hat es ein UFO. Nämlich der sich bewegende \"Stern\" neben der mittleren Lampe. Ist wahrscheinlich nur ein normales Flugzeug, aber hier von der Ersichtlichkeit her ganz klar ein UFO.",
             "IMAGEID": 113,
             "DATETIME": "2018-07-13 13:03:06"
         },
@@ -647,7 +647,7 @@
         {
             "ID": 101,
             "TITLE": "Servertechnik",
-            "TEXT": "Der Server fiel im September aus wegen zügeln. In Wahrheit ist der über eine virtuelle Maschine betriebene Server so geschrottet worden, dass ich das Backup nun auf ein Raspi gezügelt habe. Diesen habe ich dann mit der Stereoanlage verbunden.%%5\n%%5\nAuf der Musikseite hier (privat) kann man ja schonmal Musik hochladen und %%1zuhause%%1, also auf dem Client, hören.%%5\n%%5\nMit dem Musikserver Mopidy auf dem Raspi kann ich nun auf jedem beliebigen Gerät die Musik über meine Stereoanlage abspielen. Als Frontend habe ich RompR installiert. Das läuft perfekt...sehr empfehlenswert.",
+            "TEXT": "Der Server fiel im September aus wegen zügeln. In Wahrheit ist der über eine virtuelle Maschine betriebene Server so geschrottet worden, dass ich das Backup nun auf ein Raspi gezügelt habe. Diesen habe ich dann mit der Stereoanlage verbunden.\n\n\n\nAuf der Musikseite hier (privat) kann man ja schonmal Musik hochladen und \"zuhause\", also auf dem Client, hören.\n\n\n\nMit dem Musikserver Mopidy auf dem Raspi kann ich nun auf jedem beliebigen Gerät die Musik über meine Stereoanlage abspielen. Als Frontend habe ich RompR installiert. Das läuft perfekt...sehr empfehlenswert.",
             "IMAGEID": 126,
             "DATETIME": "2018-09-06 16:38:12"
         },
@@ -661,7 +661,7 @@
         {
             "ID": 103,
             "TITLE": "Tessin",
-            "TEXT": "Zum Geburtstag meines Vaters waren wir im Tessin.%%5\n%%5\nAuf diesem Bild sieht man den Badeplatz, welcher frei zugänglich ist - also gratis - und trotzdem mehr zu bieten hat als eine Badi - also eine Strandbar. Mit öffentlichem Bücherschrank.%%5\n%%5\nDer Badeplatz ist dort, wo die zwei Bäume stehen.%%5\n%%5\nUnser Haus war etwa 400m weiter oben, wobei man auf der Strasse mindestens 3km weit laufen/fahren musste. Aber es gibt dort einen Waldweg, der etwa 100m neben dem Haus beginnt und direkt oben beim Badeplatz aufhört. Nur zu Füss begehbar aber da gehts viel schöner. Und schneller. :)",
+            "TEXT": "Zum Geburtstag meines Vaters waren wir im Tessin.\n\n\n\nAuf diesem Bild sieht man den Badeplatz, welcher frei zugänglich ist - also gratis - und trotzdem mehr zu bieten hat als eine Badi - also eine Strandbar. Mit öffentlichem Bücherschrank.\n\n\n\nDer Badeplatz ist dort, wo die zwei Bäume stehen.\n\n\n\nUnser Haus war etwa 400m weiter oben, wobei man auf der Strasse mindestens 3km weit laufen/fahren musste. Aber es gibt dort einen Waldweg, der etwa 100m neben dem Haus beginnt und direkt oben beim Badeplatz aufhört. Nur zu Füss begehbar aber da gehts viel schöner. Und schneller. :)",
             "IMAGEID": 130,
             "DATETIME": "2018-10-26 20:52:51"
         },
@@ -703,23 +703,24 @@
         {
             "ID": 109,
             "TITLE": "Im Schiff",
-            "TEXT": "Jedermann sollte überall wo es geht mit dem Schiff mitfahren. Denn wenn man sonst %%1im Schiff%%1 herumfährt, dann ist das, wenn es regnet.%%5\n%%5\nUnd das Schiff ist genau so, wie ein Transportmittel sein sollte: Gemütlich. Das könnte man im Zug auch wieder einführen...in einem Zug oder auch Zug um Zug. Einfach den Fahrplan ent-takten und eine Geschwindigkeitsbegrenzung einbauen. Dies könnte man erreichen, indem man wieder Dampfloks benutzt. Die können nämlich nicht so schnell und sehen auch hübscher aus. ehm.... :)",
+            "TEXT": "Jedermann sollte überall wo es geht mit dem Schiff mitfahren. Denn wenn man sonst \"im Schiff\" herumfährt, dann ist das, wenn es regnet.\n\n\n\nUnd das Schiff ist genau so, wie ein Transportmittel sein sollte: Gemütlich. Das könnte man im Zug auch wieder einführen...in einem Zug oder auch Zug um Zug. Einfach den Fahrplan ent-takten und eine Geschwindigkeitsbegrenzung einbauen. Dies könnte man erreichen, indem man wieder Dampfloks benutzt. Die können nämlich nicht so schnell und sehen auch hübscher aus. ehm.... :)",
             "IMAGEID": 136,
             "DATETIME": "2018-12-04 22:06:00"
         },
         {
             "ID": 110,
             "TITLE": "und trotzdem..",
-            "TEXT": "langsamer als ein Töffli. :)%%5\n%%5\nUnd den Weihnachten entsprechend:%%5\nSüsser die Glocken nie klingen,%%5\nals wenn sie nicht klingen.%%5\n%%5\nWeil wenn man das Gebimmel jeden Tag und jede Viertelstunde sozusagen landesweit hören muss, dann wünscht man sich noch schnell so einen Islamistischen Schreihals-vom-Moscheeturm her - der heult nämlich nur zwei mal am Tag rum. No offense.",
+            "TEXT": "langsamer als ein Töffli. :)\n\n\n\nUnd den Weihnachten entsprechend:\n\nSüsser die Glocken nie klingen,\n\nals wenn sie nicht klingen.\n\n\n\nWeil wenn man das Gebimmel jeden Tag und jede Viertelstunde sozusagen landesweit hören muss, dann wünscht man sich noch schnell so einen Islamistischen Schreihals-vom-Moscheeturm her - der heult nämlich nur zwei mal am Tag rum. No offense.",
             "IMAGEID": 137,
             "DATETIME": "2018-12-10 06:17:53"
         },
         {
             "ID": 111,
             "TITLE": "Das neue Jahr",
-            "TEXT": "hat super begonnen. Superiduper. Und es kommt noch besser.%%5\n%%5\nFrohes neues Jahr 2019, dem Beginn der Roaring Twenties. :)",
+            "TEXT": "hat super begonnen. Superiduper. Und es kommt noch besser.\n\n\n\nFrohes neues Jahr 2019, dem Beginn der Roaring Twenties. :)",
             "IMAGEID": 138,
             "DATETIME": "2019-01-09 18:23:34"
         }
     ]
 }
+
