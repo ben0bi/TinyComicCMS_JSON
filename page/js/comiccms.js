@@ -23,7 +23,7 @@ function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog)
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 // ComicCMS is singleton.
-function ComicCMS() 
+function ComicCMS()
 {
 	var me = this; // prevent inner blocks from being this-ed.
 	var m_actualPageOrder = 0;
@@ -253,9 +253,51 @@ function ComicCMS()
 	// build and show the archive content.
 	this.buildAndShowArchives=function()
 	{
-		$("#pagecontent").html("archie");
-		// TODO: show archives.
+		var txt="archie";
+		var db = db_getComicSortedByOrder(false);
+// TODO: show archives here.
+		$("#pagecontent").html(txt);
 		$("#pagecontent").focus();
+	}
+
+	// sort the db by order.
+	var db_getComicSortedByOrder=function(ascending=false)
+	{
+		var db = m_imageDB['IMAGES'];
+		if(db.length<=1)
+			return db;
+
+		var found= true;
+		var sortsteps=0;
+		while(found)
+		{
+			found=false; // reset found.
+			sortsteps++;
+			for(var i=0;i<db.length-1;i++)
+			{
+				var entry1=db[i];
+				var entry2=db[i+1];
+				var o1 = entry1['ORDER'];
+				var o2 = entry2['ORDER'];
+				// maybe switch entries.
+				if(parseInt(o1)>parseInt(o2))
+				{
+					db[i]=entry2;
+					db[i+1]=entry1;
+					found = true;
+				}
+			}
+		}
+		// maybe switch.
+		if(ascending==false)
+		{
+			var db2=[];;
+			for(var i=db.length-1;i>=0;i--)
+				db2.push(db[i]);
+			db=db2;
+		}
+		log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG);
+		return db;
 	}
 
 	// get a comic row from the comic array.

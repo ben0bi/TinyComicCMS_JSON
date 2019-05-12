@@ -4,7 +4,7 @@
 	by Benedict Jäggi in 2019
 
 	version 1.00: It's all tested by myself so I put it outta beta. :)
-	
+
 	because they are sooo general, I will use double-underscore for them.
 	like jquerys $ you need to put __ before this stuff here.
 */
@@ -42,7 +42,7 @@ var log = function(text, loglevel = 0)
 		log.array.push(ll+text);
 	}
 };
-log.loglevel = LOG_DEBUG;
+log.loglevel = LOG_DEBUG_VERBOSE;
 // we push all log messages to this array, too.
 log.array = [];
 
