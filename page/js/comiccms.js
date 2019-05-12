@@ -26,25 +26,25 @@ function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog)
 function ComicCMS() 
 {
 	var me = this; // prevent inner blocks from being this-ed.
-	var m_actualPageID = 0;
+	var m_actualPageOrder = 0;
 	var m_imageJSONFile = "";
 	var m_blogJSONFile = "";
 	var m_langJSONFile = "";
 //	var m_doneLoading = -3; // done if >= 0
-	var isDoneLoading=function() 
+	var isDoneLoading=function()
 	{
 		if(m_doneLoading>=0)
 			return true;
 		return false;
 	}
-	
+
 // from php
-	var m_page = "latest";
+	var m_pageCmd = "latest";
 
 	var m_imageDB = [];
 	var m_blogDB = [];
 	var m_langDB = [];
-	
+
 	var m_contentDivId; // the id of the div where the content should go in.
 
 	this.initialize = function(contentDivId, imagedbname="", blogdbname = "", langdbname="")
@@ -53,15 +53,14 @@ function ComicCMS()
 		m_imageJSONFile = imagedbname;
 		m_blogJSONFile = blogdbname;
 		m_langJSONFile = langdbname;
-		
+
 		document.onkeydown=ComicCMS.checkKeys;
 
 		// load the jsons.
-		
 		// load the language db.
 		if(langdbname!="")
 		{
-			__loadJSON(m_langJSONFile, function(data) 
+			__loadJSON(m_langJSONFile, function(data)
 			{
 				log("Language Data: "+data);
 				m_langDB = data;
@@ -69,11 +68,11 @@ function ComicCMS()
 		}else{
 			log("No language loaded.", LOG_WARN);
 		}
-		
+
 		// load the image db.
 		if(imagedbname!="")
 		{
-			__loadJSON(m_imageJSONFile, function(data) 
+			__loadJSON(m_imageJSONFile, function(data)
 			{
 				log("Image Data:"+data);
 				m_imageDB = data;
@@ -81,7 +80,7 @@ function ComicCMS()
 		}else{
 			log("No Image DB loaded.", LOG_ERROR);
 		}
-		
+
 		// load the blog db.
 		if(blogdbname!="")
 		{
@@ -93,11 +92,11 @@ function ComicCMS()
 		}else{
 			log("No Blog DB loaded.", LOG_WARN);
 		}
-		
+
 		// fire the init function after all jsons are loaded. It waits for itself for the loading.
 		InitFunction();
 	}
-	
+
 	// the real load function.
 	var InitFunction=function()
 	{
@@ -108,28 +107,28 @@ function ComicCMS()
 			setTimeout(InitFunction, 30);
 			return;
 		}
-		
+
 		// from php
-		m_page = "latest";
+		m_pageCmd = "latest";
 
 		// maybe get the page commmand.
 		var p = $_GET("page");
 		var pp = $_GET("p");
 		if(p!=null)
-			m_page = p;
+			m_pageCmd = p;
 		if(pp!=null)
-			m_page = pp;
+			m_pageCmd = pp;
 
 		// maybe get the page id.
-		m_actualPageID = -1;
-		var id = $_GET("id");
+		m_actualPageOrder = -1;
+		var id = $_GET("id"); // for the end user, it's the id.
 		if(id!=null)
 		{
-			m_actualPageID = id;
-			if(m_page=="latest") m_page="next"; // set page command to next if it is latest.
+			m_actualPageOrder = parseInt(id);
+			if(m_pageCmd=="latest") m_pageCmd="next"; // set page command to next if it is latest.
 		}
-		m_actualPageID = getRealPageID(m_page, m_actualPageID);
-		
+		m_actualPageOrder = getRealPageOrder(m_pageCmd, m_actualPageOrder);
+
 		// loading is done, do the other stuff.
 		console.log("DONE LOADING");
 
@@ -140,10 +139,10 @@ function ComicCMS()
 		ComicCMS.initializeTouch();
 		ComicCMS.adjustPageHeight();
 		ComicCMS.showTitle();
-		
+
 		//showPage(m_actualPageID);
 	}
-	
+
 	// create the navigating links.
 	var buildNavigatingLinks = function(navlinkid)
 	{
@@ -151,7 +150,7 @@ function ComicCMS()
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
-		htm+='<td><nobr><a href="index.html?page=prev&id='+(m_actualPageID-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=prev&id='+(m_actualPageOrder-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// First
 		htm+='<td><nobr><a href="index.html?page=first">&nbsp;'+m_langDB['word_link_first']+'&nbsp;</a></nobr></td>';
@@ -163,7 +162,7 @@ function ComicCMS()
 		htm+='<td><nobr><a href="index.html?page=latest">&nbsp;'+m_langDB['word_link_last']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// Next
-		htm+='<td><nobr><a href="index.html?page=next&id='+(m_actualPageID+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=next&id='+(m_actualPageOrder+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
 		htm+='</tr></table></center></div>';
 		return htm;
 	}
@@ -171,24 +170,22 @@ function ComicCMS()
 	// create the page html.
 	var buildPageContents = function()
 	{
-		//global $word_link_previous, $word_link_next, $word_link_first, $word_link_last, $word_link_archives;
-		
 		// TODO: no reload after click.
 		var htm=buildNavigatingLinks('topnavigatinglinks');
-		
+
 		// maybe show no pages error.
-		if(m_actualPageID==-1)
+		if(m_actualPageOrder==-1)
 			htm+=m_langDB['sentence_error_no_pages']+'<br />';
-		
+
 		// get the searched comic entry.
-		var comicrow = db_getComicRowByOrder(m_actualPageID);
+		var comicrow = db_getComicRowByOrder(m_actualPageOrder);
 		if(comicrow!=null)
 		{
-			var realpageid=comicrow['ID'];
+			var comicid=comicrow['ID'];
 			var comicimage = comicrow['IMAGE'];
 			var comictitle = comicrow['TITLE'];
-			var comicid = comicrow['ID'];
-			
+			var comicorder = comicrow['ORDER'];
+
 			// build html for that image.
 			if(comicimage!="")
 			{
@@ -200,7 +197,7 @@ function ComicCMS()
 			}else{
 				htm+="<br /><br />"+comictitle+"<br /><br />"+m_langDB['sentence_error_no_image'];
 			}
-			
+
 			// get blog posts for that entry.
 			var blogposts = db_getBlogPostsByComicID(comicid);
 			for(var i=0;i<blogposts.length;i++)
@@ -211,19 +208,22 @@ function ComicCMS()
 				htm+='<div class="date">'+bp['DATETIME']+'</div>';
 				htm+='<div class="text">';
 				// create line breaks on blog text.
-				// TODO:
-				//echo ComicCMS::parseEnterChars($blogtext);
 				var t = bp['TEXT'];
-				t.replace('\n', '<br />');
+				var oldt="-1-1nop@nop+1+1";
+				while(oldt!=t)
+				{
+					oldt=t;
+					t.replace('\n', '<br />');
+				}
 				htm+=t;
 				htm+='</div>';
 				htm+='</article>';
 			}
 		}
-		
+
 		htm+='</center>';
-		$('#'+m_contentDivId).html(htm);	
-		
+		$('#'+m_contentDivId).html(htm);
+
 		// show the stuff after the image has loaded.
 		$("#pageimage").one("load", function()
 		{
@@ -240,7 +240,7 @@ function ComicCMS()
 			*/
 		}).each(function() {
 			// also do it from cache.
-				if(this.complete) 
+				if(this.complete)
 				{
 					log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
 					$(this).load();
@@ -249,7 +249,7 @@ function ComicCMS()
 
 		$("#pagecontent").focus();
 	}
-	
+
 	// build and show the archive content.
 	this.buildAndShowArchives=function()
 	{
@@ -266,14 +266,14 @@ function ComicCMS()
 			var idb = m_imageDB['IMAGES'][i];
 			if(parseInt(idb['ORDER'])==pageorder)
 			{
-				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG);
+				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
 				return idb;
 			}
 		}
 		log("Image at position "+pageorder+" not found!", LOG_ERROR);
 		return null;
 	}
-	
+
 	// get all blog posts referring to the given comic page id.
 	var db_getBlogPostsByComicID=function(pageid)
 	{
@@ -292,10 +292,13 @@ function ComicCMS()
 	var getRealPageOrder=function(cmd, pageorder)
 	{
 		var target = parseInt(pageorder);
+		if(target<0)
+			target =0;
+
 		var ret=pageorder;
 		var firstorder=-1;
 		var lastorder=-1;
-			
+
 		// get first and last row order id.
 		for(var i=0; i<m_imageDB['IMAGES'].length; i++)
 		{
@@ -306,7 +309,7 @@ function ComicCMS()
 			if(lastorder==-1 || order>lastorder)
 				lastorder=order;
 		}
-		
+
 		// select the id depending on the command.
 		switch(cmd.toLowerCase())
 		{
@@ -323,12 +326,12 @@ function ComicCMS()
 						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
 						if(nearest==-1)
 							nearest = order;
-						
+
 						// found, return it.
 						if(order==target) {return target;}
-						
+
 						// not found, check if it is nearer.
-						if(order-target>=0 && order<nearest)
+						if(order-target>=0 && Math.abs(order-target)<Math.abs(nearest-target))
 							nearest = order;
 					}
 					if(nearest!=-1)
@@ -337,6 +340,7 @@ function ComicCMS()
 					return lastorder;
 				}
 				break;
+			case 'prev':
 			case 'previous':
 				if(target>=0)
 				{
@@ -346,16 +350,16 @@ function ComicCMS()
 						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
 						if(nearest==-1)
 							nearest = order;
-						
+
 						if(order==target) {return target;}
-						
-						if(order-target<=0 && order>nearest)
+
+						if(order-target<=0 && Math.abs(order-target)<Math.abs(nearest-target))
 							nearest = order;
 					}
 					if(nearest!=-1)
 						return nearest;
 				}else{
-					return firstid;
+					return firstorder;
 				}
 				break;
 			default: break;
@@ -363,9 +367,9 @@ function ComicCMS()
 		log("No pageorder found for the given order "+ret, LOG_WARN);
 		return ret;
 	}
-	
-	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageID+1);}
-	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageID-1);}
+
+	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
+	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
 }
 
 // OLD STUFF, REVIEW!
