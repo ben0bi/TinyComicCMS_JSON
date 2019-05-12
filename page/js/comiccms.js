@@ -240,11 +240,11 @@ function ComicCMS()
 			*/
 		}).each(function() {
 			// also do it from cache.
-				if(this.complete)
-				{
-					log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
-					$(this).load();
-				}
+			if(this.complete)
+			{
+				log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
+				$(this).load();
+			}
 		});
 
 		$("#pagecontent").focus();
@@ -253,9 +253,41 @@ function ComicCMS()
 	// build and show the archive content.
 	this.buildAndShowArchives=function()
 	{
-		var txt="archie";
 		var db = db_getComicSortedByOrder(false);
-// TODO: show archives here.
+		var txt="";
+		txt+='<article id="archives">';
+		if(db.length<=0)
+		{
+			$("#pagecontent").html(m_langDB['sentence_no_archive_result']);
+			return;
+		}
+
+		// there is something in the db, process it.
+		var cl="noborder"; // admin: horizontalborder
+
+		txt+='<center><table style="position: relative; left:50px;">';
+		for(var i=0;i<db.length;i++)
+		{
+			var itm=db[i];
+			var id=itm['ID'];
+			var pageorder=itm['ORDER'];
+			var title=itm['TITLE'];
+			var date=itm['DATETIME'];
+			var path=itm['IMAGE'];
+
+			txt+='<tr class="'+cl+'">';
+			txt+='<td class="'+cl+'" valign="top">'+pageorder+'&nbsp;</td>';
+			txt+='<td class="'+cl+'" valign="top" onmouseover="ComicCMS.showArchiveDate('+id+',true);" onmouseout="ComicCMS.showArchiveDate('+id+',false);">';
+			txt+='<a href="index.html?id='+pageorder+'">'+title+'</a>';
+			txt+='</td>';
+			txt+='<td class="'+cl+'" valign="top" style="min-width: 150px;">';
+			txt+='<span id="dateof_'+id+'" style="display:none;">&nbsp;<small>&#8882;&#8986; '+date+'</small></span>';
+			txt+='</td>';
+
+			txt+='</tr>';
+		}
+		txt+='</table></center>';
+
 		$("#pagecontent").html(txt);
 		$("#pagecontent").focus();
 	}
@@ -414,14 +446,23 @@ function ComicCMS()
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
 }
 
-// OLD STUFF, REVIEW!
-
 ComicCMS.instance =new ComicCMS;
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
+// show or hide the date in the archives.
+ComicCMS.showArchiveDate=function(id, show=true)
+{
+	if(show)
+		$('#dateof_'+id).css('display', 'block');
+	else
+		$('#dateof_'+id).css('display', 'none');
+}
+
+
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
 
+// REALLY OLD STUFF...review
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
