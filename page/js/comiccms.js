@@ -147,7 +147,7 @@ function ComicCMS()
 	// create the navigating links.
 	var buildNavigatingLinks = function(navlinkid)
 	{
-		log("Building navigation links2 ("+navlinkid+")", LOG_DEBUG);
+		log("Building navigation links (id: "+navlinkid+")", LOG_DEBUG_VERBOSE);
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
@@ -289,85 +289,78 @@ function ComicCMS()
 	}
 
 	// returns the next or previous or actual page id depending on the command.
-	var getRealPageID=function(cmd, pageid)
+	var getRealPageOrder=function(cmd, pageorder)
 	{
-		var ret=pageid;
-		var firstid=-1;
-		var lastid=-1;
+		var target = parseInt(pageorder);
+		var ret=pageorder;
+		var firstorder=-1;
+		var lastorder=-1;
 			
 		// get first and last row order id.
 		for(var i=0; i<m_imageDB['IMAGES'].length; i++)
 		{
 			var img=m_imageDB['IMAGES'][i];
-			var order = img['ORDER'];
-			if(firstid==-1 || order<firstid)
-				firstid=order;
-			if(lastid==-1 || order>lastid)
-				lastid=order;
+			var order = parseInt(img['ORDER']);
+			if(firstorder==-1 || order<firstorder)
+				firstorder=order;
+			if(lastorder==-1 || order>lastorder)
+				lastorder=order;
 		}
 		
 		// select the id depending on the command.
 		switch(cmd.toLowerCase())
 		{
-			case 'first': ret = firstid; break;
+			case 'first': return firstorder;
 			case 'latest':
-			case 'last': ret = lastid; break;
+			case 'last': return lastorder;
 			case 'next':
-			// TODO: REVIEW, does not work right.
-				if(pageid<lastid)
+				// only get next if the pageorder is in range.
+				if(target<lastorder)
 				{
 					var nearest =-1;
 					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
 					{
-						var order = m_imageDB['IMAGES'][i]['ORDER'];
+						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
 						if(nearest==-1)
 							nearest = order;
 						
-						if(order==pageid)
-						{
-							ret=pageid;
-							nearest =-1;
-							break;
-						}
+						// found, return it.
+						if(order==target) {return target;}
 						
-						if(order-pageid>=0 && order<nearest)
+						// not found, check if it is nearer.
+						if(order-target>=0 && order<nearest)
 							nearest = order;
 					}
 					if(nearest!=-1)
-						ret=nearest;
+						return nearest;
 				}else{
-					ret = lastid;
+					return lastorder;
 				}
 				break;
 			case 'previous':
-				if(pageid>=0)
+				if(target>=0)
 				{
 					var nearest =-1;
 					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
 					{
-						var order = m_imageDB['IMAGES'][i]['ORDER'];
+						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
 						if(nearest==-1)
 							nearest = order;
 						
-						if(order==pageid)
-						{
-							ret= pageid;
-							nearest =-1;
-							break;
-						}
+						if(order==target) {return target;}
 						
-						if(order-pageid<=0 && order>nearest)
+						if(order-target<=0 && order>nearest)
 							nearest = order;
 					}
 					if(nearest!=-1)
-						ret=nearest;
+						return nearest;
 				}else{
-					ret = lastid;
+					return firstid;
 				}
 				break;
 			default: break;
 		}
-
+		log("No pageorder found for the given order "+ret, LOG_WARN);
 		return ret;
 	}
 	
