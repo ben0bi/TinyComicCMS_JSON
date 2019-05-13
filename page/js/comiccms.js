@@ -132,15 +132,10 @@ function ComicCMS()
 		// loading is done, do the other stuff.
 		console.log("DONE LOADING");
 
-		// NEW
 		buildPageContents();
-		// ENDOF NEW
-
 		ComicCMS.initializeTouch();
 		ComicCMS.adjustPageHeight();
 		ComicCMS.showTitle();
-
-		//showPage(m_actualPageID);
 	}
 
 	// create the navigating links.
@@ -170,7 +165,6 @@ function ComicCMS()
 	// create the page html.
 	var buildPageContents = function()
 	{
-		// TODO: no reload after click.
 		var htm=buildNavigatingLinks('topnavigatinglinks');
 
 		// maybe show no pages error.
@@ -255,7 +249,7 @@ function ComicCMS()
 	{
 		// switch the top bar links.
 		$('#mainlink').hide();
-		$('#archivelink').show();
+		//$('#archivelink').show();
 
 		var db = db_getComicSortedByOrder(false);
 		var txt="";
