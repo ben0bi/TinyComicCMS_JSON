@@ -209,13 +209,11 @@ class ComicCMS
 
 			$realpageid=$comicrow->id;
 			$comicimage=$comicrow->image;
-*/
-			
-// TODO: CONVERTER
-			$comictitle=SQL::sqlToText($comicrow->title);			// TODO: CONVERTER
-// TODO: CONVERTER
 
-/*			if($comicimage!="")
+			
+			$comictitle=SQL::sqlToText($comicrow->title);
+
+			if($comicimage!="")
 			{
 				// output comic page
 				echo '<div id="pageimagediv"><div id="loadertext">'.$sentence_wait_for_load.'</div>';

@@ -253,6 +253,10 @@ function ComicCMS()
 	// build and show the archive content.
 	this.buildAndShowArchives=function()
 	{
+		// switch the top bar links.
+		$('#mainlink').hide();
+		$('#archivelink').show();
+
 		var db = db_getComicSortedByOrder(false);
 		var txt="";
 		txt+='<article id="archives">';
@@ -457,10 +461,8 @@ ComicCMS.showArchiveDate=function(id, show=true)
 		$('#dateof_'+id).css('display', 'none');
 }
 
-
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
-
 
 // REALLY OLD STUFF...review
 
