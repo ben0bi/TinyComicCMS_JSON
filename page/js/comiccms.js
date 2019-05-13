@@ -249,7 +249,7 @@ function ComicCMS()
 	{
 		// switch the top bar links.
 		$('#mainlink').hide();
-		//$('#archivelink').show();
+		$('#archivelink').show();
 
 		var db = db_getComicSortedByOrder(false);
 		var txt="";
