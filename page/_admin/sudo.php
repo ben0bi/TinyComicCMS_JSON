@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 /* Admin file for the JSON version of TinyComicCMS.
 	by Benedict Jäggi in 2019
@@ -15,14 +16,8 @@ $relative_upload_path="../data/uploads/";
 
 //echo "Admin stuff in PHP for security reasons.";
 
-function showAdmin(var1, var2)
-{
-	
-}
-
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
 		<meta charset="utf-8">
@@ -40,7 +35,7 @@ function showAdmin(var1, var2)
 	<div id="pagecontent">
 		<div class="title" id="title">*loading*</div>
 		<div id="archivecontent"> <!-- for AJAX rebuild of the archives -->
-			<?php showAdmin('', 0); ?>
+			<?php //showAdmin('', 0); ?>
 		</div>
 	</div>
 </div>
