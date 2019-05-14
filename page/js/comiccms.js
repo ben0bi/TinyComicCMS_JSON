@@ -263,7 +263,7 @@ function ComicCMS()
 		// there is something in the db, process it.
 		var cl="noborder"; // admin: horizontalborder
 
-		txt+='<center><table style="position: relative; left:50px;">';
+		txt+='<center><table style="position: relative; left:200px;">';
 		for(var i=0;i<db.length;i++)
 		{
 			var itm=db[i];
@@ -275,10 +275,10 @@ function ComicCMS()
 
 			txt+='<tr class="'+cl+'">';
 			txt+='<td class="'+cl+'" valign="top">'+pageorder+'&nbsp;</td>';
-			txt+='<td class="'+cl+'" valign="top" onmouseover="ComicCMS.showArchiveDate('+id+',true);" onmouseout="ComicCMS.showArchiveDate('+id+',false);">';
+			txt+='<td class="'+cl+'" valign="top" onmouseover="ComicCMS.showArchiveDate('+id+',true);" onmouseout="ComicCMS.showArchiveDate('+id+',false);" style="max-width: 350px;">';
 			txt+='<a href="index.html?id='+pageorder+'">'+title+'</a>';
 			txt+='</td>';
-			txt+='<td class="'+cl+'" valign="top" style="min-width: 150px;">';
+			txt+='<td class="'+cl+'" valign="top" style="min-width: 200px;">';
 			txt+='<span id="dateof_'+id+'" style="display:none;">&nbsp;<small>&#8882;&#8986; '+date+'</small></span>';
 			txt+='</td>';
 
@@ -445,6 +445,8 @@ function ComicCMS()
 }
 
 ComicCMS.instance =new ComicCMS;
+ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
+
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
 // show or hide the date in the archives.
 ComicCMS.showArchiveDate=function(id, show=true)
@@ -458,13 +460,168 @@ ComicCMS.showArchiveDate=function(id, show=true)
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
+
+// use as document.onkeydown=ComicCMS.checkKeys
+// get next or previous post with arrow keys.
+ComicCMS.checkKeys = function(e)
+{
+	e = e || window.event();
+
+	// left arrow
+	if(e.keyCode=='37')
+		ComicCMS.prevPage();
+
+	// right arrow
+	if(e.keyCode=='39')
+		ComicCMS.nextPage();
+};
+
+// get next or previous post with swiping on a tablet.
+ComicCMS.touchStartX = 0;
+ComicCMS.initializeTouch = function()
+{
+	var pgimgdiv = document.getElementById("pageimagediv");
+
+	pgimgdiv.addEventListener('touchstart', function(e)
+	{
+		e.preventDefault();
+		ComicCMS.touchStartX=e.changedTouches[0].pageX;
+	});
+
+	// move the image on touch.
+	pgimgdiv.addEventListener('touchmove', function(e)
+	{
+		e.preventDefault();
+		var startedX=ComicCMS.touchStartX;
+		var actualX=e.changedTouches[0].pageX;
+		var computed = actualX-startedX;
+		$('#pageimageMoveContainer').css('left',computed);
+		var l=$('#pageimageMoveContainer').css('left');
+	});
+
+	// maybe load a page if touch ends.
+	pgimgdiv.addEventListener('touchend', function(e)
+	{
+		e.preventDefault();
+		var dir = 0;
+		var tE=e.changedTouches[0].pageX;
+		if(tE<ComicCMS.touchStartX-200)
+			dir = -1;
+		if(tE>ComicCMS.touchStartX+200)
+			dir = 1;
+
+		// reset the image position.
+		$('#pageimageMoveContainer').css('left',0);
+
+		// maybe load the new page.
+		// Warning: vice-versa to the swipe direction.
+		if(dir==1)
+			ComicCMS.prevPage();
+		if(dir==-1)
+			ComicCMS.nextPage();
+		//alert("End: "+dir);
+	});
+
+	pgimgdiv.addEventListener('touchcancel', function(e) 
+	{
+		// reset the image position.
+		$('#pageimageMoveContainer').css('left',0);
+	});
+};
+
+// because of the moving image when swiping, the position of the image mover div is "absolute"
+// so, we need to adjust its height to get the page flow right again.
+ComicCMS.adjustPageHeight = function()
+{
+	// get the width from the wrapper for different stuff.
+	var ww = $("#wrapper").width();
+	$(".pagelinks").width(ww);
+	$("#pagetitle").width(ww);
+	if(ww<$("#pagetitle_image").width())
+	{
+		$("#pagetitle_image").width(ww);
+		$("#pagecontent").css('top',$("#pagetitle_image").height()+10);
+	}
+
+	$("#pagecontent").width(ww);
+	$("#pageimage").width(ww);
+
+	// eventually adjust the page height.
+	var h = $('#pageimageMoveContainer').outerHeight();
+	$('#pageimagediv').height(h);
+
+	// do it again if the image is not loaded.
+	if($('#pageimage').prop('complete')==false)
+	{
+		$('#pageimage').load(function() 
+		{
+			var h = $('#pageimageMoveContainer').outerHeight();
+			$('#pageimagediv').height(h);
+		});
+	}
+}
+
+// show the title beneath the mouse pointer.
+// or in the upper left if it is a touch device.
+ComicCMS.touching = 0;
+ComicCMS.showTitle = function()
+{
+	// load some stuff if document is ready
+	// show the title of the page beneath the mouse button.
+	$("#pageimage").mousemove(function(e)
+	{
+		var offset=$("#pageimagediv").offset();
+		var x=e.pageX-offset.left+20;
+		var y=e.pageY-offset.top+20;
+		$("#pageimagediv").children(".popup").css({position: "absolute", left:x, top:y});
+		$("#pageimagediv").children(".popup").show();
+	})
+
+	// hide the title of the page if the mouse is not over the image.
+	$("#pageimage").mouseout(function() {$("#pageimagediv").children(".popup").hide();});
+
+	// show the title if a touch starts. show it at top left of the image.
+	$("#pageimage").on('touchstart', function(e)
+	{
+		//e.preventDefault();
+		ComicCMS.touching = 1;
+		var mtop = parseInt($("#pageimageMoveContainer").css('top'))+20;
+
+		var x2 = '20px';
+		var y2 = mtop+'px';
+		$("#pageimagediv").children(".popup").css({position: "absolute", left:x2, top:y2});
+		$("#pageimagediv").children(".popup").show();
+	});//, {passive: true});
+
+	$("#pageimage").on('touchend', function(e) 
+	{
+		if(ComicCMS.touching==1)
+		{
+			e.preventDefault();
+			$("#pageimagediv").children(".popup").hide();
+			ComicCMS.touching = 0;
+		}
+	});
+	$("#pageimage").on('touchcancel', function(e) 
+	{
+		if(ComicCMS.touching==1)
+		{
+			e.preventDefault();
+			$("#pageimagediv").children(".popup").hide();
+			ComicCMS.touching = 0;
+		}
+	});
+};
+
+
 // REALLY OLD STUFF...review
 
+// DB STUFF. needs to be reviewed alot. That is the sudo.php for. All teh stuff below.
+
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
-ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 // show a window with the blog posts and update stuff for a given post.
-var actualAdminBlogTitleShowID=-1;
+/*var actualAdminBlogTitleShowID=-1;
 ComicCMS.showAdminBlogTitles= function(id)
 {
 	if(actualAdminBlogTitleShowID!=-1)
@@ -608,111 +765,9 @@ ComicCMS.updatePageTitle = function(dirToRoot, pageID)
 
 	xhr.send(formData);
 }
+*/
 
-// use as document.onkeydown=ComicCMS.checkKeys
-// get next or previous post with arrow keys.
-ComicCMS.checkKeys = function(e)
-{
-	e = e || window.event();
-
-	// left arrow
-	if(e.keyCode=='37')
-		ComicCMS.prevPage();
-
-	// right arrow
-	if(e.keyCode=='39')
-		ComicCMS.nextPage();
-};
-
-// get next or previous post with swiping on a tablet.
-ComicCMS.touchStartX = 0;
-ComicCMS.initializeTouch = function()
-{
-	var pgimgdiv = document.getElementById("pageimagediv");
-
-	pgimgdiv.addEventListener('touchstart', function(e)
-	{
-		e.preventDefault();
-		ComicCMS.touchStartX=e.changedTouches[0].pageX;
-	});
-
-	// move the image on touch.
-	pgimgdiv.addEventListener('touchmove', function(e)
-	{
-		e.preventDefault();
-		var startedX=ComicCMS.touchStartX;
-		var actualX=e.changedTouches[0].pageX;
-		var computed = actualX-startedX;
-		$('#pageimageMoveContainer').css('left',computed);
-		var l=$('#pageimageMoveContainer').css('left');
-	});
-
-	// maybe load a page if touch ends.
-	pgimgdiv.addEventListener('touchend', function(e)
-	{
-		e.preventDefault();
-		var dir = 0;
-		var tE=e.changedTouches[0].pageX;
-		if(tE<ComicCMS.touchStartX-200)
-			dir = -1;
-		if(tE>ComicCMS.touchStartX+200)
-			dir = 1;
-
-		// reset the image position.
-		$('#pageimageMoveContainer').css('left',0);
-
-		// maybe load the new page.
-		// Warning: vice-versa to the swipe direction.
-		if(dir==1)
-			ComicCMS.prevPage();
-		if(dir==-1)
-			ComicCMS.nextPage();
-		//alert("End: "+dir);
-	});
-
-	pgimgdiv.addEventListener('touchcancel', function(e) 
-	{
-		// reset the image position.
-		$('#pageimageMoveContainer').css('left',0);
-	});
-};
-
-// because of the moving image when swiping, the position of the image mover div is "absolute"
-// so, we need to adjust its height to get the page flow right again.
-ComicCMS.adjustPageHeight = function()
-{
-	// adjust image containers the top link bar.
-	//var tlh = $('#topnavigatinglinks').height();
-	//$("#pageimageMoveContainer").css('top', tlh);
-
-	// get the width from the wrapper for different stuff.
-	var ww = $("#wrapper").width();
-	$(".pagelinks").width(ww);
-	$("#pagetitle").width(ww);
-	if(ww<$("#pagetitle_image").width())
-	{
-		$("#pagetitle_image").width(ww);
-		$("#pagecontent").css('top',$("#pagetitle_image").height()+10);
-	}
-
-	$("#pagecontent").width(ww);
-	$("#pageimage").width(ww);
-
-	// eventually adjust the page height.
-	var h = $('#pageimageMoveContainer').outerHeight();
-	$('#pageimagediv').height(h);
-
-	// do it again if the image is not loaded.
-	if($('#pageimage').prop('complete')==false)
-	{
-		$('#pageimage').load(function() 
-		{
-			var h = $('#pageimageMoveContainer').outerHeight();
-			$('#pageimagediv').height(h);
-		});
-	}
-}
-
+/*
 // create or a blogpost for a given id.
 ComicCMS.window_createblogpost = function(dirToRoot, id)
 {
@@ -925,59 +980,9 @@ ComicCMS.window_deleteblogpost = function(dirToRoot, id, title)
 			dialog.close();
 		});
 };
+*/
 
-// show the title beneath the mouse pointer.
-// or in the upper left if it is a touch device.
-ComicCMS.touching = 0;
-ComicCMS.showTitle = function()
-{
-	// load some stuff if document is ready
-	// show the title of the page beneath the mouse button.
-	$("#pageimage").mousemove(function(e)
-	{
-		var offset=$("#pageimagediv").offset();
-		var x=e.pageX-offset.left+20;
-		var y=e.pageY-offset.top+20;
-		$("#pageimagediv").children(".popup").css({position: "absolute", left:x, top:y});
-		$("#pageimagediv").children(".popup").show();
-	})
-
-	// hide the title of the page if the mouse is not over the image.
-	$("#pageimage").mouseout(function() {$("#pageimagediv").children(".popup").hide();});
-
-	// show the title if a touch starts. show it at top left of the image.
-	$("#pageimage").on('touchstart', function(e)
-	{
-		//e.preventDefault();
-		ComicCMS.touching = 1;
-		var mtop = parseInt($("#pageimageMoveContainer").css('top'))+20;
-
-		var x2 = '20px';
-		var y2 = mtop+'px';
-		$("#pageimagediv").children(".popup").css({position: "absolute", left:x2, top:y2});
-		$("#pageimagediv").children(".popup").show();
-	});//, {passive: true});
-
-	$("#pageimage").on('touchend', function(e) 
-	{
-		if(ComicCMS.touching==1)
-		{
-			e.preventDefault();
-			$("#pageimagediv").children(".popup").hide();
-			ComicCMS.touching = 0;
-		}
-	});
-	$("#pageimage").on('touchcancel', function(e) 
-	{
-		if(ComicCMS.touching==1)
-		{
-			e.preventDefault();
-			$("#pageimagediv").children(".popup").hide();
-			ComicCMS.touching = 0;
-		}
-	});
-};
-
+/*
 // move a page up or down in the pageorder.
 ComicCMS.movepage = function(dirToRoot, pageorder, direction)
 {
@@ -1004,3 +1009,4 @@ ComicCMS.movepagedown = function(dirToRoot, pageorder)
 {
 	this.movepage(dirToRoot, pageorder, "down");
 };
+*/
