@@ -44,6 +44,7 @@ function ComicCMS()
 	var m_imageDB = [];
 	var m_blogDB = [];
 	var m_langDB = [];
+	this.getLang=function(name) {return m_langDB[name];};
 
 	var m_contentDivId; // the id of the div where the content should go in.
 
@@ -52,22 +53,12 @@ function ComicCMS()
 		m_contentDivId = contentDivId;
 		m_imageJSONFile = imagedbname;
 		m_blogJSONFile = blogdbname;
-		m_langJSONFile = langdbname;
 
 		document.onkeydown=ComicCMS.checkKeys;
 
 		// load the jsons.
 		// load the language db.
-		if(langdbname!="")
-		{
-			__loadJSON(m_langJSONFile, function(data)
-			{
-				log("Language Data: "+data);
-				m_langDB = data;
-			});
-		}else{
-			log("No language loaded.", LOG_WARN);
-		}
+		this.loadLanguage(langdbname);
 
 		// load the image db.
 		if(imagedbname!="")
@@ -95,6 +86,23 @@ function ComicCMS()
 
 		// fire the init function after all jsons are loaded. It waits for itself for the loading.
 		InitFunction();
+	}
+
+	// load a language file into the DB structure.
+	this.loadLanguage = function(filename)
+	{
+		m_langJSONFile = filename;
+		
+		if(m_langJSONFile!="")
+		{
+			__loadJSON(m_langJSONFile, function(data)
+			{
+				log("Language Data: "+data);
+				m_langDB = data;
+			});
+		}else{
+			log("No language loaded.", LOG_WARN);
+		}		
 	}
 
 	// the real load function.
@@ -448,6 +456,11 @@ ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
+
+// return the language associated with the given term.
+ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
+ComicCMS.loadLanguage = function(filename) {ComicCMS.instance.loadLanguage(filename);};
+
 // show or hide the date in the archives.
 ComicCMS.showArchiveDate=function(id, show=true)
 {

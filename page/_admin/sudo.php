@@ -13,7 +13,13 @@ $admin_login_password="anypass";
 // the relative path for the uploads.
 $relative_upload_path="../data/uploads/";
 
-echo "Admin stuff in PHP for security reasons.";
+//echo "Admin stuff in PHP for security reasons.";
+
+function showAdmin(var1, var2)
+{
+	
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,28 +38,34 @@ echo "Admin stuff in PHP for security reasons.";
 	</div>
 
 	<div id="pagecontent">
-		<div class="title"><?php echo($word_title_archives); ?></div>
+		<div class="title" id="title">*loading*</div>
 		<div id="archivecontent"> <!-- for AJAX rebuild of the archives -->
-			<?php ComicCMS::showArchives('', 0); ?>
+			<?php showAdmin('', 0); ?>
 		</div>
 	</div>
 </div>
 <br />
 
 <div class="adminlinkdiv">
-<span id="adminlink" class="bglinkcolor"><nobr>
-<a href="_admin/index.php" class="bglinkcolor">Admin</a>&nbsp;|
 <a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
-</nobr></span>
 </div>
 
-<?php ComicCMS::includeJSScripts(''); ?>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-dialog.min.js"></script>
 
-<script src="js/AdminLinkOriginalPos.js"></script>
+<script src="../js/bhelpers.js"></script>
+<script src="../js/comiccms.js"></script>
+
+<script src="../js/AdminLinkOriginalPos.js"></script>
 
 <script>
 $( document ).ready(function()
 {
+	$('#title').html(m_langDB)
+	ComicCMS.loadLanguage("../data/jsons/lang.german.json", function() {
+		$('#title').html(ComicCMS.getLang('word_title_archives'));
+	});
+
 	ComicCMS.adjustPageHeight();
 });
 </script>
