@@ -159,6 +159,24 @@ function showAdmin($dirToRoot, $admin)
 			?>
 			</nobr>
 		</div>
+		
+	<?php
+	if($error!="")
+		echo '<br /><font class="error">'.$error.'</font><br />';
+	if($login==291)
+	{
+		echo '<div id="archivecontent">'; // for AJAX rebuild of the archives.
+			ComicCMS::showArchives('../', 291);
+		echo '</div>';
+		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/sudo.php)<br />";
+	}else{
+		echo '<br />'.$langFileJSON['sentence_please_input_password'].'<br /><form action="sudo.php" method="post">';
+		echo '<input type="password" name="rawloginpassword" >';
+		echo '<button type="submit">'.$langFileJSON['word_submit'].'</button>';
+		echo '</form>';	
+	}
+	?>
+	
 	</div>
 </div>
 <br />
@@ -166,7 +184,6 @@ function showAdmin($dirToRoot, $admin)
 <div id="adminlink">
 	<a href="https://github.com/ben0bi/TinyComicCMS_JSON" target="_new" class="bglinkcolor">Source</a>
 </div>
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
