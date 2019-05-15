@@ -472,6 +472,7 @@ ComicCMS.showArchiveDate=function(id, show=true)
 		$('#dateof_'+id).css('display', 'none');
 }
 
+// get the next or the previous page.
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 

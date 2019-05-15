@@ -16,6 +16,7 @@
 	"word_link_newblogpost": "Neuer Blog Eintrag",	"//": "new blog entry (link)",
 	
 	"word_title_archives": "Archiv",						"//": "title of the archives page.",
+	"word_title_adminpage": "Administration",				"//": "title of the admin page.",
 	"word_title_blogpost": "Blog Post",						"//": "Blogpost on the upload page.",
 	"word_title_comicpage": "Comic Page",					"//": "Comic page on the upload page.",
 	"word_title_update_blogpost": "Blog Eintrag updaten..", "//": "Update Blogpost..",

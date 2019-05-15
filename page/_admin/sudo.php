@@ -42,7 +42,7 @@ $relative_upload_path="../data/uploads/";
 <br />
 
 <div id="adminlink">
-<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
+	<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -58,8 +58,7 @@ $relative_upload_path="../data/uploads/";
 $( document ).ready(function()
 {
 	ComicCMS.loadLanguage("../data/jsons/lang.german.json", function() {
-		log("Hello", LOG_DEBUG);
-		$('#title').html(ComicCMS.getLang('word_title_archives'));
+		$('#title').html(ComicCMS.getLang('word_title_adminpage'));
 	});
 
 	ComicCMS.adjustPageHeight();
