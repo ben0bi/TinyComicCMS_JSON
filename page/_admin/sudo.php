@@ -41,7 +41,7 @@ $relative_upload_path="../data/uploads/";
 </div>
 <br />
 
-<div class="adminlinkdiv">
+<div class="adminlink">
 <a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
 </div>
 
