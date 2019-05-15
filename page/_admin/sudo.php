@@ -18,7 +18,7 @@ $relative_upload_path="../data/uploads/";
 
 $langFileName = "../data/jsons/lang.german.json";
 $langFile = file_get_contents($langFileName);
-$langFileJSON = json_decode($string, true);
+$langFileJSON = json_decode($langFile, true);
 
 // show either the password field or the archives with some specials.
 function showAdmin($dirToRoot, $admin)
