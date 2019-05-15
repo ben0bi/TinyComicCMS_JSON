@@ -89,7 +89,7 @@ function ComicCMS()
 	}
 
 	// load a language file into the DB structure.
-	this.loadLanguage = function(filename)
+	this.loadLanguage = function(filename, func=null)
 	{
 		m_langJSONFile = filename;
 		
@@ -99,6 +99,8 @@ function ComicCMS()
 			{
 				log("Language Data: "+data);
 				m_langDB = data;
+				if(typeof(func)==="function")
+					func(data);
 			});
 		}else{
 			log("No language loaded.", LOG_WARN);
@@ -459,7 +461,7 @@ ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchiv
 
 // return the language associated with the given term.
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
-ComicCMS.loadLanguage = function(filename) {ComicCMS.instance.loadLanguage(filename);};
+ComicCMS.loadLanguage = function(filename, func=null) {ComicCMS.instance.loadLanguage(filename, func);};
 
 // show or hide the date in the archives.
 ComicCMS.showArchiveDate=function(id, show=true)
