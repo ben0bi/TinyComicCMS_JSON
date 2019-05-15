@@ -15,11 +15,21 @@ $admin_login_password="anypass";
 $relative_upload_path="../data/uploads/";
 
 //echo "Admin stuff in PHP for security reasons.";
+
+$langFileName = "../data/jsons/lang.german.json";
+$langFile = file_get_contents($langFileName);
+$langFileJSON = json_decode($string, true);
+
+// show either the password field or the archives with some specials.
 function showAdmin($dirToRoot, $admin)
 {
+	global $langFileJSON;
+	
+	$lang =
 	if($admin!=291)
 	{
-		echo '<div id="passwordtext">*loading*</div>';
+		echo '<br /><br /><div id="passwordtext">'.$langFileJSON['sentence_please_input_password'].'<br /></div>';
+		echo '<input type="text" id="passwordfield"></input>';
 		return;
 	}
 	
@@ -164,7 +174,6 @@ $( document ).ready(function()
 {
 	ComicCMS.loadLanguage("../data/jsons/lang.german.json", function() {
 		$('#title').html(ComicCMS.getLang('word_title_adminpage'));
-		$('#passwordtext').html(ComicCMS.getLang('sentence_please_input_password'));
 	});
 
 	ComicCMS.adjustPageHeight();
