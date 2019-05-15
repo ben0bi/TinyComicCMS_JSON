@@ -24,15 +24,14 @@ $langFileJSON = json_decode($langFile, true);
 function showAdmin($dirToRoot, $admin)
 {
 	global $langFileJSON;
-	
-	$lang =
+
 	if($admin!=291)
 	{
 		echo '<br /><br /><div id="passwordtext">'.$langFileJSON['sentence_please_input_password'].'<br /></div>';
 		echo '<input type="text" id="passwordfield"></input>';
 		return;
 	}
-	
+
 	// firstid and lastid are only used on admin panel.
 	$firstid=-1;
 	$lastid=-1;
