@@ -29,7 +29,7 @@ $relative_upload_path="../data/uploads/";
 <body>
 <div id="wrapper">
 	<div id="pagetitle">
-		<a href="index.php" style="border:0;"><img id="pagetitle_image" src="images/pagetitle.png" /></a>
+		<a href="javascript:" style="border:0;" onclick="leaveAdminPanel();"><img id="pagetitle_image" src="../images/pagetitle.png" /></a>
 	</div>
 
 	<div id="pagecontent">
