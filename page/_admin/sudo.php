@@ -160,11 +160,12 @@ function showAdmin($dirToRoot, $admin)
 			</nobr>
 		</div>
 	</div>
-</div>
+
 <br />
 
 <div id="adminlink">
 	<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
+</div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
