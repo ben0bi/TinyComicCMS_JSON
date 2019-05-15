@@ -140,7 +140,7 @@ function showAdmin($dirToRoot, $admin)
 	<div id="pagecontent">
 		<div class="title" id="title">*loading*</div>
 		<div id="archivecontent"> <!-- for AJAX rebuild of the archives -->
-			<?php //showAdmin('', 0); ?>
+			<?php showAdmin('', 0); ?>
 		</div>
 	</div>
 </div>
