@@ -147,9 +147,17 @@ function showAdmin($dirToRoot, $admin)
 	</div>
 
 	<div id="pagecontent">
-		<div class="title" id="title">*loading*</div>
-		<div id="archivecontent"> <!-- for AJAX rebuild of the archives -->
-			<?php showAdmin('', 0); ?>
+		<div class="pagelinks">
+			<nobr>
+			<?php
+				if($login==291)
+				{ 	
+					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$word_link_newpage.'</a>';
+					echo '&nbsp;|&nbsp;';
+				}
+			 	echo '<a href="../index.php" >'.$word_link_mainsite.'</a>'; 
+			?>
+			</nobr>
 		</div>
 	</div>
 </div>
@@ -171,10 +179,6 @@ function showAdmin($dirToRoot, $admin)
 <script>
 $( document ).ready(function()
 {
-	ComicCMS.loadLanguage("../data/jsons/lang.german.json", function() {
-		$('#title').html(ComicCMS.getLang('word_title_adminpage'));
-	});
-
 	ComicCMS.adjustPageHeight();
 });
 </script>
