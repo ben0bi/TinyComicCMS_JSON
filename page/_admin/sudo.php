@@ -152,10 +152,10 @@ function showAdmin($dirToRoot, $admin)
 			<?php
 				if($login==291)
 				{ 	
-					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$word_link_newpage.'</a>';
+					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$langFileJSON['word_link_newpage'].'</a>';
 					echo '&nbsp;|&nbsp;';
 				}
-			 	echo '<a href="../index.php" >'.$word_link_mainsite.'</a>'; 
+			 	echo '<a href="javascript:" onclick="leaveAdminPanel();>'.$langFileJSON['word_link_mainsite'].'</a>';
 			?>
 			</nobr>
 		</div>
