@@ -155,7 +155,7 @@ function showAdmin($dirToRoot, $admin)
 					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$langFileJSON['word_link_newpage'].'</a>';
 					echo '&nbsp;|&nbsp;';
 				}
-			 	echo '<a href="javascript:" onclick="leaveAdminPanel();>'.$langFileJSON['word_link_mainsite'].'</a>';
+			 	echo '<a href="javascript:" onclick="leaveAdminPanel();">'.$langFileJSON['word_link_mainsite'].'</a>';
 			?>
 			</nobr>
 		</div>
@@ -164,7 +164,7 @@ function showAdmin($dirToRoot, $admin)
 <br />
 
 <div id="adminlink">
-	<a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
+	<a href="https://github.com/ben0bi/TinyComicCMS_JSON" target="_new" class="bglinkcolor">Source</a>
 </div>
 </div>
 
