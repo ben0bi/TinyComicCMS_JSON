@@ -58,6 +58,7 @@ $relative_upload_path="../data/uploads/";
 $( document ).ready(function()
 {
 	ComicCMS.loadLanguage("../data/jsons/lang.german.json", function() {
+		log("Hello", LOG_DEBUG);
 		$('#title').html(ComicCMS.getLang('word_title_archives'));
 	});
 
