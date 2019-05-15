@@ -48,7 +48,7 @@ function getAdminPass()
 
 $login=getAdminPass();
 $error="";
-if($login==777) $error=$sentence_wrong_password;
+if($login==777) $error=$langFileJSON['sentence_wrong_password'];
 
 ?>
 
