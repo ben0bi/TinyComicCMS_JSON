@@ -23,7 +23,7 @@
 
 <div class="adminlinkdiv">
 <span id="adminlink" class="bglinkcolor"><nobr>
-<a href="_admin/index.php" class="bglinkcolor">Admin</a>&nbsp;|
+<a href="_admin/sudo.php" class="bglinkcolor">Admin</a>&nbsp;|
 <a href="https://github.com/ben0bi/TinyComicCMS" target="_new" class="bglinkcolor">Source</a>
 </nobr></span>
 </div>

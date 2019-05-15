@@ -51,6 +51,8 @@ function phpupload($fileID)
 // if $admin == 291 -> show admin links
 
 //TODO: json stuff
+
+/*
 function showArchives($dirToRoot, $admin)
 {
 	// firstid and lastid are only used on admin panel.
@@ -151,4 +153,4 @@ function showArchives($dirToRoot, $admin)
 	}
 	echo '</article>'.chr(13);
 }
-
+*/
