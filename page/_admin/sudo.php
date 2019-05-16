@@ -78,7 +78,7 @@ function sortImageDBByOrder()
 		// reset switched.
 		$switched = 0;
 		// clear target.
-		$target = [];
+		$target = array();
 		for($i=0;$i<sizeof($source)-2;$i++)
 		{
 			// get this and the next element and maybe switch them.
@@ -98,7 +98,7 @@ function sortImageDBByOrder()
 				$target[] = $elem1;
 			}
 		}
-		$source=[];
+		//$source=array();
 		echo("turn");
 		// set source to target.
 		$source = $target;
