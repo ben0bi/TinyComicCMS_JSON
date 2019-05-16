@@ -437,7 +437,6 @@ function ComicCMS()
 	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
 	var a_confirmBox=function(title, text, successlabel, successfunc)
 	{	
-	title="fick dich du scheiss.";
         BootstrapDialog.show(
 		{
             title: title,
@@ -463,6 +462,7 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
+		log("FICKENDOTKOMM");
 		var msg='<center><form id="pageuploadform" action="'+dirToRoot+'php/ajax_uploadpage.php" method="POST">';
 		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
