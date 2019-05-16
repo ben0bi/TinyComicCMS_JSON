@@ -121,6 +121,7 @@ function getBlogEntriesByImageID($targetid)
 function showAdmin()
 {
 	global $dirToRoot;
+	global $relative_upload_path;
 	global $imageDB;
 	global $langDB;
 	$db = $imageDB['IMAGES'];
