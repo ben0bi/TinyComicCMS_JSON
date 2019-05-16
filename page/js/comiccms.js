@@ -635,7 +635,7 @@ ComicCMS.showTitle = function()
 // DB STUFF. needs to be reviewed alot. That is the sudo.php for. All teh stuff below.
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
-
+/*
 // show a box to update a page title.
 ComicCMS.updatePageTitleForm = function(dirToRoot, pageID)
 {
