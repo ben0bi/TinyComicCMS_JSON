@@ -1,10 +1,10 @@
-function confirmBox(title, text, successlabel, successfunc)
+function confirmBox(title, text, successlabel, successfunc, word_cancel = "Cancel")
 {
         BootstrapDialog.show({
             title: title,
             message: text,
             buttons: [{
-                label: m_langDB['word_cancel'],
+                label: word_cancel,
                 action: function(dialog) {
                     dialog.close();
                 }
@@ -506,7 +506,7 @@ function ComicCMS()
 
 			// submit the form.
 			$("#pageuploadform").submit();
-		});
+		}, m_langDB['word_cancel']);
 	}
 }
 
