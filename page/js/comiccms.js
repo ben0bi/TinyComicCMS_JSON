@@ -434,7 +434,7 @@ function ComicCMS()
 	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
 	
-	var a_confirmBox(title, text, successlabel, successfunc, word_cancel = "Cancel")
+	var a_confirmBox=function(title, text, successlabel, successfunc, word_cancel = "Cancel")
 	{	
         BootstrapDialog.show({
             title: title,
