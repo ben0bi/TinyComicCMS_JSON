@@ -65,7 +65,7 @@ function ComicCMS()
 		{
 			__loadJSON(m_imageJSONFile, function(data)
 			{
-				log("Image Data:"+data);
+				log("Image Data:"+data, LOG_DEBUG_VERBOSE);
 				m_imageDB = data;
 			});
 		}else{
@@ -77,7 +77,7 @@ function ComicCMS()
 		{
 			__loadJSON(m_blogJSONFile, function(data)
 			{
-				log("Blog Data ("+m_blogJSONFile+"):"+data);
+				log("Blog Data ("+m_blogJSONFile+"):"+data, LOG_DEBUG_VERBOSE);
 				m_blogDB = data;
 			});
 		}else{
@@ -97,7 +97,7 @@ function ComicCMS()
 		{
 			__loadJSON(m_langJSONFile, function(data)
 			{
-				log("Language Data: "+data);
+				log("Language Data: "+data, LOG_DEBUG_VERBOSE);
 				m_langDB = data;
 				if(typeof(func)==="function")
 					func(data);
@@ -140,7 +140,7 @@ function ComicCMS()
 		m_actualPageOrder = getRealPageOrder(m_pageCmd, m_actualPageOrder);
 
 		// loading is done, do the other stuff.
-		console.log("DONE LOADING");
+		log("DONE LOADING");
 
 		buildPageContents();
 		ComicCMS.initializeTouch();
@@ -231,7 +231,7 @@ function ComicCMS()
 		// show the stuff after the image has loaded.
 		$("#pageimage").one("load", function()
 		{
-			log("IMAGE LOADED", LOG_DEBUG);
+			log("IMAGE LOADED", LOG_DEBUG_VERBOSE);
 			// do stuff
 			$('#loadertext').hide();
 			$('#pageimageMoveContainer').css('display', 'block');
@@ -246,7 +246,7 @@ function ComicCMS()
 			// also do it from cache.
 			if(this.complete)
 			{
-				log("IMAGE LOADED FROM CACHE", LOG_DEBUG);
+				log("IMAGE LOADED FROM CACHE", LOG_DEBUG_VERBOSE);
 				$(this).load();
 			}
 		});
@@ -336,7 +336,7 @@ function ComicCMS()
 				db2.push(db[i]);
 			db=db2;
 		}
-		log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG);
+		log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG_VERBOSE);
 		return db;
 	}
 

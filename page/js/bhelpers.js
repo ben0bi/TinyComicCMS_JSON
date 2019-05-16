@@ -42,7 +42,7 @@ var log = function(text, loglevel = 0)
 		log.array.push(ll+text);
 	}
 };
-log.loglevel = LOG_DEBUG_VERBOSE;
+log.loglevel = LOG_WARN;
 // we push all log messages to this array, too.
 log.array = [];
 
