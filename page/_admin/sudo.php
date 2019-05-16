@@ -114,6 +114,8 @@ function showAdmin()
 	// The db should already be sorted, see above.
 	$firstorder = -1;
 	$lastorder = -1;
+	
+	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
 	{
 		$firstorder=$db[0]['ORDER'];
