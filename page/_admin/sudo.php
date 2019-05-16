@@ -123,7 +123,7 @@ function showAdmin()
 		
 		// it's already admin we don't need to set the class but this is from the original version. 
 		$class="horizontalborder";
-		echo '<center><table style="position: relative; left: 50px;">'.chr(13);
+		echo '<center><table border="0">'.chr(13);
 		foreach($db as $itm)
 		{
 			$id=$itm['ID'];
