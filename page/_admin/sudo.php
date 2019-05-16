@@ -63,15 +63,65 @@ function getAdminPass()
 	return -1;
 }
 
+// sort the image db by the pageorder.
+function sortImageDBByOrder()
+{
+	global $imageDB;
+	
+	$source = $imageDB['IMAGES'];
+	$target = [];
+	$switched = 1;
+	while($switched==1)
+	{
+		// reset switched.
+		$switched = 0;
+		// clear target.
+		$target = [];
+		for($i=0;$i<sizeof($source)-2;$i++)
+		{
+			// get this and the next element and maybe switch them.
+			$elem1= $source[$i];
+			$elem2 = $source[$i+1];
+		
+			// push the elements in the right order.
+			if($elem1['ORDER'] <= $elem2['ORDER'])
+			{
+				$target[] = $elem1;
+				$target[] = $elem2;
+			}else{
+				// it switched, set switched to 1.
+				$switched = 1;
+				$target[] = $elem2;
+				$target[] = $elem1;
+			}
+		}
+		// set source to target.
+		$source = $target;
+	}
+	return $source;
+}
+// sort it just at the beginning of the page.
+$imageDB['IMAGES'] = sortImageDBByOrder();
+
 // show the admin archives panel.
 function showAdmin($dirToRoot)
 {
 	global $imageDB;
-	
+	$db = $imageDB['IMAGES'];
+
+	// The db should already be sorted, see above.
 	$firstorder = -1;
 	$lastorder = -1;
+	
+	if(sizeof($db)>0)
+	{
+		$firstorder=$db[0]['ORDER'];
+		$lastorder = $db[sizeof($db)-1]['ORDER'];
+	}
+	
+	echo "FIRST $firstorder LAST $lastorder<br />";
 	// get first and last order;
-	foreach($imageDB['IMAGES'] as $itm)
+/*	foreach($imageDB['IMAGES'] as $itm)
 	{
 		$o = $itm['ORDER'];
 		if($o<$firstorder || $firstorder==-1)
@@ -80,7 +130,7 @@ function showAdmin($dirToRoot)
 			$lastorder = $o;
 		echo "IMG<br />";
 	}
-	
+	*/
 	// firstorder and lastorder are only used on admin panel.
 /*	$firstid=-1;
 	$lastid=-1;
