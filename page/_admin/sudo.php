@@ -69,7 +69,7 @@ function sortImageDBByOrder()
 	global $imageDB;
 	
 	$source = $imageDB['IMAGES'];
-	$target = [];
+	$target = array();
 	$switched = 1;
 	$turn=0;
 	while($turn<10)
@@ -99,9 +99,9 @@ function sortImageDBByOrder()
 			}
 		}
 		//$source=array();
-		echo("turn");
 		// set source to target.
 		$source = $target;
+		echo("turn ".sizeof($source));
 	}
 	return $source;
 }
