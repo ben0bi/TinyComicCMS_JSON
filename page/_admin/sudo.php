@@ -98,6 +98,7 @@ function sortImageDBByOrder()
 				$target[] = $elem1;
 			}
 		}
+		$source=[];
 		echo("turn");
 		// set source to target.
 		$source = $target;
