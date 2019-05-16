@@ -101,7 +101,7 @@ function sortImageDBByOrder()
 		//$source=array();
 		// set source to target.
 		$source = $target;
-		echo("turn ".sizeof($source));
+		echo("<br /> turn ".sizeof($source));
 	}
 	return $source;
 }
