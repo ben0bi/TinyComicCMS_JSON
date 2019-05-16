@@ -434,19 +434,25 @@ function ComicCMS()
 	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
 	
-	var a_confirmBox=function(title, text, successlabel, successfunc, word_cancel = "Cancel")
+	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
+	var a_confirmBox=function(title, text, successlabel, successfunc)
 	{	
-        BootstrapDialog.show({
+        BootstrapDialog.show(
+		{
             title: title,
             message: text,
-            buttons: [{
-                label: word_cancel,
-                action: function(dialog) {
+            buttons: [
+			{
+                label: m_langDB['word_cancel'],
+                action: function(dialog) 
+				{
                     dialog.close();
                 }
-            }, {
+            }, 
+			{
                 label: successlabel,
-                action: function(dialog) {
+                action: function(dialog) 
+				{
                     successfunc(dialog);
                 }
             }]
@@ -506,7 +512,7 @@ function ComicCMS()
 
 			// submit the form.
 			$("#pageuploadform").submit();
-		}, m_langDB['word_cancel']);
+		});
 	}
 }
 
