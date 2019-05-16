@@ -4,7 +4,7 @@ function confirmBox(title, text, successlabel, successfunc)
             title: title,
             message: text,
             buttons: [{
-                label: word_cancel,
+                label: m_langDB['word_cancel'],
                 action: function(dialog) {
                     dialog.close();
                 }
