@@ -452,6 +452,62 @@ function ComicCMS()
 
 	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
+	
+	// Admin stuff.
+	this.a_window_createPage = function(dirToRoot)
+	{
+			var msg='<center><form id="pageuploadform" action="'+dirToRoot+'php/ajax_uploadpage.php" method="POST">';
+	msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
+	msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+	msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
+	msg=msg+'<tr><td class="black">'+m_langDB['word_file']+':&nbsp;</td>';
+	msg=msg+'<td><input type="file" id="upload_pagefile" name="upload_pagefile" /></td></tr>';
+	msg=msg+'</table><hr><h3>'+m_langDB['word_title_blogpost']+'</h3><table border="0" style="width:100%;" >';
+	msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+	msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
+	msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
+	msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
+	msg=msg+'</table></form></center>';
+
+	msg=msg+'<script>';
+	msg=msg+'var form=document.getElementById("pageuploadform");';
+	msg=msg+'form.onsubmit = function(event) {';
+	msg=msg+	'event.preventDefault();';
+	msg=msg+	'ComicCMS.pageUpload("'+dirToRoot+'");';
+	msg=msg+'};';
+	msg=msg+'</script>';
+
+	confirmBox(m_langDB['sentence_title_newpage'], msg, m_langDB['word_save_page'], function(dialog)
+		{
+			// check if stuff exists.
+			var title=$("#upload_pagetitle").val();
+			if(title=="")
+			{
+				alert(m_langDB['sentence_must_input_title_for_page']);
+				return;
+			}
+
+			if(document.getElementById('upload_pagefile').files.length == 0)
+			{
+				alert(m_langDB['sentence_must_input_file_for_page']);
+				return;
+			}
+
+			var blogtitle=$("#upload_blogtitle").val();
+			var blogtext=$("#upload_blogtext").val();
+
+			if((blogtitle=="" && blogtext!="")||(blogtitle!="" && blogtext==""))
+			{
+				alert(m_langDB['sentence_blog_must_have_title_and_text']);
+				return;
+			}
+
+			dialog.close();
+
+			// submit the form.
+			$("#pageuploadform").submit();
+		});
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
@@ -476,6 +532,9 @@ ComicCMS.showArchiveDate=function(id, show=true)
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
+
+// create a comic page.
+ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
@@ -843,62 +902,6 @@ ComicCMS.createBlogpost = function(dirToRoot, id)
 	xhr.send(formData);
 
 	//alert("Create Blog Post: "+dirToRoot+" "+id);
-};
-
-// create a comic page.
-ComicCMS.window_createPage = function(dirToRoot)
-{
-	var msg='<center><form id="pageuploadform" action="'+dirToRoot+'php/ajax_uploadpage.php" method="POST">';
-	msg=msg+'<h3>'+word_title_comicpage+'</h3><table border="0">';
-	msg=msg+'<tr><td class="black">'+word_title+':&nbsp;</td>';
-	msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
-	msg=msg+'<tr><td class="black">'+word_file+':&nbsp;</td>';
-	msg=msg+'<td><input type="file" id="upload_pagefile" name="upload_pagefile" /></td></tr>';
-	msg=msg+'</table><hr><h3>'+word_title_blogpost+'</h3><table border="0" style="width:100%;" >';
-	msg=msg+'<tr><td class="black">'+word_title+':&nbsp;</td>';
-	msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
-	msg=msg+'<tr><td valign="top" class="black">'+word_text+':&nbsp;</td>';
-	msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
-	msg=msg+'</table></form></center>';
-
-	msg=msg+'<script>';
-	msg=msg+'var form=document.getElementById("pageuploadform");';
-	msg=msg+'form.onsubmit = function(event) {';
-	msg=msg+	'event.preventDefault();';
-	msg=msg+	'ComicCMS.pageUpload("'+dirToRoot+'");';
-	msg=msg+'};';
-	msg=msg+'</script>';
-
-	confirmBox(sentence_title_newpage, msg, word_save_page, function(dialog)
-		{
-			// check if stuff exists.
-			var title=$("#upload_pagetitle").val();
-			if(title=="")
-			{
-				alert(sentence_must_input_title_for_page);
-				return;
-			}
-
-			if(document.getElementById('upload_pagefile').files.length == 0)
-			{
-				alert(sentence_must_input_file_for_page);
-				return;
-			}
-
-			var blogtitle=$("#upload_blogtitle").val();
-			var blogtext=$("#upload_blogtext").val();
-
-			if((blogtitle=="" && blogtext!="")||(blogtitle!="" && blogtext==""))
-			{
-				alert(sentence_blog_must_have_title_and_text);
-				return;
-			}
-
-			dialog.close();
-
-			// submit the form.
-			$("#pageuploadform").submit();
-		});
 };
 
 ComicCMS.pageUpload = function(dirToRoot)
