@@ -174,34 +174,8 @@ function showAdmin()
 	}
 	echo '</article>'.chr(13);
 
-	
-	//echo "FIRST $firstorder LAST $lastorder<br />";
 
-	// show posts.
-/*	echo '<article id="archives">'.chr(13);
-	$archiveresult=SQL::query(SQL::query_archives());
-	if($archiveresult!=-1)
-	{
-		$class="noborder";
-		if($admin==291)
-			$class="horizontalborder";
-
-		echo '<center><table style="position: relative; left: 50px;">'.chr(13);
-		while($archiverow=mysqli_fetch_object($archiveresult))
-		{
-			$id=$archiverow->id;
-			$pageorder=$archiverow->pageorder;
-			$title=SQL::sqlToText($archiverow->title);
-			$date=date('d.m.Y',strtotime($archiverow->createdate));
-			$path=$archiverow->image;
-
-			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
-			if($admin==291)
-			{
-				// show admin stuff
-				echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.showAdminBlogTitles('$id')\">$title&nbsp;</a>\n";
-
-				// push all blog titles here
+/*				// push all blog titles here
 				echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
 				echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
 */
@@ -229,38 +203,8 @@ ENDOF TODO */
 /*				echo '</div>';
 				echo "</td>\n";
 
-				// show change title link
-				echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
 
-				// show page moving stuff
-				if($pageorder!=$firstid)
-					echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\">&nbsp;v&nbsp;</a></td>".chr(13));
-				else
-					echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
 
-				if($pageorder!=$lastid)
-					echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;^&nbsp;</a></td>".chr(13);
-				else
-					echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
-				
-				
-				// show delete page
-				echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$dirToRoot', '$id', '$title');\">$word_delete</a></td>\n";
-
-				// show create blog post
-				echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_createblogpost('../','$id')\">$word_link_newblogpost</a></td>\n";
-			}else{
-				// show end user archive link
-				echo "<td class=\"$class\" valign=\"top\" onmouseover=\"$('#dateof_$id').css('display','block');\" onmouseout=\"$('#dateof_$id').css('display', 'none');\"><a href=\"index.php?id=$pageorder\">$title</a></td>".chr(13);
-				echo "<td class=\"$class\" valign=\"top\" style=\"min-width:100px;\"><span id=\"dateof_$id\" style=\"display:none;\">&nbsp;<small>&#8882;&#8986; ".$date."</small></span></td>".chr(13);
-			}
-			echo "</tr>".chr(13);
-		}
-		echo '</table></center>'.chr(13);
-	}else{
-		echo $sentence_no_archive_result;
-	}
-	
 	*/
 }
 
@@ -274,9 +218,9 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 <html>
 <head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="../css/bootstrap-dialog.min.css">
+		<link rel="stylesheet" href="extern/bootstrap.min.css">
+		<link rel="stylesheet" href="extern/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="extern/bootstrap-dialog.min.css">
 		<link rel="stylesheet" href="../css/comiccms.css">
 </head>
 <body>
@@ -326,8 +270,8 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-dialog.min.js"></script>
+<script src="extern/bootstrap.min.js"></script>
+<script src="extern/bootstrap-dialog.min.js"></script>
 
 <script src="../js/bhelpers.js"></script>
 <script src="../js/comiccms.js"></script>
