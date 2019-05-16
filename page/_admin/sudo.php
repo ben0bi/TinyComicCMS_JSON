@@ -94,7 +94,6 @@ function sortImageDBByOrder()
 				$source[$i+1]=$elem1;
 			}
 		}
-		echo("<br /> turn ".sizeof($source));
 	}
 	return $source;
 }
