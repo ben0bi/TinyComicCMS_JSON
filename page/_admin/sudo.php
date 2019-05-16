@@ -69,38 +69,31 @@ function sortImageDBByOrder()
 	global $imageDB;
 	
 	$source = $imageDB['IMAGES'];
-	$target = array();
 	$switched = 1;
-	$turn=0;
-	while($turn<10)
+	while($switched==1)
 	{
-		$turn=$turn+1;
 		// reset switched.
 		$switched = 0;
 		// clear target.
-		$target = array();
 		for($i=0;$i<sizeof($source)-2;$i++)
 		{
 			// get this and the next element and maybe switch them.
 			$elem1= $source[$i];
 			$elem2 = $source[$i+1];
-		
-			// push the elements in the right order.
-			if($elem1['ORDER'] <= $elem2['ORDER'])
+
+			// get the order.
+			$o1=$elem1['ORDER'];
+			$o2=$elem2['ORDER'];
+			
+			// maybe switch them.
+			if($o1>$o2)
 			{
-				$target[] = $elem1;
-				$target[] = $elem2;
-			}else{
-				// it switched, set switched to 1.
-				$switched = 1;
-				echo "Switch ".$elem1['ORDER']." ".$elem2['ORDER'];
-				$target[] = $elem2;
-				$target[] = $elem1;
+				// something changed, set switched to 1.
+				$switched=1;
+				$source[$i]=$elem2;
+				$source[$i+1]=$elem1;
 			}
 		}
-		//$source=array();
-		// set source to target.
-		$source = $target;
 		echo("<br /> turn ".sizeof($source));
 	}
 	return $source;
