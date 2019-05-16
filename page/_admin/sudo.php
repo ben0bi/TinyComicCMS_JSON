@@ -10,7 +10,7 @@
 // DB file names.
 $langFileName = "../data/jsons/lang.german.json";
 $imageDBFileName = "../data/jsons/imagedb.json";
-$blogDBFileName = = "../data/jsons/blogdb.json";
+$blogDBFileName = "../data/jsons/blogdb.json";
 
 /* Password for the login.
 Users will not see it because it is in PHP code.
@@ -65,7 +65,7 @@ function getAdminPass()
 // show the admin archives panel.
 function showAdmin($dirToRoot)
 {
-	global $imageDB;
+/*	global $imageDB;
 	
 	$firstorder = -1;
 	$lastorder = -1;
