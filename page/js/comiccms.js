@@ -456,28 +456,28 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
-			var msg='<center><form id="pageuploadform" action="'+dirToRoot+'php/ajax_uploadpage.php" method="POST">';
-	msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
-	msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
-	msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
-	msg=msg+'<tr><td class="black">'+m_langDB['word_file']+':&nbsp;</td>';
-	msg=msg+'<td><input type="file" id="upload_pagefile" name="upload_pagefile" /></td></tr>';
-	msg=msg+'</table><hr><h3>'+m_langDB['word_title_blogpost']+'</h3><table border="0" style="width:100%;" >';
-	msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
-	msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
-	msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
-	msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
-	msg=msg+'</table></form></center>';
+		var msg='<center><form id="pageuploadform" action="'+dirToRoot+'php/ajax_uploadpage.php" method="POST">';
+		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
+		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+		msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
+		msg=msg+'<tr><td class="black">'+m_langDB['word_file']+':&nbsp;</td>';
+		msg=msg+'<td><input type="file" id="upload_pagefile" name="upload_pagefile" /></td></tr>';
+		msg=msg+'</table><hr><h3>'+m_langDB['word_title_blogpost']+'</h3><table border="0" style="width:100%;" >';
+		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+		msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
+		msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
+		msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
+		msg=msg+'</table></form></center>';
 
-	msg=msg+'<script>';
-	msg=msg+'var form=document.getElementById("pageuploadform");';
-	msg=msg+'form.onsubmit = function(event) {';
-	msg=msg+	'event.preventDefault();';
-	msg=msg+	'ComicCMS.pageUpload("'+dirToRoot+'");';
-	msg=msg+'};';
-	msg=msg+'</script>';
+		msg=msg+'<script>';
+		msg=msg+'var form=document.getElementById("pageuploadform");';
+		msg=msg+'form.onsubmit = function(event) {';
+		msg=msg+	'event.preventDefault();';
+		msg=msg+	'ComicCMS.pageUpload("'+dirToRoot+'");';
+		msg=msg+'};';
+		msg=msg+'</script>';
 
-	confirmBox(m_langDB['sentence_title_newpage'], msg, m_langDB['word_save_page'], function(dialog)
+		confirmBox(m_langDB['sentence_title_newpage'], msg, m_langDB['word_save_page'], function(dialog)
 		{
 			// check if stuff exists.
 			var title=$("#upload_pagetitle").val();
