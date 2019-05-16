@@ -41,6 +41,7 @@ $blogDB = json_decode($blogDBFile,true);
 function getAdminPass()
 {
 	global $admin_login_password;
+	
 	// get login password from "adress bar"
 	if(isset($_GET['pass']))
 	{
@@ -65,7 +66,7 @@ function getAdminPass()
 // show the admin archives panel.
 function showAdmin($dirToRoot)
 {
-/*	global $imageDB;
+	global $imageDB;
 	
 	$firstorder = -1;
 	$lastorder = -1;
