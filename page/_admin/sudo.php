@@ -30,7 +30,7 @@ $dirToRoot = "../";
 
 // get the language translations.
 $langFile = file_get_contents($dirToRoot.$langFileName);
-$langFileJSON = json_decode($langFile, true);
+$langDB = json_decode($langFile, true);
 
 // get the image db.
 $imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
@@ -265,7 +265,7 @@ ENDOF TODO */
 // check if the user is logged in.
 $login=getAdminPass();
 $error="";
-if($login==777) $error=$langFileJSON['sentence_wrong_password'];
+if($login==777) $error=$langDB['sentence_wrong_password'];
 
 ?>
 
@@ -289,10 +289,10 @@ if($login==777) $error=$langFileJSON['sentence_wrong_password'];
 			<?php
 				if($login==291)
 				{ 	
-					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$langFileJSON['word_link_newpage'].'</a>';
+					echo '<a href="javascript:" onclick="ComicCMS.window_createPage(\'../\');">'.$langDB['word_link_newpage'].'</a>';
 					echo '&nbsp;|&nbsp;';
 				}
-			 	echo '<a href="javascript:" onclick="leaveAdminPanel();">'.$langFileJSON['word_link_mainsite'].'</a>';
+			 	echo '<a href="javascript:" onclick="leaveAdminPanel();">'.$langDB['word_link_mainsite'].'</a>';
 			?>
 			</nobr>
 		</div>
@@ -308,9 +308,9 @@ if($login==777) $error=$langFileJSON['sentence_wrong_password'];
 		echo '</div>';
 		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/sudo.php)<br />";
 	}else{
-		echo '<br />'.$langFileJSON['sentence_please_input_password'].'<br /><form action="sudo.php" method="post">';
+		echo '<br />'.$langDB['sentence_please_input_password'].'<br /><form action="sudo.php" method="post">';
 		echo '<input type="password" name="rawloginpassword" >';
-		echo '<button type="submit">'.$langFileJSON['word_submit'].'</button>';
+		echo '<button type="submit">'.$langDB['word_submit'].'</button>';
 		echo '</form>';	
 	}
 	?>
