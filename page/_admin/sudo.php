@@ -164,8 +164,8 @@ function showAdmin()
 			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_createblogpost('$dirToRoot','$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
 
 			echo "</tr>".chr(13);
-			echo '</table></center>'.chr(13);
 		}
+		echo '</table></center>'.chr(13);
 		
 	}else{
 		echo $langDB['sentence_no_archive_result'];
