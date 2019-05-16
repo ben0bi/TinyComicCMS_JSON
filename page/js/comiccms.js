@@ -539,7 +539,6 @@ ComicCMS.showArchiveDate=function(id, show=true)
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
-
 // create a comic page.
 ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
 
