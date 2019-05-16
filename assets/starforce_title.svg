@@ -11,11 +11,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    width="800"
    height="130"
    sodipodi:docname="starforce_title.svg"
-   inkscape:export-filename="/home/ben0bi/Schreibtisch/StarForce/images/pagetitle.png"
+   inkscape:export-filename="C:\Users\ben0bi\Desktop\ARBEIT\TinyComicCMS_JSON\page\images\pagetitle.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <metadata
@@ -26,12 +26,45 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs6" />
+     id="defs6">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter1126">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood1116" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite1118" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur1120" />
+      <feOffset
+         dx="3.8"
+         dy="-3.1"
+         result="offset"
+         id="feOffset1122" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite1124" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -41,15 +74,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1301"
-     inkscape:window-height="744"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.54216521"
-     inkscape:cx="690.81623"
-     inkscape:cy="240.72635"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
+     inkscape:zoom="1.5334748"
+     inkscape:cx="357.13603"
+     inkscape:cy="102.00273"
+     inkscape:window-x="1432"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      showguides="true"
@@ -113,7 +146,7 @@
          sodipodi:cy="216.6692"
          sodipodi:rx="36.725662"
          sodipodi:ry="35.553566"
-         d="m 797.41566,216.6692 c 0,19.6357 -16.44263,35.55357 -36.72566,35.55357 -20.28302,0 -36.72566,-15.91787 -36.72566,-35.55357 0,-19.63569 16.44264,-35.55356 36.72566,-35.55356 20.28303,0 36.72566,15.91787 36.72566,35.55356 z"
+         d="M 797.41566,216.6692 A 36.725662,35.553566 0 0 1 760.69,252.22277 36.725662,35.553566 0 0 1 723.96434,216.6692 36.725662,35.553566 0 0 1 760.69,181.11564 36.725662,35.553566 0 0 1 797.41566,216.6692 Z"
          transform="matrix(-0.98271666,0,0,1.1770708,1255.3395,-62.830967)" />
       <path
          sodipodi:type="arc"
@@ -123,7 +156,7 @@
          sodipodi:cy="216.6692"
          sodipodi:rx="36.725662"
          sodipodi:ry="35.553566"
-         d="m 797.41566,216.6692 c 0,19.6357 -16.44263,35.55357 -36.72566,35.55357 -20.28302,0 -36.72566,-15.91787 -36.72566,-35.55357 0,-19.63569 16.44264,-35.55356 36.72566,-35.55356 20.28303,0 36.72566,15.91787 36.72566,35.55356 z"
+         d="M 797.41566,216.6692 A 36.725662,35.553566 0 0 1 760.69,252.22277 36.725662,35.553566 0 0 1 723.96434,216.6692 36.725662,35.553566 0 0 1 760.69,181.11564 36.725662,35.553566 0 0 1 797.41566,216.6692 Z"
          transform="matrix(-0.33188972,0,0,0.39752831,760.26195,106.07188)" />
     </g>
     <g
@@ -159,24 +192,41 @@
   <flowRoot
      xml:space="preserve"
      id="flowRoot3866"
-     style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffc800;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
-     transform="matrix(0.72751003,0,0,0.72751003,116.59375,-9.109235)"><flowRegion
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffc800;fill-opacity:1;stroke:none"
+     transform="matrix(0.72751003,0,0,0.72751003,112.59233,-9.1092355)"><flowRegion
        id="flowRegion3868"><rect
          id="rect3870"
          width="763.29047"
          height="54.222828"
          x="12.512959"
          y="126.90407"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffc800;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans" /></flowRegion><flowPara
-       id="flowPara3872">Die Macht der Sterne</flowPara></flowRoot>  <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle;fill:#ffc800;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+       id="flowPara3872"
+       style="font-size:40px;line-height:1.25">Die Macht der Sterne</flowPara></flowRoot>  <flowRoot
      xml:space="preserve"
      id="flowRoot3874"
-     style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
      transform="translate(0,-120)"><flowRegion
-       id="flowRegion3876"><rect
+       id="flowRegion3876"
+       style="font-family:sans-serif"><rect
          id="rect3878"
          width="1165.7906"
          height="469.23596"
          x="-125.12959"
-         y="-179.61159" /></flowRegion><flowPara
-       id="flowPara3880" /></flowRoot></svg>
+         y="-179.61159"
+         style="font-family:sans-serif" /></flowRegion><flowPara
+       id="flowPara3880"
+       style="font-size:10px;line-height:1.25;font-family:sans-serif"> </flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot836"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:0;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter1126)"
+     transform="rotate(-15,1027.0017,-1275.1411)"><flowRegion
+       id="flowRegion838"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';letter-spacing:0px;fill:#00ff00;fill-opacity:0;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><rect
+         id="rect840"
+         width="403.00629"
+         height="118.6847"
+         x="181.93974"
+         y="-91.718674"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';letter-spacing:0px;fill:#00ff00;fill-opacity:0;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /></flowRegion><flowPara
+       id="flowPara842">reloaded</flowPara></flowRoot></svg>
