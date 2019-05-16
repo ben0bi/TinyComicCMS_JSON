@@ -157,22 +157,21 @@ function showAdmin()
 			echo '<img src="'.$relative_upload_path.$path.'" class="image_preview" /><br>';
 			
 			$blogresult=getBlogEntriesByImageID($id);
-			$found=-1;
 			if(sizeof($blogresult)>0)
 			{
 				echo '<table border="0">';
 				foreach($blogresult as $itm)
 				{
-					$found=1;
 					$bt = $itm['TITLE'];
 					$bid=$itm['ID'];
 					echo '<tr><td>&nbsp;&gt;&nbsp;</td>';
 					echo '<td><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
 					echo "<td>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
 						echo '</tr>';
-					}
-					echo '</table>';
 				}
+				echo '</table>';
+			}else{
+				echo $langDB['sentence_admin_no_blogpost']."&nbsp;";
 			}
 			
 			echo '</div>';
