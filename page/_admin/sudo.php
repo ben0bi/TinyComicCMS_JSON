@@ -150,7 +150,7 @@ function showAdmin()
 			
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
 			
-			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
+			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
 			// push all blog titles here
 			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
@@ -308,6 +308,23 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 <script src="../js/comiccms.js"></script>
 
 <script src="../js/AdminLinkOriginalPos.js"></script>
+
+<script>
+// show a window with the blog posts and update stuff for a given post.
+var actualAdminBlogTitleShowID=-1;
+function ComicCMS_showAdminBlogTitles(id)
+{
+	if(actualAdminBlogTitleShowID!=-1)
+		$("#admin_blogtitles_"+actualAdminBlogTitleShowID).hide();
+	if(actualAdminBlogTitleShowID!=id)
+	{
+		$("#admin_blogtitles_"+id).show();
+		actualAdminBlogTitleShowID=id;
+	}else{
+		actualAdminBlogTitleShowID=-1;
+	}
+}
+</script>
 
 <script>
 $( document ).ready(function()

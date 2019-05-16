@@ -636,21 +636,6 @@ ComicCMS.showTitle = function()
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 
-// show a window with the blog posts and update stuff for a given post.
-/*var actualAdminBlogTitleShowID=-1;
-ComicCMS.showAdminBlogTitles= function(id)
-{
-	if(actualAdminBlogTitleShowID!=-1)
-		$("#admin_blogtitles_"+actualAdminBlogTitleShowID).hide();
-	if(actualAdminBlogTitleShowID!=id)
-	{
-		$("#admin_blogtitles_"+id).show();
-		actualAdminBlogTitleShowID=id;
-	}else{
-		actualAdminBlogTitleShowID=-1;
-	}
-}
-
 // show a box to update a page title.
 ComicCMS.updatePageTitleForm = function(dirToRoot, pageID)
 {
