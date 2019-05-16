@@ -28,46 +28,51 @@ $dirToRoot = "../";
 
 //echo "Admin stuff in PHP for security reasons.";
 
+// functions for loading and saving the databases (again).
+
+function loadImageDB()
+{
+	global $imageDBFileName;
+	global $dirToRoot;
+	// get the image db.
+	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
+	$imageDB = json_decode($imageDBFile, true);
+	return $imageDB;
+}
+
+function loadBlogDB()
+{
+	global $blogDBFileName;
+	global $dirToRoot;
+	// get the blog db.
+	$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
+	$blogDB = json_decode($blogDBFile,true);
+	return $blogDB;
+}
+
+function saveImageDB()
+{
+	global $imageDBFileName;
+	global $dirToRoot;
+	// TODO: save image db.
+}
+
+function saveBlogDB()
+{
+	global $blogDBFileName;
+	global $dirToRoot;
+	// TODO: save blog db.
+}
+
 // get the language translations.
 $langFile = file_get_contents($dirToRoot.$langFileName);
 $langDB = json_decode($langFile, true);
 
-// get the image db.
-$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
-$imageDB = json_decode($imageDBFile, true);
-
-// get the blog db.
-$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
-$blogDB = json_decode($blogDBFile,true);
-
-// returns 291 on success.
-function getAdminPass()
-{
-	global $admin_login_password;
-	
-	// get login password from "adress bar"
-	if(isset($_GET['pass']))
-	{
-		if($_GET['pass'] == sha1($admin_login_password))
-			return 291;
-	}
-	// get login password from form
-	if(isset($_POST['rawloginpassword']))
-	{
-		if($_POST['rawloginpassword']==$admin_login_password)
-		{
-			// return the admin pass
-			return 291;
-		}else{
-			// wrong password returns 777.
-			return 777;
-		}
-	}
-	return -1;
-}
+// get the blog db. Get the image db below the next function.
+$blogDB = loadBlogDB();
 
 // sort the image db by the pageorder.
-function sortImageDBByOrder($reverse=0)
+function sortImageDBByOrder()
 {
 	global $imageDB;
 	
@@ -100,8 +105,37 @@ function sortImageDBByOrder($reverse=0)
 	}
 	return $source;
 }
+
 // sort it just when loading the page.
-$imageDB['IMAGES'] = sortImageDBByOrder(1);
+// get the image DB
+$imageDB = loadImageDB();
+$imageDB['IMAGES'] = sortImageDBByOrder();
+
+// returns 291 on success.
+function getAdminPass()
+{
+	global $admin_login_password;
+	
+	// get login password from "adress bar"
+	if(isset($_GET['pass']))
+	{
+		if($_GET['pass'] == sha1($admin_login_password))
+			return 291;
+	}
+	// get login password from form
+	if(isset($_POST['rawloginpassword']))
+	{
+		if($_POST['rawloginpassword']==$admin_login_password)
+		{
+			// return the admin pass
+			return 291;
+		}else{
+			// wrong password returns 777.
+			return 777;
+		}
+	}
+	return -1;
+}
 
 // get all blog entries for an image by image id.
 function getBlogEntriesByImageID($targetid)
