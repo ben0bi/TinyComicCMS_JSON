@@ -130,7 +130,11 @@ function showAdmin()
 			$date=date('d.m.Y',strtotime($itm['DATETIME']));
 			$path=$itm['IMAGE'];
 			
+			
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
+			
+			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
+
 			// push all blog titles here
 			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
 			echo '<img src="'.$relative_upload_path.$path.'" class="image_preview" /><br>';
