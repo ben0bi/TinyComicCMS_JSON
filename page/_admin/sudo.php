@@ -71,8 +71,10 @@ function sortImageDBByOrder()
 	$source = $imageDB['IMAGES'];
 	$target = [];
 	$switched = 1;
-	//while($switched==1)
+	$turn=0;
+	while($turn<10)
 	{
+		$turn=$turn+1;
 		// reset switched.
 		$switched = 0;
 		// clear target.
