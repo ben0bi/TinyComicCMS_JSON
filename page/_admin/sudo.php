@@ -71,7 +71,7 @@ function sortImageDBByOrder()
 	$source = $imageDB['IMAGES'];
 	$target = [];
 	$switched = 1;
-	while($switched==1)
+/*	while($switched==1)
 	{
 		// reset switched.
 		$switched = 0;
@@ -97,7 +97,7 @@ function sortImageDBByOrder()
 		}
 		// set source to target.
 		$source = $target;
-	}
+	}*/
 	return $source;
 }
 // sort it just at the beginning of the page.
