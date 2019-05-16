@@ -67,7 +67,7 @@ function getAdminPass()
 }
 
 // sort the image db by the pageorder.
-function sortImageDBByOrder()
+function sortImageDBByOrder($reverse=0)
 {
 	global $imageDB;
 	
@@ -101,7 +101,7 @@ function sortImageDBByOrder()
 	return $source;
 }
 // sort it just at the beginning of the page.
-$imageDB['IMAGES'] = sortImageDBByOrder();
+$imageDB['IMAGES'] = sortImageDBByOrder(1);
 
 // show the admin archives panel.
 function showAdmin()
@@ -124,14 +124,15 @@ function showAdmin()
 		// it's already admin we don't need to set the class but this is from the original version. 
 		$class="horizontalborder";
 		echo '<center><table border="0">'.chr(13);
-		foreach($db as $itm)
+		// go through the db reversed.
+		for($ri=sizeof($db)-1; $ri>=0;$ri--)
 		{
+			$itm=$db[$ri];
 			$id=$itm['ID'];
 			$pageorder=$itm['ORDER'];
 			$title=$itm['TITLE'];
 			$date=date('d.m.Y',strtotime($itm['DATETIME']));
 			$path=$itm['IMAGE'];
-			
 			
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
 			
