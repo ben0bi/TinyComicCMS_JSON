@@ -154,7 +154,7 @@ function showAdmin()
 
 			// push all blog titles here
 			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
-			echo '<img src="'.$relative_upload_path.$path.'" class="image_preview" /><br>';
+			echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
 			
 			$blogresult=getBlogEntriesByImageID($id);
 			if(sizeof($blogresult)>0)
@@ -199,44 +199,10 @@ function showAdmin()
 			echo "</tr>".chr(13);
 		}
 		echo '</table></center>'.chr(13);
-		
 	}else{
 		echo $langDB['sentence_no_archive_result'];
 	}
 	echo '</article>'.chr(13);
-
-
-/*				// push all blog titles here
-				echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
-				echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
-*/
-/* TODO				$blogresult=SQL::query(SQL::select_from_table(SQL::$table_blogpost,'comicpage_id',$id));
-				$found=-1;
-				if($blogresult!=-1)
-				{
-					echo '<table border="0">';
-					while($blogrow=mysqli_fetch_object($blogresult))
-					{
-						$found=1;
-						$bt = SQL::sqlToText($blogrow->title);
-						$bt2=$blogrow->title;
-						$bid=$blogrow->id;
-						echo '<tr><td>&nbsp;&gt;&nbsp;</td>';
-						echo '<td><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
-						echo "<td>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt2');\">$word_delete</a></td>";
-						echo '</tr>';
-					}
-					echo '</table>';
-				}
-				if($found<=0)
-					echo $sentence_admin_no_blogpost."&nbsp;";
-ENDOF TODO */ 
-/*				echo '</div>';
-				echo "</td>\n";
-
-
-
-	*/
 }
 
 // check if the user is logged in.
