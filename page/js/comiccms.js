@@ -437,6 +437,7 @@ function ComicCMS()
 	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
 	var a_confirmBox=function(title, text, successlabel, successfunc)
 	{	
+	title="fick dich du scheiss.";
         BootstrapDialog.show(
 		{
             title: title,
