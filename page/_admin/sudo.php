@@ -100,8 +100,22 @@ function sortImageDBByOrder($reverse=0)
 	}
 	return $source;
 }
-// sort it just at the beginning of the page.
+// sort it just when loading the page.
 $imageDB['IMAGES'] = sortImageDBByOrder(1);
+
+// get all blog entries for an image by image id.
+function getBlogEntriesByImageID($targetid)
+{
+	global $blogDB;
+	$ret = array();
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		$iid = $itm['IMAGEID'];
+		if($iid==$targetid)
+			$ret[]=$itm;
+	}
+	return $ret;
+}
 
 // show the admin archives panel.
 function showAdmin()
@@ -142,7 +156,24 @@ function showAdmin()
 			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
 			echo '<img src="'.$relative_upload_path.$path.'" class="image_preview" /><br>';
 			
-			// TODO: show blog entries here.
+			$blogresult=getBlogEntriesByImageID($id);
+			$found=-1;
+			if(sizeof($blogresult)>0)
+			{
+				echo '<table border="0">';
+				foreach($blogresult as $itm)
+				{
+					$found=1;
+					$bt = $itm['TITLE'];
+					$bid=$itm['ID'];
+					echo '<tr><td>&nbsp;&gt;&nbsp;</td>';
+					echo '<td><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
+					echo "<td>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
+						echo '</tr>';
+					}
+					echo '</table>';
+				}
+			}
 			
 			echo '</div>';
 			echo "</td>\n";
