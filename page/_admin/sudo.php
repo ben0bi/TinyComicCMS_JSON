@@ -7,34 +7,37 @@
 
 // VALUES. THESE ARE TO CHANGE ********************************************************************************
 
-// DB file names.
-$langFileName = "../data/jsons/lang.german.json";
-$imageDBFileName = "../data/jsons/imagedb.json";
-$blogDBFileName = "../data/jsons/blogdb.json";
-
 /* Password for the login.
 Users will not see it because it is in PHP code.
 (Most easy login I could think of.) *
 */
 $admin_login_password="anypass";
 
+// THESE ARE TO BE SET FROM THE ROOT DIR.
+// DB file names.
+$langFileName = "data/jsons/lang.german.json";
+$imageDBFileName = "data/jsons/imagedb.json";
+$blogDBFileName = "data/jsons/blogdb.json";
 // the relative path for the uploads.
-$relative_upload_path="../data/uploads/";
+$relative_upload_path="data/uploads/";
+
+// relative directory from THIS page to the root of the page.
+$dirToRoot = "../";
 
 // ENDOF VALUES ************************************************************************************************
 
 //echo "Admin stuff in PHP for security reasons.";
 
 // get the language translations.
-$langFile = file_get_contents($langFileName);
+$langFile = file_get_contents($dirToRoot.$langFileName);
 $langFileJSON = json_decode($langFile, true);
 
 // get the image db.
-$imageDBFile = file_get_contents($imageDBFileName);
+$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 $imageDB = json_decode($imageDBFile, true);
 
 // get the blog db.
-$blogDBFile = file_get_contents($blogDBFileName);
+$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
 $blogDB = json_decode($blogDBFile,true);
 
 // returns 291 on success.
@@ -101,50 +104,75 @@ function sortImageDBByOrder()
 $imageDB['IMAGES'] = sortImageDBByOrder();
 
 // show the admin archives panel.
-function showAdmin($dirToRoot)
+function showAdmin()
 {
+	global $dirToRoot;
 	global $imageDB;
+	global $langDB;
 	$db = $imageDB['IMAGES'];
 
 	// The db should already be sorted, see above.
 	$firstorder = -1;
 	$lastorder = -1;
-	
 	if(sizeof($db)>0)
 	{
 		$firstorder=$db[0]['ORDER'];
 		$lastorder = $db[sizeof($db)-1]['ORDER'];
-	}
-	
-	echo "FIRST $firstorder LAST $lastorder<br />";
-	// get first and last order;
-/*	foreach($imageDB['IMAGES'] as $itm)
-	{
-		$o = $itm['ORDER'];
-		if($o<$firstorder || $firstorder==-1)
-			$firstorder = $o;
-		if($o>$lastorder || $lastorder==-1)
-			$lastorder = $o;
-		echo "IMG<br />";
-	}
-	*/
-	// firstorder and lastorder are only used on admin panel.
-/*	$firstid=-1;
-	$lastid=-1;
-	if($admin==291)
-	{
-		// get first and last
-		$resultfirst=SQL::query(SQL::query_page_getFirst());
-		$rowfirst=SQL::getFirstRow($resultfirst);
-		if($rowfirst!=-1) {$firstid=$rowfirst->pageorder;}
+		
+		// it's already admin we don't need to set the class but this is from the original version. 
+		$class="horizontalborder";
+		echo '<center><table style="position: relative; left: 50px;">'.chr(13);
+		foreach($db as $itm)
+		{
+			$id=$itm['ID'];
+			$pageorder=$itm['ORDER'];
+			$title=$itm['TITLE'];
+			$date=date('d.m.Y',strtotime($itm['DATETIME']));
+			$path=$itm['IMAGE'];
+			
+			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
+			// push all blog titles here
+			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
+			echo '<img src="'.$relative_upload_path.$path.'" class="image_preview" /><br>';
+			
+			// TODO: show blog entries here.
+			
+			echo '</div>';
+			echo "</td>\n";
+			
+			// show change title link
+			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
+			
+			// show page moving stuff
+			if($pageorder!=$firstorder)
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\">&nbsp;v&nbsp;</a></td>".chr(13));
+			else
+				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
+			
+			if($pageorder!=$lastorder)
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;^&nbsp;</a></td>".chr(13);
+			else
+				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
+			
+			// show delete page
+			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$dirToRoot', '$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
+			// show create blog post
+			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_createblogpost('$dirToRoot','$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
 
-		$resultlast=SQL::query(SQL::query_page_getLast());
-		$rowlast=SQL::getFirstRow($resultlast);
-		if($rowlast!=-1) {$lastid=$rowlast->pageorder;}
+			echo "</tr>".chr(13);
+			echo '</table></center>'.chr(13);
+		}
+		
+	}else{
+		echo $langDB['sentence_no_archive_result'];
 	}
+	echo '</article>'.chr(13);
+
+	
+	//echo "FIRST $firstorder LAST $lastorder<br />";
 
 	// show posts.
-	echo '<article id="archives">'.chr(13);
+/*	echo '<article id="archives">'.chr(13);
 	$archiveresult=SQL::query(SQL::query_archives());
 	if($archiveresult!=-1)
 	{
@@ -170,8 +198,8 @@ function showAdmin($dirToRoot)
 				// push all blog titles here
 				echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
 				echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
-
-				$blogresult=SQL::query(SQL::select_from_table(SQL::$table_blogpost,'comicpage_id',$id));
+*/
+/* TODO				$blogresult=SQL::query(SQL::select_from_table(SQL::$table_blogpost,'comicpage_id',$id));
 				$found=-1;
 				if($blogresult!=-1)
 				{
@@ -191,8 +219,8 @@ function showAdmin($dirToRoot)
 				}
 				if($found<=0)
 					echo $sentence_admin_no_blogpost."&nbsp;";
-
-				echo '</div>';
+ENDOF TODO */ 
+/*				echo '</div>';
 				echo "</td>\n";
 
 				// show change title link
@@ -208,6 +236,8 @@ function showAdmin($dirToRoot)
 					echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;^&nbsp;</a></td>".chr(13);
 				else
 					echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
+				
+				
 				// show delete page
 				echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$dirToRoot', '$id', '$title');\">$word_delete</a></td>\n";
 
@@ -224,7 +254,8 @@ function showAdmin($dirToRoot)
 	}else{
 		echo $sentence_no_archive_result;
 	}
-	echo '</article>'.chr(13);*/
+	
+	*/
 }
 
 // check if the user is logged in.
@@ -269,7 +300,7 @@ if($login==777) $error=$langFileJSON['sentence_wrong_password'];
 	if($login==291)
 	{
 		echo '<div id="archivecontent">'; // for AJAX rebuild of the archives.
-			showAdmin('../');
+			showAdmin();
 		echo '</div>';
 		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/sudo.php)<br />";
 	}else{
