@@ -1,22 +1,3 @@
-function confirmBox(title, text, successlabel, successfunc, word_cancel = "Cancel")
-{
-        BootstrapDialog.show({
-            title: title,
-            message: text,
-            buttons: [{
-                label: word_cancel,
-                action: function(dialog) {
-                    dialog.close();
-                }
-            }, {
-                label: successlabel,
-                action: function(dialog) {
-                    successfunc(dialog);
-                }
-            }]
-        });
-}
-
 // closes ALL bootstrap dialogs
 function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog){ dialog.close();});}
 
@@ -453,6 +434,25 @@ function ComicCMS()
 	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
 	
+	var a_confirmBox(title, text, successlabel, successfunc, word_cancel = "Cancel")
+	{	
+        BootstrapDialog.show({
+            title: title,
+            message: text,
+            buttons: [{
+                label: word_cancel,
+                action: function(dialog) {
+                    dialog.close();
+                }
+            }, {
+                label: successlabel,
+                action: function(dialog) {
+                    successfunc(dialog);
+                }
+            }]
+        });
+	}
+	
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
@@ -477,7 +477,7 @@ function ComicCMS()
 		msg=msg+'};';
 		msg=msg+'</script>';
 
-		confirmBox(m_langDB['sentence_title_newpage'], msg, m_langDB['word_save_page'], function(dialog)
+		a_confirmBox(m_langDB['sentence_title_newpage'], msg, m_langDB['word_save_page'], function(dialog)
 		{
 			// check if stuff exists.
 			var title=$("#upload_pagetitle").val();
