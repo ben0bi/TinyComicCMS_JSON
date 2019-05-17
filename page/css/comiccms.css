@@ -41,8 +41,8 @@ body
 }
 .arrow:hover
 {
-	background-color: #FFA;
-	color: transparent;
+	background-color: #FB0;
+	color: #000033;
 }
 
 table
