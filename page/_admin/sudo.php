@@ -11,6 +11,9 @@
 Users will not see it because it is in PHP code.
 (Most easy login I could think of.) *
 */
+
+require("AJAX.php");
+
 $admin_login_password="anypass";
 
 // THESE ARE TO BE SET FROM THE ROOT DIR.
@@ -27,42 +30,6 @@ $dirToRoot = "../";
 // ENDOF VALUES ************************************************************************************************
 
 //echo "Admin stuff in PHP for security reasons.";
-
-// functions for loading and saving the databases (again).
-
-function loadImageDB()
-{
-	global $imageDBFileName;
-	global $dirToRoot;
-	// get the image db.
-	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
-	$imageDB = json_decode($imageDBFile, true);
-	return $imageDB;
-}
-
-function loadBlogDB()
-{
-	global $blogDBFileName;
-	global $dirToRoot;
-	// get the blog db.
-	$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
-	$blogDB = json_decode($blogDBFile,true);
-	return $blogDB;
-}
-
-function saveImageDB()
-{
-	global $imageDBFileName;
-	global $dirToRoot;
-	// TODO: save image db.
-}
-
-function saveBlogDB()
-{
-	global $blogDBFileName;
-	global $dirToRoot;
-	// TODO: save blog db.
-}
 
 // get the language translations.
 $langFile = file_get_contents($dirToRoot.$langFileName);
