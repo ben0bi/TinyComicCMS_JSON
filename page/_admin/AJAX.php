@@ -182,7 +182,7 @@ function showAdmin()
 			echo "</td>\n";
 			
 			// show change title link
-			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
+			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
 			
 			// show page moving stuff
 			if($pageorder!=$firstorder)
