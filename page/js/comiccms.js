@@ -124,8 +124,16 @@ function ComicCMS()
 		var id = $_GET("id"); // for the end user, it's the id.
 		if(id!=null)
 		{
-			m_actualPageOrder = parseInt(id);
-			if(m_pageCmd=="latest") m_pageCmd="next"; // set page command to next if it is latest.
+			// New: get pageorder from the id.
+			for(var i=0;i<m_imageDB['IMAGES'].length;i++)
+			{
+				var itm=m_imageDB['IMAGES'][i];
+				if(itm['ID']==id)
+					m_actualPageOrder = i;
+			}
+			
+			// set page command to next if it is latest, because an id was set.
+			if(m_pageCmd=="latest" || m_pageCmd=="last") m_pageCmd="next";
 		}
 		m_actualPageOrder = getRealPageOrder(m_pageCmd, m_actualPageOrder);
 
@@ -145,7 +153,7 @@ function ComicCMS()
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
-		htm+='<td><nobr><a href="index.html?page=prev&id='+(m_actualPageOrder-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPageOrder-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// First
 		htm+='<td><nobr><a href="index.html?page=first">&nbsp;'+m_langDB['word_link_first']+'&nbsp;</a></nobr></td>';
@@ -157,7 +165,7 @@ function ComicCMS()
 		htm+='<td><nobr><a href="index.html?page=latest">&nbsp;'+m_langDB['word_link_last']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// Next
-		htm+='<td><nobr><a href="index.html?page=next&id='+(m_actualPageOrder+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPageOrder+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
 		htm+='</tr></table></center></div>';
 		return htm;
 	}
@@ -178,7 +186,7 @@ function ComicCMS()
 			var comicid=comicrow['ID'];
 			var comicimage = comicrow['IMAGE'];
 			var comictitle = comicrow['TITLE'];
-			var comicorder = comicrow['ORDER'];
+			//var comicorder = comicrow['ORDER'];
 
 			// build html for that image.
 			if(comicimage!="")
@@ -251,7 +259,8 @@ function ComicCMS()
 		$('#mainlink').hide();
 		$('#archivelink').show();
 
-		var db = db_getComicSortedByOrder(false);
+		var db = m_imageDB['IMAGES']; // OBSOLETE: db_getComicSortedByOrder(false);
+		
 		var txt="";
 		txt+='<article id="archives">';
 		if(db.length<=0)
@@ -264,19 +273,21 @@ function ComicCMS()
 		var cl="noborder"; // admin: horizontalborder
 
 		txt+='<center><table style="position: relative; left:200px;">';
-		for(var i=0;i<db.length;i++)
+		// go through the db backwards so the last entry is at top.
+		for(var i=db.length-1;i>=0;i--)
 		{
 			var itm=db[i];
 			var id=itm['ID'];
-			var pageorder=itm['ORDER'];
+			//OBSOLETE: var pageorder=itm['ORDER']; --> it's i now.
 			var title=itm['TITLE'];
 			var date=itm['DATETIME'];
 			var path=itm['IMAGE'];
 
 			txt+='<tr class="'+cl+'">';
-			txt+='<td class="'+cl+'" valign="top">'+pageorder+'&nbsp;</td>';
+			txt+='<td class="'+cl+'" valign="top">'+i+'&nbsp;</td>';
+//OBSOLETE:	txt+='<td class="'+cl+'" valign="top">'+pageorder+'&nbsp;</td>';
 			txt+='<td class="'+cl+'" valign="top" onmouseover="ComicCMS.showArchiveDate('+id+',true);" onmouseout="ComicCMS.showArchiveDate('+id+',false);" style="max-width: 350px;">';
-			txt+='<a href="index.html?id='+pageorder+'">'+title+'</a>';
+			txt+='<a href="index.html?id='+id+'">'+title+'</a>';
 			txt+='</td>';
 			txt+='<td class="'+cl+'" valign="top" style="min-width: 200px;">';
 			txt+='<span id="dateof_'+id+'" style="display:none;">&nbsp;<small>&#8882;&#8986; '+date+'</small></span>';
@@ -290,8 +301,8 @@ function ComicCMS()
 		$("#pagecontent").focus();
 	}
 
-	// sort the db by order.
-	var db_getComicSortedByOrder=function(ascending=false)
+	// OBSOLETE: sort the db by order.
+	/*var db_getComicSortedByOrder=function(ascending=false)
 	{
 		var db = m_imageDB['IMAGES'];
 		if(db.length<=1)
@@ -328,12 +339,16 @@ function ComicCMS()
 		}
 		log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG_VERBOSE);
 		return db;
-	}
+	}*/
 
-	// get a comic row from the comic array.
+	// get a comic row from the comic array by the index in the array.
 	var db_getComicRowByOrder = function(pageorder)
 	{
-		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
+		if(m_imageDB['IMAGES'].length>pageorder && pageorder>=0)
+			return m_imageDB['IMAGES'][pageorder];
+		
+		// OBSOLETE:
+/*		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
 		{
 			var idb = m_imageDB['IMAGES'][i];
 			if(parseInt(idb['ORDER'])==pageorder)
@@ -341,7 +356,8 @@ function ComicCMS()
 				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / by order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
 				return idb;
 			}
-		}
+		}*/
+		
 		log("Image at position "+pageorder+" not found!", LOG_ERROR);
 		return null;
 	}
@@ -354,7 +370,7 @@ function ComicCMS()
 			var idb = m_imageDB['IMAGES'][i];
 			if(parseInt(idb['ID'])==pageid)
 			{
-				log("FOUND IMAGE DB ENTRY: by id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
+				log("FOUND IMAGE DB ENTRY: by id "+idb['ID']+" position: "+i+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
 				return idb;
 			}
 		}
@@ -381,13 +397,15 @@ function ComicCMS()
 	{
 		var target = parseInt(pageorder);
 		if(target<0)
-			target =0;
+			target=0;
 
-		var ret=pageorder;
-		var firstorder=-1;
-		var lastorder=-1;
+		//OBSOLETE: var ret=target;
+		var firstorder=0;
+		var lastorder=m_imageDB['IMAGES'].length-1;
 
 		// get first and last row order id.
+		// OBSOLETE:
+		/*
 		for(var i=0; i<m_imageDB['IMAGES'].length; i++)
 		{
 			var img=m_imageDB['IMAGES'][i];
@@ -397,6 +415,7 @@ function ComicCMS()
 			if(lastorder==-1 || order>lastorder)
 				lastorder=order;
 		}
+*/
 
 		// select the id depending on the command.
 		switch(cmd.toLowerCase())
@@ -406,9 +425,9 @@ function ComicCMS()
 			case 'last': return lastorder;
 			case 'next':
 				// only get next if the pageorder is in range.
-				if(target<lastorder)
+				if(target+1<=lastorder)
 				{
-					var nearest =-1;
+				/*	var nearest =-1;
 					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
 					{
 						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
@@ -424,15 +443,18 @@ function ComicCMS()
 					}
 					if(nearest!=-1)
 						return nearest;
+					*/
+					return target+1;
 				}else{
 					return lastorder;
 				}
 				break;
 			case 'prev':
 			case 'previous':
-				if(target>=0)
+				if(target>0)
 				{
-					var nearest =-1;
+					// OBSOLETE:
+					/*var nearest =-1;
 					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
 					{
 						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
@@ -445,19 +467,37 @@ function ComicCMS()
 							nearest = order;
 					}
 					if(nearest!=-1)
-						return nearest;
+						return nearest;*/
+					return target-1;
 				}else{
 					return firstorder;
 				}
 				break;
 			default: break;
 		}
-		log("No pageorder found for the given order "+ret, LOG_WARN);
-		return ret;
+		log("No pageorder found for the given position "+target, LOG_WARN);
+		return target;
 	}
 
-	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+(m_actualPageOrder+1);}
-	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+(m_actualPageOrder-1);}
+	// TODO, new: get id from the item for that pageorder.
+	var getImageIDFromArrayPosition=function(idx)
+	{
+		var id=-1;
+		var firstpos=0;
+		var lastpos=m_imageDB['IMAGES'].length-1;
+		
+		if(idx>=firstpos && idx<=lastpos)
+			return m_imageDB['IMAGES'][idx]['ID'];
+		
+		if(idx>lastpos)
+			return m_imageDB['IMAGES'][lastpos]['ID'];
+		
+		if(idx<firstpos)
+			return m_imageDB['IMAGES'][firstpos]['ID'];
+	}
+	
+	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPageOrder+1);}
+	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPageOrder-1);}
 	
 	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
 	var a_confirmBox=function(title, text, successlabel, successfunc)
@@ -668,7 +708,7 @@ function ComicCMS()
 	
 	// move a page up or down in the pageorder.
 	// TODO: here
-	this.a_movepage = function(dirToRoot, pageorder, direction)
+/*	this.a_movepage = function(dirToRoot, pageorder, direction)
 	{
 		// move page call
 		$.ajax({
@@ -680,7 +720,7 @@ function ComicCMS()
 				$("#archivecontent").html(data);
 			}
 		});
-	}
+	}*/
 }
 
 ComicCMS.instance =new ComicCMS;

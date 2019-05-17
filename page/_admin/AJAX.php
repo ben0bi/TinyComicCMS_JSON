@@ -29,8 +29,8 @@ function loadImageDB()
 	// get the image db.
 	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 	$imageDB = json_decode($imageDBFile, true);
-	$ret = sortImageDBByOrder();
-	$imageDB['IMAGES'] = $ret;
+	//$ret = sortImageDBByOrder();
+	//$imageDB['IMAGES'] = $ret;
 	return $imageDB;
 }
 
@@ -61,8 +61,8 @@ function saveBlogDB($blgDB)
 }
 // ENDOF LOAD AND SAVE FUNCTIONS
 
-// sort the image db by the pageorder.
-function sortImageDBByOrder()
+// OBSOLETE: sort the image db by the pageorder.
+/*function sortImageDBByOrder()
 {
 	global $imageDB;
 	
@@ -95,6 +95,7 @@ function sortImageDBByOrder()
 	}
 	return $source;
 }
+*/
 
 // LOAD THE STUFF
 
@@ -134,14 +135,14 @@ function showAdmin()
 	$db = $imageDB['IMAGES'];
 
 	// The db should already be sorted, see above.
-	$firstorder = -1;
-	$lastorder = -1;
+	$firstorder = 0;
+	$lastorder = sizeof($db)-1;
 	
 	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
 	{
-		$firstorder=$db[0]['ORDER'];
-		$lastorder = $db[sizeof($db)-1]['ORDER'];
+		//$firstorder=$db[0]['ORDER'];
+		//$lastorder = $db[sizeof($db)-1]['ORDER'];
 		
 		// it's already admin we don't need to set the class but this is from the original version. 
 		$class="horizontalborder";
@@ -151,12 +152,12 @@ function showAdmin()
 		{
 			$itm=$db[$ri];
 			$id=$itm['ID'];
-			$pageorder=$itm['ORDER'];
+			//$pageorder=$itm['ORDER'];
 			$title=$itm['TITLE'];
 			$date=date('d.m.Y',strtotime($itm['DATETIME']));
 			$path=$itm['IMAGE'];
 			
-			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
+			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$ri.&nbsp;</td>".chr(13);
 			
 			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
@@ -189,13 +190,13 @@ function showAdmin()
 			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
 			
 			// show page moving stuff
-			if($pageorder!=$firstorder) // up needs down arrow.
-				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\" class=\"arrow\">&nbsp;&#x2B0A;&nbsp;</a></td>".chr(13));
+			if($ri!=$firstorder) // up needs down arrow.
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$ri');\" class=\"arrow\">&nbsp;&#x2B0A;&nbsp;</a></td>".chr(13));
 			else
 				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
 			
-			if($pageorder!=$lastorder) // down needs up arrow.
-				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\" class=\"arrow\">&nbsp;&#x2B09;&nbsp;</a></td>".chr(13);
+			if($ri!=$lastorder) // down needs up arrow.
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$ri');\" class=\"arrow\">&nbsp;&#x2B09;&nbsp;</a></td>".chr(13);
 			else
 				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
 			
@@ -279,19 +280,19 @@ if($ajax=='newpage')
 		$imageDB = loadImageDB();
 		// create the new page order and page id.
 		// order can be changed afterwards but not the page id.
-		$lastorder=-1;
+		$lastorder=sizeof($imageDB['IMAGES']);
 		$newid=-1;
+		// OBSOLETE:
 		foreach($imageDB['IMAGES'] as $itm)
 		{
-			if($itm['ORDER']>$lastorder || $lastorder==-1)
-				$lastorder=$itm['ORDER'];
+//			if($itm['ORDER']>$lastorder || $lastorder==-1)
+//				$lastorder=$itm['ORDER'];
 			if($itm['ID']>$newid || $newid==-1)
 				$newid=$itm['ID'];
 		}
-		$lastorder=$lastorder+1;
+//		$lastorder=$lastorder+1;
 		$newid=$newid+1;
 		
-		$imageDB = loadImageDB();
 		$blogDB = loadBlogDB();
 		$newblogid=-1;
 		foreach($blogDB['BLOGPOSTS'] as $bl)
@@ -305,9 +306,10 @@ if($ajax=='newpage')
 		$itm = array();
 		$itm['TITLE'] = $title;
 		$itm['IMAGE'] = $newfilename;
-		$itm['ORDER'] = $lastorder;
+//		$itm['ORDER'] = $lastorder;
 		$itm['ID'] = $newid;
 		$itm['DATETIME'] = date('Y-m-d H:i:s');
+		// add the item.
 		$imageDB['IMAGES'][] = $itm;
 		
 		if(saveImageDB($imageDB)!=FALSE)
