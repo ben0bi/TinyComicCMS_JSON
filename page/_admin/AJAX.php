@@ -331,6 +331,6 @@ if($ajax=='newpage')
 	}else{
 		
 	}
-	//showAdmin();
+	showAdmin();
 }
 ?>
