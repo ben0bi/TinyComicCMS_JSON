@@ -60,4 +60,5 @@ if(isset($_POST['ajax']))
 	$ajax=$_POST['ajax'];
 	echo ">AJAX $ajax";
 }
+echo "ENDOF AJAXPHP";
 ?>

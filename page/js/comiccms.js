@@ -515,6 +515,7 @@ function ComicCMS()
 		});
 	}
 	
+	// the real page upload function.
 	this.a_pageupload=function(dirToRoot)
 	{
 		var fileSelect=document.getElementById("upload_pagefile");
