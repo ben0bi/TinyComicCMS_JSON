@@ -55,7 +55,7 @@ function ComicCMS()
 		{
 			__loadJSON(imagedbname, function(data)
 			{
-				log("Image Data:"+data);
+				log("Image Data:"+data, LOG_DEBUG_VERBOSE);
 				m_imageDB = data;
 			});
 		}else{
