@@ -602,7 +602,7 @@ function ComicCMS()
 		formData.append('pagetitle', pagetitle);
 
 		BootstrapDialog.show({
-			title: sentence_please_wait,
+			title: m_langDB['sentence_please_wait'],
 			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
 		});
 
