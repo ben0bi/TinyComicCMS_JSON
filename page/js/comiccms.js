@@ -135,7 +135,7 @@ function ComicCMS()
 			// set page command to next if it is latest, because an id was set.
 			if(m_pageCmd=="latest" || m_pageCmd=="last") m_pageCmd="next";
 		}
-		m_actualPagePosition = getRealPagePosition(m_pageCmd, m_actualPageOrder);
+		m_actualPagePosition = getRealPagePosition(m_pageCmd, m_actualPagePosition);
 
 		// loading is done, do the other stuff.
 		log("DONE LOADING");
@@ -153,7 +153,7 @@ function ComicCMS()
 		var htm ='<center><div class="pagelinks" id="'+navlinkid+'">';
 		htm+='<center><table border="0" class="pagelinks"><tr>';
 		// Previous
-		htm+='<td><nobr><a href="index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPageOrder-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPagePosition-1)+'">&nbsp;'+m_langDB['word_link_previous']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// First
 		htm+='<td><nobr><a href="index.html?page=first">&nbsp;'+m_langDB['word_link_first']+'&nbsp;</a></nobr></td>';
@@ -165,7 +165,7 @@ function ComicCMS()
 		htm+='<td><nobr><a href="index.html?page=latest">&nbsp;'+m_langDB['word_link_last']+'&nbsp;</a></nobr></td>';
 		htm+='<td>|</td>';
 		// Next
-		htm+='<td><nobr><a href="index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPageOrder+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
+		htm+='<td><nobr><a href="index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPagePosition+1)+'">&nbsp;'+m_langDB['word_link_next']+'&nbsp;</a></nobr></td>';
 		htm+='</tr></table></center></div>';
 		return htm;
 	}
@@ -176,11 +176,11 @@ function ComicCMS()
 		var htm=buildNavigatingLinks('topnavigatinglinks');
 
 		// maybe show no pages error.
-		if(m_actualPageOrder==-1)
+		if(m_actualPagePosition==-1)
 			htm+=m_langDB['sentence_error_no_pages']+'<br />';
 
 		// get the searched comic entry.
-		var comicrow = db_getComicRowByOrder(m_actualPageOrder);
+		var comicrow = db_getComicRowByOrder(m_actualPagePosition);
 		if(comicrow!=null)
 		{
 			var comicid=comicrow['ID'];
@@ -495,8 +495,8 @@ function ComicCMS()
 			return m_imageDB['IMAGES'][firstpos]['ID'];
 	}
 	
-	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPageOrder+1);}
-	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPageOrder-1);}
+	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPagePosition+1);}
+	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPagePosition-1);}
 	
 	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
 	var a_confirmBox=function(title, text, successlabel, successfunc)
