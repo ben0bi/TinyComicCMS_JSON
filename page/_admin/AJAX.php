@@ -56,7 +56,9 @@ function saveBlogDB()
 
 // AJAX STUFF
 $ajax=$_POST['ajax'];
-echo ">AJAX $ajax";
+$title=$_POST['title'];
+echo ">AJAX $ajax T:  $title";
+
 
 if($ajax=='newpage')
 {
