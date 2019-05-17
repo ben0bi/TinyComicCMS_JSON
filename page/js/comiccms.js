@@ -608,7 +608,7 @@ function ComicCMS()
 		});
 
 		var xhr=new XMLHttpRequest();
-		xhr.open('POST',dirToRoot+"AJAX.php",true);
+		xhr.open('POST',"AJAX.php",true);
 
 		// Set up a handler for when the request finishes.
 		xhr.onload = function ()
