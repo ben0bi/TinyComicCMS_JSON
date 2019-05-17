@@ -552,7 +552,6 @@ function ComicCMS()
 		{
 			if (xhr.status === 200) 
 			{
-				alert("XHR 200 >"+xhr.responseText);
 				// File(s) uploaded. Maybe show response.
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					{$("#archivecontent").html(xhr.responseText);}

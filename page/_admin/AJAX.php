@@ -89,9 +89,10 @@ function phpupload($fileID)
 			if(!empty($filename))
 			{
 				$newfilename=time()."_".$filename;
+				$tmpname=$_FILES[$fileID]['tmp_name'];
 				if(!move_uploaded_file($_FILES[$fileID]['tmp_name'],$dirToRoot.$relative_upload_path.$newfilename))
 				{
-					$errcode="[PHP] Move file failed.<br />";
+					$errcode="[PHP] Move file failed.<br />($tmpname to ".$dirToRoot.$relative_upload_path.$newfilename.")";
 				}else{
 					return $newfilename;
 				}
