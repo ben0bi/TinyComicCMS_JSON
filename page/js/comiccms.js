@@ -591,7 +591,7 @@ function ComicCMS()
 	}
 	
 	// update the title of a comic poge.
-/*	this.a_updatePageTitle = function(dirToRoot, pageID)
+	this.a_updatePageTitle = function(dirToRoot, pageID)
 	{
 		var pagetitle=$('#update_pagetitle').val();
 
@@ -623,7 +623,8 @@ function ComicCMS()
 			actualAdminBlogTitleShowID=-1;
 		};
 		xhr.send(formData);
-	}*/
+	}
+	
 	// show a box to update a page title.
 	this.a_updatePageTitleForm = function(dirToRoot, pageID)
 	{
@@ -636,7 +637,7 @@ function ComicCMS()
 		}
 		
 		var txt="";
-		txt=txt+'<center><form id="pagetitleupdateform" action="../php/ajax_updatepagetitle.php" method="POST">';
+		txt=txt+'<center><form id="pagetitleupdateform" action="AJAX.php" method="POST">';
 		txt=txt+'<table border="0" style="width:100%;" >';
 		txt=txt+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		txt=txt+'<td><input type="text" id="update_pagetitle" name="update_pagetitle" value="'+page['TITLE']+'"/></td></tr>';
@@ -645,8 +646,8 @@ function ComicCMS()
 		txt=txt+'<script>';
 		txt=txt+'var form=document.getElementById("pagetitleupdateform");';
 		txt=txt+'form.onsubmit = function(event) {';
-		txt=txt+'event.preventDefault();';
-		txt=txt+'ComicCMS.updatePageTitle("'+dirToRoot+'", '+pageID+');';
+		txt=txt+'  event.preventDefault();';
+		txt=txt+'  ComicCMS.a_updatePageTitle("'+dirToRoot+'", '+pageID+');';
 		txt=txt+'};';
 		txt=txt+'</script>';
 		
@@ -690,7 +691,7 @@ ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 // create a comic page.
 ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
 // Update the title of a page.
-//ComicCMS.a_updatePageTitle = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitle(dirToRoot, pageID);}
+ComicCMS.a_updatePageTitle = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitle(dirToRoot, pageID);}
 // page upload
 ComicCMS.a_pageUpload = function(dirToRoot) {ComicCMS.instance.a_pageupload(dirToRoot);};
 
