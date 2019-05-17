@@ -1,7 +1,6 @@
 <?php
 
-$aj=$_POST['ajax'];
-echo("AJAX $aj");
+$ajax=$_POST['ajax'];
 
 // functions for loading and saving the databases (again).
 // THESE ARE TO BE SET FROM THE ROOT DIR.
@@ -57,12 +56,12 @@ function saveBlogDB()
 	// TODO: save blog db.
 }
 
+// DO SOME AJAX STUFF HERE.
 if($ajax=='newpage')
 {
 	$title=$_POST['title'];
 	$blogtitle=$_POST['blogtitle'];
 	$blogtext=$_POST['blogtext'];
-	echo "NEWPAGE";
+	echo "NEWPAGE $title / $blogtitle";
 }
-
 ?>
