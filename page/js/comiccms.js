@@ -7,7 +7,7 @@ function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog)
 function ComicCMS()
 {
 	var me = this; // prevent inner blocks from being this-ed.
-	var m_actualPageOrder = 0;
+	var m_actualPagePosition = 0;
 	var m_imageJSONFile = "";
 	var m_blogJSONFile = "";
 	var m_langJSONFile = "";
@@ -120,7 +120,7 @@ function ComicCMS()
 			m_pageCmd = pp;
 
 		// maybe get the page id.
-		m_actualPageOrder = -1;
+		m_actualPagePosition = -1;
 		var id = $_GET("id"); // for the end user, it's the id.
 		if(id!=null)
 		{
@@ -129,13 +129,13 @@ function ComicCMS()
 			{
 				var itm=m_imageDB['IMAGES'][i];
 				if(itm['ID']==id)
-					m_actualPageOrder = i;
+					m_actualPagePosition = i;
 			}
 			
 			// set page command to next if it is latest, because an id was set.
 			if(m_pageCmd=="latest" || m_pageCmd=="last") m_pageCmd="next";
 		}
-		m_actualPageOrder = getRealPageOrder(m_pageCmd, m_actualPageOrder);
+		m_actualPagePosition = getRealPagePosition(m_pageCmd, m_actualPageOrder);
 
 		// loading is done, do the other stuff.
 		log("DONE LOADING");
@@ -393,7 +393,7 @@ function ComicCMS()
 	}
 
 	// returns the next or previous or actual page id depending on the command.
-	var getRealPageOrder=function(cmd, pageorder)
+	var getRealPagePosition=function(cmd, pageorder)
 	{
 		var target = parseInt(pageorder);
 		if(target<0)
@@ -425,7 +425,7 @@ function ComicCMS()
 			case 'last': return lastorder;
 			case 'next':
 				// only get next if the pageorder is in range.
-				if(target+1<=lastorder)
+				if(target<=lastorder)
 				{
 				/*	var nearest =-1;
 					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
@@ -444,14 +444,14 @@ function ComicCMS()
 					if(nearest!=-1)
 						return nearest;
 					*/
-					return target+1;
+					return target;
 				}else{
 					return lastorder;
 				}
 				break;
 			case 'prev':
 			case 'previous':
-				if(target>0)
+				if(target>=0)
 				{
 					// OBSOLETE:
 					/*var nearest =-1;
@@ -468,7 +468,7 @@ function ComicCMS()
 					}
 					if(nearest!=-1)
 						return nearest;*/
-					return target-1;
+					return target;
 				}else{
 					return firstorder;
 				}
@@ -482,7 +482,6 @@ function ComicCMS()
 	// TODO, new: get id from the item for that pageorder.
 	var getImageIDFromArrayPosition=function(idx)
 	{
-		var id=-1;
 		var firstpos=0;
 		var lastpos=m_imageDB['IMAGES'].length-1;
 		
