@@ -66,5 +66,8 @@
 	"sentence_admin_no_blogpost": "<font color='FAA'>[Kein Blog Eintrag vorhanden.]</font>",	"//": "No blogpost available.",
 	"sentence_wait_for_load": "Bitte warten, ich lade..", 							"//": "Please wait, loading..",
 	
+	"sentence_could_not_save_blogdb": "<font color='FAA'>Die Blog-Datenbank konnte nicht gespeichert werden.</font>",
+	"sentence_could_not_save_imagedb": "<font color='FAA'>Die Bild-Datenbank konnte nicht gespeichert werden.</font>",
+	
 	"//": "clear the comment string >", "//": 0
 }

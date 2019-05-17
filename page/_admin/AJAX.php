@@ -44,7 +44,7 @@ function saveImageDB($imgDB)
 	global $imageDBFileName;
 	global $dirToRoot;
 	$json_data = json_encode($imgDB);
-	file_put_contents($dirToRoot.$imageDBFileName, $json_data);
+	return file_put_contents($dirToRoot.$imageDBFileName, $json_data);
 }
 
 function saveBlogDB($blgDB)
@@ -52,7 +52,7 @@ function saveBlogDB($blgDB)
 	global $blogDBFileName;
 	global $dirToRoot;
 	$json_data = json_encode($blgDB);
-	file_put_contents($dirToRoot.$blogDBFileName, $json_data);
+	return file_put_contents($dirToRoot.$blogDBFileName, $json_data);
 }
 // ENDOF LOAD AND SAVE FUNCTIONS
 
@@ -304,23 +304,28 @@ if($ajax=='newpage')
 		$itm['ID'] = $newid;
 		$itm['DATETIME'] = date('Y-m-d H:i:s');
 		$imageDB['IMAGES'][] = $itm;
-
-		// maybe create a new blog entry.
-		if($blogtitle!="" || $blogtext!="")
+		
+		if(saveImageDB($imageDB)!=FALSE);
 		{
-			$blitem = array();
-			$blitem['DATETIME'] = $itm['DATETIME'];
-			$blitem['TITLE'] = $blogtitle;
-			$blitem['TEXT'] = $blogtext;
-			$blitem['IMAGEID']=$newid;
-			$blitem['ID']=$newblogid;
-			$blogDB['BLOGPOSTS'][] = $blitem;
-			saveBlogDB($blogDB);
-			echo $langDB['sentence_new_blogpost_created']."<br />";
+			echo $langDB['sentence_new_page_created']."<br />";
+			// maybe create a new blog entry.
+			if($blogtitle!="" || $blogtext!="")
+			{
+				$blitem = array();
+				$blitem['DATETIME'] = $itm['DATETIME'];
+				$blitem['TITLE'] = $blogtitle;
+				$blitem['TEXT'] = $blogtext;
+				$blitem['IMAGEID']=$newid;
+				$blitem['ID']=$newblogid;
+				$blogDB['BLOGPOSTS'][] = $blitem;
+				if(saveBlogDB($blogDB)!=FALSE)
+					echo $langDB['sentence_new_blogpost_created']."<br />";
+				else
+					echo $langDB['sentence_could_not_save_blogdb']."<br />";
+			}
+		}else{
+			echo $langDB['sentence_could_not_save_imagedb']."<br />";
 		}
-
-		saveImageDB($imageDB);
-		echo $langDB['sentence_new_page_created']."<br />";
 	}
 	showAdmin();
 }
