@@ -544,15 +544,16 @@ function ComicCMS()
 			});
 
 		var xhr=new XMLHttpRequest();
-		xhr.open('POST',dirToRoot+"php/ajax_uploadpage.php",true);
+		xhr.open('POST','AJAX.php',true);
 
 		// Set up a handler for when the request finishes.
 		xhr.onload = function ()
 		{
-			if (xhr.status === 200) {
-			// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				{$("#archivecontent").html(xhr.responseText);}
+			if (xhr.status === 200) 
+			{
+				// File(s) uploaded. Maybe show response.
+				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+					{$("#archivecontent").html(xhr.responseText);}
 			} else {
 					alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
 			}
