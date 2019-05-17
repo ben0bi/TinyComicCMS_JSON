@@ -294,7 +294,6 @@ if($ajax=='newpage')
 				$newblogid=$bl['ID'];
 		}
 		$newblogid=$newblogid+1;
-		// TODO: Add image and blog post.
 
 		// create the new comic page entry
 		$itm = array();
@@ -327,6 +326,6 @@ if($ajax=='newpage')
 			echo $langDB['sentence_could_not_save_imagedb']."<br />";
 		}
 	}
-	showAdmin();
+	//showAdmin();
 }
 ?>
