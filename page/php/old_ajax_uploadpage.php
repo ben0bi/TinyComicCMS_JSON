@@ -6,7 +6,7 @@ $title=$_POST['title'];
 $blogtitle=$_POST['blogtitle'];
 $blogtext=$_POST['blogtext'];
 */
-$newfilename=phpupload('file');
+/*$newfilename=phpupload('file');
 if($newfilename!=-1)
 {
 	SQL::openConnection();
@@ -43,4 +43,5 @@ if($newfilename!=-1)
 //echo "Order: $order Title: $title <br />Blogtitle: $blogtitle<br />BlogText: $blogtext<br />";
 
 ComicCMS::showArchives('../', 291);
+*/
 ?>

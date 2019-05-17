@@ -18,6 +18,44 @@ $dirToRoot = "../";
 
 //echo "Admin stuff in PHP for security reasons.";
 
+// LOAD AND SAVE THE DBs
+function loadImageDB()
+{
+	global $imageDBFileName;
+	global $dirToRoot;
+	// get the image db.
+	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
+	$imageDB = json_decode($imageDBFile, true);
+	return $imageDB;
+}
+
+function loadBlogDB()
+{
+	global $blogDBFileName;
+	global $dirToRoot;
+	// get the blog db.
+	$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
+	$blogDB = json_decode($blogDBFile,true);
+	return $blogDB;
+}
+
+function saveImageDB($imgDB)
+{
+	global $imageDBFileName;
+	global $dirToRoot;
+	$json_data = json_encode($imgDB);
+	file_put_contents($dirToRoot.$imageDBFileName, $json_data);
+}
+
+function saveBlogDB($blgDB)
+{
+	global $blogDBFileName;
+	global $dirToRoot;
+	$json_data = json_encode($blgDB);
+	file_put_contents($dirToRoot.$blogDBFileName, $json_data);
+}
+// ENDOF LOAD AND SAVE FUNCTIONS
+
 // sort the image db by the pageorder.
 function sortImageDBByOrder()
 {
@@ -53,6 +91,8 @@ function sortImageDBByOrder()
 	return $source;
 }
 
+// LOAD THE STUFF
+
 // get the language translations.
 $langFile = file_get_contents($dirToRoot.$langFileName);
 $langDB = json_decode($langFile, true);
@@ -63,6 +103,8 @@ $blogDB = loadBlogDB();
 // get the image DB
 $imageDB = loadImageDB();
 $imageDB['IMAGES'] = sortImageDBByOrder();
+
+// ENDOF LOAD THE STUFF
 
 // get all blog entries for an image by image id.
 function getBlogEntriesByImageID($targetid)
@@ -167,44 +209,11 @@ function showAdmin()
 	echo '</article>'.chr(13);
 }
 
-function loadImageDB()
-{
-	global $imageDBFileName;
-	global $dirToRoot;
-	// get the image db.
-	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
-	$imageDB = json_decode($imageDBFile, true);
-	return $imageDB;
-}
-
-function loadBlogDB()
-{
-	global $blogDBFileName;
-	global $dirToRoot;
-	// get the blog db.
-	$blogDBFile = file_get_contents($dirToRoot.$blogDBFileName);
-	$blogDB = json_decode($blogDBFile,true);
-	return $blogDB;
-}
-
-function saveImageDB($imgDB)
-{
-	global $imageDBFileName;
-	global $dirToRoot;
-	// TODO: save image db.
-}
-
-function saveBlogDB($blgDB)
-{
-	global $blogDBFileName;
-	global $dirToRoot;
-	// TODO: save blog db.
-}
-
 // returns the new filename on success, -1 on fail.
 function phpupload($fileID)
 {
 	global $langDB;
+	
 	//global $sentence_new_page_created;
 	global $dirToRoot;
 	global $relative_upload_path;
@@ -275,32 +284,44 @@ if($ajax=='newpage')
 		}
 		$lastorder=$lastorder+1;
 		$newid=$newid+1;
-
+		
+		$imageDB = loadImageDB();
+		$blogDB = loadBlogDB();
+		$newblogid=-1;
+		foreach($blogDB['BLOGPOSTS'] as $bl)
+		{
+			if($bl['ID']>$newblogid || $newblogid==-1)
+				$newblogid=$bl['ID'];
+		}
+		$newblogid=$newblogid+1;
 		// TODO: Add image and blog post.
 
-	// create the new comic page entry
-	if(SQL::query(SQL::insert_page($title,$newfilename,$order))==TRUE)
-	{
-		// maybe insert a blog post
-		
+		// create the new comic page entry
+		$itm = array();
+		$itm['TITLE'] = $title;
+		$itm['IMAGE'] = $newfilename;
+		$itm['ORDER'] = $lastorder;
+		$itm['ID'] = $newid;
+		$itm['DATETIME'] = date('Y-m-d H:i:s');
+		$imageDB['IMAGES'][] = $itm;
+
+		// maybe create a new blog entry.
 		if($blogtitle!="" || $blogtext!="")
 		{
-			$lastid=SQL::getLastInsertedID();
-			//echo "Create Blog post for id $lastid";
-			SQL::query(SQL::insert_blogpost($lastid,$blogtitle,$blogtext));
-			//echo "..done.<br>";
-			echo $sentence_new_blogpost_created."<br />";
+			$blitem = array();
+			$blitem['DATETIME'] = $itm['DATETIME'];
+			$blitem['TITLE'] = $blogtitle;
+			$blitem['TEXT'] = $blogtext;
+			$blitem['IMAGEID']=$newid;
+			$blitem['ID']=$newblogid;
+			$blogDB['BLOGPOSTS'][] = $blitem;
+			saveBlogDB($blogDB);
+			echo $langDB['sentence_new_blogpost_created']."<br />";
 		}
 
-		echo $sentence_new_page_created."<br />";
+		saveImageDB($imageDB);
+		echo $langDB['sentence_new_page_created']."<br />";
 	}
-
-	SQL::closeConnection();
-	if(SQL::Feedback()!="")
-		echo "SQL Feedback: ".SQL::Feedback();
-}
-	echo "FILE: $newfilename";
-//	if($newfilename==-1)
-//		return;
+	showAdmin();
 }
 ?>
