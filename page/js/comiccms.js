@@ -329,11 +329,27 @@ function ComicCMS()
 			var idb = m_imageDB['IMAGES'][i];
 			if(parseInt(idb['ORDER'])==pageorder)
 			{
-				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
+				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / by order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
 				return idb;
 			}
 		}
 		log("Image at position "+pageorder+" not found!", LOG_ERROR);
+		return null;
+	}
+	
+	// get a comic row from the comic array.
+	var db_getComicRowByID = function(pageid)
+	{
+		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
+		{
+			var idb = m_imageDB['IMAGES'][i];
+			if(parseInt(idb['ID'])==pageid)
+			{
+				log("FOUND IMAGE DB ENTRY: by id "+idb['ID']+" / order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
+				return idb;
+			}
+		}
+		log("Image with id "+pageid+" not found!", LOG_ERROR);
 		return null;
 	}
 
@@ -564,6 +580,80 @@ function ComicCMS()
 
 		xhr.send(formData);
 	}
+	
+	// update the title of a comic poge.
+/*	this.a_updatePageTitle = function(dirToRoot, pageID)
+	{
+		var pagetitle=$('#update_pagetitle').val();
+
+		// create form data
+		var formData=new FormData();
+
+		formData.append('pageid', pageID);
+		formData.append('pagetitle', pagetitle);
+
+		BootstrapDialog.show({
+			title: sentence_please_wait,
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+		});
+
+		var xhr=new XMLHttpRequest();
+		xhr.open('POST',dirToRoot+"php/ajax_updatepagetitle.php",true);
+
+		// Set up a handler for when the request finishes.
+		xhr.onload = function ()
+		{
+			if (xhr.status === 200) {
+				// File(s) uploaded. Maybe show response.
+				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+					$("#archivecontent").html(xhr.responseText);
+			} else {
+					alert('AJAX ERROR: upload page call failed! (Ref. B) ('+xhr.status+')');
+			}
+			closeAllDialogs();
+			actualAdminBlogTitleShowID=-1;
+		};
+		xhr.send(formData);
+	}*/
+	// show a box to update a page title.
+	this.a_updatePageTitleForm = function(dirToRoot, pageID)
+	{
+		// get the page with the given pageid.
+		var page = db_getComicRowByID(pageID);
+		if(page==null)
+		{
+			log("Could not update title; page with id "+pageID+" not found.", LOG_ERROR);
+			return;
+		}
+		
+		var txt="";
+		txt=txt+'<center><form id="pagetitleupdateform" action="../php/ajax_updatepagetitle.php" method="POST">';
+		txt=txt+'<table border="0" style="width:100%;" >';
+		txt=txt+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+		txt=txt+'<td><input type="text" id="update_pagetitle" name="update_pagetitle" value="'+page['TITLE']+'"/></td></tr>';
+		txt=txt+'</table></form></center>';
+
+		txt=txt+'<script>';
+		txt=txt+'var form=document.getElementById("pagetitleupdateform");';
+		txt=txt+'form.onsubmit = function(event) {';
+		txt=txt+'event.preventDefault();';
+		txt=txt+'ComicCMS.updatePageTitle("'+dirToRoot+'", '+pageID+');';
+		txt=txt+'};';
+		txt=txt+'</script>';
+		
+		confirmBox(m_langDB['word_title_update_title'], txt, m_langDB['word_save_page'], function(dialog)
+		{
+			var pagetitle=$("#update_pagetitle").val();
+			if(pagetitle=="")
+			{	
+				alert(m_langDB['sentence_page_must_have_title']);
+				return;
+			}	
+			dialog.close();
+			// submit the form.
+			$("#pagetitleupdateform").submit();
+		});
+	});
 }
 
 ComicCMS.instance =new ComicCMS;
@@ -590,12 +680,13 @@ ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
 // create a comic page.
 ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
-
+// Update the title of a page.
+//ComicCMS.a_updatePageTitle = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitle(dirToRoot, pageID);}
 // page upload
-ComicCMS.a_pageUpload = function(dirToRoot)
-{
-	ComicCMS.instance.a_pageupload(dirToRoot);
-};
+ComicCMS.a_pageUpload = function(dirToRoot) {ComicCMS.instance.a_pageupload(dirToRoot);};
+
+// show a box to update a page title.
+ComicCMS.a_updatePageTitleForm = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitleForm(dirToRoot, pageID)}
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
@@ -756,33 +847,6 @@ ComicCMS.showTitle = function()
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 /*
-// show a box to update a page title.
-ComicCMS.updatePageTitleForm = function(dirToRoot, pageID)
-{
-	var path=dirToRoot+"php/ajax_updatePageTitleForm.php";
-	//get form with its values
-	$.ajax({
-	  	type: "GET",
-	  	url: path+"?pageid="+pageID,
-  		success : function(data)
-		{
-		    confirmBox(word_title_update_title, data, word_save_page, function(dialog)
-			{
-				var pagetitle=$("#update_pagetitle").val();
-
-				if(pagetitle=="")
-				{
-					alert("Page must have a title.");
-					return;
-				}
-
-				dialog.close();
-				// submit the form.
-				$("#pagetitleupdateform").submit();
-			});
-	        }
-	});
-}
 
 // show a box to update a blog post.
 ComicCMS.updateBlogPostShowForm = function(dirToRoot, blogID)
@@ -843,42 +907,6 @@ ComicCMS.updateBlogpost = function(dirToRoot, blogID)
 				$("#archivecontent").html(xhr.responseText);
 	  	} else {
 	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
-	  	}
-		closeAllDialogs();
-		actualAdminBlogTitleShowID=-1;
-	};
-
-	xhr.send(formData);
-}
-
-// Update the title of a page.
-ComicCMS.updatePageTitle = function(dirToRoot, pageID)
-{
-	var pagetitle=$('#update_pagetitle').val();
-
-	// create form data
-	var formData=new FormData();
-
-	formData.append('pageid', pageID);
-	formData.append('pagetitle', pagetitle);
-
-	BootstrapDialog.show({
-		title: sentence_please_wait,
-		message: "<center>"+sentence_please_wait_for_upload+"</center>"
-        });
-
-	var xhr=new XMLHttpRequest();
-	xhr.open('POST',dirToRoot+"php/ajax_updatepagetitle.php",true);
-
-	// Set up a handler for when the request finishes.
-	xhr.onload = function ()
-	{
-		if (xhr.status === 200) {
-	    		// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				$("#archivecontent").html(xhr.responseText);
-	  	} else {
-	    		alert('AJAX ERROR: upload page call failed! (Ref. B) ('+xhr.status+')');
 	  	}
 		closeAllDialogs();
 		actualAdminBlogTitleShowID=-1;

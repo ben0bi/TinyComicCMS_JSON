@@ -332,6 +332,7 @@ if($ajax=='newpage')
 		echo $langDB['sentence_could_not_upload_file'];
 	}
 	
+	// reload the dbs just for that they are right.
 	$imageDB = loadImageDB();
 	$blogDB = loadBlogDB();
 	

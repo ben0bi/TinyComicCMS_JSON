@@ -57,6 +57,9 @@
 	"sentence_blog_must_have_title_and_text": "Titel UND Text des Blogeintrages müssen ausgefüllt sein. (Oder einfach beides leer lassen.)",
 	"sentence_blog_must_have_title_and_text_02": "Titel UND Text des Blogeintrages müssen ausgefüllt sein.",
 	
+	"//": "The page must have a title.",
+	"sentence_page_must_have_title": "Die Seite muss einen Titel haben.",
+	
 	"sentence_new_page_created": "Die neue Seite wurde erstellt.",					"//": "new page was created (success)",
 	"sentence_new_blogpost_created": "Ein neuer Blog Eintrag wurde erstellt.",		"//": "new blog entry created (success)",
 	"sentence_pagetitle_updated": "Der Titel der Seite wurde erneuert.",			"//": "blog post was updated (success)",
