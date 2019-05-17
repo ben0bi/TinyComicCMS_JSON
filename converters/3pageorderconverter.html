@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<div id="content">
+	Look at the console.
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../page/js/bhelpers.js"></script>
+<script>
+
+var mDB = [];
+
+/*
+	This file is used for converting from old SQL database.
+
+	Use it after you converted the sql with convert.py and
+	after you used the 2sqltextconverter.js on it.
+	
+	Save the new json from the browser.
+*/
+
+	// sort the db by order.
+var db_getComicSortedByOrder=function(m_imageDB)
+{
+	var db = m_imageDB['IMAGES'];
+	if(db.length<=1)
+		return db;
+
+	var found= true;
+	var sortsteps=0;
+	while(found)
+	{
+		found=false; // reset found.
+		sortsteps++;
+		for(var i=0;i<db.length-1;i++)
+		{
+			var entry1=db[i];
+			var entry2=db[i+1];
+			var o1 = entry1['ORDER'];
+			var o2 = entry2['ORDER'];
+			// maybe switch entries.
+			if(parseInt(o1)>parseInt(o2))
+			{
+				db[i]=entry2;
+				db[i+1]=entry1;
+				found = true;
+			}
+		}
+	}
+	log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG_VERBOSE);
+	return db;
+}
+
+
+// load the file, convert it and print it out in html.
+// convertImageDB => data/jsons/imagedb.json
+// convertBlogDB => data/jsons/blogdb.json
+__loadJSON("imagedb.json", function(data) 
+{
+	
+	// sort by order.
+	var db = db_getComicSortedByOrder(data);
+	data['IMAGES']=db;
+	
+	// after sort, remove all order tags.
+	var count =0;
+	var txt="";
+	// remove all order tags.
+	for(var i=0; i<data['IMAGES'].length; i++)
+	{
+		count++;
+		delete data['IMAGES'][i]['ORDER'];
+	}
+	
+	//var txt = JSON.parse(newarray);
+	var txt=JSON.stringify(data, null, 4);
+	
+	log(count+" entries converted.");
+	$('#content').html('<pre>'+txt+'</pre>');
+});
+
+</script>
+</body>

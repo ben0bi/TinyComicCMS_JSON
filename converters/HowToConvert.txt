@@ -1,0 +1,19 @@
+This file explains how I converted the old SQL database to the new JSON database.
+
+There are multiple converters because this was a work in progress. I did the one after another while rewriting the core engine.
+Sorry for that. I hope you can convert your old databases, though.
+
+1. Extract your SQL:
+	1. Export it from PHPMyAdmin as SQL file.
+	2. Open that file and search for the image and blog entries.
+	3. Go through each entry and press enter on the end of it. It's all in one line but the converter looks for enters. Save it.
+	4. Name it starforce.sql and use "python 1convert.py"
+		It has a little menu: Press enter to do nothing or 1 or 2 to add the line to the image or blog db. Press 3 to get the save menu.
+		Don't forget to save your dbs after you went through all the entries. Both DBs reside in their own file.
+
+2. Convert special characters:
+	5. Use the 2sqltextconverter.js to reset the special characters from the old db. You need to provide the proper filename and use it twice.
+		Save the output on the browser.
+
+3. "Convert" the pageorder:
+	6. Use the 3pageorderconverter.js to sort the image db by pageorder and then remove the pageorder property.

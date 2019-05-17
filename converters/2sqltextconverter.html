@@ -9,15 +9,26 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="js/bhelpers.js"></script>
+<script src="../page/js/bhelpers.js"></script>
 <script>
 
 var mDB = [];
 
+/*
+	This file is used for converting from old SQL database.
+	
+	Extract all your SQL database lines.
+	Then let them run through that script.
+	
+	You need to copy your db file into the folder where this file resides.
+	
+	Save the new json from the browser.
+*/
+
 // load the file, convert it and print it out in html.
 // convertImageDB => data/jsons/imagedb.json
 // convertBlogDB => data/jsons/blogdb.json
-__loadJSON("page/data/jsons/imagedb.json", function(data) 
+__loadJSON("imagedb.json", function(data) 
 {
 	mDB = data;
 	var txt=JSON.stringify(mDB, null, 4);
