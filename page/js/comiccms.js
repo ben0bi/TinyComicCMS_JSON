@@ -462,7 +462,7 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
-		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST">';
+		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST"><input type="hidden" id="ajax" value="newpage" />';
 		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
