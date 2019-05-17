@@ -36,8 +36,13 @@ body
 
 .arrow
 {
-	font-weight: bolder;
+	font-weight: normal;
 	font-size: 12pt;
+}
+.arrow:hover
+{
+	background-color: #FFA;
+	color: transparent;
 }
 
 table
