@@ -26,6 +26,7 @@ function loadImageDB()
 	// get the image db.
 	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 	$imageDB = json_decode($imageDBFile, true);
+	$imageDB['IMAGES'] = sortImageDBByOrder();
 	return $imageDB;
 }
 
@@ -102,7 +103,6 @@ $blogDB = loadBlogDB();
 // sort it just when loading the page.
 // get the image DB
 $imageDB = loadImageDB();
-$imageDB['IMAGES'] = sortImageDBByOrder();
 
 // ENDOF LOAD THE STUFF
 
