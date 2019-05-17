@@ -19,10 +19,13 @@ $dirToRoot = "../";
 //echo "Admin stuff in PHP for security reasons.";
 
 // LOAD AND SAVE THE DBs
+$imageDB=array();
 function loadImageDB()
 {
 	global $imageDBFileName;
 	global $dirToRoot;
+	global $imageDB;
+	
 	// get the image db.
 	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 	$imageDB = json_decode($imageDBFile, true);
@@ -103,7 +106,7 @@ $blogDB = loadBlogDB();
 
 // sort it just when loading the page.
 // get the image DB
-$imageDB = loadImageDB();
+loadImageDB();
 
 // ENDOF LOAD THE STUFF
 
