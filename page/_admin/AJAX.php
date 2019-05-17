@@ -55,10 +55,15 @@ function saveBlogDB()
 
 
 // AJAX STUFF
-if(isset($_POST['ajax']))
+$ajax=$_POST['ajax'];
+echo ">AJAX $ajax";
+
+if($ajax=='newpage')
 {
-	$ajax=$_POST['ajax'];
-	echo ">AJAX $ajax";
+	$title=$_POST['title'];
+	$blogtitle=$_POST['blogtitle'];
+	$blogtext=$_POST['blogtext'];
+	echo "NEWPAGE";
 }
-echo "ENDOF AJAXPHP";
+
 ?>

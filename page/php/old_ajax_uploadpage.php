@@ -1,11 +1,11 @@
 <?php
 
 require __DIR__."/comiccms.php";
-
+/*
 $title=$_POST['title'];
 $blogtitle=$_POST['blogtitle'];
 $blogtext=$_POST['blogtext'];
-
+*/
 $newfilename=phpupload('file');
 if($newfilename!=-1)
 {
