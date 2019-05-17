@@ -18,9 +18,154 @@ $dirToRoot = "../";
 
 //echo "Admin stuff in PHP for security reasons.";
 
+// sort the image db by the pageorder.
+function sortImageDBByOrder()
+{
+	global $imageDB;
+	
+	$source = $imageDB['IMAGES'];
+	$switched = 1;
+	while($switched==1)
+	{
+		// reset switched.
+		$switched = 0;
+		// clear target.
+		for($i=0;$i<sizeof($source)-2;$i++)
+		{
+			// get this and the next element and maybe switch them.
+			$elem1= $source[$i];
+			$elem2 = $source[$i+1];
+
+			// get the order.
+			$o1=$elem1['ORDER'];
+			$o2=$elem2['ORDER'];
+			
+			// maybe switch them.
+			if($o1>$o2)
+			{
+				// something changed, set switched to 1.
+				$switched=1;
+				$source[$i]=$elem2;
+				$source[$i+1]=$elem1;
+			}
+		}
+	}
+	return $source;
+}
+
 // get the language translations.
 $langFile = file_get_contents($dirToRoot.$langFileName);
 $langDB = json_decode($langFile, true);
+// get the blog db. Get the image db below the next function.
+$blogDB = loadBlogDB();
+
+// sort it just when loading the page.
+// get the image DB
+$imageDB = loadImageDB();
+$imageDB['IMAGES'] = sortImageDBByOrder();
+
+// get all blog entries for an image by image id.
+function getBlogEntriesByImageID($targetid)
+{
+	global $blogDB;
+	$ret = array();
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		$iid = $itm['IMAGEID'];
+		if($iid==$targetid)
+			$ret[]=$itm;
+	}
+	return $ret;
+}
+
+// show the admin archives panel.
+function showAdmin()
+{
+	global $dirToRoot;
+	global $relative_upload_path;
+	global $imageDB;
+	global $langDB;
+	$db = $imageDB['IMAGES'];
+
+	// The db should already be sorted, see above.
+	$firstorder = -1;
+	$lastorder = -1;
+	
+	echo '<article id="archives">'.chr(13);
+	if(sizeof($db)>0)
+	{
+		$firstorder=$db[0]['ORDER'];
+		$lastorder = $db[sizeof($db)-1]['ORDER'];
+		
+		// it's already admin we don't need to set the class but this is from the original version. 
+		$class="horizontalborder";
+		echo '<center><table border="0">'.chr(13);
+		// go through the db reversed.
+		for($ri=sizeof($db)-1; $ri>=0;$ri--)
+		{
+			$itm=$db[$ri];
+			$id=$itm['ID'];
+			$pageorder=$itm['ORDER'];
+			$title=$itm['TITLE'];
+			$date=date('d.m.Y',strtotime($itm['DATETIME']));
+			$path=$itm['IMAGE'];
+			
+			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$pageorder.&nbsp;</td>".chr(13);
+			
+			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
+
+			// push all blog titles here
+			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
+			echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
+			
+			$blogresult=getBlogEntriesByImageID($id);
+			if(sizeof($blogresult)>0)
+			{
+				echo '<table border="0">';
+				foreach($blogresult as $itm)
+				{
+					$bt = $itm['TITLE'];
+					$bid=$itm['ID'];
+					echo '<tr><td>&nbsp;&gt;&nbsp;</td>';
+					echo '<td><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
+					echo "<td>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
+						echo '</tr>';
+				}
+				echo '</table>';
+			}else{
+				echo $langDB['sentence_admin_no_blogpost']."&nbsp;";
+			}
+			
+			echo '</div>';
+			echo "</td>\n";
+			
+			// show change title link
+			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
+			
+			// show page moving stuff
+			if($pageorder!=$firstorder)
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\">&nbsp;v&nbsp;</a></td>".chr(13));
+			else
+				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
+			
+			if($pageorder!=$lastorder)
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;^&nbsp;</a></td>".chr(13);
+			else
+				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
+			
+			// show delete page
+			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$dirToRoot', '$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
+			// show create blog post
+			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_createblogpost('$dirToRoot','$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
+
+			echo "</tr>".chr(13);
+		}
+		echo '</table></center>'.chr(13);
+	}else{
+		echo $langDB['sentence_no_archive_result'];
+	}
+	echo '</article>'.chr(13);
+}
 
 function loadImageDB()
 {
@@ -42,14 +187,14 @@ function loadBlogDB()
 	return $blogDB;
 }
 
-function saveImageDB()
+function saveImageDB($imgDB)
 {
 	global $imageDBFileName;
 	global $dirToRoot;
 	// TODO: save image db.
 }
 
-function saveBlogDB()
+function saveBlogDB($blgDB)
 {
 	global $blogDBFileName;
 	global $dirToRoot;
@@ -114,6 +259,46 @@ if($ajax=='newpage')
 	$blogtext=$_POST['blogtext'];
 	
 	$newfilename=phpupload('file');
+	if($newfilename!=-1)
+	{
+		$imageDB = loadImageDB();
+		// create the new page order and page id.
+		// order can be changed afterwards but not the page id.
+		$lastorder=-1;
+		$newid=-1;
+		foreach($imageDB['IMAGES'] as $itm)
+		{
+			if($itm['ORDER']>$lastorder || $lastorder==-1)
+				$lastorder=$itm['ORDER'];
+			if($itm['ID']>$newid || $newid==-1)
+				$newid=$itm['ID'];
+		}
+		$lastorder=$lastorder+1;
+		$newid=$newid+1;
+
+		// TODO: Add image and blog post.
+
+	// create the new comic page entry
+	if(SQL::query(SQL::insert_page($title,$newfilename,$order))==TRUE)
+	{
+		// maybe insert a blog post
+		
+		if($blogtitle!="" || $blogtext!="")
+		{
+			$lastid=SQL::getLastInsertedID();
+			//echo "Create Blog post for id $lastid";
+			SQL::query(SQL::insert_blogpost($lastid,$blogtitle,$blogtext));
+			//echo "..done.<br>";
+			echo $sentence_new_blogpost_created."<br />";
+		}
+
+		echo $sentence_new_page_created."<br />";
+	}
+
+	SQL::closeConnection();
+	if(SQL::Feedback()!="")
+		echo "SQL Feedback: ".SQL::Feedback();
+}
 	echo "FILE: $newfilename";
 //	if($newfilename==-1)
 //		return;
