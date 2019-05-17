@@ -305,7 +305,7 @@ if($ajax=='newpage')
 		$itm['DATETIME'] = date('Y-m-d H:i:s');
 		$imageDB['IMAGES'][] = $itm;
 		
-		if(saveImageDB($imageDB)!=FALSE);
+		if(saveImageDB($imageDB)!=FALSE)
 		{
 			echo $langDB['sentence_new_page_created']."<br />";
 			// maybe create a new blog entry.
