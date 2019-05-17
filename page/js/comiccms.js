@@ -50,9 +50,10 @@ function ComicCMS()
 	// load the image db.
 	this.loadImageDB = function(imagedbname)
 	{
+		m_imageJSONFile=imagedbname;
 		if(imagedbname!="")
 		{
-			__loadJSON(m_imageJSONFile, function(data)
+			__loadJSON(imagedbname, function(data)
 			{
 				log("Image Data:"+data);
 				m_imageDB = data;
@@ -65,9 +66,10 @@ function ComicCMS()
 	// load the blog db.
 	this.loadBlogDB = function(blogdbname)
 	{
+		m_blogJSONFile=blogdbname;
 		if(blogdbname!="")
 		{
-			__loadJSON(m_blogJSONFile, function(data)
+			__loadJSON(blogdbname, function(data)
 			{
 				log("Blog Data ("+m_blogJSONFile+"):"+data, LOG_DEBUG_VERBOSE);
 				m_blogDB = data;
@@ -80,8 +82,7 @@ function ComicCMS()
 	// load a language file into the DB structure.
 	this.loadLanguage = function(filename, func=null)
 	{
-		m_langJSONFile = filename;
-		
+		m_langJSONFile = filename;	
 		if(m_langJSONFile!="")
 		{
 			__loadJSON(m_langJSONFile, function(data)
