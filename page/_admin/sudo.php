@@ -128,7 +128,10 @@ function ComicCMS_showAdminBlogTitles(id)
 	}
 }
 
-ComicCMS.loadLanguage("../data/jsons/lang.german.json")
+// load the dbs into JS.
+ComicCMS.loadLanguage("../data/jsons/lang.german.json");
+ComicCMS.instance.loadImageDB("../data/jsons/imagedb.json");
+ComicCMS.instance.loadBlogDB("../data/jsons/blogdb.json");
 
 </script>
 

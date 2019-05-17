@@ -40,8 +40,16 @@ function ComicCMS()
 		// load the jsons.
 		// load the language db.
 		this.loadLanguage(langdbname);
+		this.loadImageDB(imagedbname);
+		this.loadBlogDB(blogdbname);
 
-		// load the image db.
+		// fire the init function after all jsons are loaded. It waits for itself for the loading.
+		InitFunction();
+	}
+	
+	// load the image db.
+	this.loadImageDB = function(imagedbname)
+	{
 		if(imagedbname!="")
 		{
 			__loadJSON(m_imageJSONFile, function(data)
@@ -52,8 +60,11 @@ function ComicCMS()
 		}else{
 			log("No Image DB loaded.", LOG_ERROR);
 		}
+	}
 
-		// load the blog db.
+	// load the blog db.
+	this.loadBlogDB = function(blogdbname)
+	{
 		if(blogdbname!="")
 		{
 			__loadJSON(m_blogJSONFile, function(data)
@@ -64,9 +75,6 @@ function ComicCMS()
 		}else{
 			log("No Blog DB loaded.", LOG_WARN);
 		}
-
-		// fire the init function after all jsons are loaded. It waits for itself for the loading.
-		InitFunction();
 	}
 
 	// load a language file into the DB structure.
