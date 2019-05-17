@@ -665,12 +665,34 @@ function ComicCMS()
 			$("#pagetitleupdateform").submit();
 		});
 	};
+	
+	// move a page up or down in the pageorder.
+	// TODO: here
+	this.a_movepage = function(dirToRoot, pageorder, direction)
+	{
+		// move page call
+		$.ajax({
+		type: "GET",
+		url: dirToRoot+"php/ajax_movepage.php?direction="+direction+"&pageorder="+pageorder,
+		success : function(data) 
+			{
+				actualAdminBlogTitleShowID=-1;
+				$("#archivecontent").html(data);
+			}
+		});
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
+
+// move the page with pageorder a one page up (admin)
+ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};
+// move the page with pageorder a page down (admin)
+ComicCMS.a_movepagedown = function(dirToRoot, pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "down");};
+
 
 // return the language associated with the given term.
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
@@ -1038,34 +1060,5 @@ ComicCMS.window_deleteblogpost = function(dirToRoot, id, title)
 			});
 			dialog.close();
 		});
-};
-*/
-
-/*
-// move a page up or down in the pageorder.
-ComicCMS.movepage = function(dirToRoot, pageorder, direction)
-{
-	// move page call
-	$.ajax({
-	  type: "GET",
-	  url: dirToRoot+"php/ajax_movepage.php?direction="+direction+"&pageorder="+pageorder,
-	  success : function(data) 
-		{
-			actualAdminBlogTitleShowID=-1;
-			$("#archivecontent").html(data);
-		}
-	});
-}
-
-// move the page with pageorder a one page up (admin)
-ComicCMS.movepageup = function(dirToRoot,pageorder)
-{
-	this.movepage(dirToRoot, pageorder, "up");
-};
-
-// move the page wit pageorder a page down (admin)
-ComicCMS.movepagedown = function(dirToRoot, pageorder)
-{
-	this.movepage(dirToRoot, pageorder, "down");
 };
 */

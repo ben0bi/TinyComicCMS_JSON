@@ -359,6 +359,8 @@ if($ajax=='updatepagetitle')
 			$imageDB['IMAGES'][$i]['TITLE']=$pagetitle;
 			saveImageDB($imageDB);
 			echo $langDB['sentence_pagetitle_updated']."<br />";
+			
+			// only reload the image db.
 			$imageDB = loadImageDB();
 			break;
 		}
