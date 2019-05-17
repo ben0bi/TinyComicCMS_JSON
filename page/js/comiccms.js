@@ -595,11 +595,37 @@ function ComicCMS()
 	};
 	
 	// move a page up or down in the pageorder.
-	// TODO: here
 	this.a_movepage = function(dirToRoot, pageorder, direction)
 	{
+		// create form data
+		var formData=new FormData();
+		formData.append('ajax', 'movepage');
+		formData.append('direction', direction);
+		formData.append('pageposition', pageorder);
+
+		/*BootstrapDialog.show({
+			title: m_langDB['sentence_please_wait'],
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+		});*/
+
+		var xhr=new XMLHttpRequest();
+		xhr.open('POST',"AJAX.php",true);
+
+		// Set up a handler for when the request finishes.
+		xhr.onload = function ()
+		{
+			if (xhr.status === 200) {
+				// The pages were moved.
+				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+					$("#archivecontent").html(xhr.responseText);
+			} else {
+					alert('AJAX ERROR: move page call failed! (Ref. C) ('+xhr.status+')');
+			}
+		};
+		xhr.send(formData);
+		
 		// move page call
-		$.ajax({
+	/*	$.ajax({
 		type: "GET",
 		url: dirToRoot+"php/ajax_movepage.php?direction="+direction+"&pageorder="+pageorder,
 		success : function(data) 
@@ -607,7 +633,7 @@ function ComicCMS()
 				actualAdminBlogTitleShowID=-1;
 				$("#archivecontent").html(data);
 			}
-		});
+		});*/
 	}
 }
 

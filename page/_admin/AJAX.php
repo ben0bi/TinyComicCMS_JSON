@@ -322,4 +322,48 @@ if($ajax=='updatepagetitle')
 	}
 	showAdmin();
 }
+
+// MOVE A PAGE UP OR DOWN.
+if($ajax=='movepage')
+{
+	$pageorder_first=-1;
+	$pageorder_second=-1;
+
+	$direction=$_POST['direction'];
+	$movepageposition=$_POST['pageposition'];
+	
+	$imageDB = loadImageDB();
+	$firstidx=0;
+	$lastidx=sizeof($imageDB['IMAGES'])-1;
+	
+	if(($direction=="up" && $movepageposition>$firstidx) || ($direction=="down" && $movepageposition<$lastidx))
+	{
+		// get the row at the movepageposition
+		$firstrow = $imageDB['IMAGES'][$movepageposition];
+		$secondrow= $firstrow;
+		//$id_first = $firstrow['ID'];
+		$pageorder_first = $movepageposition; // new: not the order anymore.
+		
+		// move the second position.
+		$secondposition=$movepageposition;
+		if($direction=="up")
+			$secondposition = $movepageposition-1;
+		else
+			$secondposition = $movepageposition+1;
+		
+		// second is in range, get it.
+		if($secondposition>=$firstidx && $secondposition<=$lastidx)
+		{
+			$secondrow = $imageDB['IMAGES'][$secondposition];
+			//$id_second = $secondrow['ID'];
+			
+			// switch the values.
+			$imageDB['IMAGES'][$secondposition] = $firstrow;
+			$imageDB['IMAGES'][$movepageposition] = $secondrow;
+			saveImageDB($imageDB);
+			$imageDB=loadImageDB();
+		}
+	}
+	showAdmin();
+}
 ?>
