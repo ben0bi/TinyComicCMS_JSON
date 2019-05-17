@@ -31,6 +31,13 @@ body
 	max-width: 100%;
 	overflow-x: hidden;
 	font-family: sans-serif, monospace;
+	font-size: 12pt;
+}
+
+.arrow
+{
+	font-weight: bolder;
+	font-size: 16pt;
 }
 
 table
