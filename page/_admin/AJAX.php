@@ -261,6 +261,8 @@ function phpupload($fileID)
 }
 
 // DO SOME AJAX STUFF HERE.
+
+// CREATE A NEW PAGE
 if($ajax=='newpage')
 {
 	$title=$_POST['title'];
@@ -336,6 +338,27 @@ if($ajax=='newpage')
 	$imageDB = loadImageDB();
 	$blogDB = loadBlogDB();
 	
+	showAdmin();
+}
+
+// UPDATE A PAGE TITLE
+if($ajax=='updatepagetitle')
+{
+	$pageid=$_POST['pageid'];
+	$pagetitle=$_POST['pagetitle'];
+
+	$imageDB = loadImageDB();
+	for($i=0;$i<sizeof($imageDB['IMAGES']);$i++)
+	{
+		if($imageDB['IMAGES'][$i]['ID']==$pageid)
+		{
+			$imageDB['IMAGES'][$i]['TITLE']=$pagetitle;
+			saveImageDB($imageDB);
+			echo $langDB['sentence_pagetitle_updated']."<br />";
+			$imageDB = loadImageDB();
+			break;
+		}
+	}
 	showAdmin();
 }
 ?>

@@ -600,6 +600,7 @@ function ComicCMS()
 
 		formData.append('pageid', pageID);
 		formData.append('pagetitle', pagetitle);
+		formData.append('ajax', 'updatepagetitle');
 
 		BootstrapDialog.show({
 			title: m_langDB['sentence_please_wait'],
@@ -607,7 +608,7 @@ function ComicCMS()
 		});
 
 		var xhr=new XMLHttpRequest();
-		xhr.open('POST',dirToRoot+"php/ajax_updatepagetitle.php",true);
+		xhr.open('POST',dirToRoot+"AJAX.php",true);
 
 		// Set up a handler for when the request finishes.
 		xhr.onload = function ()
