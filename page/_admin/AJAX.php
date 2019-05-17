@@ -325,7 +325,8 @@ if($ajax=='newpage')
 		}else{
 			// remove the uploaded file.
 			echo $langDB['sentence_could_not_save_imagedb']."<br />";
-			unlink($newfilename) or echo("Couldn't delete file $newfilename.");
+			if(unlink($newfilename)==FALSE)
+				echo("PHP ERROR: Couldn't delete file $newfilename.<br />");
 		}
 	}else{
 		
