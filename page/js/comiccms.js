@@ -653,7 +653,7 @@ function ComicCMS()
 			// submit the form.
 			$("#pagetitleupdateform").submit();
 		});
-	});
+	};
 }
 
 ComicCMS.instance =new ComicCMS;
