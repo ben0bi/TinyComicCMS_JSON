@@ -53,4 +53,10 @@ function saveBlogDB()
 	// TODO: save blog db.
 }
 
+
+// AJAX STUFF
+if(isset($_POST['ajax'])
+{
+
+}
 ?>

@@ -16,25 +16,6 @@ require("AJAX.php");
 
 $admin_login_password="anypass";
 
-// THESE ARE TO BE SET FROM THE ROOT DIR.
-// DB file names.
-$langFileName = "data/jsons/lang.german.json";
-$imageDBFileName = "data/jsons/imagedb.json";
-$blogDBFileName = "data/jsons/blogdb.json";
-// the relative path for the uploads.
-$relative_upload_path="data/uploads/";
-
-// relative directory from THIS page to the root of the page.
-$dirToRoot = "../";
-
-// ENDOF VALUES ************************************************************************************************
-
-//echo "Admin stuff in PHP for security reasons.";
-
-// get the language translations.
-$langFile = file_get_contents($dirToRoot.$langFileName);
-$langDB = json_decode($langFile, true);
-
 // get the blog db. Get the image db below the next function.
 $blogDB = loadBlogDB();
 
