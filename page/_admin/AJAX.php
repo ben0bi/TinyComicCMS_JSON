@@ -26,7 +26,8 @@ function loadImageDB()
 	// get the image db.
 	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 	$imageDB = json_decode($imageDBFile, true);
-	//$imageDB['IMAGES'] = sortImageDBByOrder();
+	$ret = sortImageDBByOrder();
+	$imageDB['IMAGES'] = $ret;
 	return $imageDB;
 }
 
