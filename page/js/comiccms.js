@@ -462,7 +462,7 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
-		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST"><input type="hidden" id="ajax" value="newpage" />';
+		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST">'
 		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="upload_pagetitle" name="upload_pagetitle" /></td></tr>';
@@ -514,6 +514,54 @@ function ComicCMS()
 			$("#pageuploadform").submit();
 		});
 	}
+	
+	this.a_pageupload=function(dirToRoot)
+	{
+		var fileSelect=document.getElementById("upload_pagefile");
+		var title=$('#upload_pagetitle').val();
+		var blogtitle=$('#upload_blogtitle').val();
+		var blogtext=$('#upload_blogtext').val();
+		var files=fileSelect.files;
+
+		// create form data
+		var formData=new FormData();
+
+		// single file
+		var file=files[0];
+		formData.append('file', file,file.name);
+
+		// add title, blogtitle and blogtext
+		formData.append('title', title);
+		formData.append('blogtitle', blogtitle);
+		formData.append('blogtext', blogtext);
+
+		// add ajax determinator
+		formData.append('ajax', 'newpage');
+	
+		BootstrapDialog.show({
+			title: m_langDB['sentence_please_wait'],
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+			});
+
+		var xhr=new XMLHttpRequest();
+		xhr.open('POST',dirToRoot+"php/ajax_uploadpage.php",true);
+
+		// Set up a handler for when the request finishes.
+		xhr.onload = function ()
+		{
+			if (xhr.status === 200) {
+			// File(s) uploaded. Maybe show response.
+			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+				{$("#archivecontent").html(xhr.responseText);}
+			} else {
+					alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+			}
+			actualAdminBlogTitleShowID=-1;
+			closeAllDialogs();
+		};
+
+		xhr.send(formData);
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
@@ -540,6 +588,12 @@ ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
 // create a comic page.
 ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
+
+// page upload
+ComicCMS.a_pageUpload = function(dirToRoot)
+{
+	ComicCMS.instance.a_pageupload(dirToRoot);
+};
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
@@ -907,51 +961,6 @@ ComicCMS.createBlogpost = function(dirToRoot, id)
 	xhr.send(formData);
 
 	//alert("Create Blog Post: "+dirToRoot+" "+id);
-};
-
-ComicCMS.pageUpload = function(dirToRoot)
-{
-	var fileSelect=document.getElementById("upload_pagefile");
-	var title=$('#upload_pagetitle').val();
-	var blogtitle=$('#upload_blogtitle').val();
-	var blogtext=$('#upload_blogtext').val();
-	var files=fileSelect.files;
-
-	// create form data
-	var formData=new FormData();
-
-	// single file
-	var file=files[0];
-	formData.append('file', file,file.name);
-
-	// add title, blogtitle and blogtext
-	formData.append('title', title);
-	formData.append('blogtitle', blogtitle);
-	formData.append('blogtext', blogtext);
-
-	BootstrapDialog.show({
-		title: sentence_please_wait,
-		message: "<center>"+sentence_please_wait_for_upload+"</center>"
-        });
-
-	var xhr=new XMLHttpRequest();
-	xhr.open('POST',dirToRoot+"php/ajax_uploadpage.php",true);
-
-	// Set up a handler for when the request finishes.
-	xhr.onload = function ()
-	{
-		if (xhr.status === 200) {
-	    		// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				$("#archivecontent").html(xhr.responseText);
-	  	} else {
-	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
-	  	}
-		actualAdminBlogTitleShowID=-1;
-		closeAllDialogs();
-	};
-
-	xhr.send(formData);
 };
 
 // delete a comic page.
