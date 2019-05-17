@@ -36,4 +36,7 @@ Blog function:
 This blog is actually only for the creator, there is no commenting function right now.
 
 Where is the administration login link?    
--> In the lower right corner is a "Source"-link. You will find the admin link there on the "Archives" page.
+-> There is no administration link (right now) for security reasons.    
+-> Just go to _admin/sudo.php or just _admin/ (--> index.html)    
+		The index.html redirects to sudo.php.    
+		You can use another index.html for even more security, so a hacker will find "nothing" there.    
