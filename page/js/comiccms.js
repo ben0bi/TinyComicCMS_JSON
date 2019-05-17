@@ -650,7 +650,7 @@ function ComicCMS()
 		txt=txt+'};';
 		txt=txt+'</script>';
 		
-		confirmBox(m_langDB['word_title_update_title'], txt, m_langDB['word_save_page'], function(dialog)
+		a_confirmBox(m_langDB['word_title_update_title'], txt, m_langDB['word_save_page'], function(dialog)
 		{
 			var pagetitle=$("#update_pagetitle").val();
 			if(pagetitle=="")
