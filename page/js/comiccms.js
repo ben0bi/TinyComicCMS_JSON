@@ -1,8 +1,3 @@
-// closes ALL bootstrap dialogs
-function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog){ dialog.close();});}
-
-//-------------------------------------------------------------------------------------------------------------------------------------
-
 // ComicCMS is singleton.
 function ComicCMS()
 {
@@ -11,7 +6,6 @@ function ComicCMS()
 	var m_imageJSONFile = "";
 	var m_blogJSONFile = "";
 	var m_langJSONFile = "";
-//	var m_doneLoading = -3; // done if >= 0
 	var isDoneLoading=function()
 	{
 		if(m_doneLoading>=0)
@@ -19,9 +13,9 @@ function ComicCMS()
 		return false;
 	}
 
-// from php
 	var m_pageCmd = "latest";
 
+	// the three dbs: images,  blog posts and page translations
 	var m_imageDB = [];
 	var m_blogDB = [];
 	var m_langDB = [];
@@ -186,7 +180,6 @@ function ComicCMS()
 			var comicid=comicrow['ID'];
 			var comicimage = comicrow['IMAGE'];
 			var comictitle = comicrow['TITLE'];
-			//var comicorder = comicrow['ORDER'];
 
 			// build html for that image.
 			if(comicimage!="")
@@ -278,14 +271,12 @@ function ComicCMS()
 		{
 			var itm=db[i];
 			var id=itm['ID'];
-			//OBSOLETE: var pageorder=itm['ORDER']; --> it's i now.
 			var title=itm['TITLE'];
 			var date=itm['DATETIME'];
 			var path=itm['IMAGE'];
 
 			txt+='<tr class="'+cl+'">';
 			txt+='<td class="'+cl+'" valign="top">'+i+'&nbsp;</td>';
-//OBSOLETE:	txt+='<td class="'+cl+'" valign="top">'+pageorder+'&nbsp;</td>';
 			txt+='<td class="'+cl+'" valign="top" onmouseover="ComicCMS.showArchiveDate('+id+',true);" onmouseout="ComicCMS.showArchiveDate('+id+',false);" style="max-width: 350px;">';
 			txt+='<a href="index.html?id='+id+'">'+title+'</a>';
 			txt+='</td>';
@@ -301,63 +292,12 @@ function ComicCMS()
 		$("#pagecontent").focus();
 	}
 
-	// OBSOLETE: sort the db by order.
-	/*var db_getComicSortedByOrder=function(ascending=false)
-	{
-		var db = m_imageDB['IMAGES'];
-		if(db.length<=1)
-			return db;
-
-		var found= true;
-		var sortsteps=0;
-		while(found)
-		{
-			found=false; // reset found.
-			sortsteps++;
-			for(var i=0;i<db.length-1;i++)
-			{
-				var entry1=db[i];
-				var entry2=db[i+1];
-				var o1 = entry1['ORDER'];
-				var o2 = entry2['ORDER'];
-				// maybe switch entries.
-				if(parseInt(o1)>parseInt(o2))
-				{
-					db[i]=entry2;
-					db[i+1]=entry1;
-					found = true;
-				}
-			}
-		}
-		// maybe switch.
-		if(ascending==false)
-		{
-			var db2=[];;
-			for(var i=db.length-1;i>=0;i--)
-				db2.push(db[i]);
-			db=db2;
-		}
-		log("DB sorted. Steps used: "+sortsteps, LOG_DEBUG_VERBOSE);
-		return db;
-	}*/
-
 	// get a comic row from the comic array by the index in the array.
 	var db_getComicRowByOrder = function(pageorder)
 	{
 		if(m_imageDB['IMAGES'].length>pageorder && pageorder>=0)
 			return m_imageDB['IMAGES'][pageorder];
-		
-		// OBSOLETE:
-/*		for(var i = 0;i<m_imageDB['IMAGES'].length;i++)
-		{
-			var idb = m_imageDB['IMAGES'][i];
-			if(parseInt(idb['ORDER'])==pageorder)
-			{
-				log("FOUND IMAGE DB ENTRY: id "+idb['ID']+" / by order "+idb['ORDER']+" / img "+idb['IMAGE'],LOG_DEBUG_VERBOSE);
-				return idb;
-			}
-		}*/
-		
+
 		log("Image at position "+pageorder+" not found!", LOG_ERROR);
 		return null;
 	}
@@ -399,23 +339,8 @@ function ComicCMS()
 		if(target<0)
 			target=0;
 
-		//OBSOLETE: var ret=target;
 		var firstorder=0;
 		var lastorder=m_imageDB['IMAGES'].length-1;
-
-		// get first and last row order id.
-		// OBSOLETE:
-		/*
-		for(var i=0; i<m_imageDB['IMAGES'].length; i++)
-		{
-			var img=m_imageDB['IMAGES'][i];
-			var order = parseInt(img['ORDER']);
-			if(firstorder==-1 || order<firstorder)
-				firstorder=order;
-			if(lastorder==-1 || order>lastorder)
-				lastorder=order;
-		}
-*/
 
 		// select the id depending on the command.
 		switch(cmd.toLowerCase())
@@ -426,52 +351,16 @@ function ComicCMS()
 			case 'next':
 				// only get next if the pageorder is in range.
 				if(target<=lastorder)
-				{
-				/*	var nearest =-1;
-					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
-					{
-						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
-						if(nearest==-1)
-							nearest = order;
-
-						// found, return it.
-						if(order==target) {return target;}
-
-						// not found, check if it is nearer.
-						if(order-target>=0 && Math.abs(order-target)<Math.abs(nearest-target))
-							nearest = order;
-					}
-					if(nearest!=-1)
-						return nearest;
-					*/
 					return target;
-				}else{
+				else
 					return lastorder;
-				}
 				break;
 			case 'prev':
 			case 'previous':
 				if(target>=0)
-				{
-					// OBSOLETE:
-					/*var nearest =-1;
-					for(var i=0; i<m_imageDB['IMAGES'].length;i++)
-					{
-						var order = parseInt(m_imageDB['IMAGES'][i]['ORDER']);
-						if(nearest==-1)
-							nearest = order;
-
-						if(order==target) {return target;}
-
-						if(order-target<=0 && Math.abs(order-target)<Math.abs(nearest-target))
-							nearest = order;
-					}
-					if(nearest!=-1)
-						return nearest;*/
 					return target;
-				}else{
+				else
 					return firstorder;
-				}
 				break;
 			default: break;
 		}

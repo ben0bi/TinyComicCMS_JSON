@@ -113,6 +113,11 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 <script src="../js/AdminLinkOriginalPos.js"></script>
 
 <script>
+// closes ALL bootstrap dialogs
+function closeAllDialogs() {$.each(BootstrapDialog.dialogs, function(id, dialog){ dialog.close();});}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
 // show a window with the blog posts and update stuff for a given post.
 var actualAdminBlogTitleShowID=-1;
 function ComicCMS_showAdminBlogTitles(id)

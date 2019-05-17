@@ -24,13 +24,10 @@ function loadImageDB()
 {
 	global $imageDBFileName;
 	global $dirToRoot;
-	global $imageDB;
 	
 	// get the image db.
 	$imageDBFile = file_get_contents($dirToRoot.$imageDBFileName);
 	$imageDB = json_decode($imageDBFile, true);
-	//$ret = sortImageDBByOrder();
-	//$imageDB['IMAGES'] = $ret;
 	return $imageDB;
 }
 
@@ -61,42 +58,6 @@ function saveBlogDB($blgDB)
 }
 // ENDOF LOAD AND SAVE FUNCTIONS
 
-// OBSOLETE: sort the image db by the pageorder.
-/*function sortImageDBByOrder()
-{
-	global $imageDB;
-	
-	$source = $imageDB['IMAGES'];
-	$switched = 1;
-	while($switched==1)
-	{
-		// reset switched.
-		$switched = 0;
-		// clear target.
-		for($i=0;$i<sizeof($source)-2;$i++)
-		{
-			// get this and the next element and maybe switch them.
-			$elem1= $source[$i];
-			$elem2 = $source[$i+1];
-
-			// get the order.
-			$o1=$elem1['ORDER'];
-			$o2=$elem2['ORDER'];
-			
-			// maybe switch them.
-			if($o1>$o2)
-			{
-				// something changed, set switched to 1.
-				$switched=1;
-				$source[$i]=$elem2;
-				$source[$i+1]=$elem1;
-			}
-		}
-	}
-	return $source;
-}
-*/
-
 // LOAD THE STUFF
 
 // get the language translations.
@@ -107,7 +68,7 @@ $blogDB = loadBlogDB();
 
 // sort it just when loading the page.
 // get the image DB
-loadImageDB();
+$imageDB=loadImageDB();
 
 // ENDOF LOAD THE STUFF
 
@@ -140,10 +101,7 @@ function showAdmin()
 	
 	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
-	{
-		//$firstorder=$db[0]['ORDER'];
-		//$lastorder = $db[sizeof($db)-1]['ORDER'];
-		
+	{		
 		// it's already admin we don't need to set the class but this is from the original version. 
 		$class="horizontalborder";
 		echo '<center><table border="0">'.chr(13);
@@ -152,7 +110,6 @@ function showAdmin()
 		{
 			$itm=$db[$ri];
 			$id=$itm['ID'];
-			//$pageorder=$itm['ORDER'];
 			$title=$itm['TITLE'];
 			$date=date('d.m.Y',strtotime($itm['DATETIME']));
 			$path=$itm['IMAGE'];
@@ -285,12 +242,9 @@ if($ajax=='newpage')
 		// OBSOLETE:
 		foreach($imageDB['IMAGES'] as $itm)
 		{
-//			if($itm['ORDER']>$lastorder || $lastorder==-1)
-//				$lastorder=$itm['ORDER'];
 			if($itm['ID']>$newid || $newid==-1)
 				$newid=$itm['ID'];
 		}
-//		$lastorder=$lastorder+1;
 		$newid=$newid+1;
 		
 		$blogDB = loadBlogDB();
@@ -306,7 +260,6 @@ if($ajax=='newpage')
 		$itm = array();
 		$itm['TITLE'] = $title;
 		$itm['IMAGE'] = $newfilename;
-//		$itm['ORDER'] = $lastorder;
 		$itm['ID'] = $newid;
 		$itm['DATETIME'] = date('Y-m-d H:i:s');
 		// add the item.
