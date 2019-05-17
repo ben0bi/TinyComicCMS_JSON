@@ -190,12 +190,12 @@ function showAdmin()
 			
 			// show page moving stuff
 			if($pageorder!=$firstorder) // up needs down arrow.
-				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\">&nbsp;&#x21CA;&nbsp;</a></td>".chr(13));
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepageup('$dirToRoot', '$pageorder');\">&nbsp;&#x21D8;&nbsp;</a></td>".chr(13));
 			else
 				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
 			
 			if($pageorder!=$lastorder) // down needs up arrow.
-				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;&#x21C8;&nbsp;</a></td>".chr(13);
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.movepagedown('$dirToRoot', '$pageorder');\">&nbsp;&#x21D6;nbsp;</a></td>".chr(13);
 			else
 				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
 			
