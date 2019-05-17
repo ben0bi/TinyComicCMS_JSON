@@ -1,4 +1,8 @@
 <?php
+
+$aj=$_POST['ajax'];
+echo("AJAX $aj");
+
 // functions for loading and saving the databases (again).
 // THESE ARE TO BE SET FROM THE ROOT DIR.
 // DB file names.
@@ -52,17 +56,6 @@ function saveBlogDB()
 	global $dirToRoot;
 	// TODO: save blog db.
 }
-
-
-// AJAX STUFF
-foreach($_POST as $itm)
-{
-	echo($itm);
-}
-
-$ajax=$_POST['ajax'];
-$title=$_POST['title'];
-echo ">AJAX $ajax T:  $title";
 
 if($ajax=='newpage')
 {
