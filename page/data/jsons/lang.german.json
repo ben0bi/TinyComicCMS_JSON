@@ -68,6 +68,7 @@
 	
 	"sentence_could_not_save_blogdb": "<font color='#F33'>Die Blog-Datenbank konnte nicht gespeichert werden.</font>",
 	"sentence_could_not_save_imagedb": "<font color='#F33'>Die Bild-Datenbank konnte nicht gespeichert werden.</font>",
+	"sentence_could_not_upload_file": "<font color='#F33'>Das Bild konnte nicht hochgeladen werden.</font>",
 	
 	"//": "clear the comment string >", "//": 0
 }

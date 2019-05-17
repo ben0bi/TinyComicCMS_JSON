@@ -329,8 +329,12 @@ if($ajax=='newpage')
 				echo("PHP ERROR: Couldn't delete file $newfilename.<br />");
 		}
 	}else{
-		
+		echo $langDB['sentence_could_not_upload_file'];
 	}
+	
+	$imageDB = loadImageDB();
+	$blogDB = loadBlogDB();
+	
 	showAdmin();
 }
 ?>
