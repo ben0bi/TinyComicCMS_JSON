@@ -55,7 +55,7 @@ function saveBlogDB()
 
 
 // AJAX STUFF
-if(isset($_POST['ajax'])
+if(isset($_POST['ajax']))
 {
 
 }
