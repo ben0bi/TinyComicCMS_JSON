@@ -6,13 +6,20 @@ Hopefully the most tiny webcomic CMS and Frontend.
 
 NOW it's gonna be tiny.
 
-All the php files will vanish except for the ajax ones.
+All the php files will vanish except for the ajax ones,
+which will reside as functions in ONE file now.
+
 No SQL needed anymore.
 
 Partial rewrite: Updating all the stuff with JS instead of PHP.
 After that, there will be a complete rewrite which is even smaller.
 
-Not yet running.
+The frontend runs completely on JavaScript now.
+This one is running properly again.
+(The "test data" is my own data. I did not add the images, though ;) )
+
+The admin backend needs PHP for security reasons.
+I am on it right now. It is partial running.
 
 JSON Version. No Database is used here. PHP is only used to upload files and
 save the JSON-"Database".

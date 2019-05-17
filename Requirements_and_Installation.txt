@@ -1,64 +1,33 @@
 Requirements
 ------------
 
-JSON Version: All stuff marked with [NONO] is obsolete. ;)
+TinyComicCMS_JSON
 
-This is the old installation documentation and will be rewritten when the JSON version works.
+Short: You just need PHP. 
+"cmod 777" the target folder if something won't work. ;)
+(mostly the uploads folder.)
 
-Server:
-[NONO] > A MySQL Database (>= v4.1.3)
-> PHP (>= v5.0)
+This is a REALLY tiny ComicCMS.
 
-[NONO] I used phpmyadmin for the initial setup of the DB.
+I stripped out much overhead from the old TinyComicCMS.
+It does not use SQL anymore but plain JSON.
 
-Client: JavaScript must be enabled.
+That makes it even more tiny because you do not have to set up an SQL server.
 
---------------------------------------------------------------------------------------------------------------------------------------------
+The frontend runs in pure JavaScript now, it can be used without PHP.
 
-Installation
-------------
+The backend with the admin stuff has its own folder (_admin), where also all the php stuff resides.
+Bootstrap (dialogs and stuff) is only used in the admin panel and resides in the _admin folder now, too.
+Same with the bootstrap css files.
 
-[NONO] ATTENTION: The root index file is in the page directory. Your redirection must go to page/index.php, NOT /index.html !!
+I pull out the old files time by time when they are "converted" into the new system.
 
-> Copy the page-folder and the uploads-folder to your web directory.
-	If there is no upload folder, create it in the root dir (same dir where the page dir is.)
+All the JS files in the frontend, except the jQuery which is loaded from a CDN, is written by myself.
+Again, the bootstrap stuff is only used in the admin panel to easy things up. The frontend is completely, 
+except for jQuery, written by myself.
 
-[NONO]	
-> Create a user and a DB on your MySQL-DB.
-	+ Phpmyadmin: 
-		> Log in as root.
-		> Click users.
-		> Click "Create New User"
-		> Input your stuff, (local-)host username and password.
-		> Check the checkbox which says "Create DB with the same name for this user."
-		> Click OK
-[ENDOF NONO]
+Beni Yager, 2019
 
-> Open page/config.php in your editor.
-[NONO]	> Change the DB credentials.
-	> Change the admin password.
-
-[NONO] [Create DB Tables]
-[NONO] > In your Browser, go to page/_admin/install.php -> DB Entries and stuff will be created.
-
-
-[NONO]
-[WORKAROUND - Create DB Tables]
-> Download "MySQL Workbench" and install it. It's a free software which you find on the internet.
-> Open the .mwb-file provided with this application with MySql-Workbench.
-> Click the menu "Database->Synchronize Model.."
-> Input your DB credentials and host.
-> Click "Next" (3 times)
-> Maybe you need to select the DB and override the target at the bottom of the screen.
-> Click "Next" 3 times. Click "Execute". Click "Close". ;)
-> Done.
-[ENDOF NONO]
-
-It does not work?
-> Check if the upload folder and its contents have read-write permission.
-> Check if all stuff in config.php is set up the right way.
-[NONO]	> Check for the right DB credentials and host.
-	> Check if the upload path is set up the right way in config.php
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 Customization
