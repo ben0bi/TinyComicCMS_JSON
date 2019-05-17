@@ -596,7 +596,7 @@ function ComicCMS()
 	
 	// move a page up or down in the pageorder.
 	// TODO: here
-/*	this.a_movepage = function(dirToRoot, pageorder, direction)
+	this.a_movepage = function(dirToRoot, pageorder, direction)
 	{
 		// move page call
 		$.ajax({
@@ -608,7 +608,7 @@ function ComicCMS()
 				$("#archivecontent").html(data);
 			}
 		});
-	}*/
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
@@ -620,7 +620,6 @@ ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchiv
 ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};
 // move the page with pageorder a page down (admin)
 ComicCMS.a_movepagedown = function(dirToRoot, pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "down");};
-
 
 // return the language associated with the given term.
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
