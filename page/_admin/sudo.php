@@ -99,8 +99,8 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 </div>
 <br />
 
-<div id="adminlink">
-	<a href="https://github.com/ben0bi/TinyComicCMS_JSON" target="_new" class="bglinkcolor">Source</a>
+<div id="adminlinkdiv">
+	<a href="https://github.com/ben0bi/TinyComicCMS_JSON" target="_new" class="bglinkcolor" id="sourcelink">Source</a>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
