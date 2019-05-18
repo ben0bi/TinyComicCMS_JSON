@@ -101,7 +101,7 @@ function showAdmin()
 	
 	// reload the image db in the JavaScript.
 	echo '<script>';
-	echo 'log("Reloading DBs..")';
+	echo 'log("Reloading DBs..");';
 	echo 'ComicCMS.instance.reloadImageDB();';
 	echo 'ComicCMS.instance.reloadBlogDB();';
 	echo '</script>';
