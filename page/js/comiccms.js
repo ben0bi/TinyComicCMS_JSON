@@ -608,10 +608,10 @@ function ComicCMS()
 		formData.append('direction', direction);
 		formData.append('pageposition', pageorder);
 
-		/*BootstrapDialog.show({
+		BootstrapDialog.show({
 			title: m_langDB['sentence_please_wait'],
-			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
-		});*/
+			message: "<center>"+m_langDB['sentence_applying_changes']+"</center>"
+		});
 
 		var xhr=new XMLHttpRequest();
 		xhr.open('POST',"AJAX.php",true);
@@ -626,6 +626,7 @@ function ComicCMS()
 			} else {
 					alert('AJAX ERROR: move page call failed! (Ref. C) ('+xhr.status+')');
 			}
+			closeAllDialogs();
 		};
 		xhr.send(formData);
 		

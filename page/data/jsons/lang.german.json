@@ -66,6 +66,7 @@
 	"sentence_blogpost_updated": "Der Blog Eintrag wurde erneuert.",				"//": "blog post was updated (success)",
 	"sentence_please_wait": "Bitte warten..",										"//": "Please wait..",
 	"sentence_please_wait_for_upload": "Bitte warten bis der Upload fertig ist.",	"//": "Please wait until upload finishes.",
+	"sentence_applying_changes": "Die Einstellungen werden vorgenommen.",			"//": "Changes take place now.",
 	"sentence_admin_no_blogpost": "[Kein Blog Eintrag vorhanden.]",	"//": "No blogpost available.",
 	"sentence_wait_for_load": "Bitte warten, ich lade..", 							"//": "Please wait, loading..",
 	
