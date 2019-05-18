@@ -87,7 +87,7 @@ function getBlogEntriesByImageID($targetid)
 }
 
 // show the admin archives panel.
-function showAdmin()
+function showAdmin($reload=FALSE)
 {
 	global $dirToRoot;
 	global $relative_upload_path;
@@ -100,11 +100,14 @@ function showAdmin()
 	$lastorder = sizeof($db)-1;
 	
 	// reload the image db in the JavaScript.
-	echo '<script>';
-	echo 'log("Reloading DBs..");';
-	echo 'ComicCMS.instance.reloadImageDB();';
-	echo 'ComicCMS.instance.reloadBlogDB();';
-	echo '</script>';
+	if($reload!=FALSE)
+	{
+		echo '<script>';
+		echo 'console.log("Reloading DBs..");';
+		echo 'ComicCMS.instance.reloadImageDB();';
+		echo 'ComicCMS.instance.reloadBlogDB();';
+		echo '</script>';
+	}
 	
 	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
@@ -304,7 +307,7 @@ if($ajax=='newpage')
 	$imageDB = loadImageDB();
 	$blogDB = loadBlogDB();
 	
-	showAdmin();
+	showAdmin(TRUE);
 }
 
 // UPDATE A PAGE TITLE
@@ -327,7 +330,7 @@ if($ajax=='updatepagetitle')
 			break;
 		}
 	}
-	showAdmin();
+	showAdmin(TRUE);
 }
 
 // MOVE A PAGE UP OR DOWN.
@@ -369,6 +372,6 @@ if($ajax=='movepage')
 			$imageDB=loadImageDB();
 		}
 	}
-	showAdmin();
+	showAdmin(TRUE);
 }
 ?>
