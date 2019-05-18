@@ -499,7 +499,7 @@ function ComicCMS()
 	
 		BootstrapDialog.show({
 			title: m_langDB['sentence_please_wait'],
-			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+			message: "<center>"+m_langDB['sentence_applying_changes']+"</center>"
 			});
 
 		var xhr=new XMLHttpRequest();
@@ -629,17 +629,6 @@ function ComicCMS()
 			closeAllDialogs();
 		};
 		xhr.send(formData);
-		
-		// move page call
-	/*	$.ajax({
-		type: "GET",
-		url: dirToRoot+"php/ajax_movepage.php?direction="+direction+"&pageorder="+pageorder,
-		success : function(data) 
-			{
-				actualAdminBlogTitleShowID=-1;
-				$("#archivecontent").html(data);
-			}
-		});*/
 	}
 }
 
