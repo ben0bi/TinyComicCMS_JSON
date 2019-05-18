@@ -2,7 +2,7 @@
 var adminOrigPos=-999;
 $( document ).ready(function()
 {	
-	adminOrigPos=parseFloat($('#adminlink').position().top);
+	adminOrigPos=parseFloat($('#adminlinkdiv').position().top);
 	console.log("Admin link original y position: "+adminOrigPos);
 	//ComicCMS.adjustPageHeight();
 	
@@ -12,6 +12,6 @@ $( document ).ready(function()
 	{
 		var st=$(document).scrollTop();
 		st=st+adminOrigPos;
-		$("#adminlink").css('top',st);
+		$("#adminlinkdiv").css('top',st);
 	});
 });

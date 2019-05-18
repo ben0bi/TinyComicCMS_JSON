@@ -124,13 +124,13 @@ a:hover
 	left: 0px;
 }
 
-#admindiv {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;z-index: 90;}
-#adminlink
+#adminlinkdiv 
 {
-	position: absolute;
+	position: absolute; 
 	right: 10px;
 	bottom: 10px;
 }
+#adminlink {}
 
 /* the bottom navigating links will be shown after the image has loaded. */
 #bottomnavigatinglinks {display: none;}
@@ -227,7 +227,8 @@ input, button
 {
 	#wrapper {width: 800px;}
 	.blogpost {width: 800px;}
-	#sourcelink {display: block;}
+	#sourcelink {display: inline-block;}
+	#adminlinkdivider {display: inline-block;}
 }
 
 /* mobile phones 1 */
@@ -240,6 +241,7 @@ input, button
 	#sourcelink {display: none;}
 	#pageimageMoveContainer  {border: 0; padding: 0;}
 	#pageimage  {border: 0; padding: 0;}
+	#adminlinkdivider {display: none;}
 }
 
 /* Bigger screens. */

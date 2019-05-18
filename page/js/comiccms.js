@@ -255,6 +255,7 @@ function ComicCMS()
 		// switch the top bar links.
 		$('#mainlink').hide();
 		$('#archivelink').show();
+		$('#adminlink').show();
 
 		var db = m_imageDB['IMAGES']; // OBSOLETE: db_getComicSortedByOrder(false);
 		
