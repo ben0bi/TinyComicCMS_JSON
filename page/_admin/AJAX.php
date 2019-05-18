@@ -103,12 +103,13 @@ function showAdmin($reload=FALSE)
 	if($reload!=FALSE)
 	{
 		echo '<script>';
-		echo 'log("Reloading DBs..");';
+		echo 'log("Reloading DBs..", LOG_DEBUG);';
 		echo 'ComicCMS.instance.reloadImageDB();';
 		echo 'ComicCMS.instance.reloadBlogDB();';
 		echo '</script>';
 	}
 	
+	// show the archive page for the admin while the dbs are loading for js.
 	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
 	{		
