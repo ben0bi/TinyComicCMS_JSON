@@ -103,7 +103,7 @@ function showAdmin($reload=FALSE)
 	if($reload!=FALSE)
 	{
 		echo '<script>';
-		echo 'console.log("Reloading DBs..");';
+		echo 'log("Reloading DBs..");';
 		echo 'ComicCMS.instance.reloadImageDB();';
 		echo 'ComicCMS.instance.reloadBlogDB();';
 		echo '</script>';
