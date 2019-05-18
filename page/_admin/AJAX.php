@@ -99,6 +99,13 @@ function showAdmin()
 	$firstorder = 0;
 	$lastorder = sizeof($db)-1;
 	
+	// reload the image db in the JavaScript.
+	echo '<script>';
+	echo 'log("Reloading DBs..")';
+	echo 'ComicCMS.instance.reloadImageDB();';
+	echo 'ComicCMS.instance.reloadBlogDB();';
+	echo '</script>';
+	
 	echo '<article id="archives">'.chr(13);
 	if(sizeof($db)>0)
 	{		
@@ -341,7 +348,6 @@ if($ajax=='movepage')
 		// get the row at the movepageposition
 		$firstrow = $imageDB['IMAGES'][$movepageposition];
 		$secondrow= $firstrow;
-		//$id_first = $firstrow['ID'];
 		$pageorder_first = $movepageposition; // new: not the order anymore.
 		
 		// move the second position.
@@ -355,7 +361,6 @@ if($ajax=='movepage')
 		if($secondposition>=$firstidx && $secondposition<=$lastidx)
 		{
 			$secondrow = $imageDB['IMAGES'][$secondposition];
-			//$id_second = $secondrow['ID'];
 			
 			// switch the values.
 			$imageDB['IMAGES'][$secondposition] = $firstrow;

@@ -72,6 +72,10 @@ function ComicCMS()
 			log("No Blog DB loaded.", LOG_WARN);
 		}
 	}
+	
+	// reload the image/blog db.
+	this.reloadImageDB = function() {me.loadImageDB(m_imageJSONFile);};
+	this.reloadBlogDB = function() {me.loadBlogDB(m_blogJSONFile);};
 
 	// load a language file into the DB structure.
 	this.loadLanguage = function(filename, func=null)
@@ -651,15 +655,6 @@ ComicCMS.a_movepagedown = function(dirToRoot, pageorder) {ComicCMS.instance.a_mo
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
 ComicCMS.loadLanguage = function(filename, func=null) {ComicCMS.instance.loadLanguage(filename, func);};
 
-// show or hide the date in the archives.
-ComicCMS.showArchiveDate=function(id, show=true)
-{
-	if(show)
-		$('#dateof_'+id).css('display', 'block');
-	else
-		$('#dateof_'+id).css('display', 'none');
-}
-
 // get the next or the previous page.
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
@@ -688,6 +683,15 @@ ComicCMS.checkKeys = function(e)
 	if(e.keyCode=='39')
 		ComicCMS.nextPage();
 };
+
+// show or hide the date in the archives.
+ComicCMS.showArchiveDate=function(id, show=true)
+{
+	if(show)
+		$('#dateof_'+id).css('display', 'block');
+	else
+		$('#dateof_'+id).css('display', 'none');
+}
 
 // get next or previous post with swiping on a tablet.
 ComicCMS.touchStartX = 0;
