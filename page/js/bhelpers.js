@@ -58,7 +58,7 @@ function __replaceAll(source, replace, _with)
 		newsource=newsource.replace(replace,_with);
 		count++;
 	}
-	log(count+" replacements done.");
+	//log(count+" replacements done.");
 	return newsource;
 }
 
