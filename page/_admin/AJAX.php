@@ -115,9 +115,9 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	// if the blog id is set, get the associated image id.
 	foreach($blogDB['BLOGPOSTS'] as $itm)
 	{
-		if($itm['ID']==$highlightBlogID)
+		if(intval($itm['ID'])==intval($highlightBlogID))
 		{
-			$showId=$itm['IMAGEID'];
+			$showId=intval($itm['IMAGEID']);
 			break;
 		}
 	}
