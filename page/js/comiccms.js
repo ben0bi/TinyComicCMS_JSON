@@ -336,6 +336,17 @@ function ComicCMS()
 		}
 		return blogarr;
 	}
+	
+	// get a blog post by its id.
+	var db_getBlogPostByID(blogID)
+	{
+		for(var i=0;i<m_blogDB['BLOGPOSTS'].length;i++)
+		{
+			if(m_blogDB['BLOGPOSTS'][i]['ID']==blogID)
+				return m_blogDB['BLOGPOSTS'][i];
+		}
+		return null;
+	}
 
 	// returns the next or previous or actual page id depending on the command.
 	var getRealPagePosition=function(cmd, pageorder)
@@ -716,8 +727,8 @@ function ComicCMS()
 	this.a_updateBlogPostShowForm = function(blogID)
 	{
 		//var path=dirToRoot+"php/ajax_createUpdateBlogpostForm.php";
-		var blogItem=m_blogDB['BLOGPOSTS'][blogID];
-		if(blogItem==="undefined" || !blogItem || blogItem==null)
+		var blogItem=db_getBlogPostByID(blogID);
+		if(blogItem==null)
 		{
 			log("Cannot update blog post. Blog item with id "+blogID+" not found.", LOG_ERROR);
 			return;
