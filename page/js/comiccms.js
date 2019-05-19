@@ -636,12 +636,18 @@ function ComicCMS()
 	}
 	
 	// show a window with the blog posts and update stuff for a given post.
+	m_actualAdminBlogTitleShowID=-1;
 	this.a_showAdminBlogTitles=function(id)
 	{
 		a_removeHighlight();
 		$('.admin_blogtitles').each(function() {$(this).hide();});
 		if(m_actualAdminBlogTitleShowID!=id)
+		{	
 			$("#admin_blogtitles_"+id).show();
+			m_actualAdminBlogTitleShowID=id;
+		}else{
+			m_actualAdminBlogTitleShowID=-1;
+		}
 	}
 	
 	// remove the highlight if something was clicked.
