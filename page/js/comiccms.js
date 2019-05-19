@@ -932,7 +932,7 @@ function ComicCMS()
 		{
 			closeAllDialogs();
 			document.location.href="../index.html";
-		}
+		});
 	}
 }
 
