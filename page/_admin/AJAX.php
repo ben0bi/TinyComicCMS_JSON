@@ -451,12 +451,12 @@ if($ajax=='updateblogpost')
 	$blogtext=$_POST['blogtext'];
 	
 	$blogDB=loadBlogDB();
-	foreach($blogDB['BLOGPOSTS'] as $itm)
+	for($i=0;$i<sizeof($blogDB['BLOGPOSTS']);$i++)
 	{
-		if($itm['ID']==$blogid)
+		if($blogDB['BLOGPOSTS'][$i]['ID']==$blogid)
 		{
-			$itm['TITLE']=$blogtitle;
-			$itm['TEXT']=$blogtext;
+			$blogDB['BLOGPOSTS'][$i]['TITLE']=$blogtitle;
+			$blogDB['BLOGPOSTS'][$i]['TEXT']=$blogtext;
 			break;
 		}
 	}
