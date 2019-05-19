@@ -3,7 +3,7 @@
 	general functions to easy up your life.
 	by Benedict Jäggi in 2019
 
-	version 1.00: It's all tested by myself so I put it outta beta. :)
+	version 1.01: It's all tested by myself so I put it outta beta. :)
 
 	because they are sooo general, I will use double-underscore for them.
 	like jquerys $ you need to put __ before this stuff here.
@@ -45,6 +45,19 @@ var log = function(text, loglevel = 0)
 log.loglevel = LOG_WARN;
 // we push all log messages to this array, too.
 log.array = [];
+
+// replace all occurences of "replace" in "source" with "_with"
+function __replaceAll(source, replace, _with)
+{
+	var oldsource = null;
+	var newsource= source;
+	while(oldsource!=newsource)
+	{
+		oldsource=newsource;
+		newsource=newsource.replace(replace,_with);
+	}
+	return newsource;
+}
 
 /* Defined: Check if a variable is defined. Also works with associative array entries and such. */
 function __defined(variable)

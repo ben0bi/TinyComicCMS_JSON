@@ -740,12 +740,7 @@ function ComicCMS()
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="update_blogtitle" name="update_blogtitle" value="'+blogItem['TITLE']+'"/></td></tr>';
 		msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
-
-		//replace \n else it will make it <br /> (I don't know why)
-		//$text=SQL::sqlToText($blogrow->text);
-		//$text=str_replace("\r\n","&#10;",$text);
-		//$text=str_replace("\n","&#10;",$text);
-
+		
 		msg=msg+'<td><textarea id="update_blogtext" name="update_blogtext" rows="5" cols="60">'+blogItem['TEXT']+'</textarea></td></tr>';
 		msg=msg+'</table></form></center>';
 
@@ -762,7 +757,11 @@ function ComicCMS()
 		{	
 			var blogtitle=$("#update_blogtitle").val();
 			var blogtext=$("#update_blogtext").val();
-			
+		
+			//replace \n else it will make it <br /> (I don't know why)
+			blogtext=__replaceAll(blogtext, "\r\n", "&#10;");
+			blogtext=__replaceAll(blogtext, "\n", "&#10;");
+
 			// no title or no text.
 			if(blogtitle=="" || blogtext=="")
 			{
