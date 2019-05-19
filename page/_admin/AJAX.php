@@ -19,7 +19,6 @@ $dirToRoot = "../";
 //echo "Admin stuff in PHP for security reasons.";
 
 // LOAD AND SAVE THE DBs
-$imageDB=array();
 function loadImageDB()
 {
 	global $imageDBFileName;
@@ -450,11 +449,9 @@ if($ajax=='updateblogpost')
 	$blogtitle=$_POST['blogtitle'];
 	$blogtext=$_POST['blogtext'];
 	
-	//replace \n else it will make it <br /> (I don't know why)
-		
+	//replace \n else it will make it <br /> (I don't know why)	
 //	$blogtext=str_replace("\r\n","&#10;",$blogtext);
 //	$blogtext=str_replace("\n","&#10;",$blogtext);
-
 	
 	$blogDB=loadBlogDB();
 	for($i=0;$i<sizeof($blogDB['BLOGPOSTS']);$i++)
