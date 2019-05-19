@@ -730,7 +730,7 @@ function ComicCMS()
 	// this is only used in the admin panel and will
 	// be called on any click in the page.
 	var m_highlightRemoved =false;	// just once per page load.
-	var a_removeHighlight=function()
+	this.a_removeHighlight=function()
 	{
 		// safe processing power.
 		if(m_highlightRemoved==true)
