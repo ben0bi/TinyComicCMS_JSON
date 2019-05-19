@@ -94,6 +94,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	global $dirToRoot;
 	global $relative_upload_path;
 	global $imageDB;
+	global $blogDB;
 	global $langDB;
 	$db = $imageDB['IMAGES'];
 
@@ -113,14 +114,11 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	
 	$showId=-1;	// completely show the item with that id.
 	// if the blog id is set, get the associated image id.
-	echo "H: $highlightBlogID";
 	foreach($blogDB['BLOGPOSTS'] as $itm)
 	{
-		echo "<br /">intval($itm['ID'])."*";
 		if(intval($itm['ID'])==intval($highlightBlogID))
 		{
 			$showId=intval($itm['IMAGEID']);
-			echo "ID FOUND: ".$showId;
 			break;
 		}
 	}
