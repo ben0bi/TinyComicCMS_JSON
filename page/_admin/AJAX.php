@@ -452,8 +452,8 @@ if($ajax=='updateblogpost')
 	
 	//replace \n else it will make it <br /> (I don't know why)
 		
-	$blogtext=str_replace("\r\n","&#10;",$blogtext);
-	$blogtext=str_replace("\n","&#10;",$blogtext);
+//	$blogtext=str_replace("\r\n","&#10;",$blogtext);
+//	$blogtext=str_replace("\n","&#10;",$blogtext);
 
 	
 	$blogDB=loadBlogDB();
