@@ -633,7 +633,7 @@ function ComicCMS()
 	
 	// show a window with the blog posts and update stuff for a given post.
 	var m_actualAdminBlogTitleShowID=-1;
-	this.showAdminBlogTitles=function(id)
+	this.a_showAdminBlogTitles=function(id)
 	{
 		a_removeHighlight();
 		if(m_actualAdminBlogTitleShowID!=-1)
@@ -659,7 +659,7 @@ ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
-ComicCMS.showAdminBlogTitles = function(id) {ComicCMS.instance.showAdminBlogTitles(id);}
+ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlogTitles(id);}
 
 // move the page with pageorder a one page up (admin)
 ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};
