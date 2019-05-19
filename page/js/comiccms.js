@@ -727,7 +727,7 @@ function ComicCMS()
 		msg=msg+'<table border="0" style="width:100%;" >';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="update_blogtitle" name="update_blogtitle" value="'+blogItem['TITLE']+'"/></td></tr>';
-		msg=msg+'<tr><td valign="top" class="black">'m_langDB['word_text']+':&nbsp;</td>';
+		msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
 
 		//replace \n else it will make it <br /> (I don't know why)
 		//$text=SQL::sqlToText($blogrow->text);
