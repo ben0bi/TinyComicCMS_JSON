@@ -460,6 +460,8 @@ if($ajax=='updateblogpost')
 			break;
 		}
 	}
+	saveBlogDB($blogDB);
+	$blogDB=loadBlogDB();
 	echo $langDB['sentence_blogpost_updated']."<br />";
 	showAdmin(TRUE,-1,$blogid);
 }
