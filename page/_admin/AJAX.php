@@ -167,7 +167,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 						$blogclass=' class="highlightitem"';
 					
 					echo '<tr'.$blogclass.'><td'.$blogclass.'>&nbsp;&gt;&nbsp;</td>';
-					echo '<td'.$blogclass.'><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
+					echo '<td'.$blogclass.'><a href="javascript:" onclick="ComicCMS.a_updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
 					echo "<td".$blogclass.">&nbsp;|&nbsp;</td><td".$blogclass."><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
 					echo '</tr>';
 				}
