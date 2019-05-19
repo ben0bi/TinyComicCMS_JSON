@@ -735,7 +735,7 @@ function ComicCMS()
 		}
 		
 		var msg="";
-		msg=msg+'<center><form id="blogpostupdateform" action="../php/ajax_updateblogpost.php" method="POST">';
+		msg=msg+'<center><form id="blogpostupdateform" action="AJAX.php" method="POST">';
 		msg=msg+'<table border="0" style="width:100%;" >';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="update_blogtitle" name="update_blogtitle" value="'+blogItem['TITLE']+'"/></td></tr>';
@@ -760,6 +760,7 @@ function ComicCMS()
 		
 			//replace \n else it will make it <br /> (I don't know why)
 			blogtext=__replaceAll(blogtext, "\r\n", "&#10;");
+			blogtext=__replaceAll(blogtext, "\r", "&#10;");
 			blogtext=__replaceAll(blogtext, "\n", "&#10;");
 
 			// no title or no text.

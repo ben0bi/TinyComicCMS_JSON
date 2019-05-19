@@ -51,11 +51,14 @@ function __replaceAll(source, replace, _with)
 {
 	var oldsource = null;
 	var newsource= source;
+	var count=-1;
 	while(oldsource!=newsource)
 	{
 		oldsource=newsource;
 		newsource=newsource.replace(replace,_with);
+		count++;
 	}
+	log(count+" replacements done.");
 	return newsource;
 }
 
