@@ -1117,3 +1117,4 @@ ComicCMS.window_deletepage = function(dirToRoot, id, title)
 			dialog.close();
 		});
 };
+*/
