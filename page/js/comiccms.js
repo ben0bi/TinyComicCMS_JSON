@@ -420,8 +420,6 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function()
 	{
-		a_removeHighlight();
-		
 		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST">'
 		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
@@ -512,6 +510,7 @@ function ComicCMS()
 		{
 			if (xhr.status === 200) 
 			{
+				m_highlightRemoved=false;
 				// File(s) uploaded. Maybe show response.
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					{$("#archivecontent").html(xhr.responseText);}
@@ -549,7 +548,8 @@ function ComicCMS()
 		xhr.onload = function ()
 		{
 			if (xhr.status === 200) {
-				// File(s) uploaded. Maybe show response.
+				m_highlightRemoved=false;
+				// Page title changed. Maybe show response.
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
@@ -564,8 +564,6 @@ function ComicCMS()
 	// show a box to update a page title.
 	this.a_updatePageTitleForm = function(pageID)
 	{
-		a_removeHighlight();
-		
 		// get the page with the given pageid.
 		var page = db_getComicRowByID(pageID);
 		if(page==null)
@@ -624,6 +622,7 @@ function ComicCMS()
 		xhr.onload = function ()
 		{
 			if (xhr.status === 200) {
+				m_highlightRemoved=false;
 				// The pages were moved.
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
@@ -638,8 +637,6 @@ function ComicCMS()
 	// create the form for a new blogpost for a given comic id.
 	this.a_window_createblogpost = function(id)
 	{
-		a_removeHighlight();
-		
 		var msg='<center><form id="blogpostcreateform" action="AJAX.php" method="POST">';
 		msg=msg+'<hr><table border="0" style="width:100%;" >';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
@@ -701,7 +698,8 @@ function ComicCMS()
 		{
 			if (xhr.status === 200) 
 			{
-				// File(s) uploaded. Maybe show response.
+				// Blogpost created. Maybe show response.
+				m_highlightRemoved=false;
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
@@ -718,7 +716,6 @@ function ComicCMS()
 	m_actualAdminBlogTitleShowID=-1;
 	this.a_showAdminBlogTitles=function(id)
 	{
-		a_removeHighlight();
 		$('.admin_blogtitles').each(function() {$(this).hide();});
 		if(m_actualAdminBlogTitleShowID!=id)
 		{	
@@ -730,10 +727,18 @@ function ComicCMS()
 	}
 	
 	// remove the highlight if something was clicked.
+	// this is only used in the admin panel and will
+	// be called on any click in the page.
+	var m_highlightRemoved =false;	// just once per page load.
 	var a_removeHighlight=function()
 	{
+		// safe processing power.
+		if(m_highlightRemoved==true)
+			return;
+		
 		$('tr').each(function() {$(this).removeClass('highlightitem');});
 		$('td').each(function() {$(this).removeClass('highlightitem');});
+		m_highlightRemoved=true;
 	}
 }
 
@@ -771,6 +776,9 @@ ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlog
 ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_createblogpost(id);}
 // send the form to create a blog post.
 ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost(id);};
+
+// call this on a click on body on the admin panel.
+ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
@@ -995,6 +1003,7 @@ ComicCMS.updateBlogpost = function(dirToRoot, blogID)
 	xhr.onload = function ()
 	{
 		if (xhr.status === 200) {
+				m_highlightRemoved=false;
 	    		// File(s) uploaded. Maybe show response.
 			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 				$("#archivecontent").html(xhr.responseText);

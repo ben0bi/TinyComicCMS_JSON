@@ -128,6 +128,7 @@ ComicCMS.instance.loadBlogDB("../data/jsons/blogdb.json");
 $( document ).ready(function()
 {
 	ComicCMS.adjustPageHeight();
+	$('body').click(ComicCMS.a_removeHighlight);
 });
 </script>
 
