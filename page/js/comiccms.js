@@ -825,7 +825,7 @@ function ComicCMS()
 	// delete a blog post.
 	this.a_window_deleteblogpost = function(id, title)
 	{
-		confirmBox(m_langDB['sentence_title_reallydelete_blogpost'], title, m_langDB['word_delete'], function(dialog)
+		a_confirmBox(m_langDB['sentence_title_reallydelete_blogpost'], title, m_langDB['word_delete'], function(dialog)
 		{
 			// create form data
 			var formData=new FormData();
