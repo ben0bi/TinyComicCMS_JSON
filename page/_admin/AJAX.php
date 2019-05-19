@@ -135,7 +135,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.a_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
 			// push all blog titles here
-			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
+			echo '<div id="admin_blogtitles_'.$id.'" class="admin_blogtitles" style="display:none;">';
 			echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
 			
 			$blogresult=getBlogEntriesByImageID($id);
