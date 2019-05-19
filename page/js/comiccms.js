@@ -699,7 +699,6 @@ ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
-ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlogTitles(id);}
 
 // move the page with pageorder a one page up (admin)
 ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};
@@ -723,6 +722,10 @@ ComicCMS.a_pageUpload = function(dirToRoot) {ComicCMS.instance.a_pageupload(dirT
 
 // show a box to update a page title.
 ComicCMS.a_updatePageTitleForm = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitleForm(dirToRoot, pageID)}
+// show the blog titles and the image for the given comic page on the admin window.
+ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlogTitles(id);}
+// create a window to create a new blogpost.
+ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_createblogpost(id);}
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
