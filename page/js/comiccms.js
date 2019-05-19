@@ -758,7 +758,7 @@ function ComicCMS()
 		msg=msg+'</script>';
 
 		// show a confirm box with the blog entry data.
-		confirmBox(word_title_update_blogpost, data, word_save_blogpost, function(dialog)
+		a_confirmBox(word_title_update_blogpost, data, word_save_blogpost, function(dialog)
 		{	
 			var blogtitle=$("#update_blogtitle").val();
 			var blogtext=$("#update_blogtext").val();
