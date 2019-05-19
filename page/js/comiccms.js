@@ -762,12 +762,15 @@ function ComicCMS()
 		{	
 			var blogtitle=$("#update_blogtitle").val();
 			var blogtext=$("#update_blogtext").val();
+			
+			// no title or no text.
 			if(blogtitle=="" || blogtext=="")
 			{
 				alert("Blog must have title and text.");
 				return;
 			}
 			
+			// nothing changed at all.
 			if(blogtitle==blogItem['TITLE'] && blogtext==blogItem['TEXT'])
 			{
 				alert("You made no changes at all.");
@@ -818,6 +821,42 @@ function ComicCMS()
 		};
 		xhr.send(formData);
 	}
+	
+	// delete a blog post.
+	this.a_window_deleteblogpost = function(id, title)
+	{
+		confirmBox(m_langDB['sentence_title_reallydelete_blogpost'], title, m_langDB['word_delete'], function(dialog)
+		{
+			// create form data
+			var formData=new FormData();
+			formData.append('ajax', 'deleteblogpost');
+			formData.append('blogid', id);
+
+			BootstrapDialog.show({
+				title: m_langDB['sentence_please_wait'],
+				message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+			});
+
+			var xhr=new XMLHttpRequest();
+			xhr.open('POST',"AJAX.php",true);
+
+			// Set up a handler for when the request finishes.
+			xhr.onload = function ()
+			{
+				if (xhr.status === 200) {
+					m_highlightRemoved=false;
+					// Blog post updated. Maybe show response.
+					if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+						$("#archivecontent").html(xhr.responseText);
+				} else {
+						alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+				}
+				closeAllDialogs();
+				actualAdminBlogTitleShowID=-1;
+			};
+			xhr.send(formData);
+		});
+	};
 
 	// show a window with the blog posts and update stuff for a given post.
 	m_actualAdminBlogTitleShowID=-1;
@@ -852,6 +891,7 @@ function ComicCMS()
 ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
+// show the archives.
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
 
 // return the language associated with the given term.
@@ -887,6 +927,8 @@ ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost(id)
 ComicCMS.a_updateBlogPostShowForm = function(blogID) {ComicCMS.instance.a_updateBlogPostShowForm(blogID);}
 // update a blog post.
 ComicCMS.a_updateBlogpost = function(blogID) {ComicCMS.instance.a_updateBlogpost(blogID);}
+// Show a window for deleting a blog post.
+ComicCMS.a_window_deleteblogpost = function(id, title) {ComicCMS.instance.a_window_deleteblogpost(id, title);}
 
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
@@ -1075,22 +1117,3 @@ ComicCMS.window_deletepage = function(dirToRoot, id, title)
 			dialog.close();
 		});
 };
-
-// delete a blog post.
-ComicCMS.window_deleteblogpost = function(dirToRoot, id, title)
-{
-	confirmBox(sentence_title_reallydelete_blogpost, title, word_delete, function(dialog)
-		{
-			$.ajax({
-				type: "GET",
-				url: dirToRoot+"php/ajax_deleteblogpost.php?id="+id,
-			 	success : function(data) 
-				{
-					actualAdminBlogTitleShowID=-1;
-					$("#archivecontent").html(data);
-				}
-			});
-			dialog.close();
-		});
-};
-*/

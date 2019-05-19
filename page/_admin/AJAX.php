@@ -465,4 +465,28 @@ if($ajax=='updateblogpost')
 	echo $langDB['sentence_blogpost_updated']."<br />";
 	showAdmin(TRUE,-1,$blogid);
 }
+
+// delete a blog post
+if($ajax=="deleteblogpost")
+{
+	$deleteid=$_POST['blogid'];
+	$newdb = [];
+	$foundid=-1;
+	$blogDB=loadBlogDB();
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		// add all items except for the one with the given id.
+		if($itm['ID']!=$deleteid)
+		{
+			$newdb[]=$itm;
+		}else{
+			$foundid=$itm['IMAGEID'];
+		}
+	}
+	$blogDB['BLOGPOSTS']=$newdb;
+	saveBlogDB($blogDB);
+	$blogDB=loadBlogDB();
+	echo $langDB['sentence_blogpost_deleted']."<br />";
+	showAdmin(TRUE,$foundid,-1);
+}
 ?>
