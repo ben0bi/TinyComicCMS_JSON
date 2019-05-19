@@ -439,7 +439,7 @@ function ComicCMS()
 		msg=msg+'var form=document.getElementById("pageuploadform");';
 		msg=msg+'form.onsubmit = function(event) {';
 		msg=msg+	'event.preventDefault();';
-		msg=msg+	'ComicCMS.a_pageUpload();';
+		msg=msg+	'ComicCMS.a_pageupload();';
 		msg=msg+'};';
 		msg=msg+'</script>';
 
