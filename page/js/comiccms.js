@@ -928,7 +928,7 @@ function ComicCMS()
 	// leave the admin panel
 	this.leaveAdminPanel=function()
 	{
-		a_confirmbox(m_langDB['sentence_really_leave_admin_panel'],m_langDB['sentence_really_leave_admin_panel_title'], m_langDB['word_link_mainsite'], function(dialog)
+		a_confirmBox(m_langDB['sentence_really_leave_admin_panel'],m_langDB['sentence_really_leave_admin_panel_title'], m_langDB['word_link_mainsite'], function(dialog)
 		{
 			closeAllDialogs();
 			document.location.href="../index.html";
