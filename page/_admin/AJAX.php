@@ -113,8 +113,14 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	
 	$showId=-1;	// completely show the item with that id.
 	// if the blog id is set, get the associated image id.
-	if($highlightBlogID>=0 && $highlightBlogID<sizeof($blogDB['BLOGPOSTS']))
-		$showId=$blogDB['BLOGPOSTS'][$highlightBlogID]['IMAGEID'];
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		if($itm['ID']==$highlightBlogID)
+		{
+			$showId=$itm['IMAGEID'];
+			break;
+		}
+	}
 	
 	// show the archive page for the admin while the dbs are loading for js.
 	echo '<article id="archives">'.chr(13);
