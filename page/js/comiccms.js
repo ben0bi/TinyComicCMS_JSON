@@ -661,7 +661,7 @@ function ComicCMS()
 
 			if(blogtitle=="" || blogtext=="")
 			{
-				alert(m_langDB['sentence_blog_must_have_title_and_text']);
+				alert(m_langDB['sentence_blog_must_have_title_and_text_02']);
 				return;
 			}
 
