@@ -767,11 +767,56 @@ function ComicCMS()
 				alert("Blog must have title and text.");
 				return;
 			}
+			
+			if(blogtitle==blogItem['TITLE'] && blogtext==blogItem['TEXT'])
+			{
+				alert("You made no changes at all.");
+				return;
+			}
 
 			dialog.close();
 			// submit the form.
 			$("#blogpostupdateform").submit();
 		});
+	}
+	
+	// Update a blog post
+	this.a_updateBlogpost = function(blogID)
+	{
+		var blogtitle=$('#update_blogtitle').val();
+		var blogtext=$('#update_blogtext').val();
+
+		// create form data
+		var formData=new FormData();
+
+		formData.append('ajax', 'updateblogpost');
+		formData.append('blogid', blogID);
+		formData.append('blogtitle', blogtitle);
+		formData.append('blogtext', blogtext);
+
+		BootstrapDialog.show({
+			title: m_langDB['sentence_please_wait'],
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+        });
+
+		var xhr=new XMLHttpRequest();
+		xhr.open('POST',"AJAX.php",true);
+
+		// Set up a handler for when the request finishes.
+		xhr.onload = function ()
+		{
+			if (xhr.status === 200) {
+				m_highlightRemoved=false;
+	    		// Blog post updated. Maybe show response.
+				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+					$("#archivecontent").html(xhr.responseText);
+			} else {
+					alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+			}
+			closeAllDialogs();
+			actualAdminBlogTitleShowID=-1;
+		};
+		xhr.send(formData);
 	}
 
 	// show a window with the blog posts and update stuff for a given post.
@@ -840,6 +885,8 @@ ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_crea
 ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost(id);};
 // show the form to update a blog post.
 ComicCMS.a_updateBlogPostShowForm = function(blogID) {ComicCMS.instance.a_updateBlogPostShowForm(blogID);}
+// update a blog post.
+ComicCMS.a_updateBlogpost = function(blogID) {ComicCMS.instance.a_updateBlogpost(blogID);}
 
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
@@ -1009,49 +1056,6 @@ ComicCMS.showTitle = function()
 // REALLY OLD STUFF...review
 
 // DB STUFF. needs to be reviewed alot. That is the sudo.php for. All teh stuff below.
-
-//ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
-/*
-
-// Update a blog post
-ComicCMS.updateBlogpost = function(dirToRoot, blogID)
-{
-	var blogtitle=$('#update_blogtitle').val();
-	var blogtext=$('#update_blogtext').val();
-
-	// create form data
-	var formData=new FormData();
-
-	formData.append('blogid', blogID);
-	formData.append('blogtitle', blogtitle);
-	formData.append('blogtext', blogtext);
-
-	BootstrapDialog.show({
-		title: sentence_please_wait,
-		message: "<center>"+sentence_please_wait_for_upload+"</center>"
-        });
-
-	var xhr=new XMLHttpRequest();
-	xhr.open('POST',dirToRoot+"php/ajax_updateblogpost.php",true);
-
-	// Set up a handler for when the request finishes.
-	xhr.onload = function ()
-	{
-		if (xhr.status === 200) {
-				m_highlightRemoved=false;
-	    		// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				$("#archivecontent").html(xhr.responseText);
-	  	} else {
-	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
-	  	}
-		closeAllDialogs();
-		actualAdminBlogTitleShowID=-1;
-	};
-
-	xhr.send(formData);
-}
-*/
 
 /*
 // delete a comic page.

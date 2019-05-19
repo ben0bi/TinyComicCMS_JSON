@@ -440,8 +440,27 @@ if($ajax=='createblogpost')
 		$blogDB=loadBlogDB();
 		echo $langDB['sentence_new_blogpost_created']."<br />";
 	}
-
-// TODO: show and highlight blog post
 	showAdmin(TRUE,-1,$nextid);
+}
+
+// UPDATE A BLOG POST
+if($ajax=='updateblogpost')
+{
+	$blogid=$_POST['blogid'];
+	$blogtitle=$_POST['blogtitle'];
+	$blogtext=$_POST['blogtext'];
+	
+	$blogDB=loadBlogDB();
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		if($itm['ID']==$blogid)
+		{
+			$itm['TITLE']=$blogtitle;
+			$itm['TEXT']=$blogtext;
+			break;
+		}
+	}
+	echo $langDB['sentence_blogpost_updated']."<br />";
+	showAdmin(TRUE,-1,$blogid);
 }
 ?>
