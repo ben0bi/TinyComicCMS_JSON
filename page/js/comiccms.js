@@ -967,7 +967,8 @@ ComicCMS.a_updateBlogPostShowForm = function(blogID) {ComicCMS.instance.a_update
 ComicCMS.a_updateBlogpost = function(blogID) {ComicCMS.instance.a_updateBlogpost(blogID);}
 // Show a window for deleting a blog post.
 ComicCMS.a_window_deleteblogpost = function(id, title) {ComicCMS.instance.a_window_deleteblogpost(id, title);}
-
+// Delete a whole comic page.	
+ComicCMS.a_window_deletepage = function(id, title) {ComicCMS.instance.a_window_deletepage(id, title);}
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
 
