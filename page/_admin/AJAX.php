@@ -194,7 +194,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
 			
 			// show delete page
-			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
+			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_window_deletepage('$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
 			// show create blog post
 			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_window_createblogpost('$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
 
@@ -466,7 +466,7 @@ if($ajax=='updateblogpost')
 	showAdmin(TRUE,-1,$blogid);
 }
 
-// delete a blog post
+// DELETE A BLOG POST
 if($ajax=="deleteblogpost")
 {
 	$deleteid=$_POST['blogid'];
@@ -488,5 +488,44 @@ if($ajax=="deleteblogpost")
 	$blogDB=loadBlogDB();
 	echo $langDB['sentence_blogpost_deleted']."<br />";
 	showAdmin(TRUE,$foundid,-1);
+}
+
+// DELETE A BLOG POST
+if($ajax=="deletecomicpage")
+{
+	$deleteid=$_POST['comicid'];
+	$newimagedb = [];
+	$newblogdb = [];
+	$blogDB=loadBlogDB();
+	$imageDB = loadImageDB();
+
+	foreach($imageDB['IMAGES'] as $itm)
+	{
+		// add all items except for the one with the given id.
+		if($itm['ID']!=$deleteid)
+		{
+			$newimagedb[]=$itm;
+		}else{
+			if(unlink($dirToRoot.$relative_upload_path.$itm['IMAGE'])==FALSE)
+				echo("PHP ERROR: Couldn't delete file ".$itm['IMAGE'].".<br />");
+		}
+	}
+	
+	$imageDB['IMAGES']=$newimagedb;
+	// remove all associated blog entries.
+	$count=0;
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		// add all items except for the ones with the given id.
+		if($itm['IMAGEID']!=$deleteid) {$newblogdb[]=$itm;} else {$count++;}
+	}
+	$blogDB['BLOGPOSTS']=$newblogdb;
+	
+	saveBlogDB($blogDB);
+	saveImageDB($imageDB);
+	$blogDB=loadBlogDB();
+	$imageDB=loadImageDB();
+	echo $langDB['sentence_entry_deleted']."<br />";
+	showAdmin(TRUE,-1,-1);
 }
 ?>

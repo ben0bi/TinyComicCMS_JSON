@@ -564,7 +564,7 @@ function ComicCMS()
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
-					alert('AJAX ERROR: upload page call failed! (Ref. B) ('+xhr.status+')');
+					alert('AJAX ERROR: update page title call failed! ('+xhr.status+')');
 			}
 			closeAllDialogs();
 			actualAdminBlogTitleShowID=-1;
@@ -638,7 +638,7 @@ function ComicCMS()
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
-					alert('AJAX ERROR: move page call failed! (Ref. C) ('+xhr.status+')');
+					alert('AJAX ERROR: move page call failed! ('+xhr.status+')');
 			}
 			closeAllDialogs();
 		};
@@ -714,7 +714,7 @@ function ComicCMS()
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
-	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+	    		alert('AJAX ERROR: create blog post call failed! ('+xhr.status+')');
 			}
 			closeAllDialogs();
 			actualAdminBlogTitleShowID=-1;
@@ -814,7 +814,7 @@ function ComicCMS()
 				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 					$("#archivecontent").html(xhr.responseText);
 			} else {
-					alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+					alert('AJAX ERROR: update blog post call failed! ('+xhr.status+')');
 			}
 			closeAllDialogs();
 			actualAdminBlogTitleShowID=-1;
@@ -849,12 +849,50 @@ function ComicCMS()
 					if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
 						$("#archivecontent").html(xhr.responseText);
 				} else {
-						alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+						alert('AJAX ERROR: delete blog post call failed! ('+xhr.status+')');
 				}
 				closeAllDialogs();
 				actualAdminBlogTitleShowID=-1;
 			};
 			xhr.send(formData);
+		});
+	};
+	
+	// delete a comic page.
+	this.a_window_deletepage = function(id, title)
+	{
+		a_confirmBox(m_langDB['sentence_title_reallydelete'], title, m_langDB['word_delete'], function(dialog)
+		{
+			// create form data
+			var formData=new FormData();
+			formData.append('ajax', 'deletecomicpage');
+			formData.append('comicid', id);
+
+			BootstrapDialog.show({
+				title: m_langDB['sentence_please_wait'],
+				message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+			});
+
+			var xhr=new XMLHttpRequest();
+			xhr.open('POST',"AJAX.php",true);
+
+			// Set up a handler for when the request finishes.
+			xhr.onload = function ()
+			{
+				if (xhr.status === 200) {
+					m_highlightRemoved=false;
+					// Blog post updated. Maybe show response.
+					if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+						$("#archivecontent").html(xhr.responseText);
+				} else {
+						alert('AJAX ERROR: remove page call failed! ('+xhr.status+')');
+				}
+				closeAllDialogs();
+				actualAdminBlogTitleShowID=-1;
+			};
+			xhr.send(formData);
+			closeAllDialogs();
+			actualAdminBlogTitleShowID=-1;
 		});
 	};
 
@@ -1093,28 +1131,3 @@ ComicCMS.showTitle = function()
 		}
 	});
 };
-
-
-// REALLY OLD STUFF...review
-
-// DB STUFF. needs to be reviewed alot. That is the sudo.php for. All teh stuff below.
-
-/*
-// delete a comic page.
-ComicCMS.window_deletepage = function(dirToRoot, id, title)
-{
-	confirmBox(sentence_title_reallydelete, title, word_delete, function(dialog)
-		{
-			$.ajax({
-				type: "GET",
-				url: dirToRoot+"php/ajax_deletepage.php?id="+id,
-			 	success : function(data) 
-				{
-					actualAdminBlogTitleShowID=-1;
-					$("#archivecontent").html(data);
-				}
-			});
-			dialog.close();
-		});
-};
-*/

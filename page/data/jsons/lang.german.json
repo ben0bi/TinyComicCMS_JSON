@@ -42,7 +42,6 @@
 	"sentence_error_no_pages": "Es wurde noch keine Seite hochgeladen.", 		"//": "no page uploaded.",
 	"sentence_error_page_not_found": "Seite nicht vorhanden.",					"//": "the given page was not found.",
 	"sentence_error_no_image": "Kein Bild vorhanden.",							"//": "there is no image for this page.",
-	"sentence_error_entry_has_no_pageorder": "Die Seite hat keine Pageorder.",	"//": "the page has no pageorder.",
 
 	"sentence_must_input_title_for_page": "Es muss ein Titel für die Seite eingegeben werden.", 	"//": "Must input title for the page.",
 	"sentence_must_input_file_for_page": "Es muss eine Datei ausgewählt werden.",					"//": "Must select file for the page.",
