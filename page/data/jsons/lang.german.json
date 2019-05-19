@@ -36,6 +36,8 @@
 	"sentence_title_reallydelete_blogpost": "Blog Eintrag wirklich löschen?", 	"//": "really delete a blog post?",
 	"sentence_title_newpage": "Neue Seite erstellen..",							"//": "title of the *new page* window.",
 	"sentence_title_newblogpost": "Neuer Blog Eintrag",							"//": "new blog entry (title)",
+	"sentence_really_leave_admin_panel": "Willst du den Admin-Bereich wirklich verlassen?", "//": "Do you really want to leave the admin panel?",
+	"sentence_really_leave_admin_panel_title": "Verlasse Administrationsbereich..", "//": "Leave admin panel",
 
 	"sentence_no_archive_result": "<br><br>Es sind keine Seiten vorhanden.",	"//": "there are no pages available (archives)",
 

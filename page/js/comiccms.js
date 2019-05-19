@@ -924,6 +924,16 @@ function ComicCMS()
 		$('td').each(function() {$(this).removeClass('highlightitem');});
 		m_highlightRemoved=true;
 	}
+
+	// leave the admin panel
+	this.leaveAdminPanel=function()
+	{
+		a_confirmbox(m_langDB['sentence_really_leave_admin_panel'],m_langDB['sentence_really_leave_admin_panel_title'], m_langDB['word_link_mainsite'], function(dialog)
+		{
+			closeAllDialogs();
+			document.location.href="../index.html";
+		}
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
@@ -971,6 +981,11 @@ ComicCMS.a_window_deleteblogpost = function(id, title) {ComicCMS.instance.a_wind
 ComicCMS.a_window_deletepage = function(id, title) {ComicCMS.instance.a_window_deletepage(id, title);}
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
+
+function leaveAdminPanel()
+{
+	ComicCMS.instance.leaveAdminPanel();
+}
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
