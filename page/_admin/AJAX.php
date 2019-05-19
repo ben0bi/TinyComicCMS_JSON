@@ -160,23 +160,23 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 			echo "</td>\n";
 			
 			// show change title link
-			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_updatePageTitleForm('$dirToRoot', '$id');\">&lt;- ???</a>&nbsp;</td>");
+			echo("<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_updatePageTitleForm('$id');\">&lt;- ???</a>&nbsp;</td>");
 			
 			// show page moving stuff
 			if($ri!=$firstorder) // up needs down arrow.
-				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepageup('$dirToRoot', '$ri');\" class=\"arrow\">&nbsp;&#x2B0A;&nbsp;</a></td>".chr(13));
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepageup('$ri');\" class=\"arrow\">&nbsp;&#x2B0A;&nbsp;</a></td>".chr(13));
 			else
 				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
 			
 			if($ri!=$lastorder) // down needs up arrow.
-				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepagedown('$dirToRoot', '$ri');\" class=\"arrow\">&nbsp;&#x2B09;&nbsp;</a></td>".chr(13);
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepagedown('$ri');\" class=\"arrow\">&nbsp;&#x2B09;&nbsp;</a></td>".chr(13);
 			else
 				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
 			
 			// show delete page
-			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$dirToRoot', '$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
+			echo "<td class=\"$class\" valign=\"top\">|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.window_deletepage('$id', '$title');\">".$langDB['word_delete']."</a></td>\n";
 			// show create blog post
-			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_window_createblogpost('$dirToRoot','$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
+			echo "<td class=\"$class\" valign=\"top\">&nbsp;|&nbsp;<a href=\"javascript:\" onclick=\"ComicCMS.a_window_createblogpost('$id')\">".$langDB['word_link_newblogpost']."</a></td>\n";
 
 			echo "</tr>".chr(13);
 		}

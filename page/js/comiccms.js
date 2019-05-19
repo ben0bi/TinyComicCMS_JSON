@@ -418,7 +418,7 @@ function ComicCMS()
 	}
 	
 	// Admin stuff.
-	this.a_window_createPage = function(dirToRoot)
+	this.a_window_createPage = function()
 	{
 		a_removeHighlight();
 		
@@ -439,7 +439,7 @@ function ComicCMS()
 		msg=msg+'var form=document.getElementById("pageuploadform");';
 		msg=msg+'form.onsubmit = function(event) {';
 		msg=msg+	'event.preventDefault();';
-		msg=msg+	'ComicCMS.a_pageUpload("'+dirToRoot+'");';
+		msg=msg+	'ComicCMS.a_pageUpload();';
 		msg=msg+'};';
 		msg=msg+'</script>';
 
@@ -476,7 +476,7 @@ function ComicCMS()
 	}
 	
 	// the real page upload function.
-	this.a_pageupload=function(dirToRoot)
+	this.a_pageupload=function()
 	{
 		var fileSelect=document.getElementById("upload_pagefile");
 		var title=$('#upload_pagetitle').val();
@@ -526,7 +526,7 @@ function ComicCMS()
 	}
 	
 	// update the title of a comic poge.
-	this.a_updatePageTitle = function(dirToRoot, pageID)
+	this.a_updatePageTitle = function(pageID)
 	{
 		var pagetitle=$('#update_pagetitle').val();
 
@@ -562,7 +562,7 @@ function ComicCMS()
 	}
 	
 	// show a box to update a page title.
-	this.a_updatePageTitleForm = function(dirToRoot, pageID)
+	this.a_updatePageTitleForm = function(pageID)
 	{
 		a_removeHighlight();
 		
@@ -585,7 +585,7 @@ function ComicCMS()
 		txt=txt+'var form=document.getElementById("pagetitleupdateform");';
 		txt=txt+'form.onsubmit = function(event) {';
 		txt=txt+'  event.preventDefault();';
-		txt=txt+'  ComicCMS.a_updatePageTitle("'+dirToRoot+'", '+pageID+');';
+		txt=txt+'  ComicCMS.a_updatePageTitle('+pageID+');';
 		txt=txt+'};';
 		txt=txt+'</script>';
 		
@@ -604,7 +604,7 @@ function ComicCMS()
 	};
 	
 	// move a page up or down in the pageorder.
-	this.a_movepage = function(dirToRoot, pageorder, direction)
+	this.a_movepage = function(pageorder, direction)
 	{
 		// create form data
 		var formData=new FormData();
@@ -636,9 +636,9 @@ function ComicCMS()
 	}
 	
 	// create the form for a new blogpost for a given comic id.
-	this.a_window_createblogpost = function(dirToRoot, id)
+	this.a_window_createblogpost = function(id)
 	{
-		var msg='<center><form id="blogpostcreateform" action="'+dirToRoot+'php/ajax_createblogpost.php" method="POST">';
+		var msg='<center><form id="blogpostcreateform" action="AJAX.php" method="POST">';
 		msg=msg+'<hr><table border="0" style="width:100%;" >';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
 		msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
@@ -650,7 +650,7 @@ function ComicCMS()
 		msg=msg+'var form=document.getElementById("blogpostcreateform");';
 		msg=msg+'form.onsubmit = function(event) {';
 		msg=msg+	'event.preventDefault();';
-		msg=msg+	'ComicCMS.createBlogpost("'+dirToRoot+'", '+id+');';
+		msg=msg+	'ComicCMS.createBlogpost('+id+');';
 		msg=msg+'};';
 		msg=msg+'</script>';
 
@@ -671,7 +671,48 @@ function ComicCMS()
 			$("#blogpostcreateform").submit();
 		});
 	}
-	
+
+/*	
+	// send the blogpost form to create a new blogpost.
+	this.a_createBlogpost = function(id)
+	{
+		var blogtitle=$('#upload_blogtitle').val();
+		var blogtext=$('#upload_blogtext').val();
+
+		// create form data
+		var formData=new FormData();
+
+		formData.append('pageid', id);
+		formData.append('blogtitle', blogtitle);
+		formData.append('blogtext', blogtext);
+
+		BootstrapDialog.show({
+			title: m_langDB['sentence_please_wait'],
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
+        });
+
+		var xhr=new XMLHttpRequest();
+		xhr.open('POST',"AJAX.php",true);
+
+	// Set up a handler for when the request finishes.
+	xhr.onload = function ()
+	{
+		if (xhr.status === 200) {
+	    		// File(s) uploaded. Maybe show response.
+			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+				$("#archivecontent").html(xhr.responseText);
+	  	} else {
+	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
+	  	}
+		closeAllDialogs();
+		actualAdminBlogTitleShowID=-1;
+	};
+
+	xhr.send(formData);
+
+	//alert("Create Blog Post: "+dirToRoot+" "+id);
+};
+*/	
 	// show a window with the blog posts and update stuff for a given post.
 	m_actualAdminBlogTitleShowID=-1;
 	this.a_showAdminBlogTitles=function(id)
@@ -701,9 +742,9 @@ ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", l
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
 
 // move the page with pageorder a one page up (admin)
-ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};
+ComicCMS.a_movepageup = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "up");};
 // move the page with pageorder a page down (admin)
-ComicCMS.a_movepagedown = function(dirToRoot, pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "down");};
+ComicCMS.a_movepagedown = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "down");};
 
 // return the language associated with the given term.
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
@@ -714,14 +755,14 @@ ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
 // create a comic page.
-ComicCMS.a_window_createPage = function(dirToRoot) {ComicCMS.instance.a_window_createPage(dirToRoot);};
+ComicCMS.a_window_createPage = function() {ComicCMS.instance.a_window_createPage();};
 // Update the title of a page.
-ComicCMS.a_updatePageTitle = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitle(dirToRoot, pageID);}
+ComicCMS.a_updatePageTitle = function(pageID) {ComicCMS.instance.a_updatePageTitle(pageID);}
 // page upload
-ComicCMS.a_pageUpload = function(dirToRoot) {ComicCMS.instance.a_pageupload(dirToRoot);};
+ComicCMS.a_pageupload = function() {ComicCMS.instance.a_pageupload();};
 
 // show a box to update a page title.
-ComicCMS.a_updatePageTitleForm = function(dirToRoot, pageID) {ComicCMS.instance.a_updatePageTitleForm(dirToRoot, pageID)}
+ComicCMS.a_updatePageTitleForm = function(pageID) {ComicCMS.instance.a_updatePageTitleForm(pageID)}
 // show the blog titles and the image for the given comic page on the admin window.
 ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlogTitles(id);}
 // create a window to create a new blogpost.
@@ -965,82 +1006,6 @@ ComicCMS.updateBlogpost = function(dirToRoot, blogID)
 */
 
 /*
-// create the form for a blogpost for a given id.
-ComicCMS.window_createblogpost = function(dirToRoot, id)
-{
-	var msg='<center><form id="blogpostcreateform" action="'+dirToRoot+'php/ajax_createblogpost.php" method="POST">';
-	msg=msg+'<hr><table border="0" style="width:100%;" >';
-	msg=msg+'<tr><td class="black">'+word_title+':&nbsp;</td>';
-	msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
-	msg=msg+'<tr><td valign="top" class="black">'+word_text+':&nbsp;</td>';
-	msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
-	msg=msg+'</table></form></center>';
-
-	msg=msg+'<script>';
-	msg=msg+'var form=document.getElementById("blogpostcreateform");';
-	msg=msg+'form.onsubmit = function(event) {';
-	msg=msg+	'event.preventDefault();';
-	msg=msg+	'ComicCMS.createBlogpost("'+dirToRoot+'", '+id+');';
-	msg=msg+'};';
-	msg=msg+'</script>';
-
-	confirmBox(sentence_title_newblogpost, msg, word_save_blogpost, function(dialog)
-		{
-			var blogtitle=$("#upload_blogtitle").val();
-			var blogtext=$("#upload_blogtext").val();
-
-			if(blogtitle=="" || blogtext=="")
-			{
-				alert(sentence_blog_must_have_title_and_text);
-				return;
-			}
-
-			dialog.close();
-
-			// submit the form.
-			$("#blogpostcreateform").submit();
-		});
-}
-
-ComicCMS.createBlogpost = function(dirToRoot, id)
-{
-	var blogtitle=$('#upload_blogtitle').val();
-	var blogtext=$('#upload_blogtext').val();
-
-	// create form data
-	var formData=new FormData();
-
-	formData.append('pageid', id);
-	formData.append('blogtitle', blogtitle);
-	formData.append('blogtext', blogtext);
-
-	BootstrapDialog.show({
-		title: sentence_please_wait,
-		message: "<center>"+sentence_please_wait_for_upload+"</center>"
-        });
-
-	var xhr=new XMLHttpRequest();
-	xhr.open('POST',dirToRoot+"php/ajax_createblogpost.php",true);
-
-	// Set up a handler for when the request finishes.
-	xhr.onload = function ()
-	{
-		if (xhr.status === 200) {
-	    		// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				$("#archivecontent").html(xhr.responseText);
-	  	} else {
-	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
-	  	}
-		closeAllDialogs();
-		actualAdminBlogTitleShowID=-1;
-	};
-
-	xhr.send(formData);
-
-	//alert("Create Blog Post: "+dirToRoot+" "+id);
-};
-
 // delete a comic page.
 ComicCMS.window_deletepage = function(dirToRoot, id, title)
 {

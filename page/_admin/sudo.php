@@ -69,7 +69,7 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 			<?php
 				if($login==291)
 				{ 	
-					echo '<a href="javascript:" onclick="ComicCMS.a_window_createPage(\''.$dirToRoot.'\');">'.$langDB['word_link_newpage'].'</a>';
+					echo '<a href="javascript:" onclick="ComicCMS.a_window_createPage();">'.$langDB['word_link_newpage'].'</a>';
 					echo '&nbsp;|&nbsp;';
 				}
 			 	echo '<a href="javascript:" onclick="leaveAdminPanel();">'.$langDB['word_link_mainsite'].'</a>';
