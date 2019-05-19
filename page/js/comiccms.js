@@ -562,6 +562,8 @@ function ComicCMS()
 	// show a box to update a page title.
 	this.a_updatePageTitleForm = function(dirToRoot, pageID)
 	{
+		a_removeHighlight();
+		
 		// get the page with the given pageid.
 		var page = db_getComicRowByID(pageID);
 		if(page==null)
