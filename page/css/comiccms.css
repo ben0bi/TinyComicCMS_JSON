@@ -217,6 +217,9 @@ a:hover
 	/*border: 2px solid #F00;*/
 }
 
+/* The last changed item on the admin panel. */
+.highlightitem {background-color: #363;}
+
 input, button
 {
 	color: #000;

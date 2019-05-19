@@ -87,7 +87,9 @@ function getBlogEntriesByImageID($targetid)
 }
 
 // show the admin archives panel.
-function showAdmin($reload=FALSE)
+// highlightImageID is the id of the comic page entry to highlight.
+// if reload is set to true, it will reload the DB into JS.
+function showAdmin($reload=FALSE, $highlightImageID = -1)
 {
 	global $dirToRoot;
 	global $relative_upload_path;
@@ -114,7 +116,6 @@ function showAdmin($reload=FALSE)
 	if(sizeof($db)>0)
 	{		
 		// it's already admin we don't need to set the class but this is from the original version. 
-		$class="horizontalborder";
 		echo '<center><table border="0">'.chr(13);
 		// go through the db reversed.
 		for($ri=sizeof($db)-1; $ri>=0;$ri--)
@@ -124,9 +125,13 @@ function showAdmin($reload=FALSE)
 			$title=$itm['TITLE'];
 			$date=date('d.m.Y',strtotime($itm['DATETIME']));
 			$path=$itm['IMAGE'];
-			
+
+			// set the table cell classes.
+			$class="horizontalborder";
+			if($id==$highlightImageID)
+				$class=$class." highlightitem";
+
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$ri.&nbsp;</td>".chr(13);
-			
 			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
 			// push all blog titles here
@@ -243,6 +248,7 @@ if($ajax=='newpage')
 	$blogtext=$_POST['blogtext'];
 	
 	$newfilename=phpupload('file');
+	$newid=-1;
 	if($newfilename!=-1)
 	{
 		$imageDB = loadImageDB();
@@ -308,7 +314,7 @@ if($ajax=='newpage')
 	$imageDB = loadImageDB();
 	$blogDB = loadBlogDB();
 	
-	showAdmin(TRUE);
+	showAdmin(TRUE, $newid);
 }
 
 // UPDATE A PAGE TITLE
@@ -318,10 +324,12 @@ if($ajax=='updatepagetitle')
 	$pagetitle=$_POST['pagetitle'];
 
 	$imageDB = loadImageDB();
+	$showid=-1;
 	for($i=0;$i<sizeof($imageDB['IMAGES']);$i++)
 	{
 		if($imageDB['IMAGES'][$i]['ID']==$pageid)
 		{
+			$showid=$pageid;
 			$imageDB['IMAGES'][$i]['TITLE']=$pagetitle;
 			saveImageDB($imageDB);
 			echo $langDB['sentence_pagetitle_updated']."<br />";
@@ -331,7 +339,7 @@ if($ajax=='updatepagetitle')
 			break;
 		}
 	}
-	showAdmin(TRUE);
+	showAdmin(TRUE,$showid);
 }
 
 // MOVE A PAGE UP OR DOWN.
@@ -347,10 +355,12 @@ if($ajax=='movepage')
 	$firstidx=0;
 	$lastidx=sizeof($imageDB['IMAGES'])-1;
 	
+	$showid=-1;
 	if(($direction=="up" && $movepageposition>$firstidx) || ($direction=="down" && $movepageposition<$lastidx))
 	{
 		// get the row at the movepageposition
 		$firstrow = $imageDB['IMAGES'][$movepageposition];
+		$showid=$firstrow['ID'];
 		$secondrow= $firstrow;
 		$pageorder_first = $movepageposition; // new: not the order anymore.
 		
@@ -373,6 +383,6 @@ if($ajax=='movepage')
 			$imageDB=loadImageDB();
 		}
 	}
-	showAdmin(TRUE);
+	showAdmin(TRUE,$showid);
 }
 ?>
