@@ -717,7 +717,7 @@ function ComicCMS()
 	{
 		//var path=dirToRoot+"php/ajax_createUpdateBlogpostForm.php";
 		var blogItem=m_blogDB['BLOGPOSTS'][blogID];
-		if(blogItem=="undefined")
+		if(blogItem==="undefined" || !blogItem || blogItem==null)
 		{
 			log("Cannot update blog post. Blog item with id "+blogID+" not found.", LOG_ERROR);
 			return;
