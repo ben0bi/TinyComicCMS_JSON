@@ -638,6 +638,8 @@ function ComicCMS()
 	// create the form for a new blogpost for a given comic id.
 	this.a_window_createblogpost = function(id)
 	{
+		a_removeHighlight();
+		
 		var msg='<center><form id="blogpostcreateform" action="AJAX.php" method="POST">';
 		msg=msg+'<hr><table border="0" style="width:100%;" >';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
@@ -650,7 +652,7 @@ function ComicCMS()
 		msg=msg+'var form=document.getElementById("blogpostcreateform");';
 		msg=msg+'form.onsubmit = function(event) {';
 		msg=msg+	'event.preventDefault();';
-		msg=msg+	'ComicCMS.createBlogpost('+id+');';
+		msg=msg+	'ComicCMS.a_createBlogpost('+id+');';
 		msg=msg+'};';
 		msg=msg+'</script>';
 
@@ -671,8 +673,7 @@ function ComicCMS()
 			$("#blogpostcreateform").submit();
 		});
 	}
-
-/*	
+	
 	// send the blogpost form to create a new blogpost.
 	this.a_createBlogpost = function(id)
 	{
@@ -682,6 +683,7 @@ function ComicCMS()
 		// create form data
 		var formData=new FormData();
 
+		formData.append('ajax', 'createblogpost');
 		formData.append('pageid', id);
 		formData.append('blogtitle', blogtitle);
 		formData.append('blogtext', blogtext);
@@ -694,25 +696,24 @@ function ComicCMS()
 		var xhr=new XMLHttpRequest();
 		xhr.open('POST',"AJAX.php",true);
 
-	// Set up a handler for when the request finishes.
-	xhr.onload = function ()
-	{
-		if (xhr.status === 200) {
-	    		// File(s) uploaded. Maybe show response.
-			if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
-				$("#archivecontent").html(xhr.responseText);
-	  	} else {
+		// Set up a handler for when the request finishes.
+		xhr.onload = function ()
+		{
+			if (xhr.status === 200) 
+			{
+				// File(s) uploaded. Maybe show response.
+				if(xhr.responseText!="" && xhr.responseText!=null && xhr.responseText!=0)
+					$("#archivecontent").html(xhr.responseText);
+			} else {
 	    		alert('AJAX ERROR: upload page call failed! ('+xhr.status+')');
-	  	}
-		closeAllDialogs();
-		actualAdminBlogTitleShowID=-1;
+			}
+			closeAllDialogs();
+			actualAdminBlogTitleShowID=-1;
+		};
+		xhr.send(formData);
+		//alert("Create Blog Post: "+dirToRoot+" "+id);
 	};
 
-	xhr.send(formData);
-
-	//alert("Create Blog Post: "+dirToRoot+" "+id);
-};
-*/	
 	// show a window with the blog posts and update stuff for a given post.
 	m_actualAdminBlogTitleShowID=-1;
 	this.a_showAdminBlogTitles=function(id)

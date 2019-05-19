@@ -385,4 +385,33 @@ if($ajax=='movepage')
 	}
 	showAdmin(TRUE,$showid);
 }
+
+// CREATE A BLOG POST
+if($ajax=='createblogpost')
+{
+	$pageid=$_POST['pageid'];
+	$blogtitle=$_POST['blogtitle'];
+	$blogtext=$_POST['blogtext'];
+
+	if($blogtitle!="" || $blogtext!="")
+	{
+		// create the item.
+		$itm=[];
+		$itm['ID']=$newid;
+		$itm['IMAGEID']=$pageid;
+		$itm['TITLE']=$blogtitle;
+		$itm['TEXT']=$blogtext;
+		$itm['DATETIME']=date('Y-m-d H:i:s');
+		
+		// add it to the blog db.
+		$blogDB=loadBlogDB();
+		$blogDB['BLOGPOSTS'][]=$itm;
+		saveBlogDB($blogDB);
+		$blogDB=loadBlogDB();
+		echo $langDB['sentence_new_blogpost_created']."<br />";
+	}
+
+// TODO: show and highlight blog post
+	showAdmin(TRUE,$pageid);
+}
 ?>
