@@ -722,6 +722,7 @@ function ComicCMS()
 			log("Cannot update blog post. Blog item with id "+blogID+" not found.", LOG_ERROR);
 			return;
 		}
+		
 		var msg="";
 		msg=msg+'<center><form id="blogpostupdateform" action="../php/ajax_updateblogpost.php" method="POST">';
 		msg=msg+'<table border="0" style="width:100%;" >';
