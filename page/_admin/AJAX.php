@@ -89,7 +89,7 @@ function getBlogEntriesByImageID($targetid)
 // show the admin archives panel.
 // highlightImageID is the id of the comic page entry to highlight.
 // if reload is set to true, it will reload the DB into JS.
-function showAdmin($reload=FALSE, $highlightImageID = -1)
+function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 {
 	global $dirToRoot;
 	global $relative_upload_path;
@@ -110,6 +110,11 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 		echo 'ComicCMS.instance.reloadBlogDB();';
 		echo '</script>';
 	}
+	
+	$showId=-1;	// completely show the item with that id.
+	// if the blog id is set, get the associated image id.
+	if($highlightBlogID>=0 && $highlightBlogID<sizeof($blogDB['BLOGPOSTS']))
+		$showId=$blogDB['BLOGPOSTS'][$highlightBlogID]['IMAGEID'];
 	
 	// show the archive page for the admin while the dbs are loading for js.
 	echo '<article id="archives">'.chr(13);
@@ -134,21 +139,28 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$ri.&nbsp;</td>".chr(13);
 			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.a_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
+			$style='style="display:none;"';
+			if($showId==$id)	// maybe show the item.
+				$style="";
+			
 			// push all blog titles here
-			echo '<div id="admin_blogtitles_'.$id.'" class="admin_blogtitles" style="display:none;">';
+			echo '<div id="admin_blogtitles_'.$id.'" class="admin_blogtitles" '.$style.'>';
 			echo '<img src="'.$dirToRoot.$relative_upload_path.$path.'" class="image_preview" /><br>';
 			
 			$blogresult=getBlogEntriesByImageID($id);
 			if(sizeof($blogresult)>0)
 			{
-				echo '<table border="0">';
+				echo '<table border="0" style="width=100%;">';
 				foreach($blogresult as $itm)
 				{
 					$bt = $itm['TITLE'];
 					$bid=$itm['ID'];
-					echo '<tr><td>&nbsp;&gt;&nbsp;</td>';
-					echo '<td><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
-					echo "<td>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
+					if($bid==$highlightBlogID)
+						$blogclass=' class="highlight"';
+					
+					echo '<tr'.$blogclass.'><td'.$blogclass.'>&nbsp;&gt;&nbsp;</td>';
+					echo '<td'.$blogclass.'><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
+					echo "<td'.$blogclass.'>&nbsp;|&nbsp;</td><td><a href=\"javascript:\" onclick=\"ComicCMS.window_deleteblogpost('$dirToRoot','$bid','$bt');\">".$langDB['word_delete']."</a></td>";
 						echo '</tr>';
 				}
 				echo '</table>';
@@ -314,7 +326,7 @@ if($ajax=='newpage')
 	$imageDB = loadImageDB();
 	$blogDB = loadBlogDB();
 	
-	showAdmin(TRUE, $newid);
+	showAdmin(TRUE, $newid,-1);
 }
 
 // UPDATE A PAGE TITLE
@@ -339,7 +351,7 @@ if($ajax=='updatepagetitle')
 			break;
 		}
 	}
-	showAdmin(TRUE,$showid);
+	showAdmin(TRUE,$showid,-1);
 }
 
 // MOVE A PAGE UP OR DOWN.
@@ -383,7 +395,7 @@ if($ajax=='movepage')
 			$imageDB=loadImageDB();
 		}
 	}
-	showAdmin(TRUE,$showid);
+	showAdmin(TRUE,$showid,-1);
 }
 
 // CREATE A BLOG POST
@@ -401,7 +413,7 @@ if($ajax=='createblogpost')
 	foreach($blogDB['BLOGPOSTS'] as $itm)
 	{
 		if($itm['ID']>$nextid)
-			$nextid=$itn['ID'];
+			$nextid=$itm['ID'];
 	}
 	$nextid=$nextid+1;
 
@@ -422,6 +434,6 @@ if($ajax=='createblogpost')
 	}
 
 // TODO: show and highlight blog post
-	showAdmin(TRUE,$pageid);
+	showAdmin(TRUE,-1,$nextid);
 }
 ?>
