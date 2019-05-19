@@ -164,12 +164,12 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 			
 			// show page moving stuff
 			if($ri!=$firstorder) // up needs down arrow.
-				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepageup('$ri');\" class=\"arrow\">&nbsp;&#9661;&nbsp;</a></td>".chr(13));
+				echo("<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepageup('$ri');\" class=\"arrow\">&nbsp;&#9660;&nbsp;</a></td>".chr(13));
 			else
 				echo("<td class=\"$class\" valign=\"top\">|</td>".chr(13));
 			
 			if($ri!=$lastorder) // down needs up arrow.
-				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepagedown('$ri');\" class=\"arrow\">&nbsp;&#9651;&nbsp;</a></td>".chr(13);
+				echo "<td class=\"$class\" valign=\"top\">|<a href=\"javascript:\" onclick=\"ComicCMS.a_movepagedown('$ri');\" class=\"arrow\">&nbsp;&#9650;&nbsp;</a></td>".chr(13);
 			else
 				echo "<td class=\"$class\" valign=\"top\">|</td>".chr(13);
 			
