@@ -750,7 +750,6 @@ ComicCMS.loadLanguage = function(filename, func=null) {ComicCMS.instance.loadLan
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
 
-
 // move the page with pageorder a one page up (admin)
 ComicCMS.a_movepageup = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "up");};
 // move the page with pageorder a page down (admin)
@@ -771,7 +770,7 @@ ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlog
 // create a window to create a new blogpost.
 ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_createblogpost(id);}
 // send the form to create a blog post.
-ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost();};
+ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost(id);};
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.

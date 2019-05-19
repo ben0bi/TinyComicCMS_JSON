@@ -393,18 +393,28 @@ if($ajax=='createblogpost')
 	$blogtitle=$_POST['blogtitle'];
 	$blogtext=$_POST['blogtext'];
 
+	// load the blog db.
+	$blogDB=loadBlogDB();
+	
+	// get the next id.
+	$nextid=-1;
+	foreach($blogDB['BLOGPOSTS'] as $itm)
+	{
+		if($itm['ID']>$nextid)
+			$nextid=$itn['ID'];
+	}
+	$nextid=$nextid+1;
+
 	if($blogtitle!="" || $blogtext!="")
 	{
 		// create the item.
 		$itm=[];
-		$itm['ID']=$newid;
+		$itm['ID']=$nextid;
 		$itm['IMAGEID']=$pageid;
 		$itm['TITLE']=$blogtitle;
 		$itm['TEXT']=$blogtext;
 		$itm['DATETIME']=date('Y-m-d H:i:s');
 		
-		// add it to the blog db.
-		$blogDB=loadBlogDB();
 		$blogDB['BLOGPOSTS'][]=$itm;
 		saveBlogDB($blogDB);
 		$blogDB=loadBlogDB();
