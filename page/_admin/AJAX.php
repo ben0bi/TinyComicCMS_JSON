@@ -116,6 +116,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	echo "H: $highlightBlogID";
 	foreach($blogDB['BLOGPOSTS'] as $itm)
 	{
+		echo "<br /">intval($itm['ID'])."*";
 		if(intval($itm['ID'])==intval($highlightBlogID))
 		{
 			$showId=intval($itm['IMAGEID']);
