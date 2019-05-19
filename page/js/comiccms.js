@@ -63,7 +63,7 @@ function ComicCMS()
 		m_blogJSONFile=blogdbname;
 		if(blogdbname!="")
 		{
-			__loadJSON(blogdbname"?nocache="+(new Date()).getTime(), function(data)
+			__loadJSON(blogdbname+"?nocache="+(new Date()).getTime(), function(data)
 			{
 				log("Blog Data ("+m_blogJSONFile+"):"+data, LOG_DEBUG_VERBOSE);
 				m_blogDB = data;
