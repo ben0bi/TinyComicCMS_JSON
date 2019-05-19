@@ -654,7 +654,7 @@ function ComicCMS()
 		msg=msg+'};';
 		msg=msg+'</script>';
 
-		confirmBox(m_langDB['sentence_title_newblogpost'], msg, m_langDB['word_save_blogpost'], function(dialog)
+		a_confirmBox(m_langDB['sentence_title_newblogpost'], msg, m_langDB['word_save_blogpost'], function(dialog)
 		{
 			var blogtitle=$("#upload_blogtitle").val();
 			var blogtext=$("#upload_blogtext").val();
