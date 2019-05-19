@@ -742,11 +742,6 @@ ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", l
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
 
-// move the page with pageorder a one page up (admin)
-ComicCMS.a_movepageup = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "up");};
-// move the page with pageorder a page down (admin)
-ComicCMS.a_movepagedown = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "down");};
-
 // return the language associated with the given term.
 ComicCMS.getLang = function(name) {return ComicCMS.instance.getLang(name);};
 ComicCMS.loadLanguage = function(filename, func=null) {ComicCMS.instance.loadLanguage(filename, func);};
@@ -754,6 +749,12 @@ ComicCMS.loadLanguage = function(filename, func=null) {ComicCMS.instance.loadLan
 // get the next or the previous page.
 ComicCMS.nextPage = function() {ComicCMS.instance.nextPage();}
 ComicCMS.prevPage = function() {ComicCMS.instance.prevPage();}
+
+
+// move the page with pageorder a one page up (admin)
+ComicCMS.a_movepageup = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "up");};
+// move the page with pageorder a page down (admin)
+ComicCMS.a_movepagedown = function(pageorder) {ComicCMS.instance.a_movepage(pageorder, "down");};
 
 // create a comic page.
 ComicCMS.a_window_createPage = function() {ComicCMS.instance.a_window_createPage();};
@@ -766,8 +767,11 @@ ComicCMS.a_pageupload = function() {ComicCMS.instance.a_pageupload();};
 ComicCMS.a_updatePageTitleForm = function(pageID) {ComicCMS.instance.a_updatePageTitleForm(pageID)}
 // show the blog titles and the image for the given comic page on the admin window.
 ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlogTitles(id);}
+
 // create a window to create a new blogpost.
 ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_createblogpost(id);}
+// send the form to create a blog post.
+ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost();};
 
 // use as document.onkeydown=ComicCMS.checkKeys
 // get next or previous post with arrow keys.
