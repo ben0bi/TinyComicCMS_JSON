@@ -420,6 +420,8 @@ function ComicCMS()
 	// Admin stuff.
 	this.a_window_createPage = function(dirToRoot)
 	{
+		a_removeHighlight();
+		
 		var msg='<center><form id="pageuploadform" action="AJAX.php" method="POST">'
 		msg=msg+'<h3>'+m_langDB['word_title_comicpage']+'</h3><table border="0">';
 		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
