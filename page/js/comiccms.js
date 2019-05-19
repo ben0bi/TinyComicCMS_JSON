@@ -711,6 +711,56 @@ function ComicCMS()
 		xhr.send(formData);
 		//alert("Create Blog Post: "+dirToRoot+" "+id);
 	};
+	
+	// show a box to update a blog post.
+	this.a_updateBlogPostShowForm = function(blogID)
+	{
+		//var path=dirToRoot+"php/ajax_createUpdateBlogpostForm.php";
+		var blogItem=m_blogDB['BLOGPOSTS'][blogID];
+		if(blogItem=="undefined")
+		{
+			log("Cannot update blog post. Blog item with id "+blogID+" not found.", LOG_ERROR);
+			return;
+		}
+		var msg="";
+		msg=msg+'<center><form id="blogpostupdateform" action="../php/ajax_updateblogpost.php" method="POST">';
+		msg=msg+'<table border="0" style="width:100%;" >';
+		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+		msg=msg+'<td><input type="text" id="update_blogtitle" name="update_blogtitle" value="'+blogItem['TITLE']+'"/></td></tr>';
+		msg=msg+'<tr><td valign="top" class="black">'m_langDB['word_text']+':&nbsp;</td>';
+
+		//replace \n else it will make it <br /> (I don't know why)
+		//$text=SQL::sqlToText($blogrow->text);
+		//$text=str_replace("\r\n","&#10;",$text);
+		//$text=str_replace("\n","&#10;",$text);
+
+		msg=msg+'<td><textarea id="update_blogtext" name="update_blogtext" rows="5" cols="60">'+blogItem['TEXT']+'</textarea></td></tr>';
+		msg=msg+'</table></form></center>';
+
+		msg=msg+'<script>';
+		msg=msg+'var form=document.getElementById("blogpostupdateform");';
+		msg=msg+'form.onsubmit = function(event) {';
+		msg=msg+'  event.preventDefault();';
+		msg=msg+'  ComicCMS.a_updateBlogpost('+blogItem['ID']+');';
+		msg=msg+'};';
+		msg=msg+'</script>';
+
+		// show a confirm box with the blog entry data.
+		confirmBox(word_title_update_blogpost, data, word_save_blogpost, function(dialog)
+		{	
+			var blogtitle=$("#update_blogtitle").val();
+			var blogtext=$("#update_blogtext").val();
+			if(blogtitle=="" || blogtext=="")
+			{
+				alert("Blog must have title and text.");
+				return;
+			}
+
+			dialog.close();
+			// submit the form.
+			$("#blogpostupdateform").submit();
+		});
+	}
 
 	// show a window with the blog posts and update stuff for a given post.
 	m_actualAdminBlogTitleShowID=-1;
@@ -776,6 +826,8 @@ ComicCMS.a_showAdminBlogTitles = function(id) {ComicCMS.instance.a_showAdminBlog
 ComicCMS.a_window_createblogpost = function(id) {ComicCMS.instance.a_window_createblogpost(id);}
 // send the form to create a blog post.
 ComicCMS.a_createBlogpost = function(id) {ComicCMS.instance.a_createBlogpost(id);};
+// show the form to update a blog post.
+ComicCMS.a_updateBlogPostShowForm = function(blogID) {ComicCMS.instance.a_updateBlogPostShowForm(blogID);}
 
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
@@ -948,35 +1000,6 @@ ComicCMS.showTitle = function()
 
 //ComicCMS.showPage = function(pageID) {ComicCMS.instance.showPage(pageID);}
 /*
-
-// show a box to update a blog post.
-ComicCMS.updateBlogPostShowForm = function(dirToRoot, blogID)
-{
-	var path=dirToRoot+"php/ajax_createUpdateBlogpostForm.php";
-	//get form with its values
-	$.ajax({
-	  	type: "GET",
-	  	url: path+"?blogid="+blogID,
-  		success : function(data)
-		{
-		    confirmBox(word_title_update_blogpost, data, word_save_blogpost, function(dialog)
-			{
-				var blogtitle=$("#update_blogtitle").val();
-				var blogtext=$("#update_blogtext").val();
-
-				if(blogtitle=="" || blogtext=="")
-				{
-					alert("Blog must have title and text.");
-					return;
-				}
-
-				dialog.close();
-				// submit the form.
-				$("#blogpostupdateform").submit();
-			});
-	        }
-	});
-}
 
 // Update a blog post
 ComicCMS.updateBlogpost = function(dirToRoot, blogID)
