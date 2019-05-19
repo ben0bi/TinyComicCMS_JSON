@@ -113,11 +113,13 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 	
 	$showId=-1;	// completely show the item with that id.
 	// if the blog id is set, get the associated image id.
+	echo "H: $highlightBlogID";
 	foreach($blogDB['BLOGPOSTS'] as $itm)
 	{
 		if(intval($itm['ID'])==intval($highlightBlogID))
 		{
 			$showId=intval($itm['IMAGEID']);
+			echo "ID FOUND: ".$showId;
 			break;
 		}
 	}
@@ -163,7 +165,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1, $highlightBlogID = -1)
 					$bid=$itm['ID'];
 					$blogclass="";
 					if($bid==$highlightBlogID)
-						$blogclass=' class="highlight"';
+						$blogclass=' class="highlightitem"';
 					
 					echo '<tr'.$blogclass.'><td'.$blogclass.'>&nbsp;&gt;&nbsp;</td>';
 					echo '<td'.$blogclass.'><a href="javascript:" onclick="ComicCMS.updateBlogPostShowForm(\'../\', \''.$bid.'\')">'.$bt."&nbsp;</a></td>";
