@@ -338,7 +338,7 @@ function ComicCMS()
 	}
 	
 	// get a blog post by its id.
-	var db_getBlogPostByID(blogID)
+	var db_getBlogPostByID=function(blogID)
 	{
 		for(var i=0;i<m_blogDB['BLOGPOSTS'].length;i++)
 		{
