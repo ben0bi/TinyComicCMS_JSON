@@ -635,6 +635,43 @@ function ComicCMS()
 		xhr.send(formData);
 	}
 	
+	// create the form for a new blogpost for a given comic id.
+	this.a_window_createblogpost = function(dirToRoot, id)
+	{
+		var msg='<center><form id="blogpostcreateform" action="'+dirToRoot+'php/ajax_createblogpost.php" method="POST">';
+		msg=msg+'<hr><table border="0" style="width:100%;" >';
+		msg=msg+'<tr><td class="black">'+m_langDB['word_title']+':&nbsp;</td>';
+		msg=msg+'<td><input type="text" id="upload_blogtitle" name="upload_blogtitle" /></td></tr>';
+		msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
+		msg=msg+'<td><textarea id="upload_blogtext" name="upload_blogtext" style="width:100%;height:200px;"></textarea></td></tr>';
+		msg=msg+'</table></form></center>';
+
+		msg=msg+'<script>';
+		msg=msg+'var form=document.getElementById("blogpostcreateform");';
+		msg=msg+'form.onsubmit = function(event) {';
+		msg=msg+	'event.preventDefault();';
+		msg=msg+	'ComicCMS.createBlogpost("'+dirToRoot+'", '+id+');';
+		msg=msg+'};';
+		msg=msg+'</script>';
+
+		confirmBox(m_langDB['sentence_title_newblogpost'], msg, m_langDB['word_save_blogpost'], function(dialog)
+		{
+			var blogtitle=$("#upload_blogtitle").val();
+			var blogtext=$("#upload_blogtext").val();
+
+			if(blogtitle=="" || blogtext=="")
+			{
+				alert(m_langDB['sentence_blog_must_have_title_and_text']);
+				return;
+			}
+
+			dialog.close();
+
+			// submit the form.
+			$("#blogpostcreateform").submit();
+		});
+	}
+	
 	// show a window with the blog posts and update stuff for a given post.
 	m_actualAdminBlogTitleShowID=-1;
 	this.a_showAdminBlogTitles=function(id)
@@ -925,7 +962,7 @@ ComicCMS.updateBlogpost = function(dirToRoot, blogID)
 */
 
 /*
-// create or a blogpost for a given id.
+// create the form for a blogpost for a given id.
 ComicCMS.window_createblogpost = function(dirToRoot, id)
 {
 	var msg='<center><form id="blogpostcreateform" action="'+dirToRoot+'php/ajax_createblogpost.php" method="POST">';
