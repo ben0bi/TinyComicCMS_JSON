@@ -630,12 +630,36 @@ function ComicCMS()
 		};
 		xhr.send(formData);
 	}
+	
+	// show a window with the blog posts and update stuff for a given post.
+	var m_actualAdminBlogTitleShowID=-1;
+	this.showAdminBlogTitles=function(id)
+	{
+		a_removeHighlight();
+		if(m_actualAdminBlogTitleShowID!=-1)
+			$("#admin_blogtitles_"+m_actualAdminBlogTitleShowID).hide();
+		if(m_actualAdminBlogTitleShowID!=id)
+		{
+			$("#admin_blogtitles_"+id).show();
+			m_actualAdminBlogTitleShowID=id;
+		}else{
+			m_actualAdminBlogTitleShowID=-1;
+		}
+	}
+	
+	// remove the highlight if something was clicked.
+	var a_removeHighlight=function()
+	{
+		$('tr').each(function() {$(this).removeClass('highlightitem');});
+		$('td').each(function() {$(this).removeClass('highlightitem');});
+	}
 }
 
 ComicCMS.instance =new ComicCMS;
 ComicCMS.initialize = function(contentDivId,imagedbname = "", blogdbname = "", langdbname="") {ComicCMS.instance.initialize(contentDivId, imagedbname, blogdbname,langdbname);}
 
 ComicCMS.buildAndShowArchives = function() {ComicCMS.instance.buildAndShowArchives();}
+ComicCMS.showAdminBlogTitles = function(id) {ComicCMS.instance.showAdminBlogTitles(id);}
 
 // move the page with pageorder a one page up (admin)
 ComicCMS.a_movepageup = function(dirToRoot,pageorder) {ComicCMS.instance.a_movepage(dirToRoot, pageorder, "up");};

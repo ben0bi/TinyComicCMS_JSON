@@ -132,7 +132,7 @@ function showAdmin($reload=FALSE, $highlightImageID = -1)
 				$class=$class." highlightitem";
 
 			echo "<tr class=\"$class\"><td class=\"$class\" valign=\"top\">$ri.&nbsp;</td>".chr(13);
-			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
+			echo "<td class=\"$class\" valign=\"top\"><a href=\"javascript:\" onclick=\"ComicCMS.a_showAdminBlogTitles('$id')\">$title&nbsp;</a>".chr(13);
 
 			// push all blog titles here
 			echo '<div id="admin_blogtitles_'.$id.'" style="display:none;">';
