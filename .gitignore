@@ -1,5 +1,7 @@
 *~
 *.bak
 *uploads/*
-./config.php
+page/_admin/config.php
+page/data/jsons/imagedb.json
+page/data/jsons/blogdb.json
 page/data/uploads/*
