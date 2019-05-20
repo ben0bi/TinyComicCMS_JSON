@@ -40,7 +40,7 @@ function ComicCMS()
 		// fire the init function after all jsons are loaded. It waits for itself for the loading.
 		InitFunction();
 	}
-	
+
 	// load the image db.
 	this.loadImageDB = function(imagedbname)
 	{
@@ -72,7 +72,7 @@ function ComicCMS()
 			log("No Blog DB loaded.", LOG_WARN);
 		}
 	}
-	
+
 	// reload the image/blog db.
 	this.reloadImageDB = function() {me.loadImageDB(m_imageJSONFile);};
 	this.reloadBlogDB = function() {me.loadBlogDB(m_blogJSONFile);};
@@ -80,7 +80,7 @@ function ComicCMS()
 	// load a language file into the DB structure.
 	this.loadLanguage = function(filename, func=null)
 	{
-		m_langJSONFile = filename;	
+		m_langJSONFile = filename;
 		if(m_langJSONFile!="")
 		{
 			__loadJSON(m_langJSONFile, function(data)
@@ -92,7 +92,7 @@ function ComicCMS()
 			});
 		}else{
 			log("No language loaded.", LOG_WARN);
-		}		
+		}
 	}
 
 	// the real load function.
@@ -120,7 +120,7 @@ function ComicCMS()
 		// maybe get the page id.
 		m_actualPagePosition = -1;
 		var id = $_GET("id"); // for the end user, it's the id.
-		if(id!=null)
+		if(id!=null && __defined(m_imageDB['IMAGES']))
 		{
 			// New: get pageorder from the id.
 			for(var i=0;i<m_imageDB['IMAGES'].length;i++)
@@ -129,7 +129,7 @@ function ComicCMS()
 				if(itm['ID']==id)
 					m_actualPagePosition = i;
 			}
-			
+
 			// set page command to next if it is latest, because an id was set.
 			if(m_pageCmd=="latest" || m_pageCmd=="last") m_pageCmd="next";
 		}
@@ -257,16 +257,23 @@ function ComicCMS()
 		$('#archivelink').show();
 		$('#adminlink').show();
 
-		var db = m_imageDB['IMAGES']; // OBSOLETE: db_getComicSortedByOrder(false);
-		
-		var txt="";
-		txt+='<article id="archives">';
+		// show nothing if there is no image db.
+		if(!__defined(m_imageDB['IMAGES']))
+		{
+			$("#pagecontent").html(m_langDB['sentence_no_archive_result']);
+			return;
+		}
+
+		var db = m_imageDB['IMAGES'];
+		// show nothing if there are no pages loaded.
 		if(db.length<=0)
 		{
 			$("#pagecontent").html(m_langDB['sentence_no_archive_result']);
 			return;
 		}
 
+		var txt="";
+		txt+='<article id="archives">';
 		// there is something in the db, process it.
 		var cl="noborder"; // admin: horizontalborder
 
@@ -300,13 +307,17 @@ function ComicCMS()
 	// get a comic row from the comic array by the index in the array.
 	var db_getComicRowByOrder = function(pageorder)
 	{
+		// if there are no images, the pageorder should be -1.
+		if(pageorder<0)
+			return null;
+
 		if(m_imageDB['IMAGES'].length>pageorder && pageorder>=0)
 			return m_imageDB['IMAGES'][pageorder];
 
 		log("Image at position "+pageorder+" not found!", LOG_ERROR);
 		return null;
 	}
-	
+
 	// get a comic row from the comic array.
 	var db_getComicRowByID = function(pageid)
 	{
@@ -336,7 +347,7 @@ function ComicCMS()
 		}
 		return blogarr;
 	}
-	
+
 	// get a blog post by its id.
 	var db_getBlogPostByID=function(blogID)
 	{
@@ -351,6 +362,12 @@ function ComicCMS()
 	// returns the next or previous or actual page id depending on the command.
 	var getRealPagePosition=function(cmd, pageorder)
 	{
+		if(!__defined(m_imageDB['IMAGES']))
+		{
+			log("There are no images loaded.", LOG_WARN);
+			return -1;
+		}
+
 		var target = parseInt(pageorder);
 		if(target<0)
 			target=0;
@@ -387,47 +404,45 @@ function ComicCMS()
 	// TODO, new: get id from the item for that pageorder.
 	var getImageIDFromArrayPosition=function(idx)
 	{
+		// no images loaded at all, return -1
+		if(!__defined(m_imageDB['IMAGES'])) {return -1;}
+
 		var firstpos=0;
 		var lastpos=m_imageDB['IMAGES'].length-1;
-		
+
 		if(idx>=firstpos && idx<=lastpos)
 			return m_imageDB['IMAGES'][idx]['ID'];
-		
+
 		if(idx>lastpos)
 			return m_imageDB['IMAGES'][lastpos]['ID'];
-		
+
 		if(idx<firstpos)
 			return m_imageDB['IMAGES'][firstpos]['ID'];
 	}
-	
+
 	this.nextPage = function() {window.document.location.href = 'index.html?page=next&id='+getImageIDFromArrayPosition(m_actualPagePosition+1);}
 	this.prevPage = function() {window.document.location.href = 'index.html?page=prev&id='+getImageIDFromArrayPosition(m_actualPagePosition-1);}
-	
+
 	// show a confirm box. WHY DOES IT NOT TAKE THE LANGUAGE TRANSLATIONS?
 	var a_confirmBox=function(title, text, successlabel, successfunc)
-	{	
-        BootstrapDialog.show(
+	{
+	        BootstrapDialog.show(
 		{
-            title: title,
-            message: text,
-            buttons: [
+			title: title,
+			message: text,
+			buttons: [
 			{
-                label: m_langDB['word_cancel'],
-                action: function(dialog) 
-				{
-                    dialog.close();
-                }
-            }, 
+				label: m_langDB['word_cancel'],
+				action: function(dialog) {dialog.close();}
+            		},
 			{
-                label: successlabel,
-                action: function(dialog) 
-				{
-                    successfunc(dialog);
-                }
-            }]
-        });
+				label: successlabel,
+				action: function(dialog)
+				{successfunc(dialog);}
+			}]
+		});
 	}
-	
+
 	// Admin stuff.
 	this.a_window_createPage = function()
 	{
@@ -483,7 +498,7 @@ function ComicCMS()
 			$("#pageuploadform").submit();
 		});
 	}
-	
+
 	// the real page upload function.
 	this.a_pageupload=function()
 	{
@@ -819,7 +834,7 @@ function ComicCMS()
 		};
 		xhr.send(formData);
 	}
-	
+
 	// delete a blog post.
 	this.a_window_deleteblogpost = function(id, title)
 	{
@@ -855,7 +870,7 @@ function ComicCMS()
 			xhr.send(formData);
 		});
 	};
-	
+
 	// delete a comic page.
 	this.a_window_deletepage = function(id, title)
 	{
@@ -900,14 +915,14 @@ function ComicCMS()
 	{
 		$('.admin_blogtitles').each(function() {$(this).hide();});
 		if(m_actualAdminBlogTitleShowID!=id)
-		{	
+		{
 			$("#admin_blogtitles_"+id).show();
 			m_actualAdminBlogTitleShowID=id;
 		}else{
 			m_actualAdminBlogTitleShowID=-1;
 		}
 	}
-	
+
 	// remove the highlight if something was clicked.
 	// this is only used in the admin panel and will
 	// be called on any click in the page.
@@ -917,7 +932,7 @@ function ComicCMS()
 		// safe processing power.
 		if(m_highlightRemoved==true)
 			return;
-		
+
 		$('tr').each(function() {$(this).removeClass('highlightitem');});
 		$('td').each(function() {$(this).removeClass('highlightitem');});
 		m_highlightRemoved=true;
@@ -975,7 +990,7 @@ ComicCMS.a_updateBlogPostShowForm = function(blogID) {ComicCMS.instance.a_update
 ComicCMS.a_updateBlogpost = function(blogID) {ComicCMS.instance.a_updateBlogpost(blogID);}
 // Show a window for deleting a blog post.
 ComicCMS.a_window_deleteblogpost = function(id, title) {ComicCMS.instance.a_window_deleteblogpost(id, title);}
-// Delete a whole comic page.	
+// Delete a whole comic page.
 ComicCMS.a_window_deletepage = function(id, title) {ComicCMS.instance.a_window_deletepage(id, title);}
 // call this on a click on body on the admin panel.
 ComicCMS.a_removeHighlight = function() {ComicCMS.instance.a_removeHighlight();};
@@ -1014,6 +1029,11 @@ ComicCMS.touchStartX = 0;
 ComicCMS.initializeTouch = function()
 {
 	var pgimgdiv = document.getElementById("pageimagediv");
+	if(pgimgdiv==null)
+	{
+		log("Touch was not initialized.", LOG_DEBUG);
+		return;
+	}
 
 	pgimgdiv.addEventListener('touchstart', function(e)
 	{
@@ -1055,7 +1075,7 @@ ComicCMS.initializeTouch = function()
 		//alert("End: "+dir);
 	});
 
-	pgimgdiv.addEventListener('touchcancel', function(e) 
+	pgimgdiv.addEventListener('touchcancel', function(e)
 	{
 		// reset the image position.
 		$('#pageimageMoveContainer').css('left',0);
