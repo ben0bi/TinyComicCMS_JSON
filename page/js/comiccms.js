@@ -734,6 +734,9 @@ function ComicCMS()
 			return;
 		}
 		
+		// replace br's with enter. Will be replaced again when saving.
+		var txt= __replaceAll(blogItem['TEXT'], '<br />', '\r\n');
+		
 		var msg="";
 		msg=msg+'<center><form id="blogpostupdateform" action="../php/ajax_updateblogpost.php" method="POST">';
 		msg=msg+'<table border="0" style="width:100%;" >';
@@ -741,7 +744,7 @@ function ComicCMS()
 		msg=msg+'<td><input type="text" id="update_blogtitle" name="update_blogtitle" value="'+blogItem['TITLE']+'"/></td></tr>';
 		msg=msg+'<tr><td valign="top" class="black">'+m_langDB['word_text']+':&nbsp;</td>';
 		
-		msg=msg+'<td><textarea id="update_blogtext" name="update_blogtext" rows="5" cols="60">'+blogItem['TEXT']+'</textarea></td></tr>';
+		msg=msg+'<td><textarea id="update_blogtext" name="update_blogtext" rows="5" cols="60">'+txt+'</textarea></td></tr>';
 		msg=msg+'</table></form></center>';
 
 		msg=msg+'<script>';
