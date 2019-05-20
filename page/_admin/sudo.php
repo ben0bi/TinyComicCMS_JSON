@@ -92,7 +92,6 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 		echo '<input type="password" name="rawloginpassword" id="passwordfield">';
 		echo '<button type="submit">'.$langDB['word_submit'].'</button>';
 		echo '</form>';	
-		echo '<script>$("#passwordfield").focus();</script>';	
 	}
 	?>
 	
@@ -130,6 +129,7 @@ $( document ).ready(function()
 {
 	ComicCMS.adjustPageHeight();
 	$(document).click(ComicCMS.a_removeHighlight);
+	$('#passwordfield').focus();
 });
 </script>
 
