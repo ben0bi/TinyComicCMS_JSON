@@ -1,7 +1,6 @@
 *~
 *.bak
 *uploads/*
-*config.php
 *imagedb.js*
 *blogdb.js*
 page/data/uploads/*
