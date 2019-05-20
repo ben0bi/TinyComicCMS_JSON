@@ -1,18 +1,8 @@
 <?php
 
+require("config.php");
+
 $ajax=$_POST['ajax'];
-
-// functions for loading and saving the databases (again).
-// THESE ARE TO BE SET FROM THE ROOT DIR.
-// DB file names.
-$langFileName = "data/jsons/lang.german.json";
-$imageDBFileName = "data/jsons/imagedb.json";
-$blogDBFileName = "data/jsons/blogdb.json";
-// the relative path for the uploads.
-$relative_upload_path="data/uploads/";
-
-// relative directory from THIS page to the root of the page.
-$dirToRoot = "../";
 
 // ENDOF VALUES ************************************************************************************************
 
@@ -531,4 +521,3 @@ if($ajax=="deletecomicpage")
 	echo $langDB['sentence_entry_deleted']."<br />";
 	showAdmin(TRUE,-1,-1);
 }
-?>

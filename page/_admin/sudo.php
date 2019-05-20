@@ -14,8 +14,6 @@ Users will not see it because it is in PHP code.
 
 require("AJAX.php");
 
-$admin_login_password="anypass";
-
 // returns 291 on success.
 function getAdminPass()
 {
