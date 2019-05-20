@@ -735,7 +735,7 @@ function ComicCMS()
 		}
 		
 		// replace br's with enter. Will be replaced again when saving.
-		var txt= __replaceAll(blogItem['TEXT'], '<br />', '\r\n');
+		var txt= __replaceAll(blogItem['TEXT'], '<br />', '&#10;');
 		
 		var msg="";
 		msg=msg+'<center><form id="blogpostupdateform" action="../php/ajax_updateblogpost.php" method="POST">';
