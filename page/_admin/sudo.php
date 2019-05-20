@@ -84,7 +84,7 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 		echo '<div id="archivecontent">'; // for AJAX rebuild of the archives.
 			showAdmin(FALSE,-1,-1);
 		echo '</div>';
-		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/AJAX.php)<br />";
+		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/config.php)<br />";
 	}else{
 		echo '<br />'.$langDB['sentence_please_input_password'].'<br /><form action="sudo.php" method="post">';
 		echo '<input type="password" name="rawloginpassword" id="passwordfield">';
