@@ -89,9 +89,10 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 		echo "<hr>Relative upload path (from page root): $relative_upload_path<br />(Change it in _admin/AJAX.php)<br />";
 	}else{
 		echo '<br />'.$langDB['sentence_please_input_password'].'<br /><form action="sudo.php" method="post">';
-		echo '<input type="password" name="rawloginpassword" >';
+		echo '<input type="password" name="rawloginpassword" id="passwordfield">';
 		echo '<button type="submit">'.$langDB['word_submit'].'</button>';
 		echo '</form>';	
+		echo '<script>$("#passwordfield").focus();</script>';	
 	}
 	?>
 	
