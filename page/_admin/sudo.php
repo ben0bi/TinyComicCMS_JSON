@@ -58,7 +58,7 @@ if($login==777) $error=$langDB['sentence_wrong_password'];
 <body>
 <div id="wrapper">
 	<div id="pagetitle">
-		<a href="javascript:" style="border:0;" onclick="leaveAdminPanel();"><img id="pagetitle_image" src="../images/pagetitle.png" /></a>
+		<a href="javascript:" style="border:0;" onclick="leaveAdminPanel();"><img class="pagetitle_image" src="../images/pagetitle.png" /></a>
 	</div>
 
 	<div id="pagecontent">
