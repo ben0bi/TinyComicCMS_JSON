@@ -526,7 +526,7 @@ function ComicCMS()
 	
 		BootstrapDialog.show({
 			title: m_langDB['sentence_please_wait'],
-			message: "<center>"+m_langDB['sentence_applying_changes']+"</center>"
+			message: "<center>"+m_langDB['sentence_please_wait_for_upload']+"</center>"
 			});
 
 		var xhr=new XMLHttpRequest();
