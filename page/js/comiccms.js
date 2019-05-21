@@ -302,6 +302,7 @@ function ComicCMS()
 
 		$("#pagecontent").html(txt);
 		$("#pagecontent").focus();
+		adjustPageHeight();
 	}
 
 	// get a comic row from the comic array by the index in the array.
@@ -1090,11 +1091,17 @@ ComicCMS.adjustPageHeight = function()
 	var ww = $("#wrapper").width();
 	$(".pagelinks").width(ww);
 	$("#pagetitle").width(ww);
-	if(ww<$("#pagetitle_image").width())
+	var setheight = 0;
+	$('.pagetitle_image').each(function()
 	{
-		$("#pagetitle_image").width(ww);
-		$("#pagecontent").css('top',$("#pagetitle_image").height()+10);
-	}
+		//if(ww<$(this).width())
+		//{
+		$(this).css('max-width', ww);
+		//}
+		if($(this).height()>setheight)
+			setheight=$(this).height();
+	});
+	$("#pagecontent").css('top',setheight+10);
 
 	$("#pagecontent").width(ww);
 	$("#pageimage").width(ww);
